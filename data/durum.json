@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-04T14:38+00:00",
+ "guncelleme": "2026-11-04T14:46+00:00",
  "kaynaklar": {
   "kur": {
    "durum": "tamam",
@@ -14,7 +14,7 @@
   "antalya": {
    "durum": "tamam",
    "kayit": 8867,
-   "sure_sn": 38
+   "sure_sn": 49
   },
   "atb": {
    "durum": "tamam",
@@ -24,12 +24,12 @@
   "junta": {
    "durum": "tamam",
    "kayit": 91557,
-   "sure_sn": 28
+   "sure_sn": 4
   },
   "ispanya": {
    "durum": "tamam",
    "kayit": 60985,
-   "sure_sn": 124
+   "sure_sn": 298
   }
  }
 }
