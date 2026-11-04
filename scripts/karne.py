@@ -324,6 +324,60 @@ def es_karsilastir(doc, seg, seg_eur, ref, ref_eur, ref_ab, last, tr_sezon):
     return out
 
 
+# ---------------------------------------------------------------- ATB arz (miktar endeksi)
+def atb_arz():
+    p = DATA / "ham" / "atb-endeks.json"
+    if not p.exists():
+        return {}
+    j = json.loads(p.read_text(encoding="utf-8"))
+    out = {}
+    for g in ("domates", "sebze", "meyve"):
+        rows = j["seriler"].get(f"{g}_miktar") or []
+        by_y = defaultdict(dict)
+        for ym, v in rows:
+            by_y[int(ym[:4])][int(ym[5:7])] = v
+        full = sorted(y for y, m in by_y.items() if len(m) == 12)
+        if len(full) < 3:
+            continue
+        rec = full[-YIL:]
+        prof = []
+        for m in range(1, 13):
+            prof.append(r3(med([by_y[y][m] / statistics.fmean(by_y[y].values()) for y in rec])))
+        last_ym = max(rows)[0]
+        last12 = [v for ym, v in sorted(rows)[-12:]]
+        base = [v for ym, v in rows if ym[:4] in ("2015", "2016", "2017")]
+        order = sorted(range(12), key=lambda i: -prof[i])
+        out[g] = {"grup": g, "profil": prof, "yil": len(rec), "tepe": sorted(i + 1 for i in order[:3]), "dip": sorted(i + 1 for i in order[-3:]),
+                  "yillik": [[y, r3(statistics.fmean(by_y[y].values()), 1)] for y in sorted(by_y) if len(by_y[y]) == 12],
+                  "son12": r3(statistics.fmean(last12), 1), "son12_bitis": last_ym, "taban_2015_17": r3(statistics.fmean(base), 1) if base else None,
+                  "kaynak": j.get("kaynak"), "not": j.get("not")}
+    return out
+
+
+def arz_grubu(doc):
+    if doc["k"] == "domates":
+        return "domates"
+    return {"Sebze": "sebze", "Yeşillik": "sebze", "Meyve": "meyve"}.get(doc["tur"])
+
+
+def month_profile(week_prof):
+    """52 haftalık profil → 12 aylık ortalama."""
+    b = defaultdict(list)
+    for i, v in enumerate(week_prof):
+        if v is not None:
+            b[(date.fromisocalendar(2021, i + 1, 4)).month].append(v)
+    return [statistics.fmean(b[m]) if b.get(m) else None for m in range(1, 13)]
+
+
+def corr(a, b):
+    pts = [(x, y) for x, y in zip(a, b) if x is not None and y is not None]
+    if len(pts) < 8:
+        return None
+    mx, my = statistics.fmean(p[0] for p in pts), statistics.fmean(p[1] for p in pts)
+    sx = math.sqrt(sum((p[0] - mx) ** 2 for p in pts)); sy = math.sqrt(sum((p[1] - my) ** 2 for p in pts))
+    return r3(sum((p[0] - mx) * (p[1] - my) for p in pts) / (sx * sy), 2) if sx and sy else None
+
+
 # ---------------------------------------------------------------- ana akış
 def load_fx():
     rows = json.loads((DATA / "kur-eur-try.json").read_text(encoding="utf-8"))
@@ -343,6 +397,7 @@ def build():
     for old in out_dir.glob("*.json"):
         old.unlink()
     ozet = []
+    ARZ = atb_arz()
     for p in sorted((DATA / "urun").glob("*.json")):
         doc = json.loads(p.read_text(encoding="utf-8"))
         segs = [s for s in doc["segmentler"] if s["n"] >= 30]
@@ -370,6 +425,8 @@ def build():
                  "sezon": sz, "donem": donem(w, last), "sok": sok(w, last), "makas": makas(doc, s, last), "yeni": yeni(doc, s, w, last),
                  "es": es_karsilastir(doc, s, eur_w.get(s["k"], {}), ref, eur_w.get(ref, {}), ref_ab, last, sz)
                  if s["birim"] == "KG" else None}
+            arz = ARZ.get(arz_grubu(doc) or "")
+            k["arz_r"] = corr(month_profile(sz["profil"]), arz["profil"]) if arz and sz else None
             rows.append(k)
             pr, es = k["prim"] or {}, k["es"] or {}
             ozet.append({"u": doc["k"], "utr": doc["tr"], "uen": doc["en"], "tur": doc["tur"], "s": s["k"], "str": s["tr"], "sen": s["en"],
@@ -380,7 +437,8 @@ def build():
                          "yeni": k["yeni"]["yeni"], "es_duzey": es.get("duzey"), "es_tam": es.get("tam"),
                          "es_benzer": es.get("sezon_benzerlik")})
         karne = {"k": doc["k"], "tr": doc["tr"], "en": doc["en"], "son": last.isoformat(), "birim": unit, "referans": ref,
-                 "ref_ab": ref_ab, "yil": YIL, "z": Z_SOK, "segmentler": rows, "kalite": kalite_ciftleri(doc)}
+                 "ref_ab": ref_ab, "yil": YIL, "z": Z_SOK, "segmentler": rows, "kalite": kalite_ciftleri(doc),
+                 "arz": ARZ.get(arz_grubu(doc) or "")}
         (out_dir / p.name).write_text(json.dumps(karne, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     (out_dir / "_ozet.json").write_text(json.dumps(ozet, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"Islah karnesi: {len({o['u'] for o in ozet})} ürün, {len(ozet)} segment")

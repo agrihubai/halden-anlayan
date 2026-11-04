@@ -2202,5 +2202,70 @@
    "ab": [],
    "segmentler": []
   }
- ]
+ ],
+ "antalya": {
+  "_aciklama": "Antalya Büyükşehir günlük listesindeki adlar için özel eşleşmeler (sadeleştirilmiş büyük harfli ada uygulanır). Burada olmayan adlar genel 'izmir' ve 'kalip' kurallarıyla eşleşir. 'Domates' tek kalemdir; sera/tarla ayrımı yapılmaz, yuvarlak sofralık domates olarak 'sera' segmentine bağlandı (yaklaşık).",
+  "eslesme": [
+   {
+    "ad": "^DOMATES$",
+    "urun": "domates",
+    "segment": "sera"
+   },
+   {
+    "ad": "^BIBER \\(KAPYA\\)$",
+    "urun": "biber",
+    "segment": "kirmizi"
+   },
+   {
+    "ad": "^BIBER \\(CARLI\\)$",
+    "urun": "biber",
+    "segment": "carliston"
+   },
+   {
+    "ad": "^BIBER \\(UCBURUN\\)$",
+    "urun": "biber",
+    "segment": "koy"
+   },
+   {
+    "ad": "^PATLICAN \\(TOPAK\\)$",
+    "urun": "patlican",
+    "segment": "topan"
+   },
+   {
+    "ad": "^MANDALIN$",
+    "urun": "mandalina",
+    "segment": "standart"
+   },
+   {
+    "ad": "^ERIK \\(ANJELIK\\)$",
+    "urun": "erik",
+    "segment": "anjelika"
+   },
+   {
+    "ad": "SANTAMARIYA",
+    "urun": "armut",
+    "segment": "santa-maria"
+   },
+   {
+    "ad": "^KABAK \\(BAL\\)$",
+    "urun": "bal-kabagi",
+    "segment": "standart"
+   },
+   {
+    "ad": "^MISIR$",
+    "urun": "dari",
+    "segment": null
+   },
+   {
+    "ad": "^AMME",
+    "urun": "cennet-elmasi",
+    "segment": null
+   },
+   {
+    "ad": "^FESLEGEN$",
+    "urun": "reyhan",
+    "segment": null
+   }
+  ]
+ }
 }

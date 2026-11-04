@@ -1,6 +1,6 @@
 """Hal-den Anlayan veri güncelleyici.
 
-Dört kaynaktan veri çeker (Antalya: scripts/antalya.py):
+Beş kaynaktan veri çeker (Antalya: scripts/antalya.py, ATB endeksleri: scripts/atb.py):
   1. İzmir Büyükşehir Belediyesi hal fiyatları (yıllık CSV'ler + güncel günler için API), TL, bütün ürünler
   2. ECB günlük euro referans kurları (EUR/TRY)
   3. Avrupa Komisyonu agri-food API: İspanya meyve-sebze fiyatları (tarla, paketleme çıkışı, raf), EUR
@@ -386,7 +386,8 @@ def main() -> int:
     status = {"guncelleme": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes"), "kaynaklar": {}}
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     import antalya
-    for name, fn in (("kur", update_fx), ("izmir", update_izmir), ("antalya", antalya.update), ("ispanya", update_eu)):
+    import atb
+    for name, fn in (("kur", update_fx), ("izmir", update_izmir), ("antalya", antalya.update), ("atb", atb.update), ("ispanya", update_eu)):
         print(name, flush=True)
         t0 = time.time()
         try:
