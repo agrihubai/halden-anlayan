@@ -45,7 +45,8 @@
   :focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
   .wrap { max-width: 72rem; margin: 0 auto; padding: 24px 16px 48px; display: flex; flex-direction: column; gap: 40px; }
   @media (min-width: 760px) { .wrap { padding: 32px 32px 56px; } }
-  .site { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: var(--cap); color: var(--muted); margin-bottom: -16px; }
+  .navr { display: inline-flex; gap: 14px; align-items: center; }
+  .site { align-items: center; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: var(--cap); color: var(--muted); margin-bottom: -16px; }
   header { display: flex; flex-direction: column; gap: 10px; }
   .eyebrow { margin: 0; font-size: var(--cap); color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
   h1 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: 2.4rem; line-height: 1.1; }
@@ -99,88 +100,172 @@
 <div class="wrap">
   <nav class="site" aria-label="AgriHub-AI">
     <a href="https://agrihubai.wordpress.com/">← AgriHub-AI</a>
-    <a href="https://agrihubai.github.io/emtia/">Emtia Endeksi →</a>
+    <span class="navr"><a id="emtia-link" href="https://agrihubai.github.io/emtia/" data-i18n="emtia">Emtia Endeksi →</a>
+    <span class="seg" id="lang" role="group" aria-label="Dil / Language"><button type="button" data-lang="tr" lang="tr">TR</button><button type="button" data-lang="en" lang="en">EN</button></span></span>
   </nav>
 
   <header>
-    <p class="eyebrow">AgriHub-AI · Sebze hal fiyatları · Türkiye – İspanya</p>
+    <p class="eyebrow" data-i18n="eyebrow">AgriHub-AI · Sebze hal fiyatları · Türkiye – İspanya</p>
     <h1>Halden Anlayan</h1>
-    <p class="intro">Antalya ile Almería aynı sebzeleri aynı kış penceresinde üretir ve Avrupa pazarında rakiptir. Bu pano iki tarafın fiyatını yan yana koyar: Türkiye'de İzmir halinin günlük fiyatları, İspanya'da Avrupa Komisyonu'nun tarla, paketleme çıkışı ve raf fiyatları.</p>
-    <p class="intro">Türkiye fiyatları TL olarak gösterilir. Grafiğin üstüne gelince o günün ECB kuruyla euro karşılığı da görünür. İki ülkeyi karşılaştıran grafikte her şey euro cinsindendir.</p>
+    <p class="intro" data-i18n="intro1">Antalya ile Almería aynı sebzeleri aynı kış penceresinde üretir ve Avrupa pazarında rakiptir. Bu pano iki tarafın fiyatını yan yana koyar: Türkiye'de İzmir halinin günlük fiyatları, İspanya'da Avrupa Komisyonu'nun tarla, paketleme çıkışı ve raf fiyatları.</p>
+    <p class="intro" data-i18n="intro2">Türkiye fiyatları TL olarak gösterilir. Grafiğin üstüne gelince o günün ECB kuruyla euro karşılığı da görünür. İki ülkeyi karşılaştıran grafikte her şey euro cinsindendir.</p>
     <p class="lede" id="lede">Veri yükleniyor…</p>
   </header>
 
-  <section aria-label="Ürün seçimi">
-    <div class="controls" id="products" role="group" aria-label="Ürün"></div>
+  <section aria-label="Ürün / Product">
+    <div class="controls" id="products" role="group" aria-label="Ürün / Product"></div>
   </section>
 
-  <section class="tiles" id="tiles" aria-label="Göstergeler"></section>
+  <section class="tiles" id="tiles" aria-label="Göstergeler / Indicators"></section>
 
   <section aria-labelledby="h-tr">
-    <h2 id="h-tr">Türkiye · İzmir hali günlük fiyat (TL/kg)</h2>
+    <h2 id="h-tr" data-i18n="hTr">Türkiye · İzmir hali günlük fiyat (TL/kg)</h2>
     <div class="controls">
-      <label class="ctl">Çeşit <select id="variety"></select></label>
-      <div class="seg" id="range-tr" role="group" aria-label="Dönem">
-        <button type="button" data-r="90">3 ay</button><button type="button" data-r="365">1 yıl</button><button type="button" data-r="1825">5 yıl</button><button type="button" data-r="all">Tümü</button>
+      <label class="ctl"><span data-i18n="variety">Çeşit</span> <select id="variety"></select></label>
+      <div class="seg" id="range-tr" role="group" aria-label="Dönem / Period">
+        <button type="button" data-r="90" data-i18n="r3m">3 ay</button><button type="button" data-r="365" data-i18n="r1y">1 yıl</button><button type="button" data-r="1825" data-i18n="r5y">5 yıl</button><button type="button" data-r="all" data-i18n="rAll">Tümü</button>
       </div>
     </div>
-    <div class="legend"><span><i style="background:var(--c-tr)"></i>Ortalama</span><span><i class="band"></i>En düşük – en yüksek</span></div>
+    <div class="legend"><span><i style="background:var(--c-tr)"></i><span data-i18n="avg">Ortalama</span></span><span><i class="band"></i><span data-i18n="range">En düşük – en yüksek</span></span></div>
     <div class="chart" id="chart-tr"></div>
-    <p class="note">Kaynak: İzmir Büyükşehir Belediyesi açık veri portalı, sebze-meyve hal fiyatları. Fiyatlar halde işlem gören en düşük, en yüksek ve ortalama fiyatlardır; üreticinin eline geçen fiyat değildir.</p>
+    <p class="note" data-i18n="noteTr">Kaynak: İzmir Büyükşehir Belediyesi açık veri portalı, sebze-meyve hal fiyatları. Fiyatlar halde işlem gören en düşük, en yüksek ve ortalama fiyatlardır; üreticinin eline geçen fiyat değildir.</p>
   </section>
 
   <section aria-labelledby="h-cmp">
-    <h2 id="h-cmp">Türkiye – İspanya karşılaştırması (EUR/kg, haftalık)</h2>
+    <h2 id="h-cmp" data-i18n="hCmp">Türkiye – İspanya karşılaştırması (EUR/kg, haftalık)</h2>
     <div class="controls">
-      <div class="seg" id="range-cmp" role="group" aria-label="Dönem">
-        <button type="button" data-r="365">1 yıl</button><button type="button" data-r="1095">3 yıl</button><button type="button" data-r="all">Tümü</button>
+      <div class="seg" id="range-cmp" role="group" aria-label="Dönem / Period">
+        <button type="button" data-r="365" data-i18n="r1y">1 yıl</button><button type="button" data-r="1095" data-i18n="r3y">3 yıl</button><button type="button" data-r="all" data-i18n="rAll">Tümü</button>
       </div>
     </div>
     <div class="legend" id="legend-cmp"></div>
     <div class="chart" id="chart-cmp"></div>
-    <p class="note">Türkiye çizgisi, seçili çeşidin İzmir halindeki haftalık ortalamasıdır; her günün fiyatı o günün ECB EUR/TRY kuruyla çevrilmiştir. İspanya çizgileri Avrupa Komisyonu'nun haftalık ortalama fiyatlarıdır. Hal fiyatı ile İspanya'nın aşama fiyatları aynı şey değildir; en yakın karşılaştırma genellikle "paketleme çıkışı" (ex-packaging) fiyatıdır.</p>
+    <p class="note" data-i18n="noteCmp">Türkiye çizgisi, seçili çeşidin İzmir halindeki haftalık ortalamasıdır; her günün fiyatı o günün ECB EUR/TRY kuruyla çevrilmiştir. İspanya çizgileri Avrupa Komisyonu'nun haftalık ortalama fiyatlarıdır. Hal fiyatı ile İspanya'nın aşama fiyatları aynı şey değildir; en yakın karşılaştırma genellikle "paketleme çıkışı" (ex-packaging) fiyatıdır.</p>
   </section>
 
   <section aria-labelledby="h-notes">
-    <h2 id="h-notes">Okurken bilinmesi gerekenler</h2>
+    <h2 id="h-notes" data-i18n="hNotes">Okurken bilinmesi gerekenler</h2>
     <div class="notes">
-      <div><h3>Hal fiyatı ≠ üretici fiyatı</h3><p>Hal fiyatına komisyon, rüsum ve nakliye dahildir. Tarladan çıkan fiyat bunun altındadır. İspanya verisi ise zincirin üç noktasını ayrı ayrı verir: tarla, paketleme çıkışı ve raf.</p></div>
-      <div><h3>İzmir, Antalya değildir</h3><p>Türkiye tarafındaki veri İzmir halinden gelir, çünkü düzenli ve açık yayınlanan en uzun hal serisi o. Kışın İzmir halindeki sera ürünlerinin büyük kısmı Akdeniz bölgesinden gelir, ama fiyat İzmir'in arz-talep dengesini yansıtır.</p></div>
-      <div><h3>Kur her şeyi açıklamaz</h3><p>Euro karşılığı TL enflasyonunun büyük kısmını temizler ama tamamını temizlemez. TL'nin reel olarak değer kazandığı dönemlerde Türk ürünleri euroda pahalanmış görünür, ürünün kendisinde bir şey değişmemiş olsa bile.</p></div>
-      <div><h3>Kaynaklar</h3><p><a href="https://acikveri.bizizmir.com/dataset/sebze-ve-meyve-hal-fiyatlari">İzmir açık veri</a> · <a href="https://data.ecb.europa.eu/">ECB kurları</a> · <a href="https://agridata.ec.europa.eu/extensions/DataPortal/fruit-and-vegetables.html">AB agri-food veri portalı</a>. Veri haftada iki kez otomatik güncellenir. <span id="updated"></span></p></div>
+      <div data-i18n="n1"><h3>Hal fiyatı ≠ üretici fiyatı</h3><p>Hal fiyatına komisyon, rüsum ve nakliye dahildir. Tarladan çıkan fiyat bunun altındadır. İspanya verisi ise zincirin üç noktasını ayrı ayrı verir: tarla, paketleme çıkışı ve raf.</p></div>
+      <div data-i18n="n2"><h3>İzmir, Antalya değildir</h3><p>Türkiye tarafındaki veri İzmir halinden gelir, çünkü düzenli ve açık yayınlanan en uzun hal serisi o. Kışın İzmir halindeki sera ürünlerinin büyük kısmı Akdeniz bölgesinden gelir, ama fiyat İzmir'in arz-talep dengesini yansıtır.</p></div>
+      <div data-i18n="n3"><h3>Kur her şeyi açıklamaz</h3><p>Euro karşılığı TL enflasyonunun büyük kısmını temizler ama tamamını temizlemez. TL'nin reel olarak değer kazandığı dönemlerde Türk ürünleri euroda pahalanmış görünür, ürünün kendisinde bir şey değişmemiş olsa bile.</p></div>
+      <div><h3 data-i18n="srcH">Kaynaklar</h3><p><span data-i18n="src"><a href="https://acikveri.bizizmir.com/dataset/sebze-ve-meyve-hal-fiyatlari">İzmir açık veri</a> · <a href="https://data.ecb.europa.eu/">ECB kurları</a> · <a href="https://agridata.ec.europa.eu/extensions/DataPortal/fruit-and-vegetables.html">AB agri-food veri portalı</a>. Veri haftada iki kez otomatik güncellenir.</span> <span id="updated"></span></p></div>
     </div>
   </section>
 
-  <footer>Bu sayfa yapay zekâ ile hazırlanmıştır; yatırım ya da ticaret tavsiyesi değildir. AgriHub-AI · <a href="https://agrihubai.wordpress.com/">agrihubai.wordpress.com</a> · <a href="https://github.com/agrihubai/halden-anlayan">GitHub</a></footer>
+  <footer data-i18n="foot">Bu sayfa yapay zekâ ile hazırlanmıştır; yatırım ya da ticaret tavsiyesi değildir. AgriHub-AI · <a href="https://agrihubai.wordpress.com/">agrihubai.wordpress.com</a> · <a href="https://github.com/agrihubai/halden-anlayan">GitHub</a></footer>
 </div>
 
 <script>
 (() => {
   const PRODUCTS = [
-    { k: 'domates', ad: 'Domates' }, { k: 'biber', ad: 'Biber' }, { k: 'hiyar', ad: 'Hıyar' },
-    { k: 'patlican', ad: 'Patlıcan' }, { k: 'kabak', ad: 'Kabak' },
+    { k: 'domates', tr: 'Domates', en: 'Tomato' }, { k: 'biber', tr: 'Biber', en: 'Pepper' }, { k: 'hiyar', tr: 'Hıyar', en: 'Cucumber' },
+    { k: 'patlican', tr: 'Patlıcan', en: 'Aubergine' }, { k: 'kabak', tr: 'Kabak', en: 'Courgette' },
   ];
   const ES_COLORS = ['--c-es1', '--c-es2', '--c-es3', '--c-es4'];
-  d3.timeFormatDefaultLocale({
-    dateTime: '%e %B %Y %A %X', date: '%d.%m.%Y', time: '%H:%M:%S', periods: ['', ''],
-    days: ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'],
-    shortDays: ['Paz', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt'],
-    months: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
-    shortMonths: ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'],
-  });
+
+  // Sabit metinlerin İngilizcesi; Türkçeleri sayfadaki HTML'den alınır
+  const EN = {
+    emtia: 'Commodity Index →',
+    eyebrow: 'AgriHub-AI · Wholesale vegetable prices · Turkey – Spain',
+    intro1: "Antalya and Almería grow the same vegetables in the same winter window and compete in the European market. This dashboard puts both sides' prices next to each other: daily prices at the İzmir wholesale market in Turkey, and the European Commission's farmgate, ex-packaging and retail prices for Spain.",
+    intro2: "Turkish prices are shown in Turkish lira (TRY). Hover over the chart to see the euro equivalent at that day's ECB rate. The chart comparing the two countries is entirely in euros.",
+    hTr: 'Turkey · İzmir wholesale market, daily price (TRY/kg)',
+    variety: 'Variety', r3m: '3 mo', r1y: '1 yr', r3y: '3 yr', r5y: '5 yr', rAll: 'All',
+    avg: 'Average', range: 'Lowest – highest',
+    noteTr: 'Source: İzmir Metropolitan Municipality open data portal, fruit and vegetable wholesale prices. Prices are the lowest, highest and average prices traded at the market; they are not the price the grower receives.',
+    hCmp: 'Turkey – Spain comparison (EUR/kg, weekly)',
+    noteCmp: "The Turkey line is the weekly average of the selected variety at the İzmir market; each day's price is converted at that day's ECB EUR/TRY rate. The Spain lines are the European Commission's weekly average prices. A wholesale market price and Spain's supply-chain stage prices are not the same thing; the closest comparison is usually the ex-packaging price.",
+    hNotes: 'Worth knowing before you read',
+    n1: '<h3>Wholesale price ≠ grower price</h3><p>The wholesale price includes commission, market fees and transport. The price at the farm gate is lower. The Spanish data gives three points of the chain separately: farmgate, ex-packaging and retail.</p>',
+    n2: "<h3>İzmir is not Antalya</h3><p>The Turkish data comes from the İzmir wholesale market because it is the longest regularly published open series. In winter most greenhouse produce at İzmir comes from the Mediterranean region, but the price reflects İzmir's own supply and demand.</p>",
+    n3: '<h3>The exchange rate doesn’t explain everything</h3><p>Converting to euros removes most of the effect of Turkish inflation, but not all of it. When the lira strengthens in real terms, Turkish produce looks more expensive in euros even if nothing about the product has changed.</p>',
+    srcH: 'Sources',
+    src: '<a href="https://acikveri.bizizmir.com/dataset/sebze-ve-meyve-hal-fiyatlari">İzmir open data</a> · <a href="https://data.ecb.europa.eu/">ECB exchange rates</a> · <a href="https://agridata.ec.europa.eu/extensions/DataPortal/fruit-and-vegetables.html">EU agri-food data portal</a>. Data is updated automatically twice a week.',
+    foot: 'This page was prepared with artificial intelligence; it is not investment or trading advice. AgriHub-AI · <a href="https://agrihubai.wordpress.com/">agrihubai.wordpress.com</a> · <a href="https://github.com/agrihubai/halden-anlayan">GitHub</a>',
+  };
+  const TR = {};
+  for (const el of document.querySelectorAll('[data-i18n]')) TR[el.dataset.i18n] = el.innerHTML;
+
+  // Kodun ürettiği metinler
+  const M = {
+    tr: {
+      loading: 'Veri yükleniyor…', noData: 'Veri henüz yok.',
+      notLoaded: 'Veri henüz yüklenmedi. İlk otomatik güncellemeden sonra pano dolacak.',
+      noTr: 'Bu ürün için İzmir hal verisi henüz yok. Veri ilk otomatik güncellemeden sonra burada görünecek.',
+      noCmp: 'Karşılaştırma için veri henüz yok. Veri ilk otomatik güncellemeden sonra burada görünecek.',
+      noTrName: (n) => `${n} için İzmir hal verisi henüz yok.`,
+      avg: 'Ortalama', lo: 'En düşük', hi: 'En yüksek', rate: (r) => `ECB kuru: 1 € = ₺${r}`, noRate: 'Bu tarih için kur yok',
+      week: (d) => `${d} haftası`, trLine: 'Türkiye · İzmir hali', es: 'İspanya', noUnit: 'birim yok',
+      tMarket: (v) => `İzmir hali · ${v}`, tWeek: 'Bir hafta önceye göre', tYear: 'Bir yıl önceye göre (euro)',
+      noWeek: 'Karşılaştırılacak gün yok', noYear: 'Bir yıl önceki veri yok', inTl: (p) => `TL'de ${p}`,
+      esWeek: (d) => `${d} haftası · EUR/kg`, noEs: 'Bu ürün için İspanya verisi henüz yok',
+      lede: (n, d, p, e, y) => `${n}, İzmir halinde <b>${d}</b> tarihinde ortalama <b>${p}</b>${e ? ` (≈ <b>${e}</b>)` : ''}. Euro cinsinden bir yıl önceye göre değişim <b>${y}</b>.`,
+      ledeEs: (s, p) => ` İspanya'da son haftalık ${s} fiyatı <b>${p}</b>/kg.`,
+      updated: (d) => `Son güncelleme: ${d}.`,
+      aria: (n, p) => `İzmir hali ${n} günlük fiyat, son ${p}`,
+    },
+    en: {
+      loading: 'Loading data…', noData: 'No data yet.',
+      notLoaded: 'Data has not loaded yet. The dashboard will fill after the first automatic update.',
+      noTr: 'No İzmir market data for this product yet. It will appear here after the first automatic update.',
+      noCmp: 'No data to compare yet. It will appear here after the first automatic update.',
+      noTrName: (n) => `No İzmir market data for ${n.toLowerCase()} yet.`,
+      avg: 'Average', lo: 'Lowest', hi: 'Highest', rate: (r) => `ECB rate: €1 = ₺${r}`, noRate: 'No exchange rate for this date',
+      week: (d) => `Week of ${d}`, trLine: 'Turkey · İzmir market', es: 'Spain', noUnit: 'no unit',
+      tMarket: (v) => `İzmir market · ${v}`, tWeek: 'Change on a week earlier', tYear: 'Change on a year earlier (euro)',
+      noWeek: 'No day to compare', noYear: 'No data from a year earlier', inTl: (p) => `${p} in TRY`,
+      esWeek: (d) => `Week of ${d} · EUR/kg`, noEs: 'No Spanish data for this product yet',
+      lede: (n, d, p, e, y) => `${n} averaged <b>${p}</b>${e ? ` (≈ <b>${e}</b>)` : ''} at the İzmir market on <b>${d}</b>. In euro terms that is <b>${y}</b> on a year earlier.`,
+      ledeEs: (s, p) => ` In Spain, the latest weekly ${s} price was <b>${p}</b>/kg.`,
+      updated: (d) => `Last updated: ${d}.`,
+      aria: (n, p) => `İzmir market, ${n} daily prices, latest ${p}`,
+    },
+  };
+  const LOCALES = {
+    tr: {
+      dateTime: '%e %B %Y %A %X', date: '%d.%m.%Y', time: '%H:%M:%S', periods: ['', ''],
+      days: ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'],
+      shortDays: ['Paz', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt'],
+      months: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
+      shortMonths: ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'],
+    },
+    en: {
+      dateTime: '%a %e %b %X %Y', date: '%d/%m/%Y', time: '%H:%M:%S', periods: ['AM', 'PM'],
+      days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      shortDays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    },
+  };
+
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   const parse = d3.utcParse('%Y-%m-%d');
-  const fmtDate = (d) => d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
-  const nf2 = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  let state = { p: 'domates', v: null, rTr: '365', rCmp: '1095', lang: 'tr' };
+  try { Object.assign(state, JSON.parse(localStorage.getItem('halden-anlayan') || '{}')); } catch (e) {}
+  if (location.hash === '#en') state.lang = 'en'; else if (location.hash === '#tr') state.lang = 'tr';
+  const save = () => { try { localStorage.setItem('halden-anlayan', JSON.stringify(state)); } catch (e) {} };
+
+  let t, loc, nf2, fmtDate;
+  function setLang() {
+    const L = state.lang === 'en' ? 'en' : 'tr';
+    t = M[L]; loc = L === 'en' ? 'en-GB' : 'tr-TR';
+    nf2 = new Intl.NumberFormat(loc, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    fmtDate = (d) => d.toLocaleDateString(loc, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+    d3.timeFormatDefaultLocale(LOCALES[L]);
+    document.documentElement.lang = L;
+    for (const el of document.querySelectorAll('[data-i18n]')) el.innerHTML = (L === 'en' ? EN : TR)[el.dataset.i18n] ?? el.innerHTML;
+    document.getElementById('emtia-link').href = 'https://agrihubai.github.io/emtia/' + (L === 'en' ? '#en' : '');
+    for (const b of document.getElementById('lang').children) b.setAttribute('aria-pressed', String(b.dataset.lang === L));
+    for (const b of pbox.children) b.textContent = PRODUCTS.find((p) => p.k === b.dataset.k)[L];
+    try { history.replaceState(null, '', L === 'en' ? '#en' : location.pathname); } catch (e) {}
+  }
   const tl = (v) => v == null ? '—' : '₺' + nf2.format(v);
   const eur = (v) => v == null ? '—' : '€' + nf2.format(v);
   const pct = (v) => v == null || !isFinite(v) ? '—' : (v > 0 ? '+' : '') + Math.round(v * 100) + '%';
 
-  let state = { p: 'domates', v: null, rTr: '365', rCmp: '1095' };
-  try { Object.assign(state, JSON.parse(localStorage.getItem('halden-anlayan') || '{}')); } catch (e) {}
-  const save = () => { try { localStorage.setItem('halden-anlayan', JSON.stringify(state)); } catch (e) {} };
-
-  let fx = null; let fxDates = []; let fxVals = [];
+  let fxDates = []; let fxVals = []; let durum = null;
   const cache = {};
 
   // O günün kuru; kur yayınlanmamışsa (hafta sonu, tatil) bir önceki iş günününki
@@ -205,7 +290,7 @@
   const pbox = document.getElementById('products');
   for (const p of PRODUCTS) {
     const b = document.createElement('button');
-    b.type = 'button'; b.className = 'chip'; b.textContent = p.ad; b.dataset.k = p.k;
+    b.type = 'button'; b.className = 'chip'; b.dataset.k = p.k;
     b.addEventListener('click', () => { state.p = p.k; state.v = null; save(); render(); });
     pbox.appendChild(b);
   }
@@ -215,6 +300,10 @@
       state[key] = b.dataset.r; save(); render();
     });
   }
+  document.getElementById('lang').addEventListener('click', (e) => {
+    const b = e.target.closest('button'); if (!b) return;
+    state.lang = b.dataset.lang; save(); setLang(); render();
+  });
   const vsel = document.getElementById('variety');
   vsel.addEventListener('change', () => { state.v = vsel.value; save(); render(); });
 
@@ -255,7 +344,7 @@
 
   // ---- Türkiye grafiği (TL, üstüne gelince euro)
   function drawTr(el, series) {
-    if (!series.length) return empty(el, 'Bu ürün için İzmir hal verisi henüz yok. Veri ilk otomatik güncellemeden sonra burada görünecek.');
+    if (!series.length) return empty(el, t.noTr);
     const f = frame(el);
     const x = d3.scaleUtc().domain(d3.extent(series, (d) => d.date)).range([0, f.iw]);
     const ymax = d3.max(series, (d) => d.hi ?? d.avg) * 1.05;
@@ -278,14 +367,14 @@
         rule.style('display', null).attr('x1', x(d.date)).attr('x2', x(d.date));
         f.tip.style('display', null).html(
           `<div class="d">${fmtDate(d.date)}</div>` +
-          `<div class="row"><span class="sw" style="background:${css('--c-tr')}"></span>Ortalama<span class="val">${tl(d.avg)}${e(d.avg)}</span></div>` +
-          (d.lo != null ? `<div class="row"><span class="sw"></span>En düşük<span class="val">${tl(d.lo)}${e(d.lo)}</span></div>` : '') +
-          (d.hi != null ? `<div class="row"><span class="sw"></span>En yüksek<span class="val">${tl(d.hi)}${e(d.hi)}</span></div>` : '') +
-          (r ? `<div class="d" style="margin-top:4px">ECB kuru: 1 € = ₺${nf2.format(r)}</div>` : '<div class="d" style="margin-top:4px">Bu tarih için kur yok</div>'));
+          `<div class="row"><span class="sw" style="background:${css('--c-tr')}"></span>${t.avg}<span class="val">${tl(d.avg)}${e(d.avg)}</span></div>` +
+          (d.lo != null ? `<div class="row"><span class="sw"></span>${t.lo}<span class="val">${tl(d.lo)}${e(d.lo)}</span></div>` : '') +
+          (d.hi != null ? `<div class="row"><span class="sw"></span>${t.hi}<span class="val">${tl(d.hi)}${e(d.hi)}</span></div>` : '') +
+          `<div class="d" style="margin-top:4px">${r ? t.rate(nf2.format(r)) : t.noRate}</div>`);
         placeTip(f, x(d.date), y(d.avg));
       })
       .on('pointerleave', () => { f.tip.style('display', 'none'); dot.style('display', 'none'); rule.style('display', 'none'); });
-    f.svg.attr('aria-label', `İzmir hali ${series.length} günlük fiyat, son ${tl(series[series.length - 1].avg)}`);
+    f.svg.attr('aria-label', t.aria(series.length, tl(series[series.length - 1].avg)));
   }
 
   // Haftalık (pazartesi başlangıçlı) euro ortalaması; her gün kendi kuruyla çevrilir
@@ -293,16 +382,16 @@
     const m = d3.rollup(series.filter((d) => rateOn(d.date)),
       (v) => ({ eur: d3.mean(v, (d) => d.avg / rateOn(d.date)), tl: d3.mean(v, (d) => d.avg) }),
       (d) => +d3.utcMonday.floor(d.date));
-    return [...m].map(([t, v]) => ({ date: new Date(t), ...v })).sort((a, b) => a.date - b.date);
+    return [...m].map(([k, v]) => ({ date: new Date(k), ...v })).sort((a, b) => a.date - b.date);
   }
 
   // ---- karşılaştırma grafiği (EUR)
   function drawCmp(el, trWeekly, esSeries, legendEl) {
     const lines = [];
-    if (trWeekly.length) lines.push({ name: 'Türkiye · İzmir hali', color: css('--c-tr'), data: trWeekly, tr: true });
-    esSeries.forEach((s, i) => lines.push({ name: 'İspanya · ' + s.name, color: css(ES_COLORS[i % ES_COLORS.length]), data: s.data }));
+    if (trWeekly.length) lines.push({ name: t.trLine, color: css('--c-tr'), data: trWeekly, tr: true });
+    esSeries.forEach((s, i) => lines.push({ name: t.es + ' · ' + s.name, color: css(ES_COLORS[i % ES_COLORS.length]), data: s.data }));
     legendEl.innerHTML = lines.map((l) => `<span><i style="background:${l.color}"></i>${l.name}</span>`).join('');
-    if (!lines.length) return empty(el, 'Karşılaştırma için veri henüz yok. Veri ilk otomatik güncellemeden sonra burada görünecek.');
+    if (!lines.length) return empty(el, t.noCmp);
     const all = lines.flatMap((l) => l.data);
     const f = frame(el);
     const x = d3.scaleUtc().domain(d3.extent(all, (d) => d.date)).range([0, f.iw]);
@@ -316,18 +405,18 @@
     const dots = lines.map((l) => g.append('circle').attr('r', 3.5).attr('fill', l.color).style('display', 'none'));
     g.append('rect').attr('width', f.iw).attr('height', f.ih).attr('fill', 'transparent')
       .on('pointermove', (ev) => {
-        const [mx] = d3.pointer(ev); const t = d3.utcMonday.floor(x.invert(mx));
-        let html = `<div class="d">${fmtDate(t)} haftası</div>`; let any = false; let py = f.ih / 2;
+        const [mx] = d3.pointer(ev); const wk = d3.utcMonday.floor(x.invert(mx));
+        let html = `<div class="d">${t.week(fmtDate(wk))}</div>`; let any = false; let py = f.ih / 2;
         lines.forEach((l, i) => {
-          const d = l.data.find((p) => +d3.utcMonday.floor(p.date) === +t);
+          const d = l.data.find((p) => +d3.utcMonday.floor(p.date) === +wk);
           if (!d || d.eur == null) { dots[i].style('display', 'none'); return; }
           any = true; py = y(d.eur);
           dots[i].style('display', null).attr('cx', x(d.date)).attr('cy', y(d.eur));
           html += `<div class="row"><span class="sw" style="background:${l.color}"></span>${l.name}<span class="val">${eur(d.eur)}${l.tr ? ` <span class="eur">(${tl(d.tl)})</span>` : ''}</span></div>`;
         });
         if (!any) { f.tip.style('display', 'none'); rule.style('display', 'none'); return; }
-        rule.style('display', null).attr('x1', x(t)).attr('x2', x(t));
-        f.tip.style('display', null).html(html); placeTip(f, x(t), py);
+        rule.style('display', null).attr('x1', x(wk)).attr('x2', x(wk));
+        f.tip.style('display', null).html(html); placeTip(f, x(wk), py);
       })
       .on('pointerleave', () => { f.tip.style('display', 'none'); rule.style('display', 'none'); dots.forEach((d) => d.style('display', 'none')); });
   }
@@ -343,19 +432,20 @@
     for (const b of pbox.children) b.setAttribute('aria-pressed', String(b.dataset.k === state.p));
     for (const [id, key] of [['range-tr', 'rTr'], ['range-cmp', 'rCmp']])
       for (const b of document.getElementById(id).children) b.setAttribute('aria-pressed', String(b.dataset.r === state[key]));
-    const name = PRODUCTS.find((p) => p.k === state.p).ad;
+    if (durum) document.getElementById('updated').textContent = t.updated(new Date(durum.guncelleme).toLocaleString(loc, { dateStyle: 'long', timeStyle: 'short' }));
+    const name = PRODUCTS.find((p) => p.k === state.p)[state.lang === 'en' ? 'en' : 'tr'];
     const doc = await product(state.p);
     const trEl = document.getElementById('chart-tr'), cmpEl = document.getElementById('chart-cmp');
     const tilesEl = document.getElementById('tiles'), lede = document.getElementById('lede');
     if (!doc) {
       vsel.innerHTML = ''; tilesEl.innerHTML = '';
-      lede.textContent = 'Veri henüz yüklenmedi. İlk otomatik güncellemeden sonra pano dolacak.';
-      empty(trEl, 'Veri henüz yok.'); empty(cmpEl, 'Veri henüz yok.'); document.getElementById('legend-cmp').innerHTML = '';
+      lede.textContent = t.notLoaded;
+      empty(trEl, t.noData); empty(cmpEl, t.noData); document.getElementById('legend-cmp').innerHTML = '';
       return;
     }
     const cesitler = doc.tr.cesitler;
     if (!state.v || !cesitler.some((c) => c.ad === state.v)) state.v = cesitler[0]?.ad ?? null;
-    vsel.innerHTML = cesitler.map((c) => `<option value="${c.ad.replace(/"/g, '&quot;')}">${c.ad} (${c.birim || 'birim yok'}, ${c.ilk.slice(0, 4)}–${c.son.slice(0, 4)})</option>`).join('');
+    vsel.innerHTML = cesitler.map((c) => `<option value="${c.ad.replace(/"/g, '&quot;')}">${c.ad} (${c.birim || t.noUnit}, ${c.ilk.slice(0, 4)}–${c.son.slice(0, 4)})</option>`).join('');
     if (state.v) vsel.value = state.v;
     const unit = cesitler.find((c) => c.ad === state.v)?.birim || '';
 
@@ -373,7 +463,7 @@
 
     // göstergeler + özet cümlesi
     const last = full[full.length - 1];
-    if (!last) { tilesEl.innerHTML = ''; lede.textContent = `${name} için İzmir hal verisi henüz yok.`; return; }
+    if (!last) { tilesEl.innerHTML = ''; lede.textContent = t.noTrName(name); return; }
     const r = rateOn(last.date);
     const wk = nearest(full, new Date(last.date - 7 * 864e5), 3);
     const yr = nearest(full, new Date(last.date - 365 * 864e5), 7);
@@ -383,17 +473,18 @@
     const yE = chg(r && last.avg / r, yrR && yr.avg / yrR);
     const esLast = esAll.map((s) => ({ name: s.name, d: s.data[s.data.length - 1] })).filter((s) => s.d);
     tilesEl.innerHTML =
-      tile(`İzmir hali · ${state.v}`, tl(last.avg), `${fmtDate(last.date)} · ${unit}${r ? ` · ≈ ${eur(last.avg / r)}` : ''}`) +
-      tile('Bir hafta önceye göre', `<span class="${cls(chg(last.avg, wk?.avg))}">${pct(chg(last.avg, wk?.avg))}</span>`, wk ? `${tl(wk.avg)} · ${fmtDate(wk.date)}` : 'Karşılaştırılacak gün yok') +
-      tile('Bir yıl önceye göre (euro)', `<span class="${cls(yE)}">${pct(yE)}</span>`, yr ? `TL'de ${pct(chg(last.avg, yr.avg))} · ${fmtDate(yr.date)}` : 'Bir yıl önceki veri yok') +
-      (esLast.length ? tile(`İspanya · ${esLast[0].name}`, eur(esLast[0].d.eur), `${fmtDate(esLast[0].d.date)} haftası · EUR/kg`) : tile('İspanya', '—', 'Bu ürün için İspanya verisi henüz yok'));
-    lede.innerHTML = `${name}, İzmir halinde <b>${fmtDate(last.date)}</b> tarihinde ortalama <b>${tl(last.avg)}</b>${r ? ` (≈ <b>${eur(last.avg / r)}</b>)` : ''}. Euro cinsinden bir yıl önceye göre değişim <b>${pct(yE)}</b>.` +
-      (esLast.length ? ` İspanya'da son haftalık ${esLast[0].name.toLowerCase()} fiyatı <b>${eur(esLast[0].d.eur)}</b>/kg.` : '');
+      tile(t.tMarket(state.v), tl(last.avg), `${fmtDate(last.date)} · ${unit}${r ? ` · ≈ ${eur(last.avg / r)}` : ''}`) +
+      tile(t.tWeek, `<span class="${cls(chg(last.avg, wk?.avg))}">${pct(chg(last.avg, wk?.avg))}</span>`, wk ? `${tl(wk.avg)} · ${fmtDate(wk.date)}` : t.noWeek) +
+      tile(t.tYear, `<span class="${cls(yE)}">${pct(yE)}</span>`, yr ? `${t.inTl(pct(chg(last.avg, yr.avg)))} · ${fmtDate(yr.date)}` : t.noYear) +
+      (esLast.length ? tile(`${t.es} · ${esLast[0].name}`, eur(esLast[0].d.eur), t.esWeek(fmtDate(esLast[0].d.date))) : tile(t.es, '—', t.noEs));
+    lede.innerHTML = t.lede(name, fmtDate(last.date), tl(last.avg), r ? eur(last.avg / r) : null, pct(yE)) +
+      (esLast.length ? t.ledeEs(esLast[0].name.toLowerCase(), eur(esLast[0].d.eur)) : '');
   }
 
-  Promise.all([load('data/kur-eur-try.json').catch(() => []), load('data/durum.json').catch(() => null)]).then(([k, durum]) => {
-    fx = k; fxDates = k.map(([d]) => parse(d)); fxVals = k.map(([, v]) => v);
-    if (durum) document.getElementById('updated').textContent = 'Son güncelleme: ' + new Date(durum.guncelleme).toLocaleString('tr-TR', { dateStyle: 'long', timeStyle: 'short' }) + '.';
+  setLang();
+  document.getElementById('lede').textContent = t.loading;
+  Promise.all([load('data/kur-eur-try.json').catch(() => []), load('data/durum.json').catch(() => null)]).then(([k, d]) => {
+    fxDates = k.map(([x]) => parse(x)); fxVals = k.map(([, v]) => v); durum = d;
     render();
   });
   let w = innerWidth;
