@@ -11,7 +11,8 @@ ROOT = Path(__file__).resolve().parent.parent
 PROBE = ROOT / "data" / "_kesif"
 UA = {"User-Agent": "agrihubai-halden-anlayan/1.0 (+https://github.com/agrihubai/halden-anlayan)"}
 FC = "https://www.juntadeandalucia.es/agriculturaypesca/observatorio/servlet/FrontController"
-XLS = "https://gdc-pdpopendata-ckan.paas.junta-andalucia.es/datosabiertos/portal/dataset/b4c3ab7a-7f2c-4e83-b1c4-4d9a22083f2a/resource/240f7556-4656-465e-a86f-93c23049ab1b/download/p_agricolas_2025_s01_s52_web_1.xls"
+XLS = {"2026": "https://www.juntadeandalucia.es/sites/default/files/inline-files/2026/11/P_Agr%C3%ADcolas_2026_s1_s44_web.xls",
+       "2008": "https://www.juntadeandalucia.es/export/drupaljda/estadisticas/pagricolas08_web.xls"}
 PAGES = {
     "consejeria": "https://www.juntadeandalucia.es/organismos/agriculturapescaaguaydesarrollorural/servicios/estadistica-cartografia/estadisticas-agricolas/paginas/precios-agricolas-semanales.html",
     "or-tomate": FC + "?action=Static&subsector=20&producto=116&url=generadorInformesOR.jsp",
@@ -52,14 +53,17 @@ def run() -> int:
         except ImportError:
             subprocess.run([sys.executable, "-m", "pip", "install", "-q", "xlrd==2.0.1"], check=True)
         import xlrd
-        data = urllib.request.urlopen(urllib.request.Request(XLS, headers=UA), timeout=90).read()
-        wb = xlrd.open_workbook(file_contents=data)
         out = []
-        for sh in wb.sheets():
-            out.append(f"=== {sh.name} ({sh.nrows}x{sh.ncols})")
-            for i in range(min(sh.nrows, 90)):
-                out.append(" | ".join(str(c.value).strip() for c in sh.row(i)))
-        (PROBE / "junta-xls.txt").write_text("\n".join(out)[:150000], encoding="utf-8")
+        for yil, url in XLS.items():
+            data = urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=90).read()
+            wb = xlrd.open_workbook(file_contents=data)
+            for sh in wb.sheets():
+                out.append(f"=== {yil} · {sh.name} ({sh.nrows}x{sh.ncols})")
+                for i in range(sh.nrows):
+                    line = " | ".join(str(c.value).strip() for c in sh.row(i))
+                    if i < 12 or re.search(r"tomate|pimiento|pepino|berenjena|calabac|almer", line, re.I):
+                        out.append(f"{i}: {line[:700]}")
+        (PROBE / "junta-xls.txt").write_text("\n".join(out)[:180000], encoding="utf-8")
     except Exception as e:  # noqa: BLE001
         (PROBE / "junta-xls.txt").write_text(f"HATA: {e}", encoding="utf-8")
     return n
