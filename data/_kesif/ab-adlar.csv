@@ -103,14 +103,18 @@ Egg Plants,Ex-packaging station price,Egg Plants - All types and varieties,€/1
 Egg Plants,Ex-packaging station price,Egg Plants - All types and varieties,€/100Kg,Week,1043
 Egg Plants,Ex-packaging station price,Egg Plants - Allongées,€/100Kg,Month,11
 Egg Plants,Ex-packaging station price,Egg Plants - Allongées,€/100Kg,Week,36
-Garlic,Ex-packaging station price,Garlic - All types and varieties,€/100Kg,Month,197
-Garlic,Ex-packaging station price,Garlic - All types and varieties,€/100Kg,Week,771
-Garlic,Ex-packaging station price,Garlic - Spring,€/100Kg,Month,65
-Garlic,Ex-packaging station price,Garlic - Spring,€/100Kg,Week,286
-Garlic,Ex-packaging station price,Garlic - Violet,€/100Kg,Month,196
-Garlic,Ex-packaging station price,Garlic - Violet,€/100Kg,Week,794
-Garlic,Ex-packaging station price,Garlic - White,€/100Kg,Month,190
-Garlic,Ex-packaging station price,Garlic - White,€/100Kg,Week,708
+Garlic,Ex-packaging station price,Garlic - All types and varieties,€/100Kg,Month,242
+Garlic,Ex-packaging station price,Garlic - All types and varieties,€/100Kg,Week,965
+Garlic,Ex-packaging station price,Garlic - Spring,€/100Kg,Month,110
+Garlic,Ex-packaging station price,Garlic - Spring,€/100Kg,Week,487
+Garlic,Ex-packaging station price,Garlic - Violet,€/100Kg,Month,241
+Garlic,Ex-packaging station price,Garlic - Violet,€/100Kg,Week,995
+Garlic,Ex-packaging station price,Garlic - White,€/100Kg,Month,235
+Garlic,Ex-packaging station price,Garlic - White,€/100Kg,Week,909
+Leeks,Ex-packaging station price,Leeks - All types and varieties,€/100Kg,Month,98
+Leeks,Ex-packaging station price,Leeks - All types and varieties,€/100Kg,Week,409
+Lemons,Ex-packaging station price,Lemons - All types and varieties,€/100Kg,Month,249
+Lemons,Ex-packaging station price,Lemons - All types and varieties,€/100Kg,Week,1042
 Lettuces,Ex-packaging station price,Lettuces - All types and varieties,€/100Kg,Month,105
 Lettuces,Ex-packaging station price,Lettuces - All types and varieties,€/100Kg,Week,466
 Mandarins,Ex-packaging station price,Mandarins - All types and varieties,€/100Kg,Month,155
@@ -149,10 +153,58 @@ Nectarines,Retail selling price,Nectarines - National weighted average of all ty
 Nectarines,Retail selling price,Nectarines - White flesh,€/100Kg,Month,4
 Nectarines,Retail selling price,Nectarines - Yellow flesh,€/100Kg,Month,16
 Nectarines for processing,Farmgate price,Nectarines for processing - All types and varieties,€/100Kg,Month,6
-Onions,Ex-packaging station price,Onions - All types and varieties,€/100Kg,Month,32
-Onions,Ex-packaging station price,Onions - All types and varieties,€/100Kg,Week,104
-Onions,Ex-packaging station price,Onions - Oignons jaunes,€/100Kg,Month,32
-Onions,Ex-packaging station price,Onions - Oignons jaunes,€/100Kg,Week,107
+Onions,Ex-packaging station price,Onions - All types and varieties,€/100Kg,Month,184
+Onions,Ex-packaging station price,Onions - All types and varieties,€/100Kg,Week,730
+Onions,Ex-packaging station price,Onions - Oignons blancs,€/100Kg,Month,1
+Onions,Ex-packaging station price,Onions - Oignons blancs,€/100Kg,Week,1
+Onions,Ex-packaging station price,Onions - Oignons jaunes,€/100Kg,Month,74
+Onions,Ex-packaging station price,Onions - Oignons jaunes,€/100Kg,Week,254
+Oranges,Ex-packaging station price,Oranges - Lanelate,€/100Kg,Month,118
+Oranges,Ex-packaging station price,Oranges - Lanelate,€/100Kg,Week,392
+Oranges,Ex-packaging station price,Oranges - National weighted average of main varieties covering at least 70 % of the representative market in the reference period of the notification,€/100Kg,Month,228
+Oranges,Ex-packaging station price,Oranges - National weighted average of main varieties covering at least 70 % of the representative market in the reference period of the notification,€/100Kg,Week,864
+Oranges,Ex-packaging station price,Oranges - Navel,€/100Kg,Month,41
+Oranges,Ex-packaging station price,Oranges - Navel,€/100Kg,Week,122
+Oranges,Ex-packaging station price,Oranges - Navelate,€/100Kg,Month,85
+Oranges,Ex-packaging station price,Oranges - Navelate,€/100Kg,Week,258
+Oranges,Ex-packaging station price,Oranges - Navelinas,€/100Kg,Month,112
+Oranges,Ex-packaging station price,Oranges - Navelinas,€/100Kg,Week,395
+Oranges,Ex-packaging station price,Oranges - Salustiana,€/100Kg,Month,111
+Oranges,Ex-packaging station price,Oranges - Salustiana,€/100Kg,Week,374
+Oranges,Ex-packaging station price,Oranges - Tarocco,€/100Kg,Month,10
+Oranges,Ex-packaging station price,Oranges - Tarocco,€/100Kg,Week,20
+Oranges,Ex-packaging station price,Oranges - Valencia late,€/100Kg,Month,118
+Oranges,Ex-packaging station price,Oranges - Valencia late,€/100Kg,Week,387
+Oranges,Farmgate price,Oranges - Lanelate,€/100Kg,Month,28
+Oranges,Farmgate price,Oranges - Lanelate,€/100Kg,Week,107
+Oranges,Farmgate price,Oranges - National weighted average of main varieties covering at least 70 % of the representative market in the reference period of the notification,€/100Kg,Month,66
+Oranges,Farmgate price,Oranges - National weighted average of main varieties covering at least 70 % of the representative market in the reference period of the notification,€/100Kg,Week,260
+Oranges,Farmgate price,Oranges - Navel,€/100Kg,Month,34
+Oranges,Farmgate price,Oranges - Navel,€/100Kg,Week,127
+Oranges,Farmgate price,Oranges - Navelate,€/100Kg,Month,18
+Oranges,Farmgate price,Oranges - Navelate,€/100Kg,Week,55
+Oranges,Farmgate price,Oranges - Navelinas,€/100Kg,Month,28
+Oranges,Farmgate price,Oranges - Navelinas,€/100Kg,Week,103
+Oranges,Farmgate price,Oranges - Salustiana,€/100Kg,Month,34
+Oranges,Farmgate price,Oranges - Salustiana,€/100Kg,Week,125
+Oranges,Farmgate price,Oranges - Valencia late,€/100Kg,Month,21
+Oranges,Farmgate price,Oranges - Valencia late,€/100Kg,Week,76
+Oranges,Retail buying price,Oranges - Lanelate,€/100Kg,Month,9
+Oranges,Retail buying price,Oranges - Lanelate,€/100Kg,Week,34
+Oranges,Retail buying price,Oranges - National weighted average of main varieties covering at least 70 % of the representative market in the reference period of the notification,€/100Kg,Month,33
+Oranges,Retail buying price,Oranges - National weighted average of main varieties covering at least 70 % of the representative market in the reference period of the notification,€/100Kg,Week,49
+Oranges,Retail buying price,Oranges - Navel,€/100Kg,Month,12
+Oranges,Retail buying price,Oranges - Navel,€/100Kg,Week,44
+Oranges,Retail buying price,Oranges - Navelate,€/100Kg,Month,11
+Oranges,Retail buying price,Oranges - Navelate,€/100Kg,Week,31
+Oranges,Retail buying price,Oranges - Navelinas,€/100Kg,Month,12
+Oranges,Retail buying price,Oranges - Navelinas,€/100Kg,Week,46
+Oranges,Retail buying price,Oranges - Salustiana,€/100Kg,Month,3
+Oranges,Retail buying price,Oranges - Salustiana,€/100Kg,Week,8
+Oranges,Retail buying price,Oranges - Valencia late,€/100Kg,Month,7
+Oranges,Retail buying price,Oranges - Valencia late,€/100Kg,Week,24
+Oranges,Retail selling price,Oranges - National weighted average of main varieties covering at least 70 % of the representative market in the reference period of the notification,€/100Kg,Month,18
+Oranges for processing,Farmgate price,Oranges for processing - All types and varieties,€/100Kg,Month,44
 Organic-Oranges,Ex-packaging station price,Organic-Oranges - Navel,€/100Kg,Month,7
 Organic-Oranges,Ex-packaging station price,Organic-Oranges - Navel,€/100Kg,Week,19
 Organic-Oranges,Ex-packaging station price,Organic-Oranges - Navelate,€/100Kg,Month,7
@@ -226,3 +278,51 @@ Plums,Ex-packaging station price,Plums - Prunes japonaises,€/100Kg,Month,40
 Plums,Ex-packaging station price,Plums - Prunes japonaises,€/100Kg,Week,99
 Plums,Ex-packaging station price,Plums - Santa Rosa,€/100Kg,Month,22
 Plums,Ex-packaging station price,Plums - Santa Rosa,€/100Kg,Week,53
+Satsumas,Ex-packaging station price,Satsumas - All types and varieties,€/100Kg,Month,79
+Satsumas,Ex-packaging station price,Satsumas - All types and varieties,€/100Kg,Week,231
+Strawberries,Ex-packaging station price,Strawberries - All types and varieties,€/100Kg,Month,111
+Strawberries,Ex-packaging station price,Strawberries - All types and varieties,€/100Kg,Week,358
+Table Grapes,Ex-packaging station price,Table Grapes - All types and varieties,€/100Kg,Month,117
+Table Grapes,Ex-packaging station price,Table Grapes - All types and varieties,€/100Kg,Week,403
+Table Grapes,Ex-packaging station price,Table Grapes - Alphonse Lavallée,€/100Kg,Month,6
+Table Grapes,Ex-packaging station price,Table Grapes - Alphonse Lavallée,€/100Kg,Week,10
+Table Grapes,Ex-packaging station price,Table Grapes - Cardinal,€/100Kg,Month,5
+Table Grapes,Ex-packaging station price,Table Grapes - Cardinal,€/100Kg,Week,6
+Table Grapes,Ex-packaging station price,Table Grapes - Italia,€/100Kg,Month,29
+Table Grapes,Ex-packaging station price,Table Grapes - Italia,€/100Kg,Week,78
+Table Grapes,Ex-packaging station price,Table Grapes - Seedless in large packaging,€/100Kg,Month,53
+Table Grapes,Ex-packaging station price,Table Grapes - Seedless in large packaging,€/100Kg,Week,190
+Table Grapes,Ex-packaging station price,Table Grapes - Seedless in small packaging,€/100Kg,Month,8
+Table Grapes,Ex-packaging station price,Table Grapes - Seedless in small packaging,€/100Kg,Week,30
+Table Grapes,Ex-packaging station price,Table Grapes - Thompson seedless et sultanines,€/100Kg,Month,39
+Table Grapes,Ex-packaging station price,Table Grapes - Thompson seedless et sultanines,€/100Kg,Week,119
+Table Grapes,Ex-packaging station price,Table Grapes - Victoria,€/100Kg,Month,15
+Table Grapes,Ex-packaging station price,Table Grapes - Victoria,€/100Kg,Week,24
+Table Grapes,Ex-packaging station price,Table Grapes - With seeds in large packaging,€/100Kg,Month,51
+Table Grapes,Ex-packaging station price,Table Grapes - With seeds in large packaging,€/100Kg,Week,172
+Tomatoes,Ex-packaging station price,Tomatoes - Cherry/Special,€/100Kg,Month,233
+Tomatoes,Ex-packaging station price,Tomatoes - Cherry/Special,€/100Kg,Week,927
+Tomatoes,Ex-packaging station price,Tomatoes - Round,€/100Kg,Month,249
+Tomatoes,Ex-packaging station price,Tomatoes - Round,€/100Kg,Week,1076
+Tomatoes,Ex-packaging station price,"Tomatoes - Trusses=Vine/""Grappes""",€/100Kg,Month,231
+Tomatoes,Ex-packaging station price,"Tomatoes - Trusses=Vine/""Grappes""",€/100Kg,Week,928
+Tomatoes,Farmgate price,Tomatoes - Cherry/Special,€/100Kg,Month,69
+Tomatoes,Farmgate price,Tomatoes - Cherry/Special,€/100Kg,Week,307
+Tomatoes,Farmgate price,Tomatoes - Round,€/100Kg,Month,69
+Tomatoes,Farmgate price,Tomatoes - Round,€/100Kg,Week,307
+Tomatoes,Farmgate price,"Tomatoes - Trusses=Vine/""Grappes""",€/100Kg,Month,67
+Tomatoes,Farmgate price,"Tomatoes - Trusses=Vine/""Grappes""",€/100Kg,Week,290
+Tomatoes,Retail buying price,Tomatoes - Cherry/Special,€/100Kg,Month,33
+Tomatoes,Retail buying price,Tomatoes - Cherry/Special,€/100Kg,Week,52
+Tomatoes,Retail buying price,Tomatoes - Round,€/100Kg,Month,33
+Tomatoes,Retail buying price,Tomatoes - Round,€/100Kg,Week,50
+Tomatoes,Retail buying price,"Tomatoes - Trusses=Vine/""Grappes""",€/100Kg,Month,33
+Tomatoes,Retail buying price,"Tomatoes - Trusses=Vine/""Grappes""",€/100Kg,Week,45
+Tomatoes,Retail selling price,Tomatoes - Cherry/Special,€/100Kg,Month,18
+Tomatoes,Retail selling price,Tomatoes - Round,€/100Kg,Month,18
+Tomatoes,Retail selling price,"Tomatoes - Trusses=Vine/""Grappes""",€/100Kg,Month,18
+Tomatoes for processing,Farmgate price,Tomatoes for processing - All types and varieties,€/100Kg,Year,5
+Water Melons,Ex-packaging station price,Water Melons - All types and varieties,€/100Kg,Month,115
+Water Melons,Ex-packaging station price,Water Melons - All types and varieties,€/100Kg,Week,395
+Water Melons,Ex-packaging station price,Water Melons - Avec pépins - With seeds,€/100Kg,Month,55
+Water Melons,Ex-packaging station price,Water Melons - Avec pépins - With seeds,€/100Kg,Week,171
