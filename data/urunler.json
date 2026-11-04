@@ -5,7 +5,7 @@
 "en": "Tomato",
 "tur": "Sebze",
 "segment": 9,
-"n": 5393,
+"n": 5648,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -16,7 +16,7 @@
 "en": "Pepper",
 "tur": "Sebze",
 "segment": 8,
-"n": 5636,
+"n": 5891,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -27,7 +27,7 @@
 "en": "Cucumber",
 "tur": "Sebze",
 "segment": 5,
-"n": 5636,
+"n": 5891,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -38,7 +38,7 @@
 "en": "Aubergine",
 "tur": "Sebze",
 "segment": 2,
-"n": 5636,
+"n": 5891,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -49,7 +49,7 @@
 "en": "Courgette",
 "tur": "Sebze",
 "segment": 1,
-"n": 5636,
+"n": 5891,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -60,7 +60,7 @@
 "en": "Winter squash",
 "tur": "Sebze",
 "segment": 1,
-"n": 4052,
+"n": 4307,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -71,7 +71,7 @@
 "en": "Armenian cucumber",
 "tur": "Sebze",
 "segment": 1,
-"n": 1098,
+"n": 1216,
 "ilk": "2015-06-29",
 "son": "2026-10-23",
 "ispanya": false
@@ -93,7 +93,7 @@
 "en": "Broad bean",
 "tur": "Sebze",
 "segment": 1,
-"n": 2740,
+"n": 2907,
 "ilk": "2006-01-02",
 "son": "2026-07-10",
 "ispanya": false
@@ -104,7 +104,7 @@
 "en": "Okra",
 "tur": "Sebze",
 "segment": 2,
-"n": 2077,
+"n": 2179,
 "ilk": "2006-06-01",
 "son": "2026-10-23",
 "ispanya": false
@@ -115,7 +115,7 @@
 "en": "Green bean",
 "tur": "Sebze",
 "segment": 4,
-"n": 5546,
+"n": 5801,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -126,7 +126,7 @@
 "en": "Pea",
 "tur": "Sebze",
 "segment": 1,
-"n": 2183,
+"n": 2279,
 "ilk": "2006-01-24",
 "son": "2026-08-28",
 "ispanya": false
@@ -137,7 +137,7 @@
 "en": "Samphire",
 "tur": "Sebze",
 "segment": 1,
-"n": 4403,
+"n": 4658,
 "ilk": "2006-03-10",
 "son": "2026-11-04",
 "ispanya": false
@@ -148,7 +148,7 @@
 "en": "Cowpea (fresh pods)",
 "tur": "Sebze",
 "segment": 1,
-"n": 2944,
+"n": 3080,
 "ilk": "2006-05-22",
 "son": "2026-11-04",
 "ispanya": false
@@ -159,7 +159,7 @@
 "en": "Broccoli",
 "tur": "Sebze",
 "segment": 1,
-"n": 4728,
+"n": 4924,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -170,7 +170,7 @@
 "en": "Cibez (wild greens)",
 "tur": "Sebze",
 "segment": 1,
-"n": 196,
+"n": 243,
 "ilk": "2024-08-23",
 "son": "2026-05-30",
 "ispanya": false
@@ -181,7 +181,7 @@
 "en": "Artichoke",
 "tur": "Sebze",
 "segment": 2,
-"n": 2181,
+"n": 2287,
 "ilk": "2006-01-05",
 "son": "2026-06-26",
 "ispanya": false
@@ -192,7 +192,7 @@
 "en": "Carrot",
 "tur": "Sebze",
 "segment": 3,
-"n": 5636,
+"n": 5891,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -203,7 +203,7 @@
 "en": "Spinach",
 "tur": "Sebze",
 "segment": 1,
-"n": 5516,
+"n": 5771,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -214,7 +214,7 @@
 "en": "Cauliflower",
 "tur": "Sebze",
 "segment": 1,
-"n": 4343,
+"n": 4525,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -225,7 +225,7 @@
 "en": "Watermelon",
 "tur": "Sebze",
 "segment": 1,
-"n": 4120,
+"n": 4375,
 "ilk": "2006-03-07",
 "son": "2026-11-04",
 "ispanya": false
@@ -247,7 +247,7 @@
 "en": "Celeriac",
 "tur": "Sebze",
 "segment": 1,
-"n": 4310,
+"n": 4492,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -258,7 +258,7 @@
 "en": "Cabbage",
 "tur": "Sebze",
 "segment": 4,
-"n": 5636,
+"n": 5891,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -269,7 +269,7 @@
 "en": "Mushroom",
 "tur": "Sebze",
 "segment": 2,
-"n": 5636,
+"n": 5891,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -280,7 +280,7 @@
 "en": "Lettuce",
 "tur": "Sebze",
 "segment": 4,
-"n": 5636,
+"n": 5891,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -291,7 +291,7 @@
 "en": "Beetroot",
 "tur": "Sebze",
 "segment": 1,
-"n": 5635,
+"n": 5890,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -302,7 +302,7 @@
 "en": "Potato",
 "tur": "Sebze",
 "segment": 5,
-"n": 5636,
+"n": 5786,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -313,7 +313,7 @@
 "en": "Chard",
 "tur": "Sebze",
 "segment": 1,
-"n": 4135,
+"n": 4390,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -324,7 +324,7 @@
 "en": "Leek",
 "tur": "Sebze",
 "segment": 1,
-"n": 5073,
+"n": 5259,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -335,7 +335,7 @@
 "en": "Garlic",
 "tur": "Sebze",
 "segment": 3,
-"n": 5600,
+"n": 5855,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -346,7 +346,7 @@
 "en": "Purslane",
 "tur": "Sebze",
 "segment": 1,
-"n": 3970,
+"n": 4225,
 "ilk": "2006-04-03",
 "son": "2026-11-04",
 "ispanya": false
@@ -357,7 +357,7 @@
 "en": "Onion",
 "tur": "Sebze",
 "segment": 4,
-"n": 5636,
+"n": 5891,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -368,7 +368,7 @@
 "en": "Radish",
 "tur": "Sebze",
 "segment": 6,
-"n": 5215,
+"n": 5470,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -390,7 +390,7 @@
 "en": "Sweet corn (cob)",
 "tur": "Sebze",
 "segment": 1,
-"n": 2475,
+"n": 2585,
 "ilk": "2006-05-18",
 "son": "2026-11-04",
 "ispanya": false
@@ -403,7 +403,7 @@
 "segment": 2,
 "n": 1885,
 "ilk": "2006-01-02",
-"son": "2024-10-02",
+"son": "2025-07-14",
 "ispanya": false
 },
 {
@@ -412,9 +412,9 @@
 "en": "Jerusalem artichoke",
 "tur": "Sebze",
 "segment": 1,
-"n": 2131,
+"n": 2295,
 "ilk": "2007-11-13",
-"son": "2024-12-31",
+"son": "2025-07-14",
 "ispanya": false
 },
 {
@@ -423,7 +423,7 @@
 "en": "Dill",
 "tur": "Yeşillik",
 "segment": 1,
-"n": 5635,
+"n": 5890,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -434,7 +434,7 @@
 "en": "Parsley",
 "tur": "Yeşillik",
 "segment": 1,
-"n": 5634,
+"n": 5889,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -445,7 +445,7 @@
 "en": "Mint",
 "tur": "Yeşillik",
 "segment": 1,
-"n": 5633,
+"n": 5888,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -456,7 +456,7 @@
 "en": "Basil",
 "tur": "Yeşillik",
 "segment": 1,
-"n": 975,
+"n": 1230,
 "ilk": "2022-10-05",
 "son": "2026-11-04",
 "ispanya": false
@@ -467,7 +467,7 @@
 "en": "Rocket",
 "tur": "Yeşillik",
 "segment": 1,
-"n": 5635,
+"n": 5890,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -478,7 +478,7 @@
 "en": "Garden cress",
 "tur": "Yeşillik",
 "segment": 1,
-"n": 4325,
+"n": 4580,
 "ilk": "2006-01-05",
 "son": "2026-11-04",
 "ispanya": false
@@ -489,7 +489,7 @@
 "en": "Ginger",
 "tur": "İthal",
 "segment": 1,
-"n": 1093,
+"n": 1348,
 "ilk": "2019-12-28",
 "son": "2026-11-04",
 "ispanya": false
@@ -500,7 +500,7 @@
 "en": "Pear",
 "tur": "Meyve",
 "segment": 6,
-"n": 4693,
+"n": 4948,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -511,7 +511,7 @@
 "en": "Quince",
 "tur": "Meyve",
 "segment": 1,
-"n": 3693,
+"n": 3837,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -522,7 +522,7 @@
 "en": "Green almond",
 "tur": "Meyve",
 "segment": 1,
-"n": 1019,
+"n": 1092,
 "ilk": "2006-02-20",
 "son": "2026-05-30",
 "ispanya": false
@@ -533,7 +533,7 @@
 "en": "Persimmon",
 "tur": "Meyve",
 "segment": 1,
-"n": 2101,
+"n": 2189,
 "ilk": "2006-10-12",
 "son": "2026-11-04",
 "ispanya": false
@@ -544,7 +544,7 @@
 "en": "Strawberry",
 "tur": "Meyve",
 "segment": 1,
-"n": 5390,
+"n": 5645,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -566,7 +566,7 @@
 "en": "Apple",
 "tur": "Meyve",
 "segment": 8,
-"n": 5636,
+"n": 5891,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -577,7 +577,7 @@
 "en": "Plum",
 "tur": "Meyve",
 "segment": 6,
-"n": 3537,
+"n": 3647,
 "ilk": "2006-04-04",
 "son": "2026-11-04",
 "ispanya": false
@@ -588,7 +588,7 @@
 "en": "Grapefruit",
 "tur": "Meyve",
 "segment": 1,
-"n": 5484,
+"n": 5739,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -599,7 +599,7 @@
 "en": "Jujube",
 "tur": "Meyve",
 "segment": 1,
-"n": 337,
+"n": 345,
 "ilk": "2022-09-15",
 "son": "2025-11-29",
 "ispanya": false
@@ -621,7 +621,7 @@
 "en": "Fig",
 "tur": "Meyve",
 "segment": 5,
-"n": 1133,
+"n": 1243,
 "ilk": "2006-07-03",
 "son": "2026-11-04",
 "ispanya": false
@@ -632,7 +632,7 @@
 "en": "Apricot",
 "tur": "Meyve",
 "segment": 5,
-"n": 2068,
+"n": 2209,
 "ilk": "2006-05-12",
 "son": "2026-09-25",
 "ispanya": false
@@ -643,7 +643,7 @@
 "en": "Chestnut",
 "tur": "Meyve",
 "segment": 1,
-"n": 2137,
+"n": 2207,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -654,7 +654,7 @@
 "en": "Sweet cherry",
 "tur": "Meyve",
 "segment": 3,
-"n": 1721,
+"n": 1789,
 "ilk": "2006-05-04",
 "son": "2026-09-25",
 "ispanya": false
@@ -665,7 +665,7 @@
 "en": "Kiwifruit",
 "tur": "Meyve",
 "segment": 2,
-"n": 4772,
+"n": 5027,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -698,7 +698,7 @@
 "en": "Loquat",
 "tur": "Meyve",
 "segment": 1,
-"n": 1149,
+"n": 1200,
 "ilk": "2006-04-11",
 "son": "2026-06-25",
 "ispanya": false
@@ -709,9 +709,9 @@
 "en": "Medlar",
 "tur": "Meyve",
 "segment": 1,
-"n": 830,
+"n": 869,
 "ilk": "2006-11-24",
-"son": "2024-12-31",
+"son": "2025-02-14",
 "ispanya": false
 },
 {
@@ -720,7 +720,7 @@
 "en": "Mandarin",
 "tur": "Meyve",
 "segment": 5,
-"n": 3599,
+"n": 3717,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -731,7 +731,7 @@
 "en": "Banana",
 "tur": "Meyve",
 "segment": 2,
-"n": 5636,
+"n": 5891,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -742,7 +742,7 @@
 "en": "Pomegranate",
 "tur": "Meyve",
 "segment": 1,
-"n": 3655,
+"n": 3826,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -753,7 +753,7 @@
 "en": "Nectarine",
 "tur": "Meyve",
 "segment": 2,
-"n": 2855,
+"n": 3002,
 "ilk": "2006-06-22",
 "son": "2026-10-30",
 "ispanya": false
@@ -764,7 +764,7 @@
 "en": "Orange",
 "tur": "Meyve",
 "segment": 5,
-"n": 4822,
+"n": 5077,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -775,7 +775,7 @@
 "en": "Peach",
 "tur": "Meyve",
 "segment": 1,
-"n": 2799,
+"n": 2937,
 "ilk": "2006-05-25",
 "son": "2026-10-28",
 "ispanya": false
@@ -786,7 +786,7 @@
 "en": "Grape",
 "tur": "Meyve",
 "segment": 8,
-"n": 2954,
+"n": 3064,
 "ilk": "2006-05-23",
 "son": "2026-11-04",
 "ispanya": false
@@ -797,7 +797,7 @@
 "en": "Sour cherry",
 "tur": "Meyve",
 "segment": 1,
-"n": 1136,
+"n": 1179,
 "ilk": "2006-07-03",
 "son": "2026-09-18",
 "ispanya": false
@@ -808,7 +808,7 @@
 "en": "Pineapple",
 "tur": "İthal",
 "segment": 1,
-"n": 5636,
+"n": 5891,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -819,7 +819,7 @@
 "en": "Avocado",
 "tur": "İthal",
 "segment": 1,
-"n": 5433,
+"n": 5688,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -830,7 +830,7 @@
 "en": "Coconut",
 "tur": "İthal",
 "segment": 1,
-"n": 5227,
+"n": 5482,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
 "ispanya": false
@@ -841,7 +841,7 @@
 "en": "Mango",
 "tur": "İthal",
 "segment": 1,
-"n": 1111,
+"n": 1366,
 "ilk": "2010-02-03",
 "son": "2026-11-04",
 "ispanya": false
@@ -852,9 +852,9 @@
 "en": "Dragon fruit",
 "tur": "İthal",
 "segment": 1,
-"n": 139,
+"n": 260,
 "ilk": "2022-11-09",
-"son": "2024-12-31",
+"son": "2025-05-22",
 "ispanya": false
 },
 {

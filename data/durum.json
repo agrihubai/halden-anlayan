@@ -1,20 +1,20 @@
 {
- "guncelleme": "2026-11-04T07:55+00:00",
+ "guncelleme": "2026-11-04T08:19+00:00",
  "kaynaklar": {
   "kur": {
    "durum": "tamam",
    "kayit": 5334,
-   "sure_sn": 3
-  },
-  "ispanya": {
-   "durum": "hata",
-   "mesaj": "AB: hiç kayıt gelmedi (data/_kesif/ab-istekler.txt)",
-   "sure_sn": 12
+   "sure_sn": 2
   },
   "izmir": {
    "durum": "tamam",
-   "kayit": 482585,
-   "sure_sn": 196
+   "kayit": 28832,
+   "sure_sn": 19
+  },
+  "ispanya": {
+   "durum": "tamam",
+   "kayit": 44211,
+   "sure_sn": 739
   }
  }
 }
