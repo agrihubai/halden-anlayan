@@ -20,6 +20,7 @@ import json
 import re
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
@@ -254,51 +255,60 @@ def update_fx() -> int:
 
 
 # ---------------------------------------------------------------- 3. AB / İspanya (bütün ürünler)
-EU_BASE = "https://api.tech.ec.europa.eu/agrifood"
-EU_PATHS = ["/api/fruitAndVegetable/prices", "/api/fruitandvegetable/prices", "/api/fruitAndVegetables/prices"]
+EU_BASE = "https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain"
+
+
+def eu_get(path: str, params: dict | None = None):
+    url = EU_BASE + path + ("?" + urllib.parse.urlencode(params) if params else "")
+    try:
+        return json.loads(get(url, tries=2, timeout=180)), url
+    except urllib.error.HTTPError as e:
+        if e.code == 404:  # API "bu parametrelerle sonuç yok" için 404 döndürüyor
+            return [], url
+        raise
 
 
 def update_eu() -> int:
-    try:
-        spec = decode(get(EU_BASE + "/v3/api-docs/fruit_and_vegetables", tries=2))
-        probe("ab-openapi.json", spec, limit=80000)
-    except Exception as e:  # noqa: BLE001
-        probe("ab-openapi-hata.txt", str(e))
-    log, recs = [], []
+    lists = {}
+    for name in ("products", "productStages", "varieties"):
+        try:
+            lists[name], _ = eu_get("/" + name)
+        except Exception as e:  # noqa: BLE001
+            lists[name] = []
+            probe(f"ab-{name}-hata.txt", str(e))
+    probe("ab-listeler.json", json.dumps(lists, ensure_ascii=False, indent=1), limit=60000)
+    products = [p if isinstance(p, str) else (pick(p, "product", "name", "productName") or "") for p in lists["products"]]
+    products = [p for p in products if p]
+    if not products:
+        raise RuntimeError("AB: ürün listesi alınamadı")
+    log, out = [], []
     end = TODAY.strftime("%d/%m/%Y")
-    # Yıl yıl iste: tek istekte 20 yıllık bütün ürünler çok büyük olabilir
-    for path in EU_PATHS:
+    for prod in products:
         recs = []
-        for y in range(START_YEAR, TODAY.year + 1):
-            q = urllib.parse.urlencode({"memberStateCodes": "ES", "beginDate": f"01/01/{y}",
-                                        "endDate": end if y == TODAY.year else f"31/12/{y}"})
-            url = f"{EU_BASE}{path}?{q}"
-            try:
-                j = json.loads(get(url, tries=2, timeout=120))
-            except Exception as e:  # noqa: BLE001
-                log.append(f"{url} -> {e}")
-                if y == START_YEAR:
-                    break
+        try:
+            recs, url = eu_get("", {"memberStateCodes": "ES", "products": prod, "beginDate": f"01/01/{START_YEAR}", "endDate": end})
+            log.append(f"{url} -> {len(recs)}")
+        except Exception as e:  # noqa: BLE001  tek istekte olmazsa yıl yıl dene
+            log.append(f"{prod} toplu istek hata: {e}")
+            for y in range(START_YEAR, TODAY.year + 1):
+                try:
+                    got, url = eu_get("", {"memberStateCodes": "ES", "products": prod, "years": y})
+                    recs += got
+                except Exception as e2:  # noqa: BLE001
+                    log.append(f"{prod} {y}: {e2}")
+        if recs and not out:
+            probe("ab-ornek.json", json.dumps(recs[:8], ensure_ascii=False, indent=1))
+        for r in recs:
+            if str(pick(r, "memberStateCode") or "ES").upper() != "ES":
                 continue
-            got = j if isinstance(j, list) else next((v for v in j.values() if isinstance(v, list)), [])
-            log.append(f"{url} -> {len(got)} kayıt")
-            if got and not recs:
-                probe("ab-ornek.json", json.dumps(got[:8], ensure_ascii=False, indent=1))
-            recs += got
-        if recs:
-            break
-    probe("ab-istekler.txt", "\n".join(log))
-    out = []
-    for r in recs:
-        if str(pick(r, "memberStateCode") or "ES").upper() != "ES":
-            continue
-        d = parse_date(pick(r, "beginDate", "startDate", "date"))
-        price = num(pick(r, "price", "value"))
-        if not d or price is None:
-            continue
-        out.append({"d": d.isoformat(), "urun": str(pick(r, "product", "productName") or ""),
-                    "st": str(pick(r, "productStage", "stageName", "stage") or ""),
-                    "v": str(pick(r, "variety") or ""), "u": str(pick(r, "unit", "priceUnit") or ""), "price": price})
+            d = parse_date(pick(r, "beginDate"))
+            price = num(pick(r, "price"))
+            if not d or price is None:
+                continue
+            out.append({"d": d.isoformat(), "urun": prod, "st": str(pick(r, "productStage") or ""),
+                        "v": str(pick(r, "variety") or ""), "u": str(pick(r, "unit") or ""),
+                        "per": str(pick(r, "periodType") or ""), "price": price})
+    probe("ab-istekler.txt", "\n".join(log), limit=30000)
     p = RAW / "ispanya.json.gz"
     if not out:
         if p.exists():

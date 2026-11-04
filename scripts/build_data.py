@@ -127,6 +127,8 @@ def main() -> None:
         with gzip.open(p, "rt", encoding="utf-8") as fh:
             for r in json.load(fh):
                 es_inv[(r["urun"], r["st"], r["v"], r["u"])] += 1
+                if r.get("per") and r["per"].lower() != "week":
+                    continue  # grafikte sadece haftalık fiyatlar
                 label = " · ".join(x for x in (r["st"], r["v"]) if x) or "—"
                 es[r["urun"]][label][r["d"]] = round(per_kg(r["price"], r["u"]), 4)
     es_map = {slug(k): v for k, v in CONF.get("ispanya", {}).items()}
