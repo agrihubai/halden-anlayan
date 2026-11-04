@@ -521,7 +521,9 @@
     if (!esPick.length) esPick = esAll.filter((s) => /All types and varieties/.test(s.n));
     if (!esPick.length) esPick = esAll;
     const STG = { en: { 'Paketleme çıkışı': 'Ex-packaging', Tarla: 'Farmgate', 'Perakende alış': 'Retail buying', Raf: 'Retail' } };
-    const esName = (n) => (L === 'en' ? n.replace(/^[^·]+/, (m) => (STG.en[m.trim()] || m.trim()) + ' ') : n).replace('All types and varieties', L === 'en' ? 'all types' : 'bütün tipler');
+    // "Paketleme çıkışı · Tomatoes - Trusses=Vine/"Grappes"" → "Paketleme çıkışı · Trusses"
+    const esName = (n) => (L === 'en' ? n.replace(/^[^·]+/, (m) => (STG.en[m.trim()] || m.trim()) + ' ') : n)
+      .replace(/·\s*[^·-]+ - /, '· ').replace(/=.*$/, '').replace('All types and varieties', L === 'en' ? 'all types' : 'bütün tipler');
     esPick.sort((a, b) => b.data.length - a.data.length).slice(0, 4)
       .forEach((s, i) => cmpLines.push({ name: t.es + ' · ' + esName(s.n), color: css(ES_COLORS[i]), data: s.data }));
     const lastC = d3.max(cmpLines.filter((l) => !l.tr), (l) => l.data[l.data.length - 1]?.date) || trW[trW.length - 1]?.date;
