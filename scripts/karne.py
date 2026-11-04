@@ -324,6 +324,76 @@ def es_karsilastir(doc, seg, seg_eur, ref, ref_eur, ref_ab, last, tr_sezon):
     return out
 
 
+# ---------------------------------------------------------------- Almería (Junta de Andalucía, üretici teslim fiyatı)
+def al_series(doc, tip, cat="I", pos="almacen"):
+    rows = ((doc.get("almeria") or {}).get("seriler") or {}).get(f"{tip} · {cat} · {pos}")
+    return {monday(d_(d)): (p, 1) for d, p in rows} if rows else {}
+
+
+def al_pick(doc, seg, last):
+    """Segmentin Almería eşleşmelerinden son bir yılda verisi olan ilk tip (yoksa en uzun seri)."""
+    best = None
+    for tip in seg.get("almeria") or []:
+        w = al_series(doc, tip)
+        if len(w) < MIN_HAFTA:
+            continue
+        if max(w) > last - timedelta(days=365):
+            return tip, w
+        best = best or (tip, w)
+    return best or (None, {})
+
+
+def al_karsilastir(doc, sz_seg, sz_ref, seg_eur, ref_eur, last, tr_sezon):
+    tip, al = al_pick(doc, sz_seg, last)
+    if not tip:
+        return None
+    out = {"tip": tip, "uyum": sz_seg.get("almeria_uyum"), "ilk": min(al).isoformat(), "son": max(al).isoformat()}
+    common = sorted(set(al) & set(seg_eur))
+    if len(common) >= MIN_HAFTA:
+        end = max(common)
+        win = [k for k in common if end - timedelta(days=364) < k <= end]
+        if len(win) >= MIN_HAFTA:
+            out |= {"donem": [min(win).isoformat(), end.isoformat()], "tr_eur": r3(med([seg_eur[k][0] for k in win]), 2),
+                    "al_eur": r3(med([al[k][0] for k in win]), 2), "duzey": r3(med([seg_eur[k][0] / al[k][0] for k in win]))}
+    # prim: Almería'da referans segmentin karşılığına göre
+    if sz_ref is not None and sz_ref.get("k") != sz_seg.get("k"):
+        rtip, ral = al_pick(doc, sz_ref, last)
+        if rtip:
+            cw = sorted(set(al) & set(ral))
+            cur = [al[k][0] / ral[k][0] for k in cw if k > max(cw) - timedelta(days=364)] if cw else []
+            end5 = (max(cw) if cw else last) - timedelta(days=5 * 365)
+            old = [al[k][0] / ral[k][0] for k in cw if end5 - timedelta(days=364) < k <= end5]
+            if len(cur) >= MIN_HAFTA:
+                out |= {"ref_tip": rtip, "prim_al": r3(med(cur)), "prim_al_5": r3(med(old)) if len(old) >= MIN_HAFTA else None}
+                trw = [seg_eur[k][0] / ref_eur[k][0] for k in cw if k > max(cw) - timedelta(days=364) and k in seg_eur and k in ref_eur]
+                if len(trw) >= MIN_HAFTA:
+                    out["prim_tr"] = r3(med(trw))
+    # kalite primi: aynı tipin 1. / 2. kalitesi
+    al2 = al_series(doc, tip, "II")
+    cq = sorted(set(al) & set(al2))
+    if len(cq) >= MIN_HAFTA:
+        endq = max(cq)
+        cur = [al[k][0] / al2[k][0] for k in cq if k > endq - timedelta(days=364)]
+        end5 = endq - timedelta(days=5 * 365)
+        old = [al[k][0] / al2[k][0] for k in cq if end5 - timedelta(days=364) < k <= end5]
+        yearly = defaultdict(list)
+        for k in cq:
+            yearly[k.year].append(al[k][0] / al2[k][0])
+        if len(cur) >= MIN_HAFTA:
+            out["kalite"] = {"simdi": r3(med(cur)), "bes_yil_once": r3(med(old)) if len(old) >= MIN_HAFTA else None, "son": endq.isoformat(),
+                             "yillar": [[y, r3(med(v))] for y, v in sorted(yearly.items()) if len(v) >= MIN_HAFTA]}
+    sz = sezon(al, max(al))
+    if sz and tr_sezon:
+        a, b = tr_sezon["profil"], sz["profil"]
+        pts = [(x, y) for x, y in zip(a, b) if x is not None and y is not None]
+        if len(pts) >= 26:
+            mx, my = statistics.fmean(p[0] for p in pts), statistics.fmean(p[1] for p in pts)
+            sx = math.sqrt(sum((p[0] - mx) ** 2 for p in pts)); sy = math.sqrt(sum((p[1] - my) ** 2 for p in pts))
+            out["sezon"] = {"profil": sz["profil"], "tepe": sz["tepe"], "dip": sz["dip"], "genlik": sz["genlik"], "yil": sz["yil"]}
+            out["sezon_benzerlik"] = r3(sum((p[0] - mx) * (p[1] - my) for p in pts) / (sx * sy), 2) if sx and sy else None
+    return out
+
+
 # ---------------------------------------------------------------- ATB arz (miktar endeksi)
 def atb_arz():
     p = DATA / "ham" / "atb-endeks.json"
@@ -425,6 +495,8 @@ def build():
                  "sezon": sz, "donem": donem(w, last), "sok": sok(w, last), "makas": makas(doc, s, last), "yeni": yeni(doc, s, w, last),
                  "es": es_karsilastir(doc, s, eur_w.get(s["k"], {}), ref, eur_w.get(ref, {}), ref_ab, last, sz)
                  if s["birim"] == "KG" else None}
+            k["almeria"] = al_karsilastir(doc, sz_segs.get(s["k"], {}), sz_segs.get(ref), eur_w.get(s["k"], {}), eur_w.get(ref, {}), last, sz) \
+                if s["birim"] == "KG" and doc.get("almeria") else None
             arz = ARZ.get(arz_grubu(doc) or "")
             k["arz_r"] = corr(month_profile(sz["profil"]), arz["profil"]) if arz and sz else None
             rows.append(k)
@@ -435,7 +507,8 @@ def build():
                          "sok": (k["sok"] or {}).get("sayi"), "sok_hafta": (k["sok"] or {}).get("hafta"),
                          "makas": (k["makas"] or {}).get("simdi"), "ilk": s["ilk"], "durum": k["yeni"]["durum"],
                          "yeni": k["yeni"]["yeni"], "es_duzey": es.get("duzey"), "es_tam": es.get("tam"),
-                         "es_benzer": es.get("sezon_benzerlik")})
+                         "es_benzer": es.get("sezon_benzerlik"),
+                         "al_duzey": (k["almeria"] or {}).get("duzey"), "al_kalite": ((k["almeria"] or {}).get("kalite") or {}).get("simdi")})
         karne = {"k": doc["k"], "tr": doc["tr"], "en": doc["en"], "son": last.isoformat(), "birim": unit, "referans": ref,
                  "ref_ab": ref_ab, "yil": YIL, "z": Z_SOK, "segmentler": rows, "kalite": kalite_ciftleri(doc),
                  "arz": ARZ.get(arz_grubu(doc) or "")}

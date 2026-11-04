@@ -128,6 +128,52 @@ def adlar_of(P):
     return {k: {kk: vv for kk, vv in a.items() if kk != "rows"} | {"seri": a["rows"]} for k, a in P["ad"].items()}
 
 
+# ---- Almería (Junta de Andalucía): tip, kategori ve ticari pozisyon adları yıllar içinde değişti; tek biçime getirilir
+POS = {"ALM.": "almacen", "ALMACEN DE AGRICULTOR": "almacen", "ALH.": "alhondiga", "ALHONDIGA": "alhondiga",
+       "C.M.": "cm", "CENTRO DE MANIPULACION": "cm", "S.ALM.": "salida", "SALIDA ALMACEN": "salida"}
+TIP = [(r"^RAMILLETE/RACIMO$|^RACIMO$", "RAMA"), (r"^CALIFORNIA (ROJO|VERDE|AMARILLO)", r"CALIFORNIA-\1"), (r"^(ROJO|VERDE|AMARILLO)-CALIFORNIA", r"CALIFORNIA-\1"),
+       (r"^LAMUYO (ROJO|VERDE|AMARILLO)", r"LAMUYO-\1"), (r"^(ROJO|VERDE|AMARILLO)-LAMUYO", r"LAMUYO-\1"),
+       (r"^(ROJO|VERDE)-ITALIANO|^ITALIANO[- ](ROJO|VERDE)", "ITALIANO"), (r"DULCE CONICO", "CONICO"), (r"^PERA-ROJO$", "PERA"),
+       (r"^ASURCADO-VERDE$", "ASURCADO"), (r"TIPO CHERRY-", "CHERRY-"), (r"^TIPO CHERRY$", "CHERRY"), (r"^CHERRY-(.*?) ROJO$", r"CHERRY-\1"),
+       (r"^HOL\. O DE ALMERIA$|^LARGO,? TIPO HOLANDES O ALMERIA$", "LARGO ALMERIA"), (r"^FRANCES$|^MEDIO LARGO O TIPO FRANCES$", "FRANCES"),
+       (r"^ESPANOL$|^CORTO$|^CORTO O TIPO ESPANOL$", "ESPANOL"), (r"^LARGA SEMILARGA$|^LARGA$", "LARGA"), (r"S\.C\.$", "")]
+
+
+def norm_tip(t: str) -> str:
+    t = re.sub(r"\s*-\s*", "-", fold(t)).strip()
+    for a, b in TIP:
+        t = re.sub(a, b, t).strip()
+    return t
+
+
+def norm_cat(c: str) -> str:
+    c = fold(c)
+    return c if c in ("I", "II", "EXTRA") else "S.E."
+
+
+def read_almeria():
+    """{ürün: {(tip, kategori, pozisyon): {pazartesi: €/kg}}} — sadece Almería ili."""
+    out = defaultdict(lambda: defaultdict(dict))
+    umap = SOZLUK.get("almeria", {}).get("urunler", {})
+    for p in sorted((RAW / "junta").glob("*.csv.gz")):
+        with gzip.open(p, "rt", encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                if r["il"] != "AL" or r["urun"] not in umap:
+                    continue
+                pos = POS.get(fold(r["pozisyon"]))
+                if not pos:
+                    continue
+                cat = norm_cat(r["kategori"])
+                if fold(r["tip"]).endswith(" II") and cat == "S.E.":   # 2008-09: "Liso II"
+                    cat = "II"
+                tip = norm_tip(re.sub(r"\s+II$", "", r["tip"]))
+                try:
+                    out[umap[r["urun"]]][(tip, cat, pos)][r["d"]] = float(r["fiyat"])
+                except ValueError:
+                    pass
+    return out
+
+
 def f(v):
     try:
         x = float(v)
@@ -149,6 +195,7 @@ def main() -> None:
     # ---- Türkiye: aynı adın farklı yazımları (BIBER SIVRI / BİBER SİVRİ) tek seride birleşir
     products, inventory, unmatched = read_hal("izmir", classify)
     ant_products, ant_inventory, ant_unmatched = read_hal("antalya", classify_antalya)
+    almeria = read_almeria()
 
     # ---- İspanya
     es = defaultdict(lambda: defaultdict(dict))
@@ -181,15 +228,17 @@ def main() -> None:
         for en in u.get("ab", []):
             for lab, d in es.get(en, {}).items():
                 es_series[lab] = sorted(d.items())
+        al = {f"{tip} · {cat} · {pos}": sorted(d.items()) for (tip, cat, pos), d in almeria.get(u["k"], {}).items() if len(d) >= 8}
         haller = {}
         if A:
             haller["antalya"] = {"segmentler": segments_of(u, A), "adlar": adlar_of(A)}
         doc = {"k": u["k"], "tr": u["tr"], "en": u["en"], "es": u["es"], "botanik": u["botanik"], "tur": u["tur"],
-               "segmentler": segs, "adlar": adlar_of(P), "haller": haller, "ispanya": {"urunler": u.get("ab", []), "seriler": es_series}}
+               "segmentler": segs, "adlar": adlar_of(P), "haller": haller, "ispanya": {"urunler": u.get("ab", []), "seriler": es_series},
+               "almeria": {"seriler": al, "kaynak": "Junta de Andalucía, Precios agrícolas semanales (CC BY 4.0)"} if al else None}
         (out / f"{u['k']}.json").write_text(json.dumps(doc, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
         index.append({"k": u["k"], "tr": u["tr"], "en": u["en"], "tur": u["tur"], "segment": len(segs),
                       "n": max(s["n"] for s in segs), "ilk": min(s["ilk"] for s in segs), "son": max(s["son"] for s in segs),
-                      "ispanya": bool(es_series), "antalya": len(haller.get("antalya", {}).get("segmentler", []))})
+                      "ispanya": bool(es_series), "almeria": len(al), "antalya": len(haller.get("antalya", {}).get("segmentler", []))})
     (DATA / "urunler.json").write_text(json.dumps(index, ensure_ascii=False, indent=0), encoding="utf-8")
 
     (DATA / "_kesif").mkdir(parents=True, exist_ok=True)
