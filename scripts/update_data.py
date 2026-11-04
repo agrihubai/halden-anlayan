@@ -114,8 +114,42 @@ def row(d: dt.date, tur, name, unit, lo, hi, avg) -> dict | None:
             "u": str(unit or "").strip(), "lo": num(lo), "hi": num(hi), "avg": num(avg)}
 
 
+def izmir_rows_from_bulletin(text: str) -> list[dict]:
+    """2025 dosyası gibi 'Günlük Bülten' biçimi: her gün için 'Bülten Tarihi' ve 'Mal Tipi' satırları,
+    ardından yan yana iki blok halinde S.No; Ürün Adı; Birim; Asgari; Azami; Ortalama."""
+    out = []
+    day, tur = None, ""
+    for cells in csv.reader(io.StringIO(text), delimiter=";"):
+        cells = [c.strip() for c in cells]
+        head = cells[0].lower() if cells else ""
+        if head.startswith("bülten tarihi") or head.startswith("bulten tarihi"):
+            day = next((parse_date(c) for c in cells[1:] if parse_date(c)), day)
+            continue
+        if head.startswith("mal tipi"):
+            tur = next((c for c in cells[1:] if c and c != ":"), tur)
+            continue
+        if not day:
+            continue
+        vals = [c for c in cells if c != ""]
+        i = 0
+        while i < len(vals):
+            # S.No (tam sayı) + ad + birim + üç fiyat
+            if re.fullmatch(r"\d+", vals[i]) and i + 5 < len(vals) and num(vals[i + 1]) is None and num(vals[i + 2]) is None:
+                lo, hi, avg = num(vals[i + 3]), num(vals[i + 4]), num(vals[i + 5])
+                if None not in (lo, hi, avg):
+                    x = row(day, tur, vals[i + 1], vals[i + 2], lo, hi, avg)
+                    if x:
+                        out.append(x)
+                    i += 6
+                    continue
+            i += 1
+    return out
+
+
 def izmir_rows_from_csv(text: str) -> list[dict]:
     first = text.splitlines()[0] if text else ""
+    if "TARIH" not in first.upper():
+        return izmir_rows_from_bulletin(text)
     delim = ";" if first.count(";") > first.count(",") else ","
     out = []
     for r in csv.DictReader(io.StringIO(text), delimiter=delim):

@@ -1,0 +1,1967 @@
+{
+ "_aciklama": "AgriHub-AI ürün sözlüğü. Ürün → segment → (ileride) çeşit. 'izmir' ve segment 'kalip' alanları, Türkçe karakterleri sadeleştirilmiş büyük harfli hal adına uygulanan düzenli ifadelerdir (Ç→C, Ğ→G, İ/ı→I, Ö→O, Ş→S, Ü→U). Ürünler listedeki sırayla denenir; kalıbı olmayan segment o ürünün varsayılanıdır. 'yan' kalıbına uyan adlar (ikinci kalite, diğer, sertifikalı, paketli) segment ortalamasına katılmaz ama ayrı seri olarak görünür. 'eppo' kodları EPPO Global Database'den doğrulanarak doldurulacaktır.",
+ "surum": "0.1",
+ "yan": "\\bII\\b|DIGER|KUTU|PAKET|\\(TARLA\\)",
+ "urunler": [
+  {
+   "k": "domates",
+   "tr": "Domates",
+   "en": "Tomato",
+   "es": "Tomate",
+   "botanik": "Solanum lycopersicum",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^DOMATES",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "salkim",
+     "tr": "Salkım",
+     "en": "Truss",
+     "es": "En rama",
+     "kalip": "SALKIM"
+    },
+    {
+     "k": "ceri",
+     "tr": "Çeri / kokteyl",
+     "en": "Cherry / cocktail",
+     "es": "Cherry / cóctel",
+     "kalip": "CHERRY|CERI|KOKTEYL"
+    },
+    {
+     "k": "pembe",
+     "tr": "Pembe",
+     "en": "Pink",
+     "es": "Rosa",
+     "kalip": "PEMBE"
+    },
+    {
+     "k": "beef",
+     "tr": "Beef (iri)",
+     "en": "Beef",
+     "es": "Beef",
+     "kalip": "BEEF"
+    },
+    {
+     "k": "sera",
+     "tr": "Yuvarlak · sera",
+     "en": "Round · greenhouse",
+     "es": "Redondo · invernadero",
+     "kalip": "\\bSERA\\b"
+    },
+    {
+     "k": "tarla",
+     "tr": "Yuvarlak · tarla",
+     "en": "Round · open field",
+     "es": "Redondo · aire libre",
+     "kalip": "TARLA"
+    },
+    {
+     "k": "salcalik",
+     "tr": "Salçalık (sanayi)",
+     "en": "Processing",
+     "es": "Industria",
+     "kalip": "SALCALIK|RIO"
+    },
+    {
+     "k": "yerel",
+     "tr": "Yerel",
+     "en": "Local",
+     "es": "Local",
+     "kalip": "\\bARI\\b|AYAS"
+    },
+    {
+     "k": "diger",
+     "tr": "Diğer",
+     "en": "Other",
+     "es": "Otros",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "biber",
+   "tr": "Biber",
+   "en": "Pepper",
+   "es": "Pimiento",
+   "botanik": "Capsicum annuum",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^BIBER|^KALIFORNIYA",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "sivri",
+     "tr": "Sivri",
+     "en": "Sivri (long green)",
+     "es": "Sivri (verde largo)",
+     "kalip": "SIVRI"
+    },
+    {
+     "k": "carliston",
+     "tr": "Çarliston",
+     "en": "Charleston",
+     "es": "Charleston",
+     "kalip": "CARLISTON|TATLI"
+    },
+    {
+     "k": "blok",
+     "tr": "Kaliforniya (blok)",
+     "en": "Blocky (California)",
+     "es": "California",
+     "kalip": "KALIFORNIYA"
+    },
+    {
+     "k": "dolma",
+     "tr": "Dolma",
+     "en": "Dolma (bell)",
+     "es": "Dolma (morrón verde)",
+     "kalip": "DOLMA"
+    },
+    {
+     "k": "kirmizi",
+     "tr": "Kırmızı (kapya)",
+     "en": "Red (Kapia)",
+     "es": "Rojo (Kapia)",
+     "kalip": "KIRMIZI"
+    },
+    {
+     "k": "aci",
+     "tr": "Acı",
+     "en": "Hot",
+     "es": "Picante",
+     "kalip": "ACI|\\bCIN\\b|JALEPENO|MEKSIKA|SILI"
+    },
+    {
+     "k": "koy",
+     "tr": "Köy (mazo)",
+     "en": "Village (Mazo)",
+     "es": "Local (Mazo)",
+     "kalip": "\\bKOY\\b"
+    },
+    {
+     "k": "salcalik",
+     "tr": "Salçalık",
+     "en": "Processing",
+     "es": "Industria",
+     "kalip": "SALCALIK"
+    },
+    {
+     "k": "diger",
+     "tr": "Diğer",
+     "en": "Other",
+     "es": "Otros",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "hiyar",
+   "tr": "Hıyar (salatalık)",
+   "en": "Cucumber",
+   "es": "Pepino",
+   "botanik": "Cucumis sativus",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^SALATALIK|^HIYAR",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "silor",
+     "tr": "Silor",
+     "en": "Silor",
+     "es": "Silor",
+     "kalip": "SILOR"
+    },
+    {
+     "k": "kornison",
+     "tr": "Kornişon",
+     "en": "Gherkin",
+     "es": "Pepinillo",
+     "kalip": "KORNISON"
+    },
+    {
+     "k": "torba",
+     "tr": "Torba",
+     "en": "Bagged",
+     "es": "En bolsa",
+     "kalip": "TORBA"
+    },
+    {
+     "k": "yerel",
+     "tr": "Yerel (Çengelköy)",
+     "en": "Local (Çengelköy)",
+     "es": "Local (Çengelköy)",
+     "kalip": "CENGELKOY"
+    },
+    {
+     "k": "standart",
+     "tr": "Standart (kasa)",
+     "en": "Standard (crate)",
+     "es": "Estándar (caja)",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "patlican",
+   "tr": "Patlıcan",
+   "en": "Aubergine",
+   "es": "Berenjena",
+   "botanik": "Solanum melongena",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^PATLICAN",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "topan",
+     "tr": "Topan (bostan)",
+     "en": "Globe",
+     "es": "Globosa",
+     "kalip": "TOPAN|BOSTAN"
+    },
+    {
+     "k": "uzun",
+     "tr": "Uzun",
+     "en": "Long",
+     "es": "Larga",
+     "kalip": "UZUN"
+    },
+    {
+     "k": "diger",
+     "tr": "Diğer",
+     "en": "Other",
+     "es": "Otros",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "kabak",
+   "tr": "Kabak (sakız)",
+   "en": "Courgette",
+   "es": "Calabacín",
+   "botanik": "Cucurbita pepo",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^KABAK TAZE|^KABAK \\(?SAKIZ|^KABAK$",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "taze",
+     "tr": "Taze",
+     "en": "Fresh",
+     "es": "Fresco",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "bal-kabagi",
+   "tr": "Bal kabağı",
+   "en": "Winter squash",
+   "es": "Calabaza",
+   "botanik": "Cucurbita spp.",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^KABAK BAL|^BAL KABA",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "standart",
+     "tr": "Standart",
+     "en": "Standard",
+     "es": "Estándar",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "acur",
+   "tr": "Acur",
+   "en": "Armenian cucumber",
+   "es": "Pepino armenio",
+   "botanik": "Cucumis melo var. flexuosus",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^ACUR",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "alabas",
+   "tr": "Alabaş",
+   "en": "Kohlrabi",
+   "es": "Colinabo",
+   "botanik": "Brassica oleracea var. gongylodes",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^ALABAS",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "bakla",
+   "tr": "Bakla",
+   "en": "Broad bean",
+   "es": "Haba",
+   "botanik": "Vicia faba",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^BAKLA",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "bamya",
+   "tr": "Bamya",
+   "en": "Okra",
+   "es": "Quimbombó",
+   "botanik": "Abelmoschus esculentus",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^BAMYA",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "sera",
+     "tr": "Sera",
+     "en": "Greenhouse",
+     "es": "Invernadero",
+     "kalip": "SERA"
+    },
+    {
+     "k": "standart",
+     "tr": "Standart",
+     "en": "Standard",
+     "es": "Estándar",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "fasulye",
+   "tr": "Taze fasulye",
+   "en": "Green bean",
+   "es": "Judía verde",
+   "botanik": "Phaseolus vulgaris",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^FASULYE|^BARBUNYA",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "ayse",
+     "tr": "Ayşe kadın",
+     "en": "Ayşe Kadın",
+     "es": "Ayşe Kadın",
+     "kalip": "AYSE"
+    },
+    {
+     "k": "cali",
+     "tr": "Çalı",
+     "en": "Çalı (bush)",
+     "es": "Çalı",
+     "kalip": "CALI"
+    },
+    {
+     "k": "cino",
+     "tr": "Çino",
+     "en": "Çino",
+     "es": "Çino",
+     "kalip": "CINO"
+    },
+    {
+     "k": "barbunya",
+     "tr": "Barbunya (taze)",
+     "en": "Borlotti (fresh)",
+     "es": "Borlotti (fresca)",
+     "kalip": "BARBUN"
+    },
+    {
+     "k": "diger",
+     "tr": "Diğer",
+     "en": "Other",
+     "es": "Otros",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "bezelye",
+   "tr": "Bezelye",
+   "en": "Pea",
+   "es": "Guisante",
+   "botanik": "Pisum sativum",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^BEZELYE",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "deniz-borulcesi",
+   "tr": "Deniz börülcesi",
+   "en": "Samphire",
+   "es": "Salicornia",
+   "botanik": "Salicornia spp.",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^DENIZ BORULCE",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "borulce",
+   "tr": "Börülce",
+   "en": "Cowpea (fresh pods)",
+   "es": "Caupí",
+   "botanik": "Vigna unguiculata",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^BORULCE",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "brokoli",
+   "tr": "Brokoli",
+   "en": "Broccoli",
+   "es": "Brócoli",
+   "botanik": "Brassica oleracea var. italica",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^BROKOLI",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "cibez",
+   "tr": "Cibez",
+   "en": "Cibez (wild greens)",
+   "es": "Cibez",
+   "botanik": null,
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^CIBEZ",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "enginar",
+   "tr": "Enginar",
+   "en": "Artichoke",
+   "es": "Alcachofa",
+   "botanik": "Cynara cardunculus var. scolymus",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^ENGINAR",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "canak",
+     "tr": "Çanak",
+     "en": "Hearts",
+     "es": "Corazones",
+     "kalip": "CANAK"
+    },
+    {
+     "k": "standart",
+     "tr": "Bütün",
+     "en": "Whole",
+     "es": "Entera",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "havuc",
+   "tr": "Havuç",
+   "en": "Carrot",
+   "es": "Zanahoria",
+   "botanik": "Daucus carota",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^HAVUC",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "beypazari",
+     "tr": "Beypazarı",
+     "en": "Beypazarı",
+     "es": "Beypazarı",
+     "kalip": "BEYPAZARI"
+    },
+    {
+     "k": "takoz",
+     "tr": "Takoz",
+     "en": "Takoz",
+     "es": "Takoz",
+     "kalip": "TAKOZ"
+    },
+    {
+     "k": "standart",
+     "tr": "Standart",
+     "en": "Standard",
+     "es": "Estándar",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "ispanak",
+   "tr": "Ispanak",
+   "en": "Spinach",
+   "es": "Espinaca",
+   "botanik": "Spinacia oleracea",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^ISPANAK",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "karnabahar",
+   "tr": "Karnabahar",
+   "en": "Cauliflower",
+   "es": "Coliflor",
+   "botanik": "Brassica oleracea var. botrytis",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^KARNABAHAR",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "karpuz",
+   "tr": "Karpuz",
+   "en": "Watermelon",
+   "es": "Sandía",
+   "botanik": "Citrullus lanatus",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^KARPUZ",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "kavun",
+   "tr": "Kavun",
+   "en": "Melon",
+   "es": "Melón",
+   "botanik": "Cucumis melo",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^KAVUN|^KELEK",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "sera",
+     "tr": "Sera",
+     "en": "Greenhouse",
+     "es": "Invernadero",
+     "kalip": "SERA"
+    },
+    {
+     "k": "tarla",
+     "tr": "Tarla",
+     "en": "Open field",
+     "es": "Aire libre",
+     "kalip": "TARLA"
+    },
+    {
+     "k": "kirkagac",
+     "tr": "Kırkağaç",
+     "en": "Kırkağaç",
+     "es": "Kırkağaç",
+     "kalip": "KIRKAGAC"
+    },
+    {
+     "k": "kelek",
+     "tr": "Kelek (ham)",
+     "en": "Unripe (kelek)",
+     "es": "Verde (kelek)",
+     "kalip": "KELEK"
+    },
+    {
+     "k": "ithal",
+     "tr": "İthal",
+     "en": "Imported",
+     "es": "Importado",
+     "kalip": "ITHAL"
+    },
+    {
+     "k": "diger",
+     "tr": "Diğer",
+     "en": "Other",
+     "es": "Otros",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "kereviz",
+   "tr": "Kereviz",
+   "en": "Celeriac",
+   "es": "Apionabo",
+   "botanik": "Apium graveolens var. rapaceum",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^KEREVIZ",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "lahana",
+   "tr": "Lahana",
+   "en": "Cabbage",
+   "es": "Col",
+   "botanik": "Brassica oleracea",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^LAHANA",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "beyaz",
+     "tr": "Beyaz",
+     "en": "White",
+     "es": "Blanca",
+     "kalip": "BEYAZ"
+    },
+    {
+     "k": "kirmizi",
+     "tr": "Kırmızı",
+     "en": "Red",
+     "es": "Lombarda",
+     "kalip": "KIRMIZI"
+    },
+    {
+     "k": "kara",
+     "tr": "Kara",
+     "en": "Black (kale)",
+     "es": "Col negra",
+     "kalip": "KARA"
+    },
+    {
+     "k": "bruksel",
+     "tr": "Brüksel",
+     "en": "Brussels sprouts",
+     "es": "Coles de Bruselas",
+     "kalip": "BRU?KSEL"
+    }
+   ]
+  },
+  {
+   "k": "mantar",
+   "tr": "Mantar",
+   "en": "Mushroom",
+   "es": "Champiñón / seta",
+   "botanik": null,
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^MANTAR",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "istiridye",
+     "tr": "İstiridye",
+     "en": "Oyster",
+     "es": "Seta de ostra",
+     "kalip": "ISTIRIDYE"
+    },
+    {
+     "k": "kultur",
+     "tr": "Kültür",
+     "en": "Button",
+     "es": "Champiñón",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "marul",
+   "tr": "Marul",
+   "en": "Lettuce",
+   "es": "Lechuga",
+   "botanik": "Lactuca sativa",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^MARUL",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "aysberg",
+     "tr": "Aysberg",
+     "en": "Iceberg",
+     "es": "Iceberg",
+     "kalip": "AYSBERG"
+    },
+    {
+     "k": "kivircik",
+     "tr": "Kıvırcık",
+     "en": "Leaf",
+     "es": "Hoja rizada",
+     "kalip": "KIVIRCIK"
+    },
+    {
+     "k": "lolorosso",
+     "tr": "Lollo rosso",
+     "en": "Lollo rosso",
+     "es": "Lollo rosso",
+     "kalip": "LOLO"
+    },
+    {
+     "k": "marul",
+     "tr": "Marul (romaine)",
+     "en": "Romaine",
+     "es": "Romana",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "pancar",
+   "tr": "Pancar",
+   "en": "Beetroot",
+   "es": "Remolacha",
+   "botanik": "Beta vulgaris",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^PANCAR",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "patates",
+   "tr": "Patates",
+   "en": "Potato",
+   "es": "Patata",
+   "botanik": "Solanum tuberosum",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^PATATES",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "taze",
+     "tr": "Taze",
+     "en": "New",
+     "es": "Nueva",
+     "kalip": "TAZE"
+    },
+    {
+     "k": "eski",
+     "tr": "Eski (depo)",
+     "en": "Stored",
+     "es": "Conservación",
+     "kalip": "ESKI"
+    },
+    {
+     "k": "yerel",
+     "tr": "Ödemiş",
+     "en": "Ödemiş",
+     "es": "Ödemiş",
+     "kalip": "ODEMIS"
+    },
+    {
+     "k": "calma",
+     "tr": "Çalma",
+     "en": "Çalma",
+     "es": "Çalma",
+     "kalip": "CALMA"
+    },
+    {
+     "k": "standart",
+     "tr": "Standart",
+     "en": "Standard",
+     "es": "Estándar",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "pazi",
+   "tr": "Pazı",
+   "en": "Chard",
+   "es": "Acelga",
+   "botanik": "Beta vulgaris var. cicla",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^PAZI",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "pirasa",
+   "tr": "Pırasa",
+   "en": "Leek",
+   "es": "Puerro",
+   "botanik": "Allium ampeloprasum",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^PIRASA",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "sarimsak",
+   "tr": "Sarımsak",
+   "en": "Garlic",
+   "es": "Ajo",
+   "botanik": "Allium sativum",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^SARIMSAK",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "taze",
+     "tr": "Taze",
+     "en": "Fresh",
+     "es": "Tierno",
+     "kalip": "TAZE"
+    },
+    {
+     "k": "ithal",
+     "tr": "İthal",
+     "en": "Imported",
+     "es": "Importado",
+     "kalip": "ITHAL"
+    },
+    {
+     "k": "kuru",
+     "tr": "Kuru",
+     "en": "Dry",
+     "es": "Seco",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "semizotu",
+   "tr": "Semizotu",
+   "en": "Purslane",
+   "es": "Verdolaga",
+   "botanik": "Portulaca oleracea",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^SEMIZ",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "sogan",
+   "tr": "Soğan",
+   "en": "Onion",
+   "es": "Cebolla",
+   "botanik": "Allium cepa",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^SOGAN",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "kuru",
+     "tr": "Kuru",
+     "en": "Dry",
+     "es": "Seca",
+     "kalip": "KURU"
+    },
+    {
+     "k": "kirmizi",
+     "tr": "Kırmızı / mor",
+     "en": "Red",
+     "es": "Morada",
+     "kalip": "KIRMIZI|\\bMOR\\b"
+    },
+    {
+     "k": "taze",
+     "tr": "Taze",
+     "en": "Spring",
+     "es": "Cebolleta",
+     "kalip": "TAZE"
+    },
+    {
+     "k": "yahnilik",
+     "tr": "Yahnilik",
+     "en": "Small",
+     "es": "Pequeña",
+     "kalip": "YAHNI"
+    }
+   ]
+  },
+  {
+   "k": "turp",
+   "tr": "Turp",
+   "en": "Radish",
+   "es": "Rábano",
+   "botanik": "Raphanus sativus",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^TURP",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "kirmizi",
+     "tr": "Kırmızı",
+     "en": "Red",
+     "es": "Rojo",
+     "kalip": "KIRMIZI"
+    },
+    {
+     "k": "findik",
+     "tr": "Fındık",
+     "en": "Round (bunch)",
+     "es": "Redondo",
+     "kalip": "FINDIK"
+    },
+    {
+     "k": "beyaz",
+     "tr": "Beyaz",
+     "en": "White",
+     "es": "Blanco",
+     "kalip": "BEYAZ"
+    },
+    {
+     "k": "siyah",
+     "tr": "Siyah",
+     "en": "Black",
+     "es": "Negro",
+     "kalip": "SIYAH"
+    },
+    {
+     "k": "japon",
+     "tr": "Japon",
+     "en": "Daikon",
+     "es": "Daikon",
+     "kalip": "JAPON"
+    },
+    {
+     "k": "diger",
+     "tr": "Diğer",
+     "en": "Other",
+     "es": "Otros",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "salgam",
+   "tr": "Şalgam",
+   "en": "Turnip",
+   "es": "Nabo",
+   "botanik": "Brassica rapa subsp. rapa",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^SALGAM",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "dari",
+   "tr": "Mısır (koçan)",
+   "en": "Sweet corn (cob)",
+   "es": "Maíz dulce (mazorca)",
+   "botanik": "Zea mays",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^DARI",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "yaprak",
+   "tr": "Asma yaprağı",
+   "en": "Vine leaves",
+   "es": "Hojas de parra",
+   "botanik": "Vitis vinifera",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^YAPRAK",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "taze",
+     "tr": "Taze",
+     "en": "Fresh",
+     "es": "Frescas",
+     "kalip": "TAZE"
+    },
+    {
+     "k": "salamura",
+     "tr": "Salamura",
+     "en": "Brined",
+     "es": "En salmuera",
+     "kalip": "SALAMURA"
+    }
+   ]
+  },
+  {
+   "k": "yerelmasi",
+   "tr": "Yerelması",
+   "en": "Jerusalem artichoke",
+   "es": "Tupinambo",
+   "botanik": "Helianthus tuberosus",
+   "eppo": null,
+   "tur": "Sebze",
+   "izmir": "^YERELMASI",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "dereotu",
+   "tr": "Dereotu",
+   "en": "Dill",
+   "es": "Eneldo",
+   "botanik": "Anethum graveolens",
+   "eppo": null,
+   "tur": "Yeşillik",
+   "izmir": "DEREOTU",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "maydanoz",
+   "tr": "Maydanoz",
+   "en": "Parsley",
+   "es": "Perejil",
+   "botanik": "Petroselinum crispum",
+   "eppo": null,
+   "tur": "Yeşillik",
+   "izmir": "MAYDONOZ|MAYDANOZ",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "nane",
+   "tr": "Nane",
+   "en": "Mint",
+   "es": "Hierbabuena",
+   "botanik": "Mentha spp.",
+   "eppo": null,
+   "tur": "Yeşillik",
+   "izmir": "\\bNANE",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "reyhan",
+   "tr": "Reyhan",
+   "en": "Basil",
+   "es": "Albahaca",
+   "botanik": "Ocimum basilicum",
+   "eppo": null,
+   "tur": "Yeşillik",
+   "izmir": "REYHAN",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "roka",
+   "tr": "Roka",
+   "en": "Rocket",
+   "es": "Rúcula",
+   "botanik": "Eruca vesicaria",
+   "eppo": null,
+   "tur": "Yeşillik",
+   "izmir": "ROKA",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "tere",
+   "tr": "Tere",
+   "en": "Garden cress",
+   "es": "Mastuerzo",
+   "botanik": "Lepidium sativum",
+   "eppo": null,
+   "tur": "Yeşillik",
+   "izmir": "\\bTERE",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "zencefil",
+   "tr": "Zencefil",
+   "en": "Ginger",
+   "es": "Jengibre",
+   "botanik": "Zingiber officinale",
+   "eppo": null,
+   "tur": "İthal",
+   "izmir": "^ZENCEFIL",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "armut",
+   "tr": "Armut",
+   "en": "Pear",
+   "es": "Pera",
+   "botanik": "Pyrus communis",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^ARMUT",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "deveci",
+     "tr": "Deveci",
+     "en": "Deveci",
+     "es": "Deveci",
+     "kalip": "DEVECI"
+    },
+    {
+     "k": "santa-maria",
+     "tr": "Santa Maria",
+     "en": "Santa Maria",
+     "es": "Santa María",
+     "kalip": "MARIA"
+    },
+    {
+     "k": "akca",
+     "tr": "Akça",
+     "en": "Akça",
+     "es": "Akça",
+     "kalip": "AKCA"
+    },
+    {
+     "k": "limon",
+     "tr": "Limon",
+     "en": "Limon",
+     "es": "Limon",
+     "kalip": "LIMON"
+    },
+    {
+     "k": "ithal",
+     "tr": "İthal",
+     "en": "Imported",
+     "es": "Importada",
+     "kalip": "ITHAL"
+    },
+    {
+     "k": "diger",
+     "tr": "Diğer / muhtelif",
+     "en": "Other / mixed",
+     "es": "Otras",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "ayva",
+   "tr": "Ayva",
+   "en": "Quince",
+   "es": "Membrillo",
+   "botanik": "Cydonia oblonga",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^AYVA",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "badem-cagla",
+   "tr": "Çağla bademi",
+   "en": "Green almond",
+   "es": "Almendra verde",
+   "botanik": "Prunus dulcis",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^BADEM",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "cennet-elmasi",
+   "tr": "Cennet elması (Trabzon hurması)",
+   "en": "Persimmon",
+   "es": "Caqui",
+   "botanik": "Diospyros kaki",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^CENNET",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "cilek",
+   "tr": "Çilek",
+   "en": "Strawberry",
+   "es": "Fresa",
+   "botanik": "Fragaria × ananassa",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^CILEK",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "dut",
+   "tr": "Dut",
+   "en": "Mulberry",
+   "es": "Mora",
+   "botanik": "Morus spp.",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^DUT",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "elma",
+   "tr": "Elma",
+   "en": "Apple",
+   "es": "Manzana",
+   "botanik": "Malus domestica",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^ELMA",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "golden",
+     "tr": "Golden",
+     "en": "Golden",
+     "es": "Golden",
+     "kalip": "GOLDEN"
+    },
+    {
+     "k": "starking",
+     "tr": "Starking",
+     "en": "Starking",
+     "es": "Starking",
+     "kalip": "STARKING"
+    },
+    {
+     "k": "granny",
+     "tr": "Granny Smith",
+     "en": "Granny Smith",
+     "es": "Granny Smith",
+     "kalip": "GSMIT|GRANNY"
+    },
+    {
+     "k": "fuji",
+     "tr": "Fuji",
+     "en": "Fuji",
+     "es": "Fuji",
+     "kalip": "FUJI"
+    },
+    {
+     "k": "gala",
+     "tr": "Gala",
+     "en": "Gala",
+     "es": "Gala",
+     "kalip": "GALA"
+    },
+    {
+     "k": "amasya",
+     "tr": "Amasya",
+     "en": "Amasya",
+     "es": "Amasya",
+     "kalip": "AMASYA"
+    },
+    {
+     "k": "arjantin",
+     "tr": "Arjantin",
+     "en": "Arjantin",
+     "es": "Arjantin",
+     "kalip": "ARJANTIN"
+    },
+    {
+     "k": "diger",
+     "tr": "Diğer / muhtelif",
+     "en": "Other / mixed",
+     "es": "Otras",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "erik",
+   "tr": "Erik",
+   "en": "Plum",
+   "es": "Ciruela",
+   "botanik": "Prunus spp.",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^ERIK",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "anjelika",
+     "tr": "Anjelika",
+     "en": "Anjelika",
+     "es": "Anjelika",
+     "kalip": "ANJELIKA"
+    },
+    {
+     "k": "can",
+     "tr": "Can (yeşil)",
+     "en": "Can (green)",
+     "es": "Can (verde)",
+     "kalip": "\\bCAN\\b"
+    },
+    {
+     "k": "papaz",
+     "tr": "Papaz",
+     "en": "Papaz",
+     "es": "Papaz",
+     "kalip": "PAPAZ"
+    },
+    {
+     "k": "italyan",
+     "tr": "İtalyan",
+     "en": "Italian",
+     "es": "Italiana",
+     "kalip": "ITALYAN"
+    },
+    {
+     "k": "murdum",
+     "tr": "Mürdüm",
+     "en": "Damson",
+     "es": "Damascena",
+     "kalip": "MURDUM"
+    },
+    {
+     "k": "diger",
+     "tr": "Diğer / muhtelif",
+     "en": "Other / mixed",
+     "es": "Otras",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "greyfurt",
+   "tr": "Greyfurt",
+   "en": "Grapefruit",
+   "es": "Pomelo",
+   "botanik": "Citrus × paradisi",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^GR[EA]YFURT",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "hunnap",
+   "tr": "Hünnap",
+   "en": "Jujube",
+   "es": "Azufaifa",
+   "botanik": "Ziziphus jujuba",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^HUNNAP",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "hurma",
+   "tr": "Hurma",
+   "en": "Hurma",
+   "es": "Hurma",
+   "botanik": null,
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^HURMA",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "incir",
+   "tr": "İncir",
+   "en": "Fig",
+   "es": "Higo",
+   "botanik": "Ficus carica",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^INCIR",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "siyah",
+     "tr": "Siyah",
+     "en": "Black",
+     "es": "Negro",
+     "kalip": "SIYAH"
+    },
+    {
+     "k": "beyaz",
+     "tr": "Beyaz",
+     "en": "White",
+     "es": "Blanco",
+     "kalip": "BEYAZ"
+    },
+    {
+     "k": "bardacik",
+     "tr": "Bardacık",
+     "en": "Bardacık",
+     "es": "Bardacık",
+     "kalip": "BARDACIK"
+    },
+    {
+     "k": "aydin",
+     "tr": "Aydın",
+     "en": "Aydın",
+     "es": "Aydın",
+     "kalip": "AYDIN"
+    },
+    {
+     "k": "standart",
+     "tr": "Standart",
+     "en": "Standard",
+     "es": "Estándar",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "kayisi",
+   "tr": "Kayısı",
+   "en": "Apricot",
+   "es": "Albaricoque",
+   "botanik": "Prunus armeniaca",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^KAYISI|^MALATYA KAYISI",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "malatya",
+     "tr": "Malatya",
+     "en": "Malatya",
+     "es": "Malatya",
+     "kalip": "MALATYA"
+    },
+    {
+     "k": "igdir",
+     "tr": "Iğdır",
+     "en": "Iğdır",
+     "es": "Iğdır",
+     "kalip": "IGDIR"
+    },
+    {
+     "k": "tokali",
+     "tr": "Tokalı",
+     "en": "Tokalı",
+     "es": "Tokalı",
+     "kalip": "TOKALI"
+    },
+    {
+     "k": "sekerpare",
+     "tr": "Şekerpare",
+     "en": "Şekerpare",
+     "es": "Şekerpare",
+     "kalip": "SEKERPARE"
+    },
+    {
+     "k": "diger",
+     "tr": "Diğer / muhtelif",
+     "en": "Other / mixed",
+     "es": "Otros",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "kestane",
+   "tr": "Kestane",
+   "en": "Chestnut",
+   "es": "Castaña",
+   "botanik": "Castanea sativa",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^KESTANE",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "kiraz",
+   "tr": "Kiraz",
+   "en": "Sweet cherry",
+   "es": "Cereza",
+   "botanik": "Prunus avium",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^KIRAZ",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "napolyon",
+     "tr": "Napolyon",
+     "en": "Napoleon",
+     "es": "Napoleón",
+     "kalip": "NAPOLYON"
+    },
+    {
+     "k": "salihli",
+     "tr": "Salihli",
+     "en": "Salihli",
+     "es": "Salihli",
+     "kalip": "SALIHLI"
+    },
+    {
+     "k": "diger",
+     "tr": "Diğer / muhtelif",
+     "en": "Other / mixed",
+     "es": "Otras",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "kivi",
+   "tr": "Kivi",
+   "en": "Kiwifruit",
+   "es": "Kiwi",
+   "botanik": "Actinidia deliciosa",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^KIVI",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "ithal",
+     "tr": "İthal",
+     "en": "Imported",
+     "es": "Importado",
+     "kalip": "ITHAL"
+    },
+    {
+     "k": "yerli",
+     "tr": "Yerli",
+     "en": "Domestic",
+     "es": "Nacional",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "kizilcik",
+   "tr": "Kızılcık",
+   "en": "Cornelian cherry",
+   "es": "Cornejo",
+   "botanik": "Cornus mas",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^KIZILCIK",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "limon",
+   "tr": "Limon",
+   "en": "Lemon",
+   "es": "Limón",
+   "botanik": "Citrus limon",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^LIMON",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "lamas",
+     "tr": "Lamas",
+     "en": "Lamas",
+     "es": "Lamas",
+     "kalip": "LAMAS"
+    },
+    {
+     "k": "mayer",
+     "tr": "Mayer",
+     "en": "Meyer",
+     "es": "Meyer",
+     "kalip": "MAYER"
+    },
+    {
+     "k": "enter",
+     "tr": "Enter",
+     "en": "Enter",
+     "es": "Enter",
+     "kalip": "ENTER"
+    },
+    {
+     "k": "kasa",
+     "tr": "Kasa",
+     "en": "Crate",
+     "es": "Caja",
+     "kalip": "KASA"
+    },
+    {
+     "k": "dokme",
+     "tr": "Dökme",
+     "en": "Loose",
+     "es": "A granel",
+     "kalip": "DOKME"
+    },
+    {
+     "k": "yatak",
+     "tr": "Yatak",
+     "en": "Yatak",
+     "es": "Yatak",
+     "kalip": "YATAK"
+    },
+    {
+     "k": "diger",
+     "tr": "Diğer",
+     "en": "Other",
+     "es": "Otros",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "malta-erigi",
+   "tr": "Malta eriği",
+   "en": "Loquat",
+   "es": "Níspero",
+   "botanik": "Eriobotrya japonica",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^MALTA",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "musmula",
+   "tr": "Muşmula",
+   "en": "Medlar",
+   "es": "Níspero europeo",
+   "botanik": "Mespilus germanica",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^MUSMULA",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "mandalina",
+   "tr": "Mandalina",
+   "en": "Mandarin",
+   "es": "Mandarina",
+   "botanik": "Citrus reticulata",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^MANDALINA",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "satsuma",
+     "tr": "Satsuma",
+     "en": "Satsuma",
+     "es": "Satsuma",
+     "kalip": "SATSUMA"
+    },
+    {
+     "k": "murkot",
+     "tr": "Murcott",
+     "en": "Murcott",
+     "es": "Murcott",
+     "kalip": "MURKOT"
+    },
+    {
+     "k": "klementin",
+     "tr": "Klementin",
+     "en": "Clementine",
+     "es": "Clementina",
+     "kalip": "CLEMENTIN"
+    },
+    {
+     "k": "takoz",
+     "tr": "Takoz",
+     "en": "Takoz",
+     "es": "Takoz",
+     "kalip": "TAKOZ"
+    },
+    {
+     "k": "standart",
+     "tr": "Standart",
+     "en": "Standard",
+     "es": "Estándar",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "muz",
+   "tr": "Muz",
+   "en": "Banana",
+   "es": "Plátano",
+   "botanik": "Musa spp.",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^MUZ",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "ithal",
+     "tr": "İthal",
+     "en": "Imported",
+     "es": "Importado",
+     "kalip": "ITHAL"
+    },
+    {
+     "k": "yerli",
+     "tr": "Yerli",
+     "en": "Domestic",
+     "es": "Nacional",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "nar",
+   "tr": "Nar",
+   "en": "Pomegranate",
+   "es": "Granada",
+   "botanik": "Punica granatum",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^NAR\\b",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "nektarin",
+   "tr": "Nektarin",
+   "en": "Nectarine",
+   "es": "Nectarina",
+   "botanik": "Prunus persica var. nucipersica",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^NEKTARIN",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "beyaz",
+     "tr": "Beyaz",
+     "en": "White",
+     "es": "Blanca",
+     "kalip": "BEYAZ"
+    },
+    {
+     "k": "kirmizi",
+     "tr": "Kırmızı",
+     "en": "Red",
+     "es": "Roja",
+     "kalip": "KIRMIZI"
+    }
+   ]
+  },
+  {
+   "k": "portakal",
+   "tr": "Portakal",
+   "en": "Orange",
+   "es": "Naranja",
+   "botanik": "Citrus sinensis",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^PORTAKAL",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "washington",
+     "tr": "Washington",
+     "en": "Washington Navel",
+     "es": "Washington Navel",
+     "kalip": "WASHINGTON"
+    },
+    {
+     "k": "valencia",
+     "tr": "Valencia",
+     "en": "Valencia",
+     "es": "Valencia",
+     "kalip": "VALENCIA"
+    },
+    {
+     "k": "finike",
+     "tr": "Finike",
+     "en": "Finike",
+     "es": "Finike",
+     "kalip": "FINIKE"
+    },
+    {
+     "k": "sikmalik",
+     "tr": "Sıkmalık",
+     "en": "Juicing",
+     "es": "Para zumo",
+     "kalip": "SIKMALIK"
+    },
+    {
+     "k": "standart",
+     "tr": "Standart / muhtelif",
+     "en": "Standard / mixed",
+     "es": "Estándar",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "seftali",
+   "tr": "Şeftali",
+   "en": "Peach",
+   "es": "Melocotón",
+   "botanik": "Prunus persica",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^SEFTALI",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "uzum",
+   "tr": "Üzüm",
+   "en": "Grape",
+   "es": "Uva",
+   "botanik": "Vitis vinifera",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^UZUM",
+   "ab": [],
+   "segmentler": [
+    {
+     "k": "sultaniye",
+     "tr": "Sultaniye",
+     "en": "Sultana",
+     "es": "Sultanina",
+     "kalip": "SULTANIYE"
+    },
+    {
+     "k": "razaki",
+     "tr": "Razakı",
+     "en": "Razakı",
+     "es": "Razakı",
+     "kalip": "RAZAKI"
+    },
+    {
+     "k": "red-globe",
+     "tr": "Red Globe",
+     "en": "Red Globe",
+     "es": "Red Globe",
+     "kalip": "RED GLOBE"
+    },
+    {
+     "k": "siyah",
+     "tr": "Siyah",
+     "en": "Black",
+     "es": "Negra",
+     "kalip": "SIYAH"
+    },
+    {
+     "k": "beyaz",
+     "tr": "Beyaz",
+     "en": "White",
+     "es": "Blanca",
+     "kalip": "BEYAZ"
+    },
+    {
+     "k": "kavacik",
+     "tr": "Kavacık",
+     "en": "Kavacık",
+     "es": "Kavacık",
+     "kalip": "KAVACIK"
+    },
+    {
+     "k": "ithal",
+     "tr": "İthal",
+     "en": "Imported",
+     "es": "Importada",
+     "kalip": "ITHAL"
+    },
+    {
+     "k": "diger",
+     "tr": "Diğer / muhtelif",
+     "en": "Other / mixed",
+     "es": "Otras",
+     "kalip": null
+    }
+   ]
+  },
+  {
+   "k": "visne",
+   "tr": "Vişne",
+   "en": "Sour cherry",
+   "es": "Guinda",
+   "botanik": "Prunus cerasus",
+   "eppo": null,
+   "tur": "Meyve",
+   "izmir": "^VISNE",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "ananas",
+   "tr": "Ananas",
+   "en": "Pineapple",
+   "es": "Piña",
+   "botanik": "Ananas comosus",
+   "eppo": null,
+   "tur": "İthal",
+   "izmir": "^ANANAS",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "avokado",
+   "tr": "Avokado",
+   "en": "Avocado",
+   "es": "Aguacate",
+   "botanik": "Persea americana",
+   "eppo": null,
+   "tur": "İthal",
+   "izmir": "^AV[AO]KADO",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "hindistan-cevizi",
+   "tr": "Hindistan cevizi",
+   "en": "Coconut",
+   "es": "Coco",
+   "botanik": "Cocos nucifera",
+   "eppo": null,
+   "tur": "İthal",
+   "izmir": "^HINDISTAN",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "mango",
+   "tr": "Mango",
+   "en": "Mango",
+   "es": "Mango",
+   "botanik": "Mangifera indica",
+   "eppo": null,
+   "tur": "İthal",
+   "izmir": "^MANGO",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "pitahaya",
+   "tr": "Pitahaya",
+   "en": "Dragon fruit",
+   "es": "Pitahaya",
+   "botanik": "Selenicereus spp.",
+   "eppo": null,
+   "tur": "İthal",
+   "izmir": "^PITAHAYA",
+   "ab": [],
+   "segmentler": []
+  },
+  {
+   "k": "pomelo",
+   "tr": "Pomelo",
+   "en": "Pomelo",
+   "es": "Pomelo chino",
+   "botanik": "Citrus maxima",
+   "eppo": null,
+   "tur": "İthal",
+   "izmir": "^POMELO",
+   "ab": [],
+   "segmentler": []
+  }
+ ]
+}

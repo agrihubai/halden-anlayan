@@ -1,11 +1,10 @@
-"""Ham veriden (data/ham/) panonun okuduğu dosyaları üretir.
+"""Ham veriden (data/ham/) panonun okuduğu dosyaları üretir; ürün ve segmentleri sozluk/urunler.json'dan alır.
 
-- data/urunler.json        : ürün listesi (tür, ana sınıflar, çeşit sayıları, İspanya eşleşmesi)
-- data/urun/<ürün>.json    : bir ürünün bütün çeşitleri (Türkiye, TL) ve İspanya serileri (EUR/kg)
-- data/_kesif/izmir-adlar.csv, ab-adlar.csv : kaynaklardaki bütün ad ve çeşitlerin envanteri
-
-Sınıflandırma scripts/siniflama.json dosyasından okunur. Orada kuralı olmayan adlar otomatik ayrıştırılır:
-"DOMATES (SALKIM)" → ürün DOMATES, sınıf SALKIM; parantez yoksa ilk kelime ürün, gerisi sınıf sayılır.
+- data/urunler.json      : ürün listesi (tür, segmentler, gün sayısı, son tarih, İspanya verisi var mı)
+- data/urun/<ürün>.json  : ürünün segmentleri, segment ortalama serileri, haldeki her adın serisi (TL)
+                           ve İspanya serileri (EUR/kg)
+- data/_kesif/izmir-adlar.csv : haldeki her adın hangi ürün ve segmente gittiği (kontrol için)
+- data/_kesif/ab-adlar.csv    : AB verisindeki ürün, aşama ve çeşitler
 """
 from __future__ import annotations
 
@@ -13,6 +12,8 @@ import csv
 import gzip
 import json
 import re
+import statistics
+import sys
 import unicodedata
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -20,54 +21,29 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 RAW = DATA / "ham"
-CONF = json.loads((Path(__file__).resolve().parent / "siniflama.json").read_text(encoding="utf-8"))
+SOZLUK = json.loads((ROOT / "sozluk" / "urunler.json").read_text(encoding="utf-8"))
+YAN = re.compile(SOZLUK["yan"])
 
 
 def fold(s: str) -> str:
+    """Hal adını karşılaştırma biçimine getirir: büyük harf, Türkçe karakterler sadeleşmiş, tek boşluk."""
     s = (s or "").replace("ı", "i").replace("İ", "I")
     s = unicodedata.normalize("NFKD", s)
     s = "".join(c for c in s if not unicodedata.combining(c))
-    return re.sub(r"\s+", " ", s.upper()).strip()
+    s = re.sub(r"\s*\(\s*", " (", s.upper())
+    s = re.sub(r"\s*\)\s*", ") ", s)
+    return re.sub(r"\s+", " ", s).strip()
 
 
-def slug(s: str) -> str:
-    return re.sub(r"[^a-z0-9]+", "-", fold(s).lower()).strip("-")
-
-
-def title_tr(s: str) -> str:
-    s = s.strip()
-    words = []
-    for w in re.split(r"(\s+|\(|\)|/|-)", s):
-        if not w or not w.strip() or w in "()/-":
-            words.append(w)
-            continue
-        lw = w.replace("I", "ı").replace("İ", "i").lower()
-        words.append(lw[:1].replace("i", "İ").replace("ı", "I").upper() + lw[1:])
-    return "".join(words)
-
-
-def classify(name: str) -> tuple[str, str]:
-    """(ürün adı, sınıf) döndürür."""
-    n = fold(name)
-    for rule in CONF.get("kurallar", []):
-        if re.search(rule["kalip"], n):
-            return rule["urun"], rule.get("sinif") or auto(name)[1]
-    return auto(name)
-
-
-def auto(name: str) -> tuple[str, str]:
-    s = re.sub(r"\s+", " ", name).strip()
-    n = fold(s)
-    for multi in CONF.get("cok_kelimeli", []):
-        if n.startswith(fold(multi)):
-            rest = s[len(multi):].strip(" ()-")
-            return title_tr(multi), title_tr(rest) or "Standart"
-    m = re.match(r"^([^()]+?)\s*\((.+)\)\s*(.*)$", s)
-    if m:
-        extra = (" " + m[3]).rstrip() if m[3] else ""
-        return title_tr(m[1]), title_tr(m[2] + extra)
-    parts = s.split(" ", 1)
-    return title_tr(parts[0]), title_tr(parts[1]) if len(parts) > 1 else "Standart"
+def classify(fname: str):
+    for u in SOZLUK["urunler"]:
+        if re.search(u["izmir"], fname):
+            for s in u["segmentler"]:
+                if s["kalip"] and re.search(s["kalip"], fname):
+                    return u, s
+            default = next((s for s in u["segmentler"] if not s["kalip"]), None)
+            return u, default
+    return None, None
 
 
 def f(v):
@@ -88,9 +64,10 @@ def per_kg(price: float, unit: str) -> float:
 
 
 def main() -> None:
-    # ---- Türkiye
-    series = defaultdict(list)          # ad -> [[tarih, lo, hi, avg]]
-    meta = {}                           # ad -> (tür, birim sayacı)
+    # ---- Türkiye: aynı adın farklı yazımları (BIBER SIVRI / BİBER SİVRİ) tek seride birleşir
+    series = defaultdict(dict)                 # fold(ad) -> {tarih: [lo, hi, avg]}
+    spelled = defaultdict(Counter)             # fold(ad) -> {yazım: son tarih}
+    units = defaultdict(Counter)
     for p in sorted((RAW / "izmir").glob("*.csv.gz")):
         with gzip.open(p, "rt", encoding="utf-8") as fh:
             for r in csv.DictReader(fh):
@@ -99,25 +76,30 @@ def main() -> None:
                     avg = round((lo + hi) / 2, 3)
                 if avg is None:
                     continue
-                series[r["v"]].append([r["d"], lo, hi, avg])
-                t, u = meta.setdefault(r["v"], (Counter(), Counter()))
-                t[r["tur"]] += 1
-                u[r["u"]] += 1
+                key = fold(r["v"])
+                series[key][r["d"]] = [lo, hi, avg]
+                spelled[key][r["v"].strip()] = max(spelled[key][r["v"].strip()], int(r["d"].replace("-", "")))
+                units[key][r["u"].upper()] += 1
 
-    products = defaultdict(lambda: {"cesitler": [], "seriler": {}, "tur": Counter()})
-    inventory = []
-    for name, rows in series.items():
-        rows.sort()
-        urun, sinif = classify(name)
-        tur = meta[name][0].most_common(1)[0][0] if meta[name][0] else ""
-        birim = meta[name][1].most_common(1)[0][0] if meta[name][1] else ""
-        k = slug(urun)
-        P = products[k]
-        P["ad"] = urun
-        P["tur"][title_tr(tur) if tur else "Diğer"] += len(rows)
-        P["cesitler"].append({"ad": name, "sinif": sinif, "birim": birim, "n": len(rows), "ilk": rows[0][0], "son": rows[-1][0]})
-        P["seriler"][name] = rows
-        inventory.append([tur, name, urun, sinif, birim, len(rows), rows[0][0], rows[-1][0]])
+    products = {}
+    inventory, unmatched = [], []
+    for key, days in series.items():
+        u, s = classify(key)
+        name = max(spelled[key].items(), key=lambda x: x[1])[0]   # en son kullanılan yazım
+        rows = [[d, *v] for d, v in sorted(days.items())]
+        unit = units[key].most_common(1)[0][0]
+        if not u:
+            unmatched.append(name)
+            inventory.append(["", "", name, unit, len(rows), rows[0][0], rows[-1][0], ""])
+            continue
+        if not s:
+            s = {"k": "standart", "tr": "Standart", "en": "Standard", "es": "Estándar"}
+        P = products.setdefault(u["k"], {"u": u, "ad": {}, "seg": defaultdict(list)})
+        yan = bool(YAN.search(key))
+        P["ad"][key] = {"ad": name, "anahtar": key, "segment": s["k"], "birim": unit, "yan": yan,
+                        "n": len(rows), "ilk": rows[0][0], "son": rows[-1][0], "rows": rows}
+        P["seg"][s["k"]].append(key)
+        inventory.append([u["k"], s["k"], name, unit, len(rows), rows[0][0], rows[-1][0], "yan" if yan else ""])
 
     # ---- İspanya
     es = defaultdict(lambda: defaultdict(dict))
@@ -126,12 +108,11 @@ def main() -> None:
     if p.exists():
         with gzip.open(p, "rt", encoding="utf-8") as fh:
             for r in json.load(fh):
-                es_inv[(r["urun"], r["st"], r["v"], r["u"])] += 1
+                es_inv[(r["urun"], r["st"], r["v"], r["u"], r.get("per", ""))] += 1
                 if r.get("per") and r["per"].lower() != "week":
                     continue  # grafikte sadece haftalık fiyatlar
                 label = " · ".join(x for x in (r["st"], r["v"]) if x) or "—"
                 es[r["urun"]][label][r["d"]] = round(per_kg(r["price"], r["u"]), 4)
-    es_map = {slug(k): v for k, v in CONF.get("ispanya", {}).items()}
 
     # ---- yaz
     out = DATA / "urun"
@@ -139,33 +120,56 @@ def main() -> None:
     for old in out.glob("*.json"):
         old.unlink()
     index = []
-    for k, P in products.items():
-        P["cesitler"].sort(key=lambda c: (c["sinif"], -c["n"]))
-        es_names = es_map.get(k, [])
+    for u in SOZLUK["urunler"]:
+        P = products.get(u["k"])
+        if not P:
+            continue
+        segs = []
+        for s in u["segmentler"] + [{"k": "standart", "tr": "Standart", "en": "Standard", "es": "Estándar"}]:
+            keys = P["seg"].get(s["k"])
+            if not keys or any(x["k"] == s["k"] for x in segs):
+                continue
+            main_keys = [k for k in keys if not P["ad"][k]["yan"]] or keys
+            # segment serisi: o gün işlem gören ana adların ortalaması; en düşük/en yüksek: o günkü uç değerler
+            by_day = defaultdict(list)
+            for k in main_keys:
+                for d, lo, hi, avg in P["ad"][k]["rows"]:
+                    by_day[d].append((lo, hi, avg))
+            seri = []
+            for d in sorted(by_day):
+                v = by_day[d]
+                los = [x[0] for x in v if x[0]]
+                his = [x[1] for x in v if x[1]]
+                seri.append([d, min(los) if los else None, max(his) if his else None, round(statistics.fmean(x[2] for x in v), 3)])
+            units_ = Counter(P["ad"][k]["birim"] for k in main_keys)
+            segs.append({"k": s["k"], "tr": s["tr"], "en": s["en"], "es": s["es"], "birim": units_.most_common(1)[0][0],
+                         "adlar": sorted(keys, key=lambda k: (P["ad"][k]["yan"], -P["ad"][k]["n"])),
+                         "n": len(seri), "ilk": seri[0][0], "son": seri[-1][0], "seri": seri})
         es_series = {}
-        for en in es_names:
+        for en in u.get("ab", []):
             for lab, d in es.get(en, {}).items():
                 es_series[lab] = sorted(d.items())
-        son = max(c["son"] for c in P["cesitler"])
-        doc = {"urun": k, "ad": P["ad"], "tr": {"cesitler": P["cesitler"], "seriler": P["seriler"]}, "es": {"urunler": es_names, "seriler": es_series}}
-        (out / f"{k}.json").write_text(json.dumps(doc, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-        siniflar = Counter(c["sinif"] for c in P["cesitler"])
-        index.append({"k": k, "ad": P["ad"], "en": CONF.get("ingilizce", {}).get(k), "tur": P["tur"].most_common(1)[0][0],
-                      "siniflar": sorted(siniflar), "cesit": len(P["cesitler"]), "n": sum(c["n"] for c in P["cesitler"]),
-                      "son": son, "ispanya": bool(es_series)})
-    index.sort(key=lambda x: (x["tur"], x["ad"]))
+        adlar = {k: {kk: vv for kk, vv in a.items() if kk != "rows"} | {"seri": a["rows"]} for k, a in P["ad"].items()}
+        doc = {"k": u["k"], "tr": u["tr"], "en": u["en"], "es": u["es"], "botanik": u["botanik"], "tur": u["tur"],
+               "segmentler": segs, "adlar": adlar, "ispanya": {"urunler": u.get("ab", []), "seriler": es_series}}
+        (out / f"{u['k']}.json").write_text(json.dumps(doc, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+        index.append({"k": u["k"], "tr": u["tr"], "en": u["en"], "tur": u["tur"], "segment": len(segs),
+                      "n": max(s["n"] for s in segs), "ilk": min(s["ilk"] for s in segs), "son": max(s["son"] for s in segs),
+                      "ispanya": bool(es_series)})
     (DATA / "urunler.json").write_text(json.dumps(index, ensure_ascii=False, indent=0), encoding="utf-8")
 
     (DATA / "_kesif").mkdir(parents=True, exist_ok=True)
     with (DATA / "_kesif" / "izmir-adlar.csv").open("w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh)
-        w.writerow(["tur", "ad", "urun", "sinif", "birim", "gun", "ilk", "son"])
+        w.writerow(["urun", "segment", "ad", "birim", "gun", "ilk", "son", "yan"])
         w.writerows(sorted(inventory))
     with (DATA / "_kesif" / "ab-adlar.csv").open("w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh)
-        w.writerow(["urun", "asama", "cesit", "birim", "kayit"])
+        w.writerow(["urun", "asama", "cesit", "birim", "donem", "kayit"])
         w.writerows(sorted([*k, n] for k, n in es_inv.items()))
-    print(f"{len(index)} ürün, {len(inventory)} çeşit; İspanya {len(es)} ürün")
+    print(f"{len(index)} ürün; eşleşmeyen ad: {len(unmatched)} {unmatched[:20]}")
+    if unmatched:
+        print("UYARI: sözlükte karşılığı olmayan adlar var (data/_kesif/izmir-adlar.csv)", file=sys.stderr)
 
 
 if __name__ == "__main__":

@@ -30,13 +30,15 @@ jobs:
         run: python scripts/build_data.py
       - name: Değiştiyse kaydet
         run: |
+          git config user.name "agrihubai-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Bu arada main ilerlemiş olabilir: sadece data/ klasörünü en güncel main'in üstüne koy
+          git fetch -q origin main
+          git reset -q --mixed origin/main
           git add data
           if git diff --cached --quiet; then
             echo "Yeni veri yok."
           else
-            git config user.name "agrihubai-bot"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git commit -m "Hal verisi güncellendi"
-            git pull --rebase
-            git push
+            git push origin HEAD:main
           fi

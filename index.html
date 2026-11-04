@@ -93,6 +93,24 @@
   .notes p { margin: 0; font-size: var(--cap); line-height: 1.55; color: var(--muted); }
   footer { padding-top: 14px; border-top: 1px solid var(--line); font-size: var(--cap); color: var(--muted); }
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+  .navr { display: inline-flex; gap: 14px; align-items: center; }
+  .site { align-items: center; }
+  :root { --s1: #b8442f; --s2: #2f6b4f; --s3: #3f6fb5; --s4: #c9832a; --s5: #7a52b3; --s6: #2a8a8a; --s7: #8a5a3c; --s8: #b23b7a; --s9: #6f7f2a; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --s1: #ef8a6e; --s2: #6cc489; --s3: #7fa6e6; --s4: #e0a640; --s5: #b292e6; --s6: #5cc4c4; --s7: #c99a7a; --s8: #e67ab0; --s9: #b5c46a; } }
+  :root[data-theme="dark"] { --s1: #ef8a6e; --s2: #6cc489; --s3: #7fa6e6; --s4: #e0a640; --s5: #b292e6; --s6: #5cc4c4; --s7: #c99a7a; --s8: #e67ab0; --s9: #b5c46a; }
+  .picker { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+  .picker select { font-size: .95rem; padding: 6px 10px; }
+  .chip.sm { font-size: var(--cap); padding: 4px 11px; }
+  .chip .sw { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 6px; vertical-align: 1px; }
+  .muted { color: var(--muted); }
+  .legend button { all: unset; cursor: pointer; display: inline-flex; gap: 6px; align-items: center; }
+  .legend button[aria-pressed="false"] { opacity: .35; }
+  .legend button:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; border-radius: 2px; }
+  .seg-desc { margin: 0; font-size: var(--cap); color: var(--muted); }
+  table.names { border-collapse: collapse; font-size: var(--cap); font-variant-numeric: tabular-nums; width: 100%; }
+  table.names th, table.names td { text-align: left; padding: 4px 8px; border-bottom: 1px solid var(--line); }
+  table.names th { color: var(--muted); font-weight: 600; }
+  .tablewrap { overflow-x: auto; }
 </style>
 <script src="vendor/d3-7.9.0.min.js"></script>
 </head>
@@ -105,30 +123,51 @@
   </nav>
 
   <header>
-    <p class="eyebrow" data-i18n="eyebrow">AgriHub-AI · Sebze hal fiyatları · Türkiye – İspanya</p>
+    <p class="eyebrow" data-i18n="eyebrow">AgriHub-AI · Meyve-sebze hal fiyatları · Türkiye – İspanya</p>
     <h1>Halden Anlayan</h1>
-    <p class="intro" data-i18n="intro1">Antalya ile Almería aynı sebzeleri aynı kış penceresinde üretir ve Avrupa pazarında rakiptir. Bu pano iki tarafın fiyatını yan yana koyar: Türkiye'de İzmir halinin günlük fiyatları, İspanya'da Avrupa Komisyonu'nun tarla, paketleme çıkışı ve raf fiyatları.</p>
+    <p class="intro" data-i18n="intro1">Halde "domates" tek bir fiyat değildir: salkım, çeri, pembe ve beef ayrı pazarlardır ve fiyatları ayrı yönlere gidebilir. Bu pano İzmir halinin 2006'dan bugüne günlük fiyatlarını 79 ürün ve bu ürünlerin pazar segmentleri düzeyinde gösterir. İspanya'nın tarla, paketleme çıkışı ve raf fiyatları eklendikçe iki ülke yan yana görünür.</p>
     <p class="intro" data-i18n="intro2">Türkiye fiyatları TL olarak gösterilir. Grafiğin üstüne gelince o günün ECB kuruyla euro karşılığı da görünür. İki ülkeyi karşılaştıran grafikte her şey euro cinsindendir.</p>
-    <p class="lede" id="lede">Veri yükleniyor…</p>
+    <p class="lede" id="lede">…</p>
   </header>
 
-  <section aria-label="Ürün / Product">
-    <div class="controls" id="products" role="group" aria-label="Ürün / Product"></div>
+  <section aria-labelledby="h-pick">
+    <h2 id="h-pick" data-i18n="hPick">Ürün ve segment</h2>
+    <div class="picker">
+      <select id="product" aria-label="Ürün / Product"></select>
+      <span class="controls" id="quick" aria-label="Sera ürünleri / Greenhouse crops"></span>
+    </div>
+    <div class="controls" id="segments" role="group" aria-label="Segment"></div>
+    <p class="seg-desc" id="botanik"></p>
   </section>
 
   <section class="tiles" id="tiles" aria-label="Göstergeler / Indicators"></section>
 
-  <section aria-labelledby="h-tr">
-    <h2 id="h-tr" data-i18n="hTr">Türkiye · İzmir hali günlük fiyat (TL/kg)</h2>
+  <section aria-labelledby="h-all">
+    <h2 id="h-all"></h2>
     <div class="controls">
-      <label class="ctl"><span data-i18n="variety">Çeşit</span> <select id="variety"></select></label>
-      <div class="seg" id="range-tr" role="group" aria-label="Dönem / Period">
+      <div class="seg" id="range-all" role="group" aria-label="Dönem / Period">
+        <button type="button" data-r="90" data-i18n="r3m">3 ay</button><button type="button" data-r="365" data-i18n="r1y">1 yıl</button><button type="button" data-r="1825" data-i18n="r5y">5 yıl</button><button type="button" data-r="all" data-i18n="rAll">Tümü</button>
+      </div>
+      <div class="seg" id="smooth" role="group" aria-label="Görünüm / View">
+        <button type="button" data-s="d" data-i18n="daily">Günlük</button><button type="button" data-s="w" data-i18n="weekly">Haftalık ortalama</button>
+      </div>
+    </div>
+    <div class="legend" id="legend-all"></div>
+    <div class="chart" id="chart-all"></div>
+    <p class="note" data-i18n="noteAll">Her çizgi bir segmentin günlük ortalamasıdır: o gün halde işlem gören ana adların ortalama fiyatı. İkinci kalite, "diğer" ve paketli adlar ortalamaya katılmaz; aşağıdaki tabloda ayrı görünürler. Lejanttaki bir segmente tıklayarak gizleyebilirsiniz.</p>
+  </section>
+
+  <section aria-labelledby="h-seg">
+    <h2 id="h-seg"></h2>
+    <div class="controls">
+      <label class="ctl"><span data-i18n="series">Seri</span> <select id="name"></select></label>
+      <div class="seg" id="range-seg" role="group" aria-label="Dönem / Period">
         <button type="button" data-r="90" data-i18n="r3m">3 ay</button><button type="button" data-r="365" data-i18n="r1y">1 yıl</button><button type="button" data-r="1825" data-i18n="r5y">5 yıl</button><button type="button" data-r="all" data-i18n="rAll">Tümü</button>
       </div>
     </div>
     <div class="legend"><span><i style="background:var(--c-tr)"></i><span data-i18n="avg">Ortalama</span></span><span><i class="band"></i><span data-i18n="range">En düşük – en yüksek</span></span></div>
-    <div class="chart" id="chart-tr"></div>
-    <p class="note" data-i18n="noteTr">Kaynak: İzmir Büyükşehir Belediyesi açık veri portalı, sebze-meyve hal fiyatları. Fiyatlar halde işlem gören en düşük, en yüksek ve ortalama fiyatlardır; üreticinin eline geçen fiyat değildir.</p>
+    <div class="chart" id="chart-seg"></div>
+    <div class="tablewrap"><table class="names" id="names"></table></div>
   </section>
 
   <section aria-labelledby="h-cmp">
@@ -140,16 +179,17 @@
     </div>
     <div class="legend" id="legend-cmp"></div>
     <div class="chart" id="chart-cmp"></div>
-    <p class="note" data-i18n="noteCmp">Türkiye çizgisi, seçili çeşidin İzmir halindeki haftalık ortalamasıdır; her günün fiyatı o günün ECB EUR/TRY kuruyla çevrilmiştir. İspanya çizgileri Avrupa Komisyonu'nun haftalık ortalama fiyatlarıdır. Hal fiyatı ile İspanya'nın aşama fiyatları aynı şey değildir; en yakın karşılaştırma genellikle "paketleme çıkışı" (ex-packaging) fiyatıdır.</p>
+    <p class="note" data-i18n="noteCmp">Türkiye çizgisi seçili segmentin İzmir halindeki haftalık ortalamasıdır; her günün fiyatı o günün ECB EUR/TRY kuruyla çevrilmiştir. İspanya çizgileri Avrupa Komisyonu'nun haftalık fiyatlarıdır. Hal fiyatı ile İspanya'nın aşama fiyatları aynı şey değildir; en yakın karşılaştırma genellikle paketleme çıkışı (ex-packaging) fiyatıdır.</p>
   </section>
 
   <section aria-labelledby="h-notes">
     <h2 id="h-notes" data-i18n="hNotes">Okurken bilinmesi gerekenler</h2>
     <div class="notes">
       <div data-i18n="n1"><h3>Hal fiyatı ≠ üretici fiyatı</h3><p>Hal fiyatına komisyon, rüsum ve nakliye dahildir. Tarladan çıkan fiyat bunun altındadır. İspanya verisi ise zincirin üç noktasını ayrı ayrı verir: tarla, paketleme çıkışı ve raf.</p></div>
-      <div data-i18n="n2"><h3>İzmir, Antalya değildir</h3><p>Türkiye tarafındaki veri İzmir halinden gelir, çünkü düzenli ve açık yayınlanan en uzun hal serisi o. Kışın İzmir halindeki sera ürünlerinin büyük kısmı Akdeniz bölgesinden gelir, ama fiyat İzmir'in arz-talep dengesini yansıtır.</p></div>
-      <div data-i18n="n3"><h3>Kur her şeyi açıklamaz</h3><p>Euro karşılığı TL enflasyonunun büyük kısmını temizler ama tamamını temizlemez. TL'nin reel olarak değer kazandığı dönemlerde Türk ürünleri euroda pahalanmış görünür, ürünün kendisinde bir şey değişmemiş olsa bile.</p></div>
-      <div><h3 data-i18n="srcH">Kaynaklar</h3><p><span data-i18n="src"><a href="https://acikveri.bizizmir.com/dataset/sebze-ve-meyve-hal-fiyatlari">İzmir açık veri</a> · <a href="https://data.ecb.europa.eu/">ECB kurları</a> · <a href="https://agridata.ec.europa.eu/extensions/DataPortal/fruit-and-vegetables.html">AB agri-food veri portalı</a>. Veri haftada iki kez otomatik güncellenir.</span> <span id="updated"></span></p></div>
+      <div data-i18n="n2"><h3>İzmir, Türkiye'nin tamamı değildir</h3><p>Türkiye tarafındaki veri İzmir halinden gelir, çünkü düzenli ve açık yayınlanan en uzun hal serisi o. Kışın İzmir halindeki sera ürünlerinin büyük kısmı Akdeniz bölgesinden gelir, ama fiyat İzmir'in arz-talep dengesini yansıtır.</p></div>
+      <div data-i18n="n3"><h3>Segmentler bir sözlükten gelir</h3><p>Haldeki adlar (ör. "DOMATES SALKIM", "BİBER TATLI(ÇARLİSTON)") AgriHub-AI ürün sözlüğüyle ürün ve segmentlere bağlanır. Aynı adın farklı yazımları (BIBER SIVRI / BİBER SİVRİ) tek seride birleşir. Her segmentin hangi adlardan oluştuğu tabloda görünür.</p></div>
+      <div data-i18n="n4"><h3>Kur her şeyi açıklamaz</h3><p>Euro karşılığı TL enflasyonunun büyük kısmını temizler ama tamamını temizlemez. TL'nin reel olarak değer kazandığı dönemlerde Türk ürünleri euroda pahalanmış görünür, ürünün kendisinde bir şey değişmemiş olsa bile.</p></div>
+      <div><h3 data-i18n="srcH">Kaynaklar</h3><p><span data-i18n="src"><a href="https://acikveri.bizizmir.com/dataset/sebze-ve-meyve-hal-fiyatlari">İzmir açık veri</a> · <a href="https://data.ecb.europa.eu/">ECB kurları</a> · <a href="https://agridata.ec.europa.eu/extensions/DataPortal/fruit-and-vegetables.html">AB agri-food veri portalı</a> · <a href="https://github.com/agrihubai/halden-anlayan/blob/main/sozluk/urunler.json">Ürün sözlüğü</a>. Veri haftada iki kez otomatik güncellenir.</span> <span id="updated"></span></p></div>
     </div>
   </section>
 
@@ -158,172 +198,167 @@
 
 <script>
 (() => {
-  const PRODUCTS = [
-    { k: 'domates', tr: 'Domates', en: 'Tomato' }, { k: 'biber', tr: 'Biber', en: 'Pepper' }, { k: 'hiyar', tr: 'Hıyar', en: 'Cucumber' },
-    { k: 'patlican', tr: 'Patlıcan', en: 'Aubergine' }, { k: 'kabak', tr: 'Kabak', en: 'Courgette' },
-  ];
+  const QUICK = ['domates', 'biber', 'hiyar', 'patlican', 'kabak'];
+  const SEGC = ['--s1', '--s2', '--s3', '--s4', '--s5', '--s6', '--s7', '--s8', '--s9'];
   const ES_COLORS = ['--c-es1', '--c-es2', '--c-es3', '--c-es4'];
+  const TUR = { tr: { Sebze: 'Sebze', 'Yeşillik': 'Yeşillik', Meyve: 'Meyve', 'İthal': 'İthal' }, en: { Sebze: 'Vegetables', 'Yeşillik': 'Herbs and greens', Meyve: 'Fruit', 'İthal': 'Imported' } };
+  const UNIT = { tr: { KG: 'kg', ADET: 'adet', 'BAĞ': 'bağ', KOLİ: 'koli' }, en: { KG: 'kg', ADET: 'piece', 'BAĞ': 'bunch', KOLİ: 'box' } };
 
-  // Sabit metinlerin İngilizcesi; Türkçeleri sayfadaki HTML'den alınır
   const EN = {
     emtia: 'Commodity Index →',
-    eyebrow: 'AgriHub-AI · Wholesale vegetable prices · Turkey – Spain',
-    intro1: "Antalya and Almería grow the same vegetables in the same winter window and compete in the European market. This dashboard puts both sides' prices next to each other: daily prices at the İzmir wholesale market in Turkey, and the European Commission's farmgate, ex-packaging and retail prices for Spain.",
-    intro2: "Turkish prices are shown in Turkish lira (TRY). Hover over the chart to see the euro equivalent at that day's ECB rate. The chart comparing the two countries is entirely in euros.",
-    hTr: 'Turkey · İzmir wholesale market, daily price (TRY/kg)',
-    variety: 'Variety', r3m: '3 mo', r1y: '1 yr', r3y: '3 yr', r5y: '5 yr', rAll: 'All',
+    eyebrow: 'AgriHub-AI · Wholesale fruit and vegetable prices · Turkey – Spain',
+    intro1: 'At a wholesale market, "tomato" is not one price: truss, cherry, pink and beef tomatoes are separate markets and their prices can move in different directions. This dashboard shows daily prices at the İzmir wholesale market from 2006 to today for 79 products and their market segments. As Spain\'s farmgate, ex-packaging and retail prices are added, the two countries appear side by side.',
+    intro2: "Turkish prices are shown in Turkish lira (TRY). Hover over a chart to see the euro equivalent at that day's ECB rate. The chart comparing the two countries is entirely in euros.",
+    hPick: 'Product and segment',
+    r3m: '3 mo', r1y: '1 yr', r3y: '3 yr', r5y: '5 yr', rAll: 'All', daily: 'Daily', weekly: 'Weekly average', series: 'Series',
     avg: 'Average', range: 'Lowest – highest',
-    noteTr: 'Source: İzmir Metropolitan Municipality open data portal, fruit and vegetable wholesale prices. Prices are the lowest, highest and average prices traded at the market; they are not the price the grower receives.',
+    noteAll: 'Each line is the daily average of one segment: the mean price of the main names traded at the market that day. Second-grade, "other" and packaged names are left out of the average and shown separately in the table below. Click a segment in the legend to hide it.',
     hCmp: 'Turkey – Spain comparison (EUR/kg, weekly)',
-    noteCmp: "The Turkey line is the weekly average of the selected variety at the İzmir market; each day's price is converted at that day's ECB EUR/TRY rate. The Spain lines are the European Commission's weekly average prices. A wholesale market price and Spain's supply-chain stage prices are not the same thing; the closest comparison is usually the ex-packaging price.",
+    noteCmp: "The Turkey line is the weekly average of the selected segment at the İzmir market; each day's price is converted at that day's ECB EUR/TRY rate. The Spain lines are the European Commission's weekly prices. A wholesale market price and Spain's supply-chain stage prices are not the same thing; the closest comparison is usually the ex-packaging price.",
     hNotes: 'Worth knowing before you read',
     n1: '<h3>Wholesale price ≠ grower price</h3><p>The wholesale price includes commission, market fees and transport. The price at the farm gate is lower. The Spanish data gives three points of the chain separately: farmgate, ex-packaging and retail.</p>',
-    n2: "<h3>İzmir is not Antalya</h3><p>The Turkish data comes from the İzmir wholesale market because it is the longest regularly published open series. In winter most greenhouse produce at İzmir comes from the Mediterranean region, but the price reflects İzmir's own supply and demand.</p>",
-    n3: '<h3>The exchange rate doesn’t explain everything</h3><p>Converting to euros removes most of the effect of Turkish inflation, but not all of it. When the lira strengthens in real terms, Turkish produce looks more expensive in euros even if nothing about the product has changed.</p>',
+    n2: "<h3>İzmir is not all of Turkey</h3><p>The Turkish data comes from the İzmir wholesale market because it is the longest regularly published open series. In winter most greenhouse produce at İzmir comes from the Mediterranean region, but the price reflects İzmir's own supply and demand.</p>",
+    n3: '<h3>Segments come from a dictionary</h3><p>Market names (e.g. "DOMATES SALKIM", "BİBER TATLI(ÇARLİSTON)") are linked to products and segments through the AgriHub-AI product dictionary. Different spellings of the same name (BIBER SIVRI / BİBER SİVRİ) are merged into one series. The table shows which names make up each segment.</p>',
+    n4: '<h3>The exchange rate doesn’t explain everything</h3><p>Converting to euros removes most of the effect of Turkish inflation, but not all of it. When the lira strengthens in real terms, Turkish produce looks more expensive in euros even if nothing about the product has changed.</p>',
     srcH: 'Sources',
-    src: '<a href="https://acikveri.bizizmir.com/dataset/sebze-ve-meyve-hal-fiyatlari">İzmir open data</a> · <a href="https://data.ecb.europa.eu/">ECB exchange rates</a> · <a href="https://agridata.ec.europa.eu/extensions/DataPortal/fruit-and-vegetables.html">EU agri-food data portal</a>. Data is updated automatically twice a week.',
+    src: '<a href="https://acikveri.bizizmir.com/dataset/sebze-ve-meyve-hal-fiyatlari">İzmir open data</a> · <a href="https://data.ecb.europa.eu/">ECB exchange rates</a> · <a href="https://agridata.ec.europa.eu/extensions/DataPortal/fruit-and-vegetables.html">EU agri-food data portal</a> · <a href="https://github.com/agrihubai/halden-anlayan/blob/main/sozluk/urunler.json">Product dictionary</a>. Data is updated automatically twice a week.',
     foot: 'This page was prepared with artificial intelligence; it is not investment or trading advice. AgriHub-AI · <a href="https://agrihubai.wordpress.com/">agrihubai.wordpress.com</a> · <a href="https://github.com/agrihubai/halden-anlayan">GitHub</a>',
   };
   const TR = {};
   for (const el of document.querySelectorAll('[data-i18n]')) TR[el.dataset.i18n] = el.innerHTML;
 
-  // Kodun ürettiği metinler
   const M = {
     tr: {
-      loading: 'Veri yükleniyor…', noData: 'Veri henüz yok.',
-      notLoaded: 'Veri henüz yüklenmedi. İlk otomatik güncellemeden sonra pano dolacak.',
-      noTr: 'Bu ürün için İzmir hal verisi henüz yok. Veri ilk otomatik güncellemeden sonra burada görünecek.',
-      noCmp: 'Karşılaştırma için veri henüz yok. Veri ilk otomatik güncellemeden sonra burada görünecek.',
-      noTrName: (n) => `${n} için İzmir hal verisi henüz yok.`,
+      loading: 'Veri yükleniyor…', noData: 'Veri henüz yok.', notLoaded: 'Veri yüklenemedi.',
+      noCmp: (p) => `${p} için İspanya verisi henüz eklenmedi. Avrupa Komisyonu verisi eşleştirildikçe burada görünecek.`,
       avg: 'Ortalama', lo: 'En düşük', hi: 'En yüksek', rate: (r) => `ECB kuru: 1 € = ₺${r}`, noRate: 'Bu tarih için kur yok',
-      week: (d) => `${d} haftası`, trLine: 'Türkiye · İzmir hali', es: 'İspanya', noUnit: 'birim yok',
-      tMarket: (v) => `İzmir hali · ${v}`, tWeek: 'Bir hafta önceye göre', tYear: 'Bir yıl önceye göre (euro)',
-      noWeek: 'Karşılaştırılacak gün yok', noYear: 'Bir yıl önceki veri yok', inTl: (p) => `TL'de ${p}`,
-      esWeek: (d) => `${d} haftası · EUR/kg`, noEs: 'Bu ürün için İspanya verisi henüz yok',
-      lede: (n, d, p, e, y) => `${n}, İzmir halinde <b>${d}</b> tarihinde ortalama <b>${p}</b>${e ? ` (≈ <b>${e}</b>)` : ''}. Euro cinsinden bir yıl önceye göre değişim <b>${y}</b>.`,
-      ledeEs: (s, p) => ` İspanya'da son haftalık ${s} fiyatı <b>${p}</b>/kg.`,
-      updated: (d) => `Son güncelleme: ${d}.`,
-      aria: (n, p) => `İzmir hali ${n} günlük fiyat, son ${p}`,
+      week: (d) => `${d} haftası`, trLine: (s) => `Türkiye · İzmir · ${s}`, es: 'İspanya',
+      hAll: (p, u) => `${p}: segmentler yan yana (TL/${u})`, hSeg: (p, s, u) => `${p} · ${s}: günlük fiyat (TL/${u})`,
+      segAvg: (s) => `${s} · segment ortalaması`, side: 'ortalamaya katılmaz',
+      th: ['Haldeki ad', 'Birim', 'Gün', 'İlk', 'Son', ''],
+      tLast: (s) => `${s} · son fiyat`, tWeek: 'Bir hafta önceye göre', tYear: 'Bir yıl önceye göre (euro)', tRank: 'Ürün içindeki yeri',
+      rank: (i, n) => `${n} segmentin ${i}.si`, rankSub: (top, p) => `En pahalı: ${top} · ${p}`,
+      noWeek: 'Karşılaştırılacak gün yok', noYear: 'Bir yıl önceki veri yok', inTl: (p) => `TL'de ${p}`, stale: (d) => `Son işlem ${d}`,
+      lede: (p, s, d, v, e, y) => `${p} · ${s}, İzmir halinde <b>${d}</b> tarihinde ortalama <b>${v}</b>${e ? ` (≈ <b>${e}</b>)` : ''}. Euro cinsinden bir yıl önceye göre değişim <b>${y}</b>.`,
+      ledeN: (n, s) => ` Pano şu anda <b>${n}</b> ürünü ve <b>${s}</b> segmenti izliyor.`,
+      updated: (d) => `Son güncelleme: ${d}.`, quick: 'Sera ürünleri:', botanik: (b) => `Botanik ad: ${b}`,
     },
     en: {
-      loading: 'Loading data…', noData: 'No data yet.',
-      notLoaded: 'Data has not loaded yet. The dashboard will fill after the first automatic update.',
-      noTr: 'No İzmir market data for this product yet. It will appear here after the first automatic update.',
-      noCmp: 'No data to compare yet. It will appear here after the first automatic update.',
-      noTrName: (n) => `No İzmir market data for ${n.toLowerCase()} yet.`,
+      loading: 'Loading data…', noData: 'No data yet.', notLoaded: 'Data could not be loaded.',
+      noCmp: (p) => `No Spanish data has been added for ${p.toLowerCase()} yet. It will appear here as European Commission data is matched.`,
       avg: 'Average', lo: 'Lowest', hi: 'Highest', rate: (r) => `ECB rate: €1 = ₺${r}`, noRate: 'No exchange rate for this date',
-      week: (d) => `Week of ${d}`, trLine: 'Turkey · İzmir market', es: 'Spain', noUnit: 'no unit',
-      tMarket: (v) => `İzmir market · ${v}`, tWeek: 'Change on a week earlier', tYear: 'Change on a year earlier (euro)',
-      noWeek: 'No day to compare', noYear: 'No data from a year earlier', inTl: (p) => `${p} in TRY`,
-      esWeek: (d) => `Week of ${d} · EUR/kg`, noEs: 'No Spanish data for this product yet',
-      lede: (n, d, p, e, y) => `${n} averaged <b>${p}</b>${e ? ` (≈ <b>${e}</b>)` : ''} at the İzmir market on <b>${d}</b>. In euro terms that is <b>${y}</b> on a year earlier.`,
-      ledeEs: (s, p) => ` In Spain, the latest weekly ${s} price was <b>${p}</b>/kg.`,
-      updated: (d) => `Last updated: ${d}.`,
-      aria: (n, p) => `İzmir market, ${n} daily prices, latest ${p}`,
+      week: (d) => `Week of ${d}`, trLine: (s) => `Turkey · İzmir · ${s}`, es: 'Spain',
+      hAll: (p, u) => `${p}: segments side by side (TRY/${u})`, hSeg: (p, s, u) => `${p} · ${s}: daily price (TRY/${u})`,
+      segAvg: (s) => `${s} · segment average`, side: 'not in the average',
+      th: ['Market name', 'Unit', 'Days', 'First', 'Last', ''],
+      tLast: (s) => `${s} · latest price`, tWeek: 'Change on a week earlier', tYear: 'Change on a year earlier (euro)', tRank: 'Rank within the product',
+      rank: (i, n) => `${i} of ${n} segments`, rankSub: (top, p) => `Most expensive: ${top} · ${p}`,
+      noWeek: 'No day to compare', noYear: 'No data from a year earlier', inTl: (p) => `${p} in TRY`, stale: (d) => `Last traded ${d}`,
+      lede: (p, s, d, v, e, y) => `${p} · ${s} averaged <b>${v}</b>${e ? ` (≈ <b>${e}</b>)` : ''} at the İzmir market on <b>${d}</b>. In euro terms that is <b>${y}</b> on a year earlier.`,
+      ledeN: (n, s) => ` The dashboard currently tracks <b>${n}</b> products and <b>${s}</b> segments.`,
+      updated: (d) => `Last updated: ${d}.`, quick: 'Greenhouse crops:', botanik: (b) => `Botanical name: ${b}`,
     },
   };
   const LOCALES = {
-    tr: {
-      dateTime: '%e %B %Y %A %X', date: '%d.%m.%Y', time: '%H:%M:%S', periods: ['', ''],
-      days: ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'],
-      shortDays: ['Paz', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt'],
+    tr: { dateTime: '%e %B %Y %A %X', date: '%d.%m.%Y', time: '%H:%M:%S', periods: ['', ''],
+      days: ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'], shortDays: ['Paz', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt'],
       months: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
-      shortMonths: ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'],
-    },
-    en: {
-      dateTime: '%a %e %b %X %Y', date: '%d/%m/%Y', time: '%H:%M:%S', periods: ['AM', 'PM'],
-      days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      shortDays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      shortMonths: ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'] },
+    en: { dateTime: '%a %e %b %X %Y', date: '%d/%m/%Y', time: '%H:%M:%S', periods: ['AM', 'PM'],
+      days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], shortDays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
       months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-      shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-    },
+      shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] },
   };
 
+  const $ = (id) => document.getElementById(id);
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   const parse = d3.utcParse('%Y-%m-%d');
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-  let state = { p: 'domates', v: null, rTr: '365', rCmp: '1095', lang: 'tr' };
+  let state = { p: 'domates', s: null, n: '', rAll: '365', rSeg: '365', rCmp: '1095', sm: 'w', lang: 'tr', off: {} };
   try { Object.assign(state, JSON.parse(localStorage.getItem('halden-anlayan') || '{}')); } catch (e) {}
   if (location.hash === '#en') state.lang = 'en'; else if (location.hash === '#tr') state.lang = 'tr';
   const save = () => { try { localStorage.setItem('halden-anlayan', JSON.stringify(state)); } catch (e) {} };
 
-  let t, loc, nf2, fmtDate;
+  let L, t, loc, nf2, fmtDate;
+  const tl = (v) => v == null ? '—' : '₺' + nf2.format(v);
+  const eur = (v) => v == null ? '—' : '€' + nf2.format(v);
+  const pct = (v) => v == null || !isFinite(v) ? '—' : (v > 0 ? '+' : '') + Math.round(v * 100) + '%';
+  const unitName = (u) => UNIT[L][u] || (u || '').toLowerCase();
+  const nm = (o) => (L === 'en' ? o.en : o.tr) || o.tr;
+
+  let index = [], fxDates = [], fxVals = [], durum = null;
+  const cache = {};
+  function rateOn(date) { if (!fxDates.length) return null; const i = d3.bisectRight(fxDates, date) - 1; return i >= 0 ? fxVals[i] : null; }
+  async function load(url) { const r = await fetch(url, { cache: 'no-cache' }); if (!r.ok) throw new Error(r.status); return r.json(); }
+  const product = (k) => (cache[k] ??= load(`data/urun/${k}.json`).catch(() => null));
+
   function setLang() {
-    const L = state.lang === 'en' ? 'en' : 'tr';
-    t = M[L]; loc = L === 'en' ? 'en-GB' : 'tr-TR';
+    L = state.lang === 'en' ? 'en' : 'tr'; t = M[L]; loc = L === 'en' ? 'en-GB' : 'tr-TR';
     nf2 = new Intl.NumberFormat(loc, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     fmtDate = (d) => d.toLocaleDateString(loc, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
     d3.timeFormatDefaultLocale(LOCALES[L]);
     document.documentElement.lang = L;
     for (const el of document.querySelectorAll('[data-i18n]')) el.innerHTML = (L === 'en' ? EN : TR)[el.dataset.i18n] ?? el.innerHTML;
-    document.getElementById('emtia-link').href = 'https://agrihubai.github.io/emtia/' + (L === 'en' ? '#en' : '');
-    for (const b of document.getElementById('lang').children) b.setAttribute('aria-pressed', String(b.dataset.lang === L));
-    for (const b of pbox.children) b.textContent = PRODUCTS.find((p) => p.k === b.dataset.k)[L];
+    $('emtia-link').href = 'https://agrihubai.github.io/emtia/' + (L === 'en' ? '#en' : '');
+    for (const b of $('lang').children) b.setAttribute('aria-pressed', String(b.dataset.lang === L));
     try { history.replaceState(null, '', L === 'en' ? '#en' : location.pathname); } catch (e) {}
-  }
-  const tl = (v) => v == null ? '—' : '₺' + nf2.format(v);
-  const eur = (v) => v == null ? '—' : '€' + nf2.format(v);
-  const pct = (v) => v == null || !isFinite(v) ? '—' : (v > 0 ? '+' : '') + Math.round(v * 100) + '%';
-
-  let fxDates = []; let fxVals = []; let durum = null;
-  const cache = {};
-
-  // O günün kuru; kur yayınlanmamışsa (hafta sonu, tatil) bir önceki iş günününki
-  function rateOn(date) {
-    if (!fxDates.length) return null;
-    const i = d3.bisectRight(fxDates, date) - 1;
-    return i >= 0 ? fxVals[i] : null;
+    buildPicker();
   }
 
-  async function load(url) {
-    const r = await fetch(url, { cache: 'no-cache' });
-    if (!r.ok) throw new Error(r.status);
-    return r.json();
+  function buildPicker() {
+    if (!index.length) return;
+    const groups = d3.group(index, (d) => d.tur);
+    $('product').innerHTML = ['Sebze', 'Yeşillik', 'Meyve', 'İthal'].filter((g) => groups.has(g)).map((g) =>
+      `<optgroup label="${TUR[L][g]}">` + groups.get(g).slice().sort((a, b) => nm(a).localeCompare(nm(b), loc))
+        .map((p) => `<option value="${p.k}">${esc(nm(p))}${p.segment > 1 ? ` (${p.segment})` : ''}</option>`).join('') + '</optgroup>').join('');
+    $('product').value = state.p;
+    $('quick').innerHTML = `<span class="muted" style="font-size:var(--cap)">${t.quick}</span>` + QUICK.map((k) => index.find((p) => p.k === k)).filter(Boolean)
+      .map((p) => `<button type="button" class="chip sm" data-k="${p.k}" aria-pressed="${p.k === state.p}">${esc(nm(p))}</button>`).join('');
   }
 
-  async function product(k) {
-    if (!cache[k]) cache[k] = load(`data/urun/${k}.json`).catch(() => null);
-    return cache[k];
-  }
-
-  // ---- kontroller
-  const pbox = document.getElementById('products');
-  for (const p of PRODUCTS) {
-    const b = document.createElement('button');
-    b.type = 'button'; b.className = 'chip'; b.dataset.k = p.k;
-    b.addEventListener('click', () => { state.p = p.k; state.v = null; save(); render(); });
-    pbox.appendChild(b);
-  }
-  for (const [id, key] of [['range-tr', 'rTr'], ['range-cmp', 'rCmp']]) {
-    document.getElementById(id).addEventListener('click', (e) => {
-      const b = e.target.closest('button'); if (!b) return;
-      state[key] = b.dataset.r; save(); render();
-    });
-  }
-  document.getElementById('lang').addEventListener('click', (e) => {
+  // ---- olaylar
+  $('product').addEventListener('change', (e) => { state.p = e.target.value; state.s = null; state.n = ''; save(); render(); });
+  $('quick').addEventListener('click', (e) => { const b = e.target.closest('button'); if (!b) return; state.p = b.dataset.k; state.s = null; state.n = ''; save(); render(); });
+  $('segments').addEventListener('click', (e) => { const b = e.target.closest('button'); if (!b) return; state.s = b.dataset.k; state.n = ''; save(); render(); });
+  $('name').addEventListener('change', (e) => { state.n = e.target.value; save(); render(); });
+  $('lang').addEventListener('click', (e) => { const b = e.target.closest('button'); if (!b) return; state.lang = b.dataset.lang; save(); setLang(); render(); });
+  for (const [id, key, attr] of [['range-all', 'rAll', 'r'], ['range-seg', 'rSeg', 'r'], ['range-cmp', 'rCmp', 'r'], ['smooth', 'sm', 's']])
+    $(id).addEventListener('click', (e) => { const b = e.target.closest('button'); if (!b) return; state[key] = b.dataset[attr]; save(); render(); });
+  $('legend-all').addEventListener('click', (e) => {
     const b = e.target.closest('button'); if (!b) return;
-    state.lang = b.dataset.lang; save(); setLang(); render();
+    const off = (state.off[state.p] ||= []); const i = off.indexOf(b.dataset.k);
+    if (i >= 0) off.splice(i, 1); else off.push(b.dataset.k);
+    save(); render();
   });
-  const vsel = document.getElementById('variety');
-  vsel.addEventListener('change', () => { state.v = vsel.value; save(); render(); });
 
-  function cutoff(series, r) {
+  // ---- yardımcılar
+  const rowsOf = (seri) => seri.map(([d, lo, hi, avg]) => ({ date: parse(d), lo, hi, avg })).filter((d) => d.date && d.avg != null);
+  function since(series, r, last) {
     if (r === 'all' || !series.length) return series;
-    const last = series[series.length - 1].date;
-    const from = new Date(last.getTime() - (+r) * 864e5);
+    const from = new Date((last || series[series.length - 1].date) - (+r) * 864e5);
     return series.filter((d) => d.date >= from);
   }
-
-  // ---- grafik çatısı
+  function weekly(series) {
+    const m = d3.rollup(series, (v) => d3.mean(v, (d) => d.avg), (d) => +d3.utcMonday.floor(d.date));
+    return [...m].map(([k, v]) => ({ date: new Date(k), avg: v })).sort((a, b) => a.date - b.date);
+  }
+  function weeklyEur(series) {
+    const m = d3.rollup(series.filter((d) => rateOn(d.date)),
+      (v) => ({ eur: d3.mean(v, (d) => d.avg / rateOn(d.date)), tl: d3.mean(v, (d) => d.avg) }), (d) => +d3.utcMonday.floor(d.date));
+    return [...m].map(([k, v]) => ({ date: new Date(k), ...v })).sort((a, b) => a.date - b.date);
+  }
+  function nearest(series, date, maxDays) {
+    const i = d3.bisector((d) => d.date).center(series, date); const d = series[i];
+    return d && Math.abs(d.date - date) <= maxDays * 864e5 ? d : null;
+  }
   function frame(el, h = 320) {
     el.innerHTML = '';
-    const W = el.clientWidth || 600;
-    const m = { t: 10, r: 12, b: 28, l: 52 };
+    const W = el.clientWidth || 600, m = { t: 10, r: 12, b: 28, l: 52 };
     const svg = d3.select(el).append('svg').attr('width', W).attr('height', h).attr('role', 'img');
     const tip = d3.select(el).append('div').attr('class', 'tip').style('display', 'none');
     return { svg, tip, W, h, m, iw: W - m.l - m.r, ih: h - m.t - m.b };
   }
-
   function axes(f, x, y, yfmt) {
     const g = f.svg.append('g').attr('transform', `translate(${f.m.l},${f.m.t})`);
     g.append('g').attr('class', 'grid').call(d3.axisLeft(y).ticks(5).tickSize(-f.iw).tickFormat('')).select('.domain').remove();
@@ -331,27 +366,55 @@
     g.append('g').call(d3.axisLeft(y).ticks(5).tickFormat(yfmt).tickSizeOuter(0)).select('.domain').remove();
     return g;
   }
-
   function placeTip(f, px, py) {
-    const node = f.tip.node();
-    const w = node.offsetWidth, hh = node.offsetHeight;
+    const n = f.tip.node(), w = n.offsetWidth, hh = n.offsetHeight;
     let left = px + f.m.l + 14; if (left + w > f.W) left = px + f.m.l - w - 14;
-    let top = py + f.m.t - hh / 2; top = Math.max(0, Math.min(f.h - hh, top));
+    const top = Math.max(0, Math.min(f.h - hh, py + f.m.t - hh / 2));
     f.tip.style('left', Math.max(0, left) + 'px').style('top', top + 'px');
   }
+  const empty = (el, msg) => { el.innerHTML = `<div class="empty">${msg}</div>`; };
+  const yTl = (v) => '₺' + d3.format('~s')(v);
+  const eurOf = (v, d) => { const r = rateOn(d); return v != null && r ? ` <span class="eur">≈ ${eur(v / r)}</span>` : ''; };
 
-  function empty(el, msg) { el.innerHTML = `<div class="empty">${msg}</div>`; }
+  // ---- 1. segmentler yan yana
+  function drawAll(el, lines) {
+    const vis = lines.filter((l) => !l.off && l.data.length);
+    if (!vis.length) return empty(el, t.noData);
+    const f = frame(el);
+    const all = vis.flatMap((l) => l.data);
+    const x = d3.scaleUtc().domain(d3.extent(all, (d) => d.date)).range([0, f.iw]);
+    const y = d3.scaleLinear().domain([0, d3.max(all, (d) => d.avg) * 1.05]).nice().range([f.ih, 0]);
+    const g = axes(f, x, y, yTl);
+    for (const l of vis) g.append('path').datum(l.data).attr('fill', 'none').attr('stroke', l.color).attr('stroke-width', 1.6)
+      .attr('d', d3.line().x((d) => x(d.date)).y((d) => y(d.avg)).curve(d3.curveMonotoneX));
+    const rule = g.append('line').attr('y1', 0).attr('y2', f.ih).attr('stroke', css('--axis')).style('display', 'none');
+    const dots = vis.map((l) => g.append('circle').attr('r', 3.5).attr('fill', l.color).style('display', 'none'));
+    const bis = d3.bisector((d) => d.date).center;
+    const span = state.sm === 'w' ? 4 : 2;
+    g.append('rect').attr('width', f.iw).attr('height', f.ih).attr('fill', 'transparent')
+      .on('pointermove', (ev) => {
+        const at = x.invert(d3.pointer(ev)[0]);
+        const hits = vis.map((l, i) => { const d = l.data[bis(l.data, at)]; return d && Math.abs(d.date - at) <= span * 864e5 ? { l, d, i } : null; });
+        const ok = hits.filter(Boolean).sort((a, b) => b.d.avg - a.d.avg);
+        dots.forEach((dd, i) => { const h = hits[i]; if (h) dd.style('display', null).attr('cx', x(h.d.date)).attr('cy', y(h.d.avg)); else dd.style('display', 'none'); });
+        if (!ok.length) { f.tip.style('display', 'none'); rule.style('display', 'none'); return; }
+        const dt = ok[0].d.date;
+        rule.style('display', null).attr('x1', x(dt)).attr('x2', x(dt));
+        f.tip.style('display', null).html(`<div class="d">${state.sm === 'w' ? t.week(fmtDate(dt)) : fmtDate(dt)}</div>` +
+          ok.map(({ l, d }) => `<div class="row"><span class="sw" style="background:${l.color}"></span>${esc(l.name)}<span class="val">${tl(d.avg)}${eurOf(d.avg, d.date)}</span></div>`).join(''));
+        placeTip(f, x(dt), y(ok[0].d.avg));
+      })
+      .on('pointerleave', () => { f.tip.style('display', 'none'); rule.style('display', 'none'); dots.forEach((d) => d.style('display', 'none')); });
+  }
 
-  // ---- Türkiye grafiği (TL, üstüne gelince euro)
-  function drawTr(el, series) {
-    if (!series.length) return empty(el, t.noTr);
+  // ---- 2. tek segment / ad: bant + ortalama
+  function drawSeg(el, series) {
+    if (!series.length) return empty(el, t.noData);
     const f = frame(el);
     const x = d3.scaleUtc().domain(d3.extent(series, (d) => d.date)).range([0, f.iw]);
-    const ymax = d3.max(series, (d) => d.hi ?? d.avg) * 1.05;
-    const y = d3.scaleLinear().domain([0, ymax]).nice().range([f.ih, 0]);
-    const g = axes(f, x, y, (v) => '₺' + d3.format('~s')(v));
-    const band = series.filter((d) => d.lo != null && d.hi != null);
-    g.append('path').datum(band).attr('fill', css('--band'))
+    const y = d3.scaleLinear().domain([0, d3.max(series, (d) => d.hi ?? d.avg) * 1.05]).nice().range([f.ih, 0]);
+    const g = axes(f, x, y, yTl);
+    g.append('path').datum(series.filter((d) => d.lo != null && d.hi != null)).attr('fill', css('--band'))
       .attr('d', d3.area().x((d) => x(d.date)).y0((d) => y(d.lo)).y1((d) => y(d.hi)).curve(d3.curveMonotoneX));
     g.append('path').datum(series).attr('fill', 'none').attr('stroke', css('--c-tr')).attr('stroke-width', 1.6)
       .attr('d', d3.line().x((d) => x(d.date)).y((d) => y(d.avg)).curve(d3.curveMonotoneX));
@@ -360,132 +423,138 @@
     const bis = d3.bisector((d) => d.date).center;
     g.append('rect').attr('width', f.iw).attr('height', f.ih).attr('fill', 'transparent')
       .on('pointermove', (ev) => {
-        const [mx] = d3.pointer(ev); const d = series[bis(series, x.invert(mx))]; if (!d) return;
+        const d = series[bis(series, x.invert(d3.pointer(ev)[0]))]; if (!d) return;
         const r = rateOn(d.date);
-        const e = (v) => (v != null && r ? ` <span class="eur">≈ ${eur(v / r)}</span>` : '');
         dot.style('display', null).attr('cx', x(d.date)).attr('cy', y(d.avg));
         rule.style('display', null).attr('x1', x(d.date)).attr('x2', x(d.date));
-        f.tip.style('display', null).html(
-          `<div class="d">${fmtDate(d.date)}</div>` +
-          `<div class="row"><span class="sw" style="background:${css('--c-tr')}"></span>${t.avg}<span class="val">${tl(d.avg)}${e(d.avg)}</span></div>` +
-          (d.lo != null ? `<div class="row"><span class="sw"></span>${t.lo}<span class="val">${tl(d.lo)}${e(d.lo)}</span></div>` : '') +
-          (d.hi != null ? `<div class="row"><span class="sw"></span>${t.hi}<span class="val">${tl(d.hi)}${e(d.hi)}</span></div>` : '') +
+        f.tip.style('display', null).html(`<div class="d">${fmtDate(d.date)}</div>` +
+          `<div class="row"><span class="sw" style="background:${css('--c-tr')}"></span>${t.avg}<span class="val">${tl(d.avg)}${eurOf(d.avg, d.date)}</span></div>` +
+          (d.lo != null ? `<div class="row"><span class="sw"></span>${t.lo}<span class="val">${tl(d.lo)}${eurOf(d.lo, d.date)}</span></div>` : '') +
+          (d.hi != null ? `<div class="row"><span class="sw"></span>${t.hi}<span class="val">${tl(d.hi)}${eurOf(d.hi, d.date)}</span></div>` : '') +
           `<div class="d" style="margin-top:4px">${r ? t.rate(nf2.format(r)) : t.noRate}</div>`);
         placeTip(f, x(d.date), y(d.avg));
       })
       .on('pointerleave', () => { f.tip.style('display', 'none'); dot.style('display', 'none'); rule.style('display', 'none'); });
-    f.svg.attr('aria-label', t.aria(series.length, tl(series[series.length - 1].avg)));
   }
 
-  // Haftalık (pazartesi başlangıçlı) euro ortalaması; her gün kendi kuruyla çevrilir
-  function weeklyEur(series) {
-    const m = d3.rollup(series.filter((d) => rateOn(d.date)),
-      (v) => ({ eur: d3.mean(v, (d) => d.avg / rateOn(d.date)), tl: d3.mean(v, (d) => d.avg) }),
-      (d) => +d3.utcMonday.floor(d.date));
-    return [...m].map(([k, v]) => ({ date: new Date(k), ...v })).sort((a, b) => a.date - b.date);
-  }
-
-  // ---- karşılaştırma grafiği (EUR)
-  function drawCmp(el, trWeekly, esSeries, legendEl) {
-    const lines = [];
-    if (trWeekly.length) lines.push({ name: t.trLine, color: css('--c-tr'), data: trWeekly, tr: true });
-    esSeries.forEach((s, i) => lines.push({ name: t.es + ' · ' + s.name, color: css(ES_COLORS[i % ES_COLORS.length]), data: s.data }));
-    legendEl.innerHTML = lines.map((l) => `<span><i style="background:${l.color}"></i>${l.name}</span>`).join('');
-    if (!lines.length) return empty(el, t.noCmp);
+  // ---- 3. Türkiye – İspanya (EUR)
+  function drawCmp(el, lines, legendEl, emptyMsg) {
+    legendEl.innerHTML = lines.map((l) => `<span><i style="background:${l.color}"></i>${esc(l.name)}</span>`).join('');
+    if (lines.length < 2) return empty(el, emptyMsg);
     const all = lines.flatMap((l) => l.data);
     const f = frame(el);
     const x = d3.scaleUtc().domain(d3.extent(all, (d) => d.date)).range([0, f.iw]);
     const y = d3.scaleLinear().domain([0, d3.max(all, (d) => d.eur) * 1.05]).nice().range([f.ih, 0]);
     const g = axes(f, x, y, (v) => '€' + d3.format('.2~f')(v));
-    for (const l of lines) {
-      g.append('path').datum(l.data).attr('fill', 'none').attr('stroke', l.color).attr('stroke-width', l.tr ? 2 : 1.5)
-        .attr('d', d3.line().defined((d) => d.eur != null).x((d) => x(d.date)).y((d) => y(d.eur)).curve(d3.curveMonotoneX));
-    }
+    for (const l of lines) g.append('path').datum(l.data).attr('fill', 'none').attr('stroke', l.color).attr('stroke-width', l.tr ? 2 : 1.5)
+      .attr('d', d3.line().x((d) => x(d.date)).y((d) => y(d.eur)).curve(d3.curveMonotoneX));
     const rule = g.append('line').attr('y1', 0).attr('y2', f.ih).attr('stroke', css('--axis')).style('display', 'none');
-    const dots = lines.map((l) => g.append('circle').attr('r', 3.5).attr('fill', l.color).style('display', 'none'));
     g.append('rect').attr('width', f.iw).attr('height', f.ih).attr('fill', 'transparent')
       .on('pointermove', (ev) => {
-        const [mx] = d3.pointer(ev); const wk = d3.utcMonday.floor(x.invert(mx));
-        let html = `<div class="d">${t.week(fmtDate(wk))}</div>`; let any = false; let py = f.ih / 2;
-        lines.forEach((l, i) => {
-          const d = l.data.find((p) => +d3.utcMonday.floor(p.date) === +wk);
-          if (!d || d.eur == null) { dots[i].style('display', 'none'); return; }
+        const wk = d3.utcMonday.floor(x.invert(d3.pointer(ev)[0]));
+        let html = `<div class="d">${t.week(fmtDate(wk))}</div>`, any = false, py = f.ih / 2;
+        for (const l of lines) {
+          const d = l.data.find((p) => +d3.utcMonday.floor(p.date) === +wk); if (!d) continue;
           any = true; py = y(d.eur);
-          dots[i].style('display', null).attr('cx', x(d.date)).attr('cy', y(d.eur));
-          html += `<div class="row"><span class="sw" style="background:${l.color}"></span>${l.name}<span class="val">${eur(d.eur)}${l.tr ? ` <span class="eur">(${tl(d.tl)})</span>` : ''}</span></div>`;
-        });
+          html += `<div class="row"><span class="sw" style="background:${l.color}"></span>${esc(l.name)}<span class="val">${eur(d.eur)}${l.tr ? ` <span class="eur">(${tl(d.tl)})</span>` : ''}</span></div>`;
+        }
         if (!any) { f.tip.style('display', 'none'); rule.style('display', 'none'); return; }
         rule.style('display', null).attr('x1', x(wk)).attr('x2', x(wk));
         f.tip.style('display', null).html(html); placeTip(f, x(wk), py);
       })
-      .on('pointerleave', () => { f.tip.style('display', 'none'); rule.style('display', 'none'); dots.forEach((d) => d.style('display', 'none')); });
+      .on('pointerleave', () => { f.tip.style('display', 'none'); rule.style('display', 'none'); });
   }
 
-  function tile(k, v, s) { return `<div class="card tile"><p class="k">${k}</p><p class="v">${v}</p><p class="s">${s}</p></div>`; }
-
-  function nearest(series, date, maxDays) {
-    const i = d3.bisector((d) => d.date).center(series, date); const d = series[i];
-    return d && Math.abs(d.date - date) <= maxDays * 864e5 ? d : null;
-  }
+  const tile = (k, v, s) => `<div class="card tile"><p class="k">${k}</p><p class="v">${v}</p><p class="s">${s}</p></div>`;
 
   async function render() {
-    for (const b of pbox.children) b.setAttribute('aria-pressed', String(b.dataset.k === state.p));
-    for (const [id, key] of [['range-tr', 'rTr'], ['range-cmp', 'rCmp']])
-      for (const b of document.getElementById(id).children) b.setAttribute('aria-pressed', String(b.dataset.r === state[key]));
-    if (durum) document.getElementById('updated').textContent = t.updated(new Date(durum.guncelleme).toLocaleString(loc, { dateStyle: 'long', timeStyle: 'short' }));
-    const name = PRODUCTS.find((p) => p.k === state.p)[state.lang === 'en' ? 'en' : 'tr'];
+    for (const [id, key, attr] of [['range-all', 'rAll', 'r'], ['range-seg', 'rSeg', 'r'], ['range-cmp', 'rCmp', 'r'], ['smooth', 'sm', 's']])
+      for (const b of $(id).children) b.setAttribute('aria-pressed', String(b.dataset[attr] === state[key]));
+    if (durum) $('updated').textContent = t.updated(new Date(durum.guncelleme).toLocaleString(loc, { dateStyle: 'long', timeStyle: 'short' }));
+    if (!index.find((p) => p.k === state.p)) state.p = index[0]?.k;
+    $('product').value = state.p;
+    for (const b of $('quick').querySelectorAll('button')) b.setAttribute('aria-pressed', String(b.dataset.k === state.p));
     const doc = await product(state.p);
-    const trEl = document.getElementById('chart-tr'), cmpEl = document.getElementById('chart-cmp');
-    const tilesEl = document.getElementById('tiles'), lede = document.getElementById('lede');
-    if (!doc) {
-      vsel.innerHTML = ''; tilesEl.innerHTML = '';
-      lede.textContent = t.notLoaded;
-      empty(trEl, t.noData); empty(cmpEl, t.noData); document.getElementById('legend-cmp').innerHTML = '';
-      return;
-    }
-    const cesitler = doc.tr.cesitler;
-    if (!state.v || !cesitler.some((c) => c.ad === state.v)) state.v = cesitler[0]?.ad ?? null;
-    vsel.innerHTML = cesitler.map((c) => `<option value="${c.ad.replace(/"/g, '&quot;')}">${c.ad} (${c.birim || t.noUnit}, ${c.ilk.slice(0, 4)}–${c.son.slice(0, 4)})</option>`).join('');
-    if (state.v) vsel.value = state.v;
-    const unit = cesitler.find((c) => c.ad === state.v)?.birim || '';
+    if (!doc) { $('lede').textContent = t.notLoaded; return; }
+    const P = nm(doc);
+    const segs = doc.segmentler;
+    if (!segs.some((s) => s.k === state.s)) state.s = segs[0].k;
+    const color = new Map(segs.map((s, i) => [s.k, css(SEGC[i % SEGC.length])]));
+    $('segments').innerHTML = segs.map((s) => `<button type="button" class="chip sm" data-k="${s.k}" aria-pressed="${s.k === state.s}"><span class="sw" style="background:${color.get(s.k)}"></span>${esc(nm(s))}</button>`).join('');
+    $('segments').hidden = segs.length < 2;
+    $('botanik').textContent = doc.botanik ? t.botanik(doc.botanik) : '';
+    const S = segs.find((s) => s.k === state.s);
+    const unitAll = unitName(d3.greatest(d3.rollups(segs, (v) => v.length, (s) => s.birim), (d) => d[1])[0]);
 
-    const full = (doc.tr.seriler[state.v] || []).map(([d, lo, hi, avg]) => ({ date: parse(d), lo, hi, avg })).filter((d) => d.date && d.avg != null);
-    drawTr(trEl, cutoff(full, state.rTr));
+    // 1. segmentler yan yana
+    $('h-all').textContent = t.hAll(P, unitAll);
+    const off = state.off[state.p] || [];
+    const segRows = new Map(segs.map((s) => [s.k, rowsOf(s.seri)]));
+    const lastAll = d3.max(segs, (s) => parse(s.son));
+    const lines = segs.filter((s) => s.birim === S.birim).map((s) => {
+      let d = since(segRows.get(s.k), state.rAll, lastAll); if (state.sm === 'w') d = weekly(d);
+      return { k: s.k, name: nm(s), color: color.get(s.k), data: d, off: off.includes(s.k) };
+    });
+    $('legend-all').innerHTML = lines.map((l) => `<button type="button" data-k="${l.k}" aria-pressed="${!l.off}"><i style="background:${l.color}"></i>${esc(l.name)}</button>`).join('');
+    $('h-all').parentElement.hidden = segs.length < 2;
+    if (segs.length > 1) drawAll($('chart-all'), lines);
 
-    // İspanya serileri: en çok gözlemi olan en fazla 4 seri
-    const esAll = Object.entries(doc.es.seriler || {}).map(([n, rows]) => ({ name: n, data: rows.map(([d, v]) => ({ date: parse(d), eur: v })).filter((d) => d.date) }))
-      .sort((a, b) => b.data.length - a.data.length).slice(0, 4);
-    const trW = weeklyEur(full);
-    const lastAll = d3.max([...trW, ...esAll.flatMap((s) => s.data)], (d) => d.date);
-    const from = state.rCmp === 'all' || !lastAll ? null : new Date(lastAll - (+state.rCmp) * 864e5);
-    const clip = (a) => (from ? a.filter((d) => d.date >= from) : a);
-    drawCmp(cmpEl, clip(trW), esAll.map((s) => ({ ...s, data: clip(s.data) })), document.getElementById('legend-cmp'));
+    // 2. seçili segment ya da ad
+    const names = S.adlar.map((k) => doc.adlar[k]);
+    if (state.n && !S.adlar.includes(state.n)) state.n = '';
+    $('name').innerHTML = `<option value="">${esc(t.segAvg(nm(S)))}</option>` + names.map((a) => `<option value="${esc(a.anahtar)}">${esc(a.ad)}${a.yan ? ' · ' + t.side : ''}</option>`).join('');
+    $('name').value = state.n;
+    const full = state.n ? rowsOf(doc.adlar[state.n].seri) : segRows.get(S.k);
+    const unitS = unitName(state.n ? doc.adlar[state.n].birim : S.birim);
+    $('h-seg').textContent = t.hSeg(P, nm(S), unitS);
+    drawSeg($('chart-seg'), since(full, state.rSeg));
+    $('names').innerHTML = `<thead><tr>${t.th.map((h) => `<th>${h}</th>`).join('')}</tr></thead><tbody>` +
+      names.map((a) => `<tr><td>${esc(a.ad)}</td><td>${unitName(a.birim)}</td><td>${a.n}</td><td>${a.ilk}</td><td>${a.son}</td><td class="muted">${a.yan ? t.side : ''}</td></tr>`).join('') + '</tbody>';
 
-    // göstergeler + özet cümlesi
+    // 3. Türkiye – İspanya
+    const cmpLines = [];
+    const trW = weeklyEur(segRows.get(S.k));
+    if (trW.length) cmpLines.push({ name: t.trLine(nm(S)), color: css('--c-tr'), data: trW, tr: true });
+    Object.entries(doc.ispanya?.seriler || {}).map(([n, rows]) => ({ n, data: rows.map(([d, v]) => ({ date: parse(d), eur: v })).filter((d) => d.date) }))
+      .sort((a, b) => b.data.length - a.data.length).slice(0, 4)
+      .forEach((s, i) => cmpLines.push({ name: t.es + ' · ' + s.n, color: css(ES_COLORS[i]), data: s.data }));
+    const lastC = d3.max(cmpLines.filter((l) => !l.tr), (l) => l.data[l.data.length - 1]?.date) || trW[trW.length - 1]?.date;
+    const from = state.rCmp === 'all' || !lastC ? null : new Date(lastC - (+state.rCmp) * 864e5);
+    drawCmp($('chart-cmp'), cmpLines.map((l) => ({ ...l, data: from ? l.data.filter((d) => d.date >= from) : l.data })), $('legend-cmp'), t.noCmp(P));
+
+    // göstergeler + özet
     const last = full[full.length - 1];
-    if (!last) { tilesEl.innerHTML = ''; lede.textContent = t.noTrName(name); return; }
-    const r = rateOn(last.date);
-    const wk = nearest(full, new Date(last.date - 7 * 864e5), 3);
-    const yr = nearest(full, new Date(last.date - 365 * 864e5), 7);
+    const r = last && rateOn(last.date);
+    const wk = last && nearest(full, new Date(last.date - 7 * 864e5), 3);
+    const yr = last && nearest(full, new Date(last.date - 365 * 864e5), 7);
     const yrR = yr && rateOn(yr.date);
     const chg = (a, b) => (a && b ? a / b - 1 : null);
     const cls = (v) => (v == null ? '' : v > 0 ? 'up' : 'down');
-    const yE = chg(r && last.avg / r, yrR && yr.avg / yrR);
-    const esLast = esAll.map((s) => ({ name: s.name, d: s.data[s.data.length - 1] })).filter((s) => s.d);
-    tilesEl.innerHTML =
-      tile(t.tMarket(state.v), tl(last.avg), `${fmtDate(last.date)} · ${unit}${r ? ` · ≈ ${eur(last.avg / r)}` : ''}`) +
+    const yE = last && chg(r && last.avg / r, yrR && yr.avg / yrR);
+    const label = state.n ? doc.adlar[state.n].ad : nm(S);
+    const stale = last && (Date.now() - last.date) > 30 * 864e5;
+    // segment sıralaması: son 7 gün ortalaması, aynı birimdeki ve son 30 günde işlem gören segmentler
+    const recent = segs.filter((s) => s.birim === S.birim).map((s) => {
+      const rows = segRows.get(s.k); const lr = rows[rows.length - 1];
+      if (!lr || Date.now() - lr.date > 30 * 864e5) return null;
+      return { s, v: d3.mean(rows.filter((d) => d.date >= new Date(lr.date - 7 * 864e5)), (d) => d.avg) };
+    }).filter(Boolean).sort((a, b) => b.v - a.v);
+    const rk = recent.findIndex((x) => x.s.k === S.k);
+    $('tiles').innerHTML = !last ? '' :
+      tile(t.tLast(esc(label)), tl(last.avg), `${fmtDate(last.date)} · ${unitS}${r ? ` · ≈ ${eur(last.avg / r)}` : ''}`) +
       tile(t.tWeek, `<span class="${cls(chg(last.avg, wk?.avg))}">${pct(chg(last.avg, wk?.avg))}</span>`, wk ? `${tl(wk.avg)} · ${fmtDate(wk.date)}` : t.noWeek) +
       tile(t.tYear, `<span class="${cls(yE)}">${pct(yE)}</span>`, yr ? `${t.inTl(pct(chg(last.avg, yr.avg)))} · ${fmtDate(yr.date)}` : t.noYear) +
-      (esLast.length ? tile(`${t.es} · ${esLast[0].name}`, eur(esLast[0].d.eur), t.esWeek(fmtDate(esLast[0].d.date))) : tile(t.es, '—', t.noEs));
-    lede.innerHTML = t.lede(name, fmtDate(last.date), tl(last.avg), r ? eur(last.avg / r) : null, pct(yE)) +
-      (esLast.length ? t.ledeEs(esLast[0].name.toLowerCase(), eur(esLast[0].d.eur)) : '');
+      (recent.length > 1 && rk >= 0 ? tile(t.tRank, t.rank(rk + 1, recent.length), t.rankSub(esc(nm(recent[0].s)), tl(recent[0].v))) : '');
+    $('lede').innerHTML = (last ? t.lede(esc(P), esc(label), fmtDate(last.date), tl(last.avg), r ? eur(last.avg / r) : null, pct(yE)) + (stale ? ` <span class="muted">(${t.stale(fmtDate(last.date))})</span>` : '') : '') +
+      t.ledeN(index.length, d3.sum(index, (p) => p.segment));
   }
 
   setLang();
-  document.getElementById('lede').textContent = t.loading;
-  Promise.all([load('data/kur-eur-try.json').catch(() => []), load('data/durum.json').catch(() => null)]).then(([k, d]) => {
-    fxDates = k.map(([x]) => parse(x)); fxVals = k.map(([, v]) => v); durum = d;
-    render();
+  $('lede').textContent = t.loading;
+  Promise.all([load('data/urunler.json').catch(() => []), load('data/kur-eur-try.json').catch(() => []), load('data/durum.json').catch(() => null)]).then(([u, k, d]) => {
+    index = u; fxDates = k.map(([x]) => parse(x)); fxVals = k.map(([, v]) => v); durum = d;
+    if (!index.length) { $('lede').textContent = t.notLoaded; return; }
+    buildPicker(); render();
   });
   let w = innerWidth;
   addEventListener('resize', () => { if (Math.abs(innerWidth - w) > 8) { w = innerWidth; render(); } });
