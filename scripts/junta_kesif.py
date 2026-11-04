@@ -61,8 +61,8 @@ def run() -> int:
                 out.append(f"=== {yil} · {sh.name} ({sh.nrows}x{sh.ncols})")
                 for i in range(sh.nrows):
                     line = " | ".join(str(c.value).strip() for c in sh.row(i))
-                    if i < 12 or re.search(r"tomate|pimiento|pepino|berenjena|calabac|almer", line, re.I):
-                        out.append(f"{i}: {line[:700]}")
+                    if i < 6 or (yil == "2026" and 300 <= i < 600) or (yil == "2008" and re.search(r"tomate|pimiento|alh", line, re.I)):
+                        out.append(f"{i}: {line[:330]}")
         (PROBE / "junta-xls.txt").write_text("\n".join(out)[:180000], encoding="utf-8")
     except Exception as e:  # noqa: BLE001
         (PROBE / "junta-xls.txt").write_text(f"HATA: {e}", encoding="utf-8")
