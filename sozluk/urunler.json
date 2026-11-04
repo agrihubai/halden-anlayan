@@ -22,7 +22,9 @@
      "en": "Truss",
      "es": "En rama",
      "kalip": "SALKIM",
-     "ab": []
+     "ab": [
+      "Tomatoes - Trusses=Vine/\"Grappes\""
+     ]
     },
     {
      "k": "ceri",
@@ -30,7 +32,9 @@
      "en": "Cherry / cocktail",
      "es": "Cherry / cóctel",
      "kalip": "CHERRY|CERI|KOKTEYL",
-     "ab": []
+     "ab": [
+      "Tomatoes - Cherry/Special"
+     ]
     },
     {
      "k": "pembe",
@@ -54,7 +58,9 @@
      "en": "Round · greenhouse",
      "es": "Redondo · invernadero",
      "kalip": "\\bSERA\\b",
-     "ab": []
+     "ab": [
+      "Tomatoes - Round"
+     ]
     },
     {
      "k": "tarla",
@@ -62,7 +68,9 @@
      "en": "Round · open field",
      "es": "Redondo · aire libre",
      "kalip": "TARLA",
-     "ab": []
+     "ab": [
+      "Tomatoes - Round"
+     ]
     },
     {
      "k": "salcalik",
