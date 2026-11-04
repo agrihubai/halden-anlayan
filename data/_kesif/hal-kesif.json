@@ -2,7 +2,7 @@
  "robots": {
   "https://www.hal.gov.tr/robots.txt": {
    "durum": null,
-   "icerik": "HATA: HTTP Error 404: NOT FOUND"
+   "icerik": "HATA: <urlopen error [Errno -3] Temporary failure in name resolution>"
   },
   "https://gezipanel.antalya.bel.tr/robots.txt": {
    "durum": null,
@@ -14,21 +14,15 @@
   }
  },
  "sayfalar": {
-  "https://gezipanel.antalya.bel.tr/": {
-   "durum": 200,
-   "hal_baglantilari": []
-  },
-  "https://gezipanel.antalya.bel.tr/hal-gunluk-fiyat": {
-   "durum": 200,
-   "hal_baglantilari": [
-    "./hal-gunluk-fiyat",
-    "/Methods.aspx/GetGunlukHalFiyatPdf",
-    ">Hal Günlük Fiyat</div>\r\n                    \r\n                </div>\r\n            </a>\r\n\r\n            <div class="
-   ]
-  },
-  "https://gezipanel.antalya.bel.tr/Content/js/main.js": {
-   "durum": 200,
-   "hal_baglantilari": []
+  "https://www.hal.gov.tr/Sayfalar/FiyatDetaylari.aspx": {
+   "durum": null,
+   "uzunluk": 69,
+   "secimler": {},
+   "inputlar": [],
+   "scriptler": [],
+   "script_src": [],
+   "tablolar": [],
+   "metin": "HATA: "
   }
  }
 }
