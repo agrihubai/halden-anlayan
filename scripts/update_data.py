@@ -315,27 +315,45 @@ def update_eu() -> int:
     products = [p for p in products if p]
     if not products:
         raise RuntimeError("AB: ürün listesi alınamadı")
-    log, out = [], []
+    # Daha önce indirilenler korunur; her ürün için sadece son 8 hafta yeniden istenir.
+    p = RAW / "ispanya.json.gz"
+    old = []
+    if p.exists():
+        with gzip.open(p, "rt", encoding="utf-8") as f:
+            old = json.load(f)
+    last = {}
+    for r in old:
+        last[r["urun"]] = max(last.get(r["urun"], ""), r["d"])
+    # Önce hiç indirilmemiş ürünler, onların içinde de sera ürünleri
+    first = ["Tomatoes", "Peppers", "Cucumbers", "Egg Plants", "Courgettes"]
+    products.sort(key=lambda x: (x in last, x not in first, x))
+    log = []
+    fresh: dict[str, list] = {}
+    since: dict[str, str] = {}
     end = TODAY.strftime("%d/%m/%Y")
     t_end = time.time() + 12 * 60  # AB için en fazla 12 dakika; kalan ürünler bir sonraki çalıştırmaya kalır
     for prod in products:
         if time.time() > t_end:
-            log.append("süre doldu, kalan ürünler atlandı")
+            log.append("süre doldu, kalan ürünler bir sonraki çalıştırmaya kaldı")
             break
-        recs = []
-        try:
-            recs, url = eu_get("", {"memberStateCodes": "ES", "products": prod, "beginDate": f"01/01/{START_YEAR}", "endDate": end})
-            log.append(f"{url} -> {len(recs)}")
-        except Exception as e:  # noqa: BLE001  tek istekte olmazsa yıl yıl dene
-            log.append(f"{prod} toplu istek hata: {e}")
-            for y in range(START_YEAR, TODAY.year + 1):
-                try:
-                    got, url = eu_get("", {"memberStateCodes": "ES", "products": prod, "years": y})
-                    recs += got
-                except Exception as e2:  # noqa: BLE001
-                    log.append(f"{prod} {y}: {e2}")
-        if recs and not out:
-            probe("ab-ornek.json", json.dumps(recs[:8], ensure_ascii=False, indent=1))
+        if prod in last:
+            b = dt.date.fromisoformat(last[prod]) - dt.timedelta(weeks=8)
+        else:
+            b = dt.date(START_YEAR, 1, 1)
+        params = {"memberStateCodes": "ES", "products": prod, "beginDate": b.strftime("%d/%m/%Y"), "endDate": end}
+        recs = None
+        for attempt in range(3):
+            try:
+                recs, url = eu_get("", params)
+                log.append(f"{url} -> {len(recs)}")
+                break
+            except Exception as e:  # noqa: BLE001
+                log.append(f"{prod} deneme {attempt + 1}: {e}")
+                time.sleep(20 if "429" in str(e) else 5)
+        time.sleep(1)  # API hız sınırına takılmamak için
+        if recs is None:
+            continue
+        rows = []
         for r in recs:
             if str(pick(r, "memberStateCode") or "ES").upper() != "ES":
                 continue
@@ -343,20 +361,22 @@ def update_eu() -> int:
             price = num(pick(r, "price"))
             if not d or price is None:
                 continue
-            out.append({"d": d.isoformat(), "urun": prod, "st": str(pick(r, "productStage") or ""),
-                        "v": str(pick(r, "variety") or ""), "u": str(pick(r, "unit") or ""),
-                        "per": str(pick(r, "periodType") or ""), "price": price})
+            rows.append({"d": d.isoformat(), "urun": prod, "st": str(pick(r, "productStage") or ""),
+                         "v": str(pick(r, "variety") or ""), "u": str(pick(r, "unit") or ""),
+                         "per": str(pick(r, "periodType") or ""), "price": price})
+        fresh[prod] = rows
+        since[prod] = b.isoformat()
     probe("ab-istekler.txt", "\n".join(log), limit=30000)
-    p = RAW / "ispanya.json.gz"
+    out = [r for r in old if not (r["urun"] in fresh and r["d"] >= since[r["urun"]])]
+    for rows in fresh.values():
+        out += rows
     if not out:
-        if p.exists():
-            print("  AB: yeni veri yok, eskisi korundu", file=sys.stderr)
-            return 0
         raise RuntimeError("AB: hiç kayıt gelmedi (data/_kesif/ab-istekler.txt)")
+    out.sort(key=lambda r: (r["urun"], r["d"], r["st"], r["v"], r["per"]))
     p.parent.mkdir(parents=True, exist_ok=True)
     with gzip.GzipFile(p, "wb", mtime=0) as f:
         f.write(json.dumps(out, ensure_ascii=False, separators=(",", ":")).encode("utf-8"))
-    print(f"  AB: {len(out)} kayıt, {len({r['urun'] for r in out})} ürün")
+    print(f"  AB: {len(out)} kayıt, {len({r['urun'] for r in out})} ürün; bu sefer {len(fresh)} ürün istendi")
     return len(out)
 
 

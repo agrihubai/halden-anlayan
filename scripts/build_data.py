@@ -111,7 +111,9 @@ def main() -> None:
                 es_inv[(r["urun"], r["st"], r["v"], r["u"], r.get("per", ""))] += 1
                 if r.get("per") and r["per"].lower() != "week":
                     continue  # grafikte sadece haftalık fiyatlar
-                label = " · ".join(x for x in (r["st"], r["v"]) if x) or "—"
+                st = {"Ex-packaging station price": "Paketleme çıkışı", "Farmgate price": "Tarla",
+                      "Retail buying price": "Perakende alış", "Retail selling price": "Raf"}.get(r["st"], r["st"])
+                label = " · ".join(x for x in (st, r["v"]) if x) or "—"
                 es[r["urun"]][label][r["d"]] = round(per_kg(r["price"], r["u"]), 4)
 
     # ---- yaz
@@ -142,7 +144,7 @@ def main() -> None:
                 his = [x[1] for x in v if x[1]]
                 seri.append([d, min(los) if los else None, max(his) if his else None, round(statistics.fmean(x[2] for x in v), 3)])
             units_ = Counter(P["ad"][k]["birim"] for k in main_keys)
-            segs.append({"k": s["k"], "tr": s["tr"], "en": s["en"], "es": s["es"], "birim": units_.most_common(1)[0][0],
+            segs.append({"k": s["k"], "tr": s["tr"], "en": s["en"], "es": s["es"], "ab": s.get("ab", []), "birim": units_.most_common(1)[0][0],
                          "adlar": sorted(keys, key=lambda k: (P["ad"][k]["yan"], -P["ad"][k]["n"])),
                          "n": len(seri), "ilk": seri[0][0], "son": seri[-1][0], "seri": seri})
         es_series = {}

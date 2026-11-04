@@ -19,7 +19,7 @@
 "n": 5891,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
-"ispanya": false
+"ispanya": true
 },
 {
 "k": "hiyar",
@@ -30,7 +30,7 @@
 "n": 5891,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
-"ispanya": false
+"ispanya": true
 },
 {
 "k": "patlican",
@@ -41,7 +41,7 @@
 "n": 5891,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
-"ispanya": false
+"ispanya": true
 },
 {
 "k": "kabak",
@@ -52,7 +52,7 @@
 "n": 5891,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
-"ispanya": false
+"ispanya": true
 },
 {
 "k": "bal-kabagi",
@@ -118,7 +118,7 @@
 "n": 5801,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
-"ispanya": false
+"ispanya": true
 },
 {
 "k": "bezelye",
@@ -195,7 +195,7 @@
 "n": 5891,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
-"ispanya": false
+"ispanya": true
 },
 {
 "k": "ispanak",
@@ -217,7 +217,7 @@
 "n": 4525,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
-"ispanya": false
+"ispanya": true
 },
 {
 "k": "karpuz",
@@ -239,7 +239,7 @@
 "n": 3120,
 "ilk": "2006-04-17",
 "son": "2026-11-04",
-"ispanya": false
+"ispanya": true
 },
 {
 "k": "kereviz",
@@ -261,7 +261,7 @@
 "n": 5891,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
-"ispanya": false
+"ispanya": true
 },
 {
 "k": "mantar",
@@ -272,7 +272,7 @@
 "n": 5891,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
-"ispanya": false
+"ispanya": true
 },
 {
 "k": "marul",
@@ -283,7 +283,7 @@
 "n": 5891,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
-"ispanya": false
+"ispanya": true
 },
 {
 "k": "pancar",
@@ -338,7 +338,7 @@
 "n": 5855,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
-"ispanya": false
+"ispanya": true
 },
 {
 "k": "semizotu",
@@ -360,7 +360,7 @@
 "n": 5891,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
-"ispanya": false
+"ispanya": true
 },
 {
 "k": "turp",
@@ -503,7 +503,7 @@
 "n": 4948,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
-"ispanya": false
+"ispanya": true
 },
 {
 "k": "ayva",
@@ -569,7 +569,7 @@
 "n": 5891,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
-"ispanya": false
+"ispanya": true
 },
 {
 "k": "erik",
@@ -580,7 +580,7 @@
 "n": 3647,
 "ilk": "2006-04-04",
 "son": "2026-11-04",
-"ispanya": false
+"ispanya": true
 },
 {
 "k": "greyfurt",
@@ -635,7 +635,7 @@
 "n": 2209,
 "ilk": "2006-05-12",
 "son": "2026-09-25",
-"ispanya": false
+"ispanya": true
 },
 {
 "k": "kestane",
@@ -657,7 +657,7 @@
 "n": 1789,
 "ilk": "2006-05-04",
 "son": "2026-09-25",
-"ispanya": false
+"ispanya": true
 },
 {
 "k": "kivi",
@@ -723,7 +723,7 @@
 "n": 3717,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
-"ispanya": false
+"ispanya": true
 },
 {
 "k": "muz",
@@ -734,7 +734,7 @@
 "n": 5891,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
-"ispanya": false
+"ispanya": true
 },
 {
 "k": "nar",
@@ -756,7 +756,7 @@
 "n": 3002,
 "ilk": "2006-06-22",
 "son": "2026-10-30",
-"ispanya": false
+"ispanya": true
 },
 {
 "k": "portakal",
@@ -778,7 +778,7 @@
 "n": 2937,
 "ilk": "2006-05-25",
 "son": "2026-10-28",
-"ispanya": false
+"ispanya": true
 },
 {
 "k": "uzum",
@@ -822,7 +822,7 @@
 "n": 5688,
 "ilk": "2006-01-02",
 "son": "2026-11-04",
-"ispanya": false
+"ispanya": true
 },
 {
 "k": "hindistan-cevizi",

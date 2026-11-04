@@ -515,9 +515,15 @@
     const cmpLines = [];
     const trW = weeklyEur(segRows.get(S.k));
     if (trW.length) cmpLines.push({ name: t.trLine(nm(S)), color: css('--c-tr'), data: trW, tr: true });
-    Object.entries(doc.ispanya?.seriler || {}).map(([n, rows]) => ({ n, data: rows.map(([d, v]) => ({ date: parse(d), eur: v })).filter((d) => d.date) }))
-      .sort((a, b) => b.data.length - a.data.length).slice(0, 4)
-      .forEach((s, i) => cmpLines.push({ name: t.es + ' · ' + s.n, color: css(ES_COLORS[i]), data: s.data }));
+    // İspanya: segmentin sözlükteki en yakın AB çeşidi; yoksa "bütün tipler" serisi
+    const esAll = Object.entries(doc.ispanya?.seriler || {}).map(([n, rows]) => ({ n, data: rows.map(([d, v]) => ({ date: parse(d), eur: v })).filter((d) => d.date) }));
+    let esPick = (S.ab || []).length ? esAll.filter((s) => S.ab.some((a) => s.n.endsWith(a))) : [];
+    if (!esPick.length) esPick = esAll.filter((s) => /All types and varieties/.test(s.n));
+    if (!esPick.length) esPick = esAll;
+    const STG = { en: { 'Paketleme çıkışı': 'Ex-packaging', Tarla: 'Farmgate', 'Perakende alış': 'Retail buying', Raf: 'Retail' } };
+    const esName = (n) => (L === 'en' ? n.replace(/^[^·]+/, (m) => (STG.en[m.trim()] || m.trim()) + ' ') : n).replace('All types and varieties', L === 'en' ? 'all types' : 'bütün tipler');
+    esPick.sort((a, b) => b.data.length - a.data.length).slice(0, 4)
+      .forEach((s, i) => cmpLines.push({ name: t.es + ' · ' + esName(s.n), color: css(ES_COLORS[i]), data: s.data }));
     const lastC = d3.max(cmpLines.filter((l) => !l.tr), (l) => l.data[l.data.length - 1]?.date) || trW[trW.length - 1]?.date;
     const from = state.rCmp === 'all' || !lastC ? null : new Date(lastC - (+state.rCmp) * 864e5);
     drawCmp($('chart-cmp'), cmpLines.map((l) => ({ ...l, data: from ? l.data.filter((d) => d.date >= from) : l.data })), $('legend-cmp'), t.noCmp(P));
