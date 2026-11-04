@@ -11,7 +11,6 @@ https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?m
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Tomatoes&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 64
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Apples&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 107
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Apples+for+processing&beginDate=07%2F07%2F2026&endDate=04%2F11%2F2026 -> 2
-Apricots deneme 1: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Apricots&beginDate=29%2F06%2F2026&endDate=04%2F11%2F2026 -> 22
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Asparagus&beginDate=11%2F05%2F2026&endDate=04%2F11%2F2026 -> 10
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Avocados&beginDate=23%2F02%2F2026&endDate=04%2F11%2F2026 -> 18
@@ -30,9 +29,9 @@ https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?m
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Mandarins&beginDate=13%2F04%2F2026&endDate=04%2F11%2F2026 -> 9
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Melons&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 10
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Nectarines&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 62
+Nectarines for processing deneme 1: HTTP Error 429: Too Many Requests
+Nectarines for processing deneme 2: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Nectarines+for+processing&beginDate=07%2F07%2F2026&endDate=04%2F11%2F2026 -> 2
-Onions deneme 1: HTTP Error 429: Too Many Requests
-Onions deneme 2: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Onions&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 10
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Oranges&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 13
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Oranges+for+processing&beginDate=06%2F03%2F2026&endDate=04%2F11%2F2026 -> 2
@@ -41,11 +40,8 @@ https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?m
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Peaches+for+processing&beginDate=07%2F07%2F2026&endDate=04%2F11%2F2026 -> 2
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Pears&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 28
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Plums&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 10
-Satsumas deneme 1: HTTP Error 500: Internal Server Error
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Satsumas&beginDate=13%2F10%2F2025&endDate=04%2F11%2F2026 -> 11
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Strawberries&beginDate=06%2F06%2F2026&endDate=04%2F11%2F2026 -> 3
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Table+Grapes&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 20
-Tomatoes for processing deneme 1: HTTP Error 500: Internal Server Error
-Tomatoes for processing deneme 2: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Tomatoes+for+processing&beginDate=06%2F11%2F2024&endDate=04%2F11%2F2026 -> 1
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Water+Melons&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 9
