@@ -14,16 +14,19 @@ https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?m
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Apricots&beginDate=29%2F06%2F2026&endDate=04%2F11%2F2026 -> 22
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Asparagus&beginDate=11%2F05%2F2026&endDate=04%2F11%2F2026 -> 10
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Avocados&beginDate=23%2F02%2F2026&endDate=04%2F11%2F2026 -> 18
+Bananas deneme 1: HTTP Error 500: Internal Server Error
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Bananas&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 21
-Beans deneme 1: HTTP Error 429: Too Many Requests
-Beans deneme 2: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Beans&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 10
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Cabbage&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 8
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Carrots&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 9
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Cauliflowers&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 8
+Cherries deneme 1: HTTP Error 429: Too Many Requests
+Cherries deneme 2: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Cherries&beginDate=29%2F06%2F2026&endDate=04%2F11%2F2026 -> 22
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Clementines&beginDate=22%2F12%2F2025&endDate=04%2F11%2F2026 -> 11
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Cultivated+Mushrooms&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 20
+Garlic deneme 1: HTTP Error 429: Too Many Requests
+Garlic deneme 2: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Garlic&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 40
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Leeks&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 10
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Lemons&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 7
@@ -31,16 +34,21 @@ https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?m
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Mandarins&beginDate=13%2F04%2F2026&endDate=04%2F11%2F2026 -> 9
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Melons&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 10
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Nectarines&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 62
-https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Nectarines+for+processing&beginDate=07%2F07%2F2026&endDate=04%2F11%2F2026 -> 2
+Nectarines for processing deneme 1: HTTP Error 429: Too Many Requests
+Nectarines for processing deneme 2: HTTP Error 429: Too Many Requests
+Nectarines for processing deneme 3: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Onions&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 10
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Oranges&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 13
-Oranges for processing deneme 1: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Oranges+for+processing&beginDate=06%2F03%2F2026&endDate=04%2F11%2F2026 -> 2
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Organic-Oranges&beginDate=06%2F04%2F2017&endDate=04%2F11%2F2026 -> 6
+Peaches deneme 1: HTTP Error 429: Too Many Requests
+Peaches deneme 2: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Peaches&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 88
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Peaches+for+processing&beginDate=07%2F07%2F2026&endDate=04%2F11%2F2026 -> 2
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Pears&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 28
-https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Plums&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 10
+Plums deneme 1: HTTP Error 429: Too Many Requests
+Plums deneme 2: HTTP Error 429: Too Many Requests
+Plums deneme 3: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Satsumas&beginDate=13%2F10%2F2025&endDate=04%2F11%2F2026 -> 11
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Strawberries&beginDate=06%2F06%2F2026&endDate=04%2F11%2F2026 -> 3
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Table+Grapes&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 20
