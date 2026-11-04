@@ -11,7 +11,9 @@ ROOT = Path(__file__).resolve().parent.parent
 PROBE = ROOT / "data" / "_kesif"
 UA = {"User-Agent": "agrihubai-halden-anlayan/1.0 (+https://github.com/agrihubai/halden-anlayan)"}
 FC = "https://www.juntadeandalucia.es/agriculturaypesca/observatorio/servlet/FrontController"
+XLS = "https://gdc-pdpopendata-ckan.paas.junta-andalucia.es/datosabiertos/portal/dataset/b4c3ab7a-7f2c-4e83-b1c4-4d9a22083f2a/resource/240f7556-4656-465e-a86f-93c23049ab1b/download/p_agricolas_2025_s01_s52_web_1.xls"
 PAGES = {
+    "consejeria": "https://www.juntadeandalucia.es/organismos/agriculturapescaaguaydesarrollorural/servicios/estadistica-cartografia/estadisticas-agricolas/paginas/precios-agricolas-semanales.html",
     "or-tomate": FC + "?action=Static&subsector=20&producto=116&url=generadorInformesOR.jsp",
     "ultimos": FC + "?action=UltimosPrecios&subsector=20",
     "ckan": "https://www.juntadeandalucia.es/datosabiertos/portal/api/3/action/package_show?id=precios-agricolas-semanales-2014",
@@ -32,7 +34,9 @@ def run() -> int:
             t = get(url)
         except Exception as e:  # noqa: BLE001
             t = f"HATA: {e}"
-        if not name.startswith("ckan"):
+        if name == "consejeria":
+            t = json.dumps({"url": url, "baglantilar": sorted(set(re.findall(r'href="([^"]+)"', t)))}, ensure_ascii=False, indent=1)
+        elif not name.startswith("ckan"):
             # formlar, select seçenekleri ve script içindeki ajax adresleri
             forms = re.findall(r"<form[\s\S]*?</form>", t, flags=re.I)
             scripts = [s for s in re.findall(r"<script[^>]*>([\s\S]*?)</script>", t, flags=re.I) if re.search(r"ajax|action=|\.do|url", s, re.I)]
@@ -40,6 +44,24 @@ def run() -> int:
             t = json.dumps({"url": url, "uzunluk": len(t), "formlar": [f[:20000] for f in forms], "scriptler": [s[:6000] for s in scripts[:8]], "baglantilar": links[:200]}, ensure_ascii=False, indent=1)
         (PROBE / f"junta-{name}.txt").write_text(t[:200000], encoding="utf-8")
         n += 1
+    # haftalık fiyat Excel'i: sayfa adları ve ilk satırlar
+    try:
+        import subprocess, sys
+        try:
+            import xlrd  # noqa: F401
+        except ImportError:
+            subprocess.run([sys.executable, "-m", "pip", "install", "-q", "xlrd==2.0.1"], check=True)
+        import xlrd
+        data = urllib.request.urlopen(urllib.request.Request(XLS, headers=UA), timeout=90).read()
+        wb = xlrd.open_workbook(file_contents=data)
+        out = []
+        for sh in wb.sheets():
+            out.append(f"=== {sh.name} ({sh.nrows}x{sh.ncols})")
+            for i in range(min(sh.nrows, 90)):
+                out.append(" | ".join(str(c.value).strip() for c in sh.row(i)))
+        (PROBE / "junta-xls.txt").write_text("\n".join(out)[:150000], encoding="utf-8")
+    except Exception as e:  # noqa: BLE001
+        (PROBE / "junta-xls.txt").write_text(f"HATA: {e}", encoding="utf-8")
     return n
 
 
