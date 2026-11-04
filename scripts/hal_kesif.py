@@ -1,65 +1,55 @@
-"""Geçici keşif: ilçe halleri için resmî kaynak ve robots.txt kontrolü (data/_kesif/hal-kesif.json). Keşif bitince kaldırılacak."""
+"""Geçici keşif: HKS (hal.gov.tr) fiyat sayfaları — hal/il ayrımı var mı (data/_kesif/hal-kesif.json). Keşif bitince kaldırılacak."""
 from __future__ import annotations
 
+import html
 import json
 import re
+import time
 import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 UA = {"User-Agent": "agrihubai-halden-anlayan/1.0 (+https://github.com/agrihubai/halden-anlayan)"}
-ROBOTS = ["https://www.hal.gov.tr/robots.txt", "https://gezipanel.antalya.bel.tr/robots.txt", "https://antalya.bel.tr/robots.txt"]
-PAGES = ["https://www.hal.gov.tr/Sayfalar/FiyatDetaylari.aspx"]
+BASE = "https://www.hal.gov.tr"
 
 
 def get(u):
-    import time
     for i in range(4):
-        st, t = _get(u)
-        if st or "name resolution" not in t:
-            return st, t
-        time.sleep(5)
-    return st, t
+        try:
+            with urllib.request.urlopen(urllib.request.Request(u, headers=UA), timeout=40) as r:
+                return r.status, r.read().decode("utf-8", "replace")
+        except Exception as e:  # noqa: BLE001
+            err = str(e)
+            if "name resolution" not in err:
+                return None, "HATA: " + err
+            time.sleep(5)
+    return None, "HATA: " + err
 
 
-def _get(u):
-    try:
-        with urllib.request.urlopen(urllib.request.Request(u, headers=UA), timeout=40) as r:
-            return r.status, r.read().decode("utf-8", "replace")
-    except Exception as e:  # noqa: BLE001
-        return None, f"HATA: {e}"
+def text(t):
+    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", re.sub(r"<script[\s\S]*?</script>|<style[\s\S]*?</style>", "", t))))
 
 
 def run() -> int:
-    out = {"robots": {}, "sayfalar": {}}
-    for u in ROBOTS:
-        st, t = get(u)
-        out["robots"][u] = {"durum": st, "icerik": t[:3000]}
-    for u in PAGES:
-        st, t = get(u)
+    out = {"harita": [], "sayfalar": {}}
+    st, t = get(BASE + "/Sayfalar/SiteHaritasi.aspx")
+    links = [(h, re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", a))).strip()) for h, a in re.findall(r'<a[^>]*href="([^"#]+)"[^>]*>([\s\S]*?)</a>', t)]
+    out["harita"] = [l for l in links if l[1]][:300]
+    for h, a in out["harita"]:
+        if not re.search(r"fiyat|istatist|İstatist", a, re.I):
+            continue
+        u = html.unescape(h if h.startswith("http") else BASE + (h if h.startswith("/") else "/" + h))
+        if u in out["sayfalar"] or len(out["sayfalar"]) >= 10:
+            continue
+        st2, t2 = get(u)
         sel = {}
-        for m in re.finditer(r"<select[^>]*name=\"([^\"]+)\"[^>]*>([\s\S]*?)</select>", t, flags=re.I):
-            sel[m.group(1)] = re.findall(r"<option[^>]*value=\"([^\"]*)\"[^>]*>([^<]*)</option>", m.group(2))[:400]
-        inputs = re.findall(r"<input[^>]*name=\"([^\"]+)\"[^>]*>", t, flags=re.I)
-        scripts = [x[:3000] for x in re.findall(r"<script[^>]*>([\s\S]*?)</script>", t, flags=re.I) if re.search(r"ajax|fiyat|webservice|_api|svc|asmx", x, re.I)][:10]
-        srcs = re.findall(r"<script[^>]*src=\"([^\"]+)\"", t, flags=re.I)
-        tables = [re.sub(r"\s+", " ", x)[:4000] for x in re.findall(r"<table[\s\S]*?</table>", t, flags=re.I)][:3]
-        menu = sorted(set(re.findall(r'href="([^"]*(?:Fiyat|Istatistik|İstatistik|Hal|Sayfalar)[^"]*)"', t)))[:120]
-        out.setdefault("menu", {})[u] = menu
-        for m in menu:
-            if re.search(r"istatist|Istatist|1_Fiyat|IlIlce|Fiyat", m, re.I) and m not in PAGES and len(out["sayfalar"]) < 8:
-                full = m if m.startswith("http") else "https://www.hal.gov.tr" + (m if m.startswith("/") else "/" + m)
-                st2, t2 = get(full)
-                sel2 = {}
-                for mm in re.finditer(r"<select[^>]*name=\"([^\"]+)\"[^>]*>([\s\S]*?)</select>", t2, flags=re.I):
-                    sel2[mm.group(1)] = re.findall(r"<option[^>]*value=\"([^\"]*)\"[^>]*>([^<]*)</option>", mm.group(2))[:300]
-                out["sayfalar"][full] = {"durum": st2, "secimler": sel2, "inputlar": re.findall(r"<input[^>]*name=\"([^\"]+)\"[^>]*>", t2)[-15:],
-                                         "metin": re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", re.sub(r"<script[\s\S]*?</script>|<style[\s\S]*?</style>", "", t2)))[1200:4200]}
-        out["sayfalar"][u] = {"durum": st, "uzunluk": len(t), "secimler": sel, "inputlar": inputs[:80], "scriptler": scripts, "script_src": srcs[:60], "tablolar": tables,
-                               "metin": re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", re.sub(r"<script[\s\S]*?</script>|<style[\s\S]*?</style>", "", t)))[:4000]}
-    p = ROOT / "data" / "_kesif" / "hal-kesif.json"
-    p.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
-    return len(out["robots"]) + len(out["sayfalar"])
+        for m in re.finditer(r'<select[^>]*name="([^"]+)"[^>]*>([\s\S]*?)</select>', t2, flags=re.I):
+            sel[m.group(1)] = [(v, html.unescape(x).strip()) for v, x in re.findall(r'<option[^>]*value="([^"]*)"[^>]*>([^<]*)</option>', m.group(2))][:400]
+        out["sayfalar"][u] = {"ad": a, "durum": st2, "secimler": sel,
+                              "inputlar": [x for x in re.findall(r'<input[^>]*name="([^"]+)"', t2) if "ctl00$ctl" in x][:30],
+                              "metin": text(t2)[1500:4500]}
+    (ROOT / "data" / "_kesif" / "hal-kesif.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+    return len(out["sayfalar"])
 
 
 if __name__ == "__main__":
