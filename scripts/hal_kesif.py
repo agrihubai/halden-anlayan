@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 UA = {"User-Agent": "agrihubai-halden-anlayan/1.0 (+https://github.com/agrihubai/halden-anlayan)"}
 ROBOTS = ["https://www.hal.gov.tr/robots.txt", "https://gezipanel.antalya.bel.tr/robots.txt", "https://antalya.bel.tr/robots.txt"]
-PAGES = ["https://www.hal.gov.tr/Sayfalar/FiyatDetaylari.aspx", "https://hal.gov.tr/Sayfalar/FiyatDetaylari.aspx"]
+PAGES = ["https://www.hal.gov.tr/Sayfalar/FiyatDetaylari.aspx"]
 
 
 def get(u):
@@ -44,6 +44,17 @@ def run() -> int:
         scripts = [x[:3000] for x in re.findall(r"<script[^>]*>([\s\S]*?)</script>", t, flags=re.I) if re.search(r"ajax|fiyat|webservice|_api|svc|asmx", x, re.I)][:10]
         srcs = re.findall(r"<script[^>]*src=\"([^\"]+)\"", t, flags=re.I)
         tables = [re.sub(r"\s+", " ", x)[:4000] for x in re.findall(r"<table[\s\S]*?</table>", t, flags=re.I)][:3]
+        menu = sorted(set(re.findall(r'href="([^"]*(?:Fiyat|Istatistik|İstatistik|Hal|Sayfalar)[^"]*)"', t)))[:120]
+        out.setdefault("menu", {})[u] = menu
+        for m in menu:
+            if re.search(r"istatist|Istatist|1_Fiyat|IlIlce|Fiyat", m, re.I) and m not in PAGES and len(out["sayfalar"]) < 8:
+                full = m if m.startswith("http") else "https://www.hal.gov.tr" + (m if m.startswith("/") else "/" + m)
+                st2, t2 = get(full)
+                sel2 = {}
+                for mm in re.finditer(r"<select[^>]*name=\"([^\"]+)\"[^>]*>([\s\S]*?)</select>", t2, flags=re.I):
+                    sel2[mm.group(1)] = re.findall(r"<option[^>]*value=\"([^\"]*)\"[^>]*>([^<]*)</option>", mm.group(2))[:300]
+                out["sayfalar"][full] = {"durum": st2, "secimler": sel2, "inputlar": re.findall(r"<input[^>]*name=\"([^\"]+)\"[^>]*>", t2)[-15:],
+                                         "metin": re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", re.sub(r"<script[\s\S]*?</script>|<style[\s\S]*?</style>", "", t2)))[1200:4200]}
         out["sayfalar"][u] = {"durum": st, "uzunluk": len(t), "secimler": sel, "inputlar": inputs[:80], "scriptler": scripts, "script_src": srcs[:60], "tablolar": tables,
                                "metin": re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", re.sub(r"<script[\s\S]*?</script>|<style[\s\S]*?</style>", "", t)))[:4000]}
     p = ROOT / "data" / "_kesif" / "hal-kesif.json"
