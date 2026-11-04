@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-04T14:59+00:00",
+ "guncelleme": "2026-11-04T15:05+00:00",
  "kaynaklar": {
   "kur": {
    "durum": "tamam",
@@ -9,12 +9,12 @@
   "izmir": {
    "durum": "tamam",
    "kayit": 28832,
-   "sure_sn": 25
+   "sure_sn": 21
   },
   "antalya": {
    "durum": "tamam",
    "kayit": 8867,
-   "sure_sn": 56
+   "sure_sn": 58
   },
   "atb": {
    "durum": "tamam",
@@ -28,13 +28,13 @@
   },
   "hal_kesif": {
    "durum": "tamam",
-   "kayit": 4,
-   "sure_sn": 18
+   "kayit": 5,
+   "sure_sn": 79
   },
   "ispanya": {
-   "durum": "tamam",
-   "kayit": 60985,
-   "sure_sn": 164
+   "durum": "hata",
+   "mesaj": "AB: ürün listesi alınamadı",
+   "sure_sn": 2
   }
  }
 }
