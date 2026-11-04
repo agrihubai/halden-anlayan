@@ -1,0 +1,1387 @@
+[
+{
+"k": "armut",
+"ad": "Armut",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Akça",
+"Devecı",
+"Diğer",
+"Lımon",
+"Muht",
+"S.marıa",
+"Standart",
+"İthal"
+],
+"cesit": 8,
+"n": 14686,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "ayva",
+"ad": "Ayva",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 3693,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "badem-cagla",
+"ad": "Badem Çağla",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Datça",
+"Standart"
+],
+"cesit": 2,
+"n": 1079,
+"son": "2026-05-30",
+"ispanya": false
+},
+{
+"k": "cennet",
+"ad": "Cennet",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Elması"
+],
+"cesit": 1,
+"n": 2101,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "cilek",
+"ad": "Cılek",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 5390,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "dari",
+"ad": "Darı",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Adet"
+],
+"cesit": 1,
+"n": 2475,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "dut",
+"ad": "Dut",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 204,
+"son": "2022-06-04",
+"ispanya": false
+},
+{
+"k": "elma",
+"ad": "Elma",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Amasya",
+"Arjantin",
+"Diğer",
+"Fuji",
+"Gala",
+"Golden",
+"Gsmit",
+"Iı",
+"Muhtelif",
+"Standart",
+"Starkıng"
+],
+"cesit": 11,
+"n": 22182,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "erik",
+"ad": "Erik",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Anjelıka",
+"Can",
+"Diğer",
+"Italyan",
+"Muhtelif",
+"Murdum",
+"Papaz",
+"Standart"
+],
+"cesit": 11,
+"n": 9228,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "greyfurt",
+"ad": "Greyfurt",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 5460,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "hurma",
+"ad": "Hurma",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 23,
+"son": "2006-10-31",
+"ispanya": false
+},
+{
+"k": "hunnap",
+"ad": "Hünnap",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 337,
+"son": "2025-11-29",
+"ispanya": false
+},
+{
+"k": "incir",
+"ad": "Incır",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Aydın",
+"Bardacık",
+"Beyaz",
+"Siyah",
+"Standart"
+],
+"cesit": 5,
+"n": 2752,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "kayisi",
+"ad": "Kayısı",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Igdır",
+"Malatya",
+"Muht",
+"Standart",
+"Tokalı",
+"Şekerpare"
+],
+"cesit": 6,
+"n": 3977,
+"son": "2026-09-25",
+"ispanya": false
+},
+{
+"k": "kestane",
+"ad": "Kestane",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 2137,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "kiraz",
+"ad": "Kıraz",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Muht",
+"Napolyon",
+"Salıhlı",
+"Standart"
+],
+"cesit": 4,
+"n": 2731,
+"son": "2026-09-25",
+"ispanya": false
+},
+{
+"k": "kivi",
+"ad": "Kıvı",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Standart",
+"Yerlı",
+"İthal"
+],
+"cesit": 3,
+"n": 9512,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "kizilcik",
+"ad": "Kızılcık",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 117,
+"son": "2022-12-01",
+"ispanya": false
+},
+{
+"k": "limon",
+"ad": "Limon",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Diğer",
+"Dokme",
+"Enter",
+"Kasa",
+"Lamas",
+"Standart",
+"Yatak"
+],
+"cesit": 8,
+"n": 11366,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "limon-kasa",
+"ad": "Limon Kasa",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Eski"
+],
+"cesit": 1,
+"n": 31,
+"son": "2018-11-10",
+"ispanya": false
+},
+{
+"k": "limon-yeni",
+"ad": "Limon Yeni",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Mayer"
+],
+"cesit": 2,
+"n": 1242,
+"son": "2026-05-12",
+"ispanya": false
+},
+{
+"k": "malatya",
+"ad": "Malatya",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Kayısısı"
+],
+"cesit": 1,
+"n": 30,
+"son": "2017-09-04",
+"ispanya": false
+},
+{
+"k": "malta",
+"ad": "Malta",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 1149,
+"son": "2026-06-25",
+"ispanya": false
+},
+{
+"k": "mandalina",
+"ad": "Mandalina",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Clementın",
+"Diğer",
+"Murkot",
+"Satsuma",
+"Standart",
+"Takoz"
+],
+"cesit": 6,
+"n": 5059,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "musmula",
+"ad": "Muşmula",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 830,
+"son": "2024-12-31",
+"ispanya": false
+},
+{
+"k": "nar",
+"ad": "Nar",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 3655,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "nektarin",
+"ad": "Nektarın",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Beyaz",
+"Kırmızı"
+],
+"cesit": 2,
+"n": 4407,
+"son": "2026-10-30",
+"ispanya": false
+},
+{
+"k": "portakal",
+"ad": "Portakal",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Diğer",
+"Fınıke",
+"Muht",
+"Standart",
+"Sıkmalık",
+"Valencıa",
+"Washıngton"
+],
+"cesit": 7,
+"n": 10430,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "visne",
+"ad": "Vısne",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 1136,
+"son": "2026-09-18",
+"ispanya": false
+},
+{
+"k": "uzum",
+"ad": "Üzüm",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Beyaz",
+"Kavacık",
+"Muht",
+"Razakı",
+"Red Globe",
+"Siyah",
+"Siyah Enfs",
+"Standart",
+"Sultaniye",
+"İthal"
+],
+"cesit": 10,
+"n": 11130,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "seftali",
+"ad": "Şeftalı",
+"en": null,
+"tur": "Meyve",
+"siniflar": [
+"Muhtelif",
+"Standart"
+],
+"cesit": 2,
+"n": 2942,
+"son": "2026-10-28",
+"ispanya": false
+},
+{
+"k": "acur",
+"ad": "Acur",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 1098,
+"son": "2026-10-23",
+"ispanya": false
+},
+{
+"k": "alabas",
+"ad": "Alabaş",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 368,
+"son": "2024-06-27",
+"ispanya": false
+},
+{
+"k": "bakla",
+"ad": "Bakla",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 2740,
+"son": "2026-07-10",
+"ispanya": false
+},
+{
+"k": "bamya",
+"ad": "Bamya",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Sera",
+"Standart"
+],
+"cesit": 2,
+"n": 2190,
+"son": "2026-10-23",
+"ispanya": false
+},
+{
+"k": "barbunya",
+"ad": "Barbunya",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Taze"
+],
+"cesit": 1,
+"n": 814,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "bezelye",
+"ad": "Bezelye",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 2183,
+"son": "2026-08-28",
+"ispanya": false
+},
+{
+"k": "biber",
+"ad": "Biber",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Cin",
+"Dolma",
+"Jalepeno",
+"Kaliforniya",
+"Kıl Acı",
+"Kırmızı",
+"Kırmızı Iı",
+"Meksika",
+"Salçalık",
+"Sivri",
+"Sıvrı",
+"Çarliston",
+"Şili"
+],
+"cesit": 16,
+"n": 25876,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "biber-koy",
+"ad": "Biber Köy",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Mazo"
+],
+"cesit": 2,
+"n": 1091,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "biber-kirmizi",
+"ad": "Biber Kırmızı",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Tarla"
+],
+"cesit": 1,
+"n": 88,
+"son": "2026-10-23",
+"ispanya": false
+},
+{
+"k": "biber-sivri",
+"ad": "Biber Sivri",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Diğer"
+],
+"cesit": 1,
+"n": 162,
+"son": "2026-10-16",
+"ispanya": false
+},
+{
+"k": "biber-carliston",
+"ad": "Biber Çarliston",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Diğer"
+],
+"cesit": 1,
+"n": 51,
+"son": "2026-10-16",
+"ispanya": false
+},
+{
+"k": "borulce",
+"ad": "Borulce",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 2944,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "brokoli",
+"ad": "Brokolı",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 4728,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "biber-tatli",
+"ad": "Bıber Tatlı",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Çarliston"
+],
+"cesit": 1,
+"n": 5019,
+"son": "2023-12-30",
+"ispanya": false
+},
+{
+"k": "cibez",
+"ad": "Cibez",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 196,
+"son": "2026-05-30",
+"ispanya": false
+},
+{
+"k": "deniz",
+"ad": "Denız",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Börülcesi"
+],
+"cesit": 1,
+"n": 4403,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "domates",
+"ad": "Domates",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Arı",
+"Ayaş",
+"Beef",
+"Cherry",
+"Diğer",
+"Kokteyl",
+"Pembe",
+"Salkım",
+"Sera",
+"Tarla"
+],
+"cesit": 10,
+"n": 23085,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "domates-salkim",
+"ad": "Domates Salkım",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Kutu",
+"İyi Tarım"
+],
+"cesit": 2,
+"n": 1375,
+"son": "2026-01-30",
+"ispanya": false
+},
+{
+"k": "domates-salcalik",
+"ad": "Domates Salçalık",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Rio"
+],
+"cesit": 1,
+"n": 1332,
+"son": "2026-10-30",
+"ispanya": false
+},
+{
+"k": "enginar",
+"ad": "Enginar",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Canak",
+"Standart"
+],
+"cesit": 2,
+"n": 2256,
+"son": "2026-06-26",
+"ispanya": false
+},
+{
+"k": "fasulye",
+"ad": "Fasulye",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Ayse",
+"Barbun",
+"Calı",
+"Cino"
+],
+"cesit": 4,
+"n": 13920,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "havuc",
+"ad": "Havuç",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Beypazarı",
+"Standart",
+"Takoz"
+],
+"cesit": 4,
+"n": 6266,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "ispanak",
+"ad": "Ispanak",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 5516,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "kabak",
+"ad": "Kabak",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Bal",
+"Taze"
+],
+"cesit": 2,
+"n": 9688,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "karnabahar",
+"ad": "Karnabahar",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 4343,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "karpuz",
+"ad": "Karpuz",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Iı",
+"Standart"
+],
+"cesit": 2,
+"n": 4213,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "kavun",
+"ad": "Kavun",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Diğer",
+"Iı",
+"Kasa Sera",
+"Kırkağaç",
+"Sera",
+"Tarla",
+"İthal"
+],
+"cesit": 7,
+"n": 7043,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "kelek",
+"ad": "Kelek",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 96,
+"son": "2023-12-12",
+"ispanya": false
+},
+{
+"k": "kereviz",
+"ad": "Kerevız",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 4310,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "lahana",
+"ad": "Lahana",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Beyaz",
+"Buruksel",
+"Kara",
+"Kırmızı"
+],
+"cesit": 4,
+"n": 14381,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "mantar",
+"ad": "Mantar",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Paket 400gr",
+"Standart",
+"İstiridye"
+],
+"cesit": 3,
+"n": 7459,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "marul",
+"ad": "Marul",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Aysberg",
+"Kıvırcık",
+"Lolorosso",
+"Standart"
+],
+"cesit": 4,
+"n": 20168,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "pancar",
+"ad": "Pancar",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 5635,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "patates",
+"ad": "Patates",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Calma",
+"Diğer",
+"Standart",
+"Taze",
+"Ödemiş"
+],
+"cesit": 5,
+"n": 10581,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "patates-eski",
+"ad": "Patates Eski",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Yıkanmamış"
+],
+"cesit": 1,
+"n": 76,
+"son": "2021-06-19",
+"ispanya": false
+},
+{
+"k": "patates-taze",
+"ad": "Patates Taze",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Yıkanmış"
+],
+"cesit": 1,
+"n": 851,
+"son": "2023-12-30",
+"ispanya": false
+},
+{
+"k": "patlican",
+"ad": "Patlıcan",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Topan",
+"Uzun"
+],
+"cesit": 2,
+"n": 11272,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "pazi",
+"ad": "Pazı",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 4135,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "pirasa",
+"ad": "Pırasa",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 5073,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "salatalik",
+"ad": "Salatalık",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Diğer",
+"Kasa",
+"Kornişon",
+"Silor",
+"Standart",
+"Torba",
+"Çengelköy"
+],
+"cesit": 7,
+"n": 12908,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "sarimsak",
+"ad": "Sarımsak",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Kuru",
+"Taze",
+"İthal"
+],
+"cesit": 3,
+"n": 11322,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "semiz",
+"ad": "Semız",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Otu"
+],
+"cesit": 1,
+"n": 3970,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "sogan",
+"ad": "Soğan",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Kuru",
+"Kırmızı",
+"Mor",
+"Taze",
+"Yahnılık"
+],
+"cesit": 8,
+"n": 16823,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "turp",
+"ad": "Turp",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Beyaz",
+"Diğer",
+"Fındık",
+"Japon",
+"Kırmızı",
+"Sıyah"
+],
+"cesit": 6,
+"n": 6923,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "y-dereotu",
+"ad": "Y.dereotu",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 5635,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "y-maydonoz",
+"ad": "Y.maydonoz",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 5634,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "y-nane",
+"ad": "Y.nane",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 5633,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "y-reyhan",
+"ad": "Y.reyhan",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 975,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "y-roka",
+"ad": "Y.roka",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 5635,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "y-tere",
+"ad": "Y.tere",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 4325,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "yaprak",
+"ad": "Yaprak",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Salamura",
+"Taze"
+],
+"cesit": 2,
+"n": 2728,
+"son": "2024-10-02",
+"ispanya": false
+},
+{
+"k": "yerelmasi",
+"ad": "Yerelması",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 2131,
+"son": "2024-12-31",
+"ispanya": false
+},
+{
+"k": "salgam",
+"ad": "Şalgam",
+"en": null,
+"tur": "Sebze",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 73,
+"son": "2021-04-15",
+"ispanya": false
+},
+{
+"k": "mango",
+"ad": "Mango",
+"en": null,
+"tur": "İthal",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 1111,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "zencefil",
+"ad": "Zencefil",
+"en": null,
+"tur": "İthal",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 1093,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "ananas",
+"ad": "Ananas",
+"en": null,
+"tur": "İthal..",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 5636,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "avakado",
+"ad": "Avakado",
+"en": null,
+"tur": "İthal..",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 5433,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "elma-gsmit",
+"ad": "Elma Gsmıt",
+"en": null,
+"tur": "İthal..",
+"siniflar": [
+"İthal",
+"İyi Tarım"
+],
+"cesit": 2,
+"n": 5214,
+"son": "2024-08-22",
+"ispanya": false
+},
+{
+"k": "elma-starking",
+"ad": "Elma Starkıng",
+"en": null,
+"tur": "İthal..",
+"siniflar": [
+"İthal"
+],
+"cesit": 1,
+"n": 4341,
+"son": "2024-08-22",
+"ispanya": false
+},
+{
+"k": "grayfurt",
+"ad": "Grayfurt",
+"en": null,
+"tur": "İthal..",
+"siniflar": [
+"İthal"
+],
+"cesit": 1,
+"n": 24,
+"son": "2013-09-10",
+"ispanya": false
+},
+{
+"k": "hindistan",
+"ad": "Hındıstan",
+"en": null,
+"tur": "İthal..",
+"siniflar": [
+"Cevızı"
+],
+"cesit": 1,
+"n": 5227,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "kaliforniya",
+"ad": "Kalıfornıya",
+"en": null,
+"tur": "İthal..",
+"siniflar": [
+"Dolma"
+],
+"cesit": 1,
+"n": 158,
+"son": "2007-11-19",
+"ispanya": false
+},
+{
+"k": "muz",
+"ad": "Muz",
+"en": null,
+"tur": "İthal..",
+"siniflar": [
+"Ithal",
+"Yerlı"
+],
+"cesit": 2,
+"n": 10966,
+"son": "2026-11-04",
+"ispanya": false
+},
+{
+"k": "pitahaya",
+"ad": "Pitahaya",
+"en": null,
+"tur": "İthal..",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 139,
+"son": "2024-12-31",
+"ispanya": false
+},
+{
+"k": "pomelo",
+"ad": "Pomelo",
+"en": null,
+"tur": "İthal..",
+"siniflar": [
+"Standart"
+],
+"cesit": 1,
+"n": 4,
+"son": "2020-01-02",
+"ispanya": false
+}
+]
