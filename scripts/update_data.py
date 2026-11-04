@@ -1,12 +1,12 @@
 """Halden Anlayan veri güncelleyici.
 
-Üç kaynaktan veri çeker ve data/ klasörünü yeniden yazar:
-  1. İzmir Büyükşehir Belediyesi hal fiyatları (yıllık CSV'ler + güncel günler için API), TL
+Üç kaynaktan veri çeker:
+  1. İzmir Büyükşehir Belediyesi hal fiyatları (yıllık CSV'ler + güncel günler için API), TL, bütün ürünler
   2. ECB günlük euro referans kurları (EUR/TRY)
-  3. Avrupa Komisyonu agri-food API: İspanya sebze fiyatları (tarla, paketleme çıkışı, raf), EUR
+  3. Avrupa Komisyonu agri-food API: İspanya meyve-sebze fiyatları (tarla, paketleme çıkışı, raf), EUR
 
-Her kaynaktan gelen ilk yanıtların kısa bir örneği data/_kesif/ klasörüne yazılır; böylece
-kaynak formatı değişirse ne geldiği repo üzerinden görülebilir.
+Ham veri data/ham/ klasörüne yazılır (İzmir yıl yıl, sıkıştırılmış). Kaynaklardan gelen ilk yanıtların
+kısa örnekleri data/_kesif/ klasörüne yazılır; kaynak formatı değişirse ne geldiği oradan görülür.
 
 Bir kaynak inmezse o kaynağın eski verisi korunur; yarım veri yayına çıkmaz.
 """
@@ -14,32 +14,25 @@ from __future__ import annotations
 
 import csv
 import datetime as dt
+import gzip
 import io
 import json
 import re
 import sys
 import time
-import unicodedata
 import urllib.parse
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
+RAW = DATA / "ham"
 PROBE = DATA / "_kesif"
 UA = {"User-Agent": "agrihubai-halden-anlayan/1.0 (+https://github.com/agrihubai/halden-anlayan)"}
 START_YEAR = 2006
 TODAY = dt.date.today()
-
-# Panodaki ürünler. tr: İzmir'deki ürün adında aranacak kalıp (Türkçe karakterler sadeleştirilmiş, büyük harf).
-# tr_haric: aynı kalıba uyan ama başka ürün olan adlar. eu: Komisyon API'sindeki ürün adı adayları.
-PRODUCTS = {
-    "domates": {"tr": r"\bDOMATES", "tr_haric": r"SALCASI|KURU", "eu": ["tomatoes", "Tomatoes"]},
-    "biber": {"tr": r"\bBIBER", "tr_haric": r"SALCASI|KURU|PUL|TOZ|ISOT", "eu": ["sweet peppers", "Sweet peppers", "peppers"]},
-    "hiyar": {"tr": r"\bHIYAR|\bSALATALIK", "tr_haric": r"TURSU", "eu": ["cucumbers", "Cucumbers"]},
-    "patlican": {"tr": r"\bPATLICAN", "tr_haric": r"KURU", "eu": ["aubergines", "Aubergines", "eggplants"]},
-    "kabak": {"tr": r"\bKABAK", "tr_haric": r"BAL ?KABA|CICEG|CEKIRDEK|BALKABA|BAL KABAK", "eu": ["courgettes", "Courgettes", "zucchini"]},
-}
+FIELDS = ["d", "tur", "v", "u", "lo", "hi", "avg"]
 
 
 # ---------------------------------------------------------------- yardımcılar
@@ -53,25 +46,17 @@ def get(url: str, tries: int = 3, timeout: int = 90) -> bytes:
             if i == tries - 1:
                 raise
             print(f"  tekrar ({e}): {url}", file=sys.stderr)
-            time.sleep(4 * (i + 1))
+            time.sleep(3 * (i + 1))
     raise RuntimeError("ulaşılamadı")
 
 
 def decode(b: bytes) -> str:
-    for enc in ("utf-8-sig", "cp1254", "iso-8859-9"):
+    for enc in ("utf-8-sig", "cp1254"):
         try:
             return b.decode(enc)
         except UnicodeDecodeError:
             continue
     return b.decode("utf-8", errors="replace")
-
-
-def norm(s: str) -> str:
-    """Türkçe adları karşılaştırma için sadeleştirir: büyük harf, aksansız."""
-    s = (s or "").replace("ı", "i").replace("İ", "I").replace("i̇", "i")
-    s = unicodedata.normalize("NFKD", s)
-    s = "".join(c for c in s if not unicodedata.combining(c))
-    return re.sub(r"\s+", " ", s.upper()).strip()
 
 
 def num(v) -> float | None:
@@ -82,7 +67,7 @@ def num(v) -> float | None:
     s = str(v).strip().replace("€", "").replace("₺", "").replace("TL", "").strip()
     if not s:
         return None
-    if "," in s and "." in s:  # 1.234,56
+    if "," in s and "." in s:
         s = s.replace(".", "").replace(",", ".")
     elif "," in s:
         s = s.replace(",", ".")
@@ -92,15 +77,14 @@ def num(v) -> float | None:
         return None
 
 
-def parse_date(s: str) -> dt.date | None:
+def parse_date(s) -> dt.date | None:
     s = str(s or "").strip()
     for fmt in ("%Y-%m-%d", "%d.%m.%Y", "%d/%m/%Y", "%Y/%m/%d", "%d-%m-%Y"):
         try:
             return dt.datetime.strptime(s[:10], fmt).date()
         except ValueError:
             continue
-    m = re.match(r"(\d{4})-(\d{2})-(\d{2})", s)
-    return dt.date(int(m[1]), int(m[2]), int(m[3])) if m else None
+    return None
 
 
 def probe(name: str, text: str, limit: int = 6000) -> None:
@@ -108,17 +92,8 @@ def probe(name: str, text: str, limit: int = 6000) -> None:
     (PROBE / name).write_text(text[:limit], encoding="utf-8")
 
 
-def product_of(name: str) -> str | None:
-    n = norm(name)
-    for key, p in PRODUCTS.items():
-        if re.search(p["tr"], n) and not re.search(p["tr_haric"], n):
-            return key
-    return None
-
-
 def pick(row: dict, *names):
-    """Satırdan, adı büyük/küçük harf ve alt çizgi farkı gözetmeden eşleşen ilk alanı döndürür."""
-    low = {re.sub(r"[^a-z]", "", k.lower()): v for k, v in row.items()}
+    low = {re.sub(r"[^a-z]", "", str(k).lower()): v for k, v in row.items()}
     for n in names:
         v = low.get(re.sub(r"[^a-z]", "", n.lower()))
         if v not in (None, ""):
@@ -126,9 +101,16 @@ def pick(row: dict, *names):
     return None
 
 
-# ---------------------------------------------------------------- 1. İzmir hali
+# ---------------------------------------------------------------- 1. İzmir hali (bütün ürünler)
 IZMIR_PKG = "https://acikveri.bizizmir.com/api/3/action/package_show?id=sebze-ve-meyve-hal-fiyatlari"
 IZMIR_DAY = "https://openapi.izmir.bel.tr/api/ibb/halfiyatlari/sebzemeyve/{d}"
+
+
+def row(d: dt.date, tur, name, unit, lo, hi, avg) -> dict | None:
+    if not d or not name:
+        return None
+    return {"d": d.isoformat(), "tur": str(tur or "").strip(), "v": re.sub(r"\s+", " ", str(name)).strip(),
+            "u": str(unit or "").strip(), "lo": num(lo), "hi": num(hi), "avg": num(avg)}
 
 
 def izmir_rows_from_csv(text: str) -> list[dict]:
@@ -136,121 +118,127 @@ def izmir_rows_from_csv(text: str) -> list[dict]:
     delim = ";" if first.count(";") > first.count(",") else ","
     out = []
     for r in csv.DictReader(io.StringIO(text), delimiter=delim):
-        d = parse_date(pick(r, "TARIH", "tarih", "date"))
-        name = pick(r, "MAL_ADI", "maladi", "urun")
-        if not d or not name:
-            continue
-        key = product_of(name)
-        if not key:
-            continue
-        out.append({
-            "d": d.isoformat(), "p": key, "v": str(name).strip(),
-            "u": str(pick(r, "BIRIM", "birim") or "").strip(),
-            "lo": num(pick(r, "ASGARI_UCRET", "asgariucret", "min")),
-            "hi": num(pick(r, "AZAMI_UCRET", "azamiucret", "max")),
-            "avg": num(pick(r, "ORTALAMA_UCRET", "ortalamaucret", "ortalama")),
-        })
+        x = row(parse_date(pick(r, "TARIH", "date")), pick(r, "MAL_TURU", "maltipadi"), pick(r, "MAL_ADI", "maladi"),
+                pick(r, "BIRIM"), pick(r, "ASGARI_UCRET"), pick(r, "AZAMI_UCRET"), pick(r, "ORTALAMA_UCRET"))
+        if x:
+            out.append(x)
     return out
 
 
 def izmir_rows_from_api(j, d: dt.date) -> list[dict]:
-    items = None
-    if isinstance(j, list):
-        items = j
-    elif isinstance(j, dict):
-        for k, v in j.items():
-            if isinstance(v, list) and v and isinstance(v[0], dict):
-                items = v
-                break
+    items = j if isinstance(j, list) else next((v for v in (j or {}).values() if isinstance(v, list)), [])
     out = []
-    for r in items or []:
-        name = pick(r, "MalAdi", "MAL_ADI", "urunAdi")
-        key = product_of(name or "")
-        if not key:
+    for r in items:
+        if not isinstance(r, dict):
             continue
-        out.append({
-            "d": d.isoformat(), "p": key, "v": str(name).strip(),
-            "u": str(pick(r, "Birim", "BIRIM") or "").strip(),
-            "lo": num(pick(r, "AsgariUcret", "ASGARI_UCRET")),
-            "hi": num(pick(r, "AzamiUcret", "AZAMI_UCRET")),
-            "avg": num(pick(r, "OrtalamaUcret", "ORTALAMA_UCRET")),
-        })
+        x = row(d, pick(r, "MalTipAdi", "MAL_TURU", "MalTuru"), pick(r, "MalAdi", "MAL_ADI"), pick(r, "Birim", "BIRIM"),
+                pick(r, "AsgariUcret", "ASGARI_UCRET"), pick(r, "AzamiUcret", "AZAMI_UCRET"), pick(r, "OrtalamaUcret", "ORTALAMA_UCRET"))
+        if x:
+            out.append(x)
     return out
 
 
-def update_izmir() -> list[dict]:
-    raw_path = DATA / "ham" / "izmir.csv"
-    old = []
-    if raw_path.exists():
-        with raw_path.open(encoding="utf-8") as f:
-            for r in csv.DictReader(f):
-                old.append({**r, "lo": num(r["lo"]), "hi": num(r["hi"]), "avg": num(r["avg"])})
-    have_years = {r["d"][:4] for r in old}
-    rows = {(r["d"], r["v"]): r for r in old}
+def read_year(year: int) -> list[dict]:
+    p = RAW / "izmir" / f"{year}.csv.gz"
+    if not p.exists():
+        return []
+    with gzip.open(p, "rt", encoding="utf-8") as f:
+        return list(csv.DictReader(f))
 
-    # Yıllık CSV dosyaları (geçmiş yıllar bir kez indirilir; içinde bulunulan ve önceki yıl her seferinde yenilenir)
+
+def write_year(year: int, rows: list[dict]) -> None:
+    p = RAW / "izmir" / f"{year}.csv.gz"
+    p.parent.mkdir(parents=True, exist_ok=True)
+    rows = sorted(rows, key=lambda r: (r["d"], r["v"]))
+    buf = io.StringIO()
+    w = csv.DictWriter(buf, fieldnames=FIELDS, extrasaction="ignore")
+    w.writeheader()
+    w.writerows(rows)
+    with gzip.GzipFile(p, "wb", mtime=0) as f:  # mtime=0: aynı veri aynı dosyayı üretir, gereksiz commit olmaz
+        f.write(buf.getvalue().encode("utf-8"))
+
+
+def update_izmir() -> int:
+    years = {}
     pkg = json.loads(get(IZMIR_PKG))
-    probe("izmir-paket.json", json.dumps(pkg, ensure_ascii=False, indent=1))
-    resources = pkg["result"]["resources"]
-    for res in resources:
-        name = res.get("name") or ""
-        m = re.search(r"(20\d\d)", name)
+    probe("izmir-paket.json", json.dumps(pkg, ensure_ascii=False, indent=1), limit=20000)
+    for res in pkg["result"]["resources"]:
+        m = re.search(r"(20\d\d)", res.get("name") or "")
         url = res.get("url") or ""
-        fmt = (res.get("format") or "").lower()
-        if not m or "csv" not in (fmt + url.lower()):
+        if m and "csv" in ((res.get("format") or "") + url).lower():
+            years[int(m[1])] = url
+
+    total = 0
+    for year in sorted(years):
+        if year < START_YEAR:
             continue
-        year = m[1]
-        if int(year) < START_YEAR or (year in have_years and int(year) < TODAY.year - 1):
-            continue
+        p = RAW / "izmir" / f"{year}.csv.gz"
+        if p.exists() and year < TODAY.year - 1:
+            continue  # geçmiş yıllar bir kez indirilir
         try:
-            text = decode(get(url, timeout=300))
+            text = decode(get(years[year], timeout=300))
         except Exception as e:  # noqa: BLE001
             print(f"  İzmir {year} inmedi: {e}", file=sys.stderr)
             continue
-        if year in ("2024", "2025"):
-            probe(f"izmir-{year}-ornek.csv", "\n".join(text.splitlines()[:15]))
+        if year >= TODAY.year - 2:
+            probe(f"izmir-{year}-ornek.csv", "\n".join(text.splitlines()[:12]))
         got = izmir_rows_from_csv(text)
+        old = read_year(year)
+        merged = {(r["d"], r["v"]): r for r in old}
+        merged.update({(r["d"], r["v"]): r for r in got})
+        if len(merged) < len(old):
+            print(f"  İzmir {year}: veri küçüldü, eski korundu", file=sys.stderr)
+            continue
+        write_year(year, list(merged.values()))
+        total += len(got)
         print(f"  İzmir {year}: {len(got)} satır")
-        for r in got:
-            rows[(r["d"], r["v"])] = r
 
-    # Yıllık dosyada olmayan son günler: günlük API
-    last = max((r["d"] for r in rows.values()), default=f"{TODAY.year}-01-01")
-    d = max(dt.date.fromisoformat(last) - dt.timedelta(days=7), TODAY - dt.timedelta(days=400))
-    probed = False
-    n_api = 0
-    while d <= TODAY:
+    # Yıllık dosyada henüz olmayan günler: günlük API (paralel, kısa zaman aşımı)
+    last = None
+    for y in range(TODAY.year, START_YEAR - 1, -1):
+        rows = read_year(y)
+        if rows:
+            last = max(r["d"] for r in rows)
+            break
+    start = max(dt.date.fromisoformat(last) - dt.timedelta(days=3), TODAY - dt.timedelta(days=370)) if last else TODAY - dt.timedelta(days=370)
+    days = [start + dt.timedelta(days=i) for i in range((TODAY - start).days + 1)]
+
+    def fetch_day(d):
         try:
-            j = json.loads(get(IZMIR_DAY.format(d=d.isoformat()), tries=2, timeout=40))
-            if not probed:
-                probe("izmir-api-ornek.json", json.dumps(j, ensure_ascii=False, indent=1))
-                probed = True
-            for r in izmir_rows_from_api(j, d):
-                rows[(r["d"], r["v"])] = r
-                n_api += 1
-        except Exception as e:  # noqa: BLE001  (hafta sonu ve tatillerde boş dönebilir)
-            if not probed:
-                probe("izmir-api-hata.txt", f"{d}: {e}")
-        d += dt.timedelta(days=1)
-        time.sleep(0.15)
-    print(f"  İzmir API: {n_api} satır")
+            return d, json.loads(get(IZMIR_DAY.format(d=d.isoformat()), tries=1, timeout=20)), None
+        except Exception as e:  # noqa: BLE001
+            return d, None, str(e)
 
-    out = sorted(rows.values(), key=lambda r: (r["d"], r["v"]))
-    if len(out) < len(old):
-        raise RuntimeError(f"İzmir verisi küçüldü ({len(out)} < {len(old)})")
-    raw_path.parent.mkdir(parents=True, exist_ok=True)
-    with raw_path.open("w", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=["d", "p", "v", "u", "lo", "hi", "avg"])
-        w.writeheader()
-        w.writerows(out)
-    return out
+    # Önce birkaç günle API'nin çalıştığını sına; çalışmıyorsa yüzlerce isteği boşuna bekleme
+    test = [fetch_day(d) for d in days[-5:]]
+    ok = [t for t in test if t[1]]
+    probe("izmir-api-ornek.json", json.dumps(ok[0][1], ensure_ascii=False, indent=1) if ok else "\n".join(f"{d}: {e}" for d, _, e in test))
+    if not ok:
+        print("  İzmir API yanıt vermiyor, günlük çekim atlandı", file=sys.stderr)
+        return total
+    with ThreadPoolExecutor(8) as ex:
+        results = list(ex.map(fetch_day, days[:-5])) + test
+    by_year: dict[int, list[dict]] = {}
+    for d, j, _ in results:
+        if j:
+            by_year.setdefault(d.year, []).extend(izmir_rows_from_api(j, d))
+    for y, got in by_year.items():
+        old = read_year(y)
+        merged = {(r["d"], r["v"]): r for r in old}
+        # yıllık dosyadaki satır API'ninkinden önceliklidir
+        for r in got:
+            merged.setdefault((r["d"], r["v"]), r)
+        write_year(y, list(merged.values()))
+        total += len(got)
+        print(f"  İzmir API {y}: {len(got)} satır")
+    return total
 
 
 # ---------------------------------------------------------------- 2. ECB kuru
 ECB = "https://data-api.ecb.europa.eu/service/data/EXR/D.TRY.EUR.SP00.A?format=csvdata&startPeriod={y}-01-01"
 
 
-def update_fx() -> dict[str, float]:
+def update_fx() -> int:
     text = decode(get(ECB.format(y=START_YEAR)))
     probe("ecb-ornek.csv", "\n".join(text.splitlines()[:5]))
     fx = {}
@@ -262,83 +250,81 @@ def update_fx() -> dict[str, float]:
         raise RuntimeError(f"ECB: beklenenden az kur ({len(fx)})")
     print(f"  ECB: {len(fx)} gün, son {max(fx)} = {fx[max(fx)]}")
     (DATA / "kur-eur-try.json").write_text(json.dumps(sorted(fx.items()), separators=(",", ":")), encoding="utf-8")
-    return fx
+    return len(fx)
 
 
-# ---------------------------------------------------------------- 3. AB / İspanya
+# ---------------------------------------------------------------- 3. AB / İspanya (bütün ürünler)
 EU_BASE = "https://api.tech.ec.europa.eu/agrifood"
 EU_PATHS = ["/api/fruitAndVegetable/prices", "/api/fruitandvegetable/prices", "/api/fruitAndVegetables/prices"]
 
 
-def update_eu() -> list[dict]:
+def update_eu() -> int:
     try:
         spec = decode(get(EU_BASE + "/v3/api-docs/fruit_and_vegetables", tries=2))
-        probe("ab-openapi.json", spec, limit=60000)
+        probe("ab-openapi.json", spec, limit=80000)
     except Exception as e:  # noqa: BLE001
         probe("ab-openapi-hata.txt", str(e))
-    out = []
-    begin = f"01/01/{START_YEAR}"
+    log, recs = [], []
     end = TODAY.strftime("%d/%m/%Y")
-    log = []
-    for key, p in PRODUCTS.items():
-        got = None
-        for path in EU_PATHS:
-            for prod in p["eu"]:
-                q = urllib.parse.urlencode({"memberStateCodes": "ES", "products": prod, "beginDate": begin, "endDate": end})
-                url = f"{EU_BASE}{path}?{q}"
-                try:
-                    j = json.loads(get(url, tries=2, timeout=120))
-                except Exception as e:  # noqa: BLE001
-                    log.append(f"{key} {url} -> {e}")
-                    continue
-                recs = j if isinstance(j, list) else next((v for v in j.values() if isinstance(v, list)), [])
-                log.append(f"{key} {url} -> {len(recs)} kayıt")
-                if recs:
-                    if key == "domates":
-                        probe("ab-domates-ornek.json", json.dumps(recs[:5], ensure_ascii=False, indent=1))
-                    got = recs
+    # Yıl yıl iste: tek istekte 20 yıllık bütün ürünler çok büyük olabilir
+    for path in EU_PATHS:
+        recs = []
+        for y in range(START_YEAR, TODAY.year + 1):
+            q = urllib.parse.urlencode({"memberStateCodes": "ES", "beginDate": f"01/01/{y}",
+                                        "endDate": end if y == TODAY.year else f"31/12/{y}"})
+            url = f"{EU_BASE}{path}?{q}"
+            try:
+                j = json.loads(get(url, tries=2, timeout=120))
+            except Exception as e:  # noqa: BLE001
+                log.append(f"{url} -> {e}")
+                if y == START_YEAR:
                     break
-            if got:
-                break
-        for r in got or []:
-            if str(pick(r, "memberStateCode") or "ES").upper() != "ES":
                 continue
-            d = parse_date(pick(r, "beginDate", "startDate", "date"))
-            price = num(pick(r, "price", "value"))
-            if not d or price is None:
-                continue
-            unit = str(pick(r, "unit", "priceUnit") or "")
-            out.append({
-                "d": d.isoformat(), "p": key,
-                "st": str(pick(r, "productStage", "stageName", "stage") or ""),
-                "v": str(pick(r, "variety", "productName", "product") or ""),
-                "u": unit, "price": price,
-            })
-        print(f"  AB {key}: {sum(1 for x in out if x['p'] == key)} kayıt")
+            got = j if isinstance(j, list) else next((v for v in j.values() if isinstance(v, list)), [])
+            log.append(f"{url} -> {len(got)} kayıt")
+            if got and not recs:
+                probe("ab-ornek.json", json.dumps(got[:8], ensure_ascii=False, indent=1))
+            recs += got
+        if recs:
+            break
     probe("ab-istekler.txt", "\n".join(log))
-    old_path = DATA / "ham" / "ispanya.json"
+    out = []
+    for r in recs:
+        if str(pick(r, "memberStateCode") or "ES").upper() != "ES":
+            continue
+        d = parse_date(pick(r, "beginDate", "startDate", "date"))
+        price = num(pick(r, "price", "value"))
+        if not d or price is None:
+            continue
+        out.append({"d": d.isoformat(), "urun": str(pick(r, "product", "productName") or ""),
+                    "st": str(pick(r, "productStage", "stageName", "stage") or ""),
+                    "v": str(pick(r, "variety") or ""), "u": str(pick(r, "unit", "priceUnit") or ""), "price": price})
+    p = RAW / "ispanya.json.gz"
     if not out:
-        if old_path.exists():
+        if p.exists():
             print("  AB: yeni veri yok, eskisi korundu", file=sys.stderr)
-            return json.loads(old_path.read_text(encoding="utf-8"))
-        return []
-    old_path.parent.mkdir(parents=True, exist_ok=True)
-    old_path.write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    return out
+            return 0
+        raise RuntimeError("AB: hiç kayıt gelmedi (data/_kesif/ab-istekler.txt)")
+    p.parent.mkdir(parents=True, exist_ok=True)
+    with gzip.GzipFile(p, "wb", mtime=0) as f:
+        f.write(json.dumps(out, ensure_ascii=False, separators=(",", ":")).encode("utf-8"))
+    print(f"  AB: {len(out)} kayıt, {len({r['urun'] for r in out})} ürün")
+    return len(out)
 
 
 # ---------------------------------------------------------------- ana akış
 def main() -> int:
     DATA.mkdir(exist_ok=True)
     status = {"guncelleme": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes"), "kaynaklar": {}}
-    for name, fn in (("izmir", update_izmir), ("kur", update_fx), ("ispanya", update_eu)):
-        print(name)
+    for name, fn in (("kur", update_fx), ("ispanya", update_eu), ("izmir", update_izmir)):
+        print(name, flush=True)
+        t0 = time.time()
         try:
-            res = fn()
-            status["kaynaklar"][name] = {"durum": "tamam", "kayit": len(res)}
+            n = fn()
+            status["kaynaklar"][name] = {"durum": "tamam", "kayit": n, "sure_sn": round(time.time() - t0)}
         except Exception as e:  # noqa: BLE001
             print(f"HATA {name}: {e}", file=sys.stderr)
-            status["kaynaklar"][name] = {"durum": "hata", "mesaj": str(e)[:300]}
+            status["kaynaklar"][name] = {"durum": "hata", "mesaj": str(e)[:300], "sure_sn": round(time.time() - t0)}
     (DATA / "durum.json").write_text(json.dumps(status, ensure_ascii=False, indent=1), encoding="utf-8")
     return 0
 

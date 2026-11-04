@@ -6,7 +6,7 @@ on:
   workflow_dispatch: {}
   push:
     branches: [main]
-    paths: ["scripts/update_data.py", "scripts/build_data.py", ".github/workflows/veri-guncelle.yml"]
+    paths: ["scripts/**", ".github/workflows/veri-guncelle.yml"]
 
 permissions:
   contents: write

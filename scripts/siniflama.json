@@ -1,0 +1,7 @@
+{
+  "_aciklama": "Ürün ve sınıf kuralları. 'kalip' büyük harfli, Türkçe karakterleri sadeleştirilmiş ada uygulanır (İ→I, Ş→S...). İlk eşleşen kural geçerlidir. Kuralı olmayan adlar otomatik ayrıştırılır.",
+  "kurallar": [],
+  "cok_kelimeli": ["BAL KABAĞI", "TAZE FASULYE", "KURU SOĞAN", "TAZE SOĞAN", "KIRMIZI LAHANA", "BEYAZ LAHANA", "KARA LAHANA", "BRÜKSEL LAHANASI", "KIVIRCIK SALATA", "ROKA", "DEREOTU"],
+  "ispanya": {},
+  "ingilizce": {}
+}
