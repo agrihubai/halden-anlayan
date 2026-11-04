@@ -9,10 +9,20 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 UA = {"User-Agent": "agrihubai-halden-anlayan/1.0 (+https://github.com/agrihubai/halden-anlayan)"}
 ROBOTS = ["https://www.hal.gov.tr/robots.txt", "https://gezipanel.antalya.bel.tr/robots.txt", "https://antalya.bel.tr/robots.txt"]
-PAGES = ["https://www.hal.gov.tr/Sayfalar/FiyatDetaylari.aspx"]
+PAGES = ["https://www.hal.gov.tr/Sayfalar/FiyatDetaylari.aspx", "https://hal.gov.tr/Sayfalar/FiyatDetaylari.aspx"]
 
 
 def get(u):
+    import time
+    for i in range(4):
+        st, t = _get(u)
+        if st or "name resolution" not in t:
+            return st, t
+        time.sleep(5)
+    return st, t
+
+
+def _get(u):
     try:
         with urllib.request.urlopen(urllib.request.Request(u, headers=UA), timeout=40) as r:
             return r.status, r.read().decode("utf-8", "replace")
