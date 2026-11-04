@@ -387,7 +387,8 @@ def main() -> int:
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     import antalya
     import atb
-    for name, fn in (("kur", update_fx), ("izmir", update_izmir), ("antalya", antalya.update), ("atb", atb.update), ("ispanya", update_eu)):
+    import junta_kesif
+    for name, fn in (("kur", update_fx), ("izmir", update_izmir), ("antalya", antalya.update), ("atb", atb.update), ("junta_kesif", junta_kesif.run), ("ispanya", update_eu)):
         print(name, flush=True)
         t0 = time.time()
         try:
