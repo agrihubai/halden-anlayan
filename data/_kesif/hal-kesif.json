@@ -1,161 +1,65 @@
 {
- "robots": {
-  "https://www.hal.gov.tr/robots.txt": {
-   "durum": null,
-   "icerik": "HATA: HTTP Error 404: NOT FOUND"
-  },
-  "https://gezipanel.antalya.bel.tr/robots.txt": {
-   "durum": null,
-   "icerik": "HATA: HTTP Error 404: Not Found"
-  },
-  "https://antalya.bel.tr/robots.txt": {
-   "durum": 200,
-   "icerik": "\n\n\n<!DOCTYPE html>\n<html>\n<head>\n    <title>Antalya B&#xFC;y&#xFC;k&#x15F;ehir Belediyesi</title>\n\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n\n\n    \n\n    \n\n\n\n    <link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"https://mcmsmedia.antalya.bel.tr/MediaFolder/6770156cf267483097290291/fb74156d-de71-4e99-9f5d-ba766db11e2c.png\">\n\n\n    <link href=\"https://library.antalya.bel.tr/css/site.css?v=11212\" rel=\"stylesheet\"/>\n\n    <link href=\"https://library.antalya.bel.tr/js/captcha/disk/slidercaptcha.min.css\" rel=\"stylesheet\" />\n\n\n    <script src=\"https://library.antalya.bel.tr/lib/jquery/dist/jquery.js\"></script>\n    \n\n\n        <link href=\"https://mcmsmedia.antalya.bel.tr/MediaFolder/6770156cf267483097290291/67702b79a43748f7852976d2_bootstrap.min.css?v=20261104\" rel=\"stylesheet\"/>\n        <link href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css?v=20261104\" rel=\"stylesheet\"/>\n        <link href=\"https://fonts.googleapis.com/css?family=Poppins:400,500,500i,600,600i,700,800&amp;display=swap?v=20261104\" rel=\"stylesheet\"/>\n        <link href=\"https://mcmsmedia.antalya.bel.tr/MediaFolder/6770156cf267483097290291/67702b79a43748f7852976d2_bootstrap-slider.min.css?v=20261104\" rel=\"stylesheet\"/>\n        <link href=\"https://mcmsmedia.antalya.bel.tr/MediaFolder/6770156cf267483097290291/67702b79a43748f7852976d2_zuck.min.css?v=20261104\" rel=\"stylesheet\"/>\n        <link href=\"https://mcmsmedia.antalya.bel.tr/MediaFolder/6770156cf267483097290291/67702b79a43748f7852976d2_dataTables.bootstrap4.min.css?v=20261104\" rel=\"stylesheet\"/>\n        <link href=\"https://mcmsmedia.antalya.bel.tr/MediaFolder/6770156cf267483097290291/67702b79a43748f7852976d2_index.css?v=20261104\" rel=\"stylesheet\"/>\n        <link href=\"https://mcmsmedia.antalya.bel.tr/MediaFolder/6770156cf267483097290291/67702b79a43748f7852976d2_all.min.css?v=20261104\" rel=\"stylesheet\"/>\n        <link href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css?v=20261104\" rel=\"stylesheet\"/>\n        <link href=\"https://cdn.jsdelivr.net/npm/lc-lightbox-lite@1.5.0/css/lc_lightbox.min.css?v=20261104\" rel=\"stylesheet\"/>\n        <link href=\"https://mcmsmedia.antalya.bel.tr/MediaFolder/6770156cf267483097290291/67702b79a43748f7852976d2_bootstrap-datepicker.standalone.min.css?v=20261104\" rel=\"stylesheet\"/>\n        <link href=\"https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/flexslider.min.css?v=20261104\" rel=\"stylesheet\"/>\n        <link href=\"https://mcmsmedia.antalya.bel.tr/MediaFolder/6770156cf267483097290291/67702b79a43748f7852976d2_owl.carousel.min.css?v=20261104\" rel=\"stylesheet\"/>\n        <link href=\"https://mcmsmedia.antalya.bel.tr/MediaFolder/6770156cf267483097290291/67702b79a43748f7852976d2_owl.theme.default.min.css?v=20261104\" rel=\"stylesheet\"/>\n        <link href=\"https://mcmsmedia.antalya.bel.tr/MediaFolder/6770156cf267483097290291/67702b79a43748f7852976d2_intlTelInput.min.css?v=20261104\" rel=\"stylesheet\"/>\n "
-  }
- },
- "sayfalar": {
-  "http://www.hal.gov.tr/_layouts/15/Authenticate.aspx?Source=%2FSayfalar%2FFiyatDetaylari%2Easpx": {
-   "durum": null,
-   "secimler": {},
-   "inputlar": [],
-   "metin": ""
-  },
-  "http://www.hal.gov.tr:80/Sayfalar/FiyatDetaylari.aspx": {
-   "durum": 200,
-   "secimler": {},
-   "inputlar": [
-    "_wzSelected",
-    "MSOSPWebPartManager_OldDisplayModeName",
-    "MSOSPWebPartManager_StartWebPartEditingName",
-    "MSOSPWebPartManager_EndWebPartEditing",
-    "__VIEWSTATE",
-    "__VIEWSTATEGENERATOR",
-    "__EVENTVALIDATION",
-    "ctl00$g_c10caf96_9e01_446b_94f9_e6a0341bb595$S5FE43DF8_InputKeywords",
-    "ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$dateControl$dateControlDate",
-    "ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$btnGet",
-    "ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$btnExcel",
-    "ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$rblExcelOptions",
-    "ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$rblExcelOptions",
-    "__spText1",
-    "__spText2"
-   ],
-   "metin": "eleneksel(Konvansiyonel) 30,65 47314 Kg ADA&#199;AYI (YAŞ-TAZE) ADA&#199;AYI (YAŞ-TAZE) Geleneksel(Konvansiyonel) 70,29 17753 Kg ADA&#199;AYI (YAŞ-TAZE) ADA&#199;AYI (YAŞ-TAZE) İyi Tarım 4061,80 4 Kg AHUDUDU(FRAMBUAZ) AHUDUDU(FRAMBUAZ) Geleneksel(Konvansiyonel) 1208,47 483 Kg AHUDUDU(FRAMBUAZ) AHUDUDU(FRAMBUAZ) İyi Tarım 1340,72 80 Kg ALABAŞ(KOHLRABİ) BEYAZ Geleneksel(Konvansiyonel) 41,62 6085 Kg ALABAŞ(KOHLRABİ) KIRMIZI Geleneksel(Konvansiyonel) 47,94 615 Kg ALABAŞ(KOHLRABİ) BEYAZ İyi Tarım 69,75 1064 Kg ALABAŞ(KOHLRABİ) BEYAZ Organik Tarım 112,00 11 Kg ALI&#199; ALI&#199; Geleneksel(Konvansiyonel) 214,94 5003 Kg ANANAS ANANAS Geleneksel(Konvansiyonel) 80,78 196568 Kg ANDİVA ANDİVA Geleneksel(Konvansiyonel) 27,00 37 Kg ARMUT AK&#199;A Geleneksel(Konvansiyonel) 26,03 3499 Kg ARMUT ANKARA Geleneksel(Konvansiyonel) 48,53 12567 Kg ARMUT DEVECİ Geleneksel(Konvansiyonel) 42,11 378627 Kg ARMUT DİĞER Geleneksel(Konvansiyonel) 25,51 557263 Kg ARMUT FRENK Geleneksel(Konvansiyonel) 34,27 786 Kg ARMUT MARGARİT Geleneksel(Konvansiyonel) 23,70 103747 Kg ARMUT SANTAMARİ Geleneksel(Konvansiyonel) 44,47 433530 Kg ARMUT DEVECİ İyi Tarım 34,13 50222 Kg ARMUT SANTAMARİ İyi Tarım 53,35 33868 Kg ARMUT SANTAMARİ Organik Tarım 159,92 137 Kg ASMA YAPRAĞI ASMA YAPRAĞI Geleneksel(Konvansiyonel) 41,23 23491 Kg AVOKADO AVOKADO Geleneksel(Konvansiyonel) 34,93 915910 Adet AVOKADO AVOKADO İyi Tarım 32,05 61389 Adet 1 2 3 4 5 6 7 8 9 10 ... Sayfa İçeriği T.C. Ticaret Bakanlığı İç Ticaret Genel Müdürlüğü - © 2011 Dumlupınar Bulvarı No: 151 (Eskişehir Yolu 9. Km.) 06800 Çankaya ANKARA 30.01.2012 Tarihinden İtibaren Ziyaretçi Sayısı 34170859 "
-  },
-  "https://www.hal.gov.tr/javascript:__doPostBack(&#39;ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$gvFiyatlar&#39;,&#39;Page$10&#39;)": {
-   "durum": null,
-   "secimler": {},
-   "inputlar": [],
-   "metin": ""
-  },
-  "https://www.hal.gov.tr/javascript:__doPostBack(&#39;ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$gvFiyatlar&#39;,&#39;Page$11&#39;)": {
-   "durum": null,
-   "secimler": {},
-   "inputlar": [],
-   "metin": ""
-  },
-  "https://www.hal.gov.tr/javascript:__doPostBack(&#39;ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$gvFiyatlar&#39;,&#39;Page$2&#39;)": {
-   "durum": null,
-   "secimler": {},
-   "inputlar": [],
-   "metin": ""
-  },
-  "https://www.hal.gov.tr/javascript:__doPostBack(&#39;ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$gvFiyatlar&#39;,&#39;Page$3&#39;)": {
-   "durum": null,
-   "secimler": {},
-   "inputlar": [],
-   "metin": ""
-  },
-  "https://www.hal.gov.tr/javascript:__doPostBack(&#39;ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$gvFiyatlar&#39;,&#39;Page$4&#39;)": {
-   "durum": null,
-   "secimler": {},
-   "inputlar": [],
-   "metin": ""
-  },
-  "https://www.hal.gov.tr/javascript:__doPostBack(&#39;ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$gvFiyatlar&#39;,&#39;Page$5&#39;)": {
-   "durum": null,
-   "secimler": {},
-   "inputlar": [],
-   "metin": ""
-  },
-  "https://www.hal.gov.tr/Sayfalar/FiyatDetaylari.aspx": {
-   "durum": 200,
-   "uzunluk": 64481,
-   "secimler": {},
-   "inputlar": [
-    "_wpcmWpid",
-    "wpcmVal",
-    "MSOWebPartPage_PostbackSource",
-    "MSOTlPn_SelectedWpId",
-    "MSOTlPn_View",
-    "MSOTlPn_ShowSettings",
-    "MSOGallery_SelectedLibrary",
-    "MSOGallery_FilterString",
-    "MSOTlPn_Button",
-    "__REQUESTDIGEST",
-    "MSOSPWebPartManager_DisplayModeName",
-    "MSOSPWebPartManager_ExitingDesignMode",
-    "MSOWebPartPage_Shared",
-    "MSOLayout_LayoutChanges",
-    "MSOLayout_InDesignMode",
-    "_wpSelected",
-    "_wzSelected",
-    "MSOSPWebPartManager_OldDisplayModeName",
-    "MSOSPWebPartManager_StartWebPartEditingName",
-    "MSOSPWebPartManager_EndWebPartEditing",
-    "__VIEWSTATE",
-    "__VIEWSTATEGENERATOR",
-    "__EVENTVALIDATION",
-    "ctl00$g_c10caf96_9e01_446b_94f9_e6a0341bb595$S5FE43DF8_InputKeywords",
-    "ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$dateControl$dateControlDate",
-    "ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$btnGet",
-    "ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$btnExcel",
-    "ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$rblExcelOptions",
-    "ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$rblExcelOptions",
-    "__spText1",
-    "__spText2"
-   ],
-   "scriptler": [
-    "\r\n//<![CDATA[\r\nvar MSOWebPartPageFormName = 'aspnetForm';\nvar g_presenceEnabled = true;\nvar g_wsaEnabled = false;\n\nvar g_correlationId = '9d944ba2-e172-5048-74a0-2b05877626dd';\nvar g_wsaQoSEnabled = false;\nvar g_wsaQoSDataPoints = [];\nvar g_wsaRUMEnabled = false;\nvar g_wsaLCID = 1055;\nvar g_wsaListTemplateId = 850;\nvar g_wsaSiteTemplateId = 'STS#0';\nvar _fV4UI=true;var _spPageContextInfo = {webServerRelativeUrl: \"\\u002f\", webAbsoluteUrl: \"http:\\u002f\\u002fwww.hal.gov.tr\", siteAbsoluteUrl: \"http:\\u002f\\u002fwww.hal.gov.tr\", serverRequestPath: \"\\u002fSayfalar\\u002fFiyatDetaylari.aspx\", layoutsUrl: \"_layouts\\u002f15\", webTitle: \"HKS Portal\", webTemplate: \"1\", tenantAppVersion: \"0\", isAppWeb: false, webLogoUrl: \"_layouts\\u002f15\\u002fimages\\u002fsiteicon.png\", webLanguage: 1055, currentLanguage: 1055, currentUICultureName: \"tr-TR\", currentCultureName: \"tr-TR\", clientServerTimeDelta: new Date(\"2026-11-04T15:10:57.9008306Z\") - new Date(), updateFormDigestPageLoaded: new Date(\"2026-11-04T15:10:57.9008306Z\"), siteClientTag: \"198$$16.0.4483.1000\", crossDomainPhotosEnabled:false, webUIVersion:15, webPermMasks:{High:16,Low:200769},pageListId:\"{40a3b083-9122-408f-a8bd-37f041f7cfc3}\",pageItemId:43, pagePersonalizationScope:1, alertsEnabled:true, siteServerRelativeUrl: \"\\u002f\", allowSilverlightPrompt:'True', isSiteAdmin: false};document.onreadystatechange=fnRemoveAllStatus; function fnRemoveAllStatus(){removeAllStatus(true)};Flighting.ExpFeatures = [480215056,1880287568,1561350208,302071836,3212816,69473024,4194310,-2113396707,268502022,-872284160,1049232,-2147421952,65536,65536,2097472,917504,-2147474174,1372324107,67108882,0,0,-2147483648,2097152,0,0,32768,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,32768]; (function()\r\n{\r\n    if(typeof(window.SP) == \"undefined\") window.SP = {};\r\n    if(typeof(window.SP.YammerSwitch) == \"undefined\") window.SP.YammerSwitch = {};\r\n\r\n    var ysObj = window.SP.YammerSwitch;\r\n    ysObj.IsEnabled = false;\r\n    ysObj.TargetYammerHostName = \"www.yammer.com\";\r\n} )(); var _spWebPartComponents = new Object();var g_strDateTimeControlIDs = new Array();//]]>\r\n"
-   ],
-   "script_src": [
-    "/_layouts/15/1055/initstrings.js?rev=qg9mTSkplN%2BcmM4zNVe05Q%3D%3DTAG0",
-    "/_layouts/15/init.js?rev=pe%2FrJRcauTl7Vf%2Bd9sHDxg%3D%3DTAG0",
-    "/_layouts/15/1055/strings.js?rev=n6AzdpD6XlA6eOHdOnOuAQ%3D%3DTAG0",
-    "/_layouts/15/datepicker.js?rev=7GBl%2BJql2pj9Q1Z%2F2S3F%2FA%3D%3DTAG0",
-    "/ScriptResource.axd?d=QgDzj3mCqzi0xEBStjrWmTtlMbAPtI8URCAq0qAC7NDCPO8v53fGQiBFcvsoGnC248Z8MMYyFbuIjMZYqhHc88iSwgEC04jEHxU00QxIRZ--0MSxOBwTqxJzkc4KXs33hIT8azTFUmZvqGkSf_FAIdbm3DnlaiWr8OqJ1T2KHJNGm0O8qR7CEcahg9grH3T10&amp;t=ffffffffc820c398",
-    "/_layouts/15/blank.js?rev=P5HxuT4bkNqLHLvV3asaww%3D%3DTAG0",
-    "https://www.hal.gov.tr/Style%20Library/scripts/jquery-1.7.1.min.js",
-    "https://www.hal.gov.tr/Style%20Library/scripts/hks_core.js",
-    "https://www.hal.gov.tr/Style%20Library/scripts/hks_functions.js",
-    "https://www.hal.gov.tr/Style%20Library/scripts/unoSlider.js",
-    "https://www.hal.gov.tr/Style%20Library/scripts/jquery.colorbox.js",
-    "https://www.hal.gov.tr/Style%20Library/scripts/jquery.fancybox.pack.js",
-    "/_layouts/15/blank.js?rev=P5HxuT4bkNqLHLvV3asaww%3D%3DTAG0"
-   ],
-   "tablolar": [
-    "<table class=\"ms-sbtable ms-sbtable-ex\" cellpadding=\"0\" cellspacing=\"0\"> <tr class=\"ms-sbrow\"> <td class=\"ms-sbcell\"><input name=\"ctl00$g_c10caf96_9e01_446b_94f9_e6a0341bb595$S5FE43DF8_InputKeywords\" type=\"text\" maxlength=\"200\" id=\"ctl00_g_c10caf96_9e01_446b_94f9_e6a0341bb595_S5FE43DF8_InputKeywords\" accesskey=\"S\" title=\"Ara...\" class=\"ms-sbplain\" alt=\"Ara...\" onkeypress=\"javascript: return S5FE43DF8_OSBEK(event);\" style=\"width:170px;\" /></td><td class=\"ms-sbgo ms-sbcell\"><a id=\"ctl00_g_c10caf96_9e01_446b_94f9_e6a0341bb595_S5FE43DF8_go\" title=\"Ara\" href=\"javascript:S5FE43DF8_Submit()\"><img title=\"Ara\" onmouseover=\"this.src=&#39;\\u002f_layouts\\u002fimages\\u002fgosearchhover15.png&#39;\" onmouseout=\"this.src=&#39;\\u002f_layouts\\u002fimages\\u002fgosearch15.png&#39;\" class=\"srch-gosearchimg\" alt=\"Ara\" src=\"/_layouts/images/gosearch15.png\" /></a></td><td class=\"ms-sbLastcell\"></td> </tr> </table>",
-    "<table cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\"> <tr> <td class=\"auto-style1\"> <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr> <td class=\"ms-dtinput\" > <label for=\"ctl00_ctl37_g_7e86b8d6_3aea_47cf_b1c1_939799a091e0_dateControl_dateControlDate\" style=\"display:none\"> Tarih</label> <input name=\"ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$dateControl$dateControlDate\" type=\"text\" value=\"4.11.2026\" maxlength=\"45\" id=\"ctl00_ctl37_g_7e86b8d6_3aea_47cf_b1c1_939799a091e0_dateControl_dateControlDate\" class=\"ms-input\" AutoPostBack=\"0\" /></td> <td class=\"ms-dtinput\" > <a href=\"#\" onclick='clickDatePicker(\"ctl00_ctl37_g_7e86b8d6_3aea_47cf_b1c1_939799a091e0_dateControl_dateControlDate\", \"\\u002f_layouts\\u002f15\\u002fiframe.aspx?&amp;cal=1&amp;lcid=1055&amp;langid=1055&amp;ww=0111110&amp;fdow=1&amp;fwoy=0&amp;hj=0&amp;swn=False&amp;minjday=109207&amp;maxjday=2666269&amp;date=\", \"2026-11-04\", event);return false;' ><img id=\"ctl00_ctl37_g_7e86b8d6_3aea_47cf_b1c1_939799a091e0_dateControl_dateControlDateDatePickerImage\" src=\"/_layouts/15/images/calendar_25.gif\" border=\"0\" alt=\"Takvimden tarih seçin.\"></img></a></td> <td> <iframe id=\"ctl00_ctl37_g_7e86b8d6_3aea_47cf_b1c1_939799a091e0_dateControl_dateControlDateDatePickerFrame\" src=\"/_layouts/15/images/blank.gif\" frameborder=\"0\" scrolling=\"no\" style=\"DISPLAY:none;POSITION:absolute; width:200px; Z-INDEX:101;\" title=\"Takvimden tarih seçin.\"></iframe></td> </tr></table>",
-    "<table cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\"> <tr> <td> <span id=\"ctl00_ctl37_g_7e86b8d6_3aea_47cf_b1c1_939799a091e0_lblTarih\"><b>Bülten Tarihi : 4.11.2026 (3.11.2026 Tarihli Veriler Kullanılmıştır.)<br />Bilgi amaçlı olup, zaman zaman insan hatası ya da otomatik sistemlerdeki teknik arızalar nedeni ile hatalı değerlerle karşılaşılma ihtimali bulunmaktadır.</b></span> </td> </tr> <tr> <td>&nbsp;</td> </tr> </table>"
-   ],
-   "metin": " T.C. Ticaret Bakanlığı Hal Kayıt Sistemi - Ürün Fiyat Detayları Daha yüksek erişilebilirlik modunu aç Daha yüksek erişilebilirlik modunu kapat Şerit Komutlarını Atla Ana içeriğe atla T.C. Ticaret Bakanlığı Hal Kayıt Sistemi Hal Kayıt Sistemi --> Oturum Aç Site Haritası ANA SAYFA MEVZUAT Kanun Yönetmelik Tebliğ Genelge SORGULAMALAR Bildirimci Sorgulama Künye Sorgulama Ürün Sorgulama Organik İyi Tarım Konvansiyonel Toptancı Hal Sorgulama Pazar Yeri Sorgulama Üretici Örgütü Sorgulama Hal Hakem Heyeti Sorgulama İl İlçe İhracat Fiyat Sorgulama İSTATİSTİKLER Fiyat İstatistikleri Bildirim İstatistikleri Bildirimci İstatistikleri HKS BİLGİ Duyurular Sıkça Sorulan Sorular Toptancı Hal Konseyi Matbu Formlar İdari Para Cezaları KVKK Metni Demo FAYDALI LİNKLER İLETİŞİM Ürün Fiyat Detayları Tarih &nbsp; Bülten Tarihi : 4.11.2026 (3.11.2026 Tarihli Veriler Kullanılmıştır.) Bilgi amaçlı olup, zaman zaman insan hatası ya da otomatik sistemlerdeki teknik arızalar nedeni ile hatalı değerlerle karşılaşılma ihtimali bulunmaktadır. &nbsp; Aktarma Seçenekleri Şimdiki Sayfa Tüm Sayfalar &#220;r&#252;n Adı &#220;r&#252;n Cinsi &#220;r&#252;n T&#252;r&#252; Ortalama Fiyat İşlem Hacmi Birim Adı ACUR ACUR Geleneksel(Konvansiyonel) 30,65 47314 Kg ADA&#199;AYI (YAŞ-TAZE) ADA&#199;AYI (YAŞ-TAZE) Geleneksel(Konvansiyonel) 70,29 17753 Kg ADA&#199;AYI (YAŞ-TAZE) ADA&#199;AYI (YAŞ-TAZE) İyi Tarım 4061,80 4 Kg AHUDUDU(FRAMBUAZ) AHUDUDU(FRAMBUAZ) Geleneksel(Konvansiyonel) 1208,47 483 Kg AHUDUDU(FRAMBUAZ) AHUDUDU(FRAMBUAZ) İyi Tarım 1340,72 80 Kg ALABAŞ(KOHLRABİ) BEYAZ Geleneksel(Konvansiyonel) 41,62 6085 Kg ALABAŞ(KOHLRABİ) KIRMIZI Geleneksel(Konvansiyonel) 47,94 615 Kg ALABAŞ(KOHLRABİ) BEYAZ İyi Tarım 69,75 1064 Kg ALABAŞ(KOHLRABİ) BEYAZ Organik Tarım 112,00 11 Kg ALI&#199; ALI&#199; Geleneksel(Konvansiyonel) 214,94 5003 Kg ANANAS ANANAS Geleneksel(Konvansiyonel) 80,78 196568 Kg ANDİVA ANDİVA Geleneksel(Konvansiyonel) 27,00 37 Kg ARMUT AK&#199;A Geleneksel(Konvansiyonel) 26,03 3499 Kg ARMUT ANKARA Geleneksel(Konvansiyonel) 48,53 12567 Kg ARMUT DEVECİ Geleneksel(Konvansiyonel) 42,11 378627 Kg ARMUT DİĞER Geleneksel(Konvansiyonel) 25,51 557263 Kg ARMUT FRENK Geleneksel(Konvansiyonel) 34,27 786 Kg ARMUT MARGARİT Geleneksel(Konvansiyonel) 23,70 103747 Kg ARMUT SANTAMARİ Geleneksel(Konvansiyonel) 44,47 433530 Kg ARMUT DEVECİ İyi Tarım 34,13 50222 Kg ARMUT SANTAMARİ İyi Tarım 53,35 33868 Kg ARMUT SANTAMARİ Organik Tarım 159,92 137 Kg ASMA YAPRAĞI ASMA YAPRAĞI Geleneksel(Konvansiyonel) 41,23 23491 Kg AVOKADO AVOKADO Geleneksel(Konvansiyonel) 34,93 915910 Adet AVOKADO AVOKADO İyi Tarım 32,05 61389 Adet 1 2 3 4 5 6 7 8 9 10 ... Sayfa İçeriği T.C. Ticaret Bakanlığı İç Ticaret Genel Müdürlüğü - © 2011 Dumlupınar Bulvarı No: 151 (Eskişehir Yolu 9. Km.) 06800 Çankaya ANKARA 30.01.2012 Tarihinden İtibaren Ziyaretçi Sayısı 34170855 "
-  }
- },
- "menu": {
-  "https://www.hal.gov.tr/Sayfalar/FiyatDetaylari.aspx": [
+ "harita": [
+  [
+   "javascript:;",
+   "Şerit Komutlarını Atla"
+  ],
+  [
+   "javascript:;",
+   "Ana içeriğe atla"
+  ],
+  [
+   "http://www.hal.gov.tr/_layouts/15/Authenticate.aspx?Source=%2FSayfalar%2FSiteHaritasi%2Easpx",
+   "Oturum Aç"
+  ],
+  [
    "/Sayfalar/SiteHaritasi.aspx",
-   "http://www.hal.gov.tr/_layouts/15/Authenticate.aspx?Source=%2FSayfalar%2FFiyatDetaylari%2Easpx",
-   "http://www.hal.gov.tr:80/Sayfalar/FiyatDetaylari.aspx",
-   "javascript:__doPostBack(&#39;ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$gvFiyatlar&#39;,&#39;Page$10&#39;)",
-   "javascript:__doPostBack(&#39;ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$gvFiyatlar&#39;,&#39;Page$11&#39;)",
-   "javascript:__doPostBack(&#39;ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$gvFiyatlar&#39;,&#39;Page$2&#39;)",
-   "javascript:__doPostBack(&#39;ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$gvFiyatlar&#39;,&#39;Page$3&#39;)",
-   "javascript:__doPostBack(&#39;ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$gvFiyatlar&#39;,&#39;Page$4&#39;)",
-   "javascript:__doPostBack(&#39;ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$gvFiyatlar&#39;,&#39;Page$5&#39;)",
-   "javascript:__doPostBack(&#39;ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$gvFiyatlar&#39;,&#39;Page$6&#39;)",
-   "javascript:__doPostBack(&#39;ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$gvFiyatlar&#39;,&#39;Page$7&#39;)",
-   "javascript:__doPostBack(&#39;ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$gvFiyatlar&#39;,&#39;Page$8&#39;)",
-   "javascript:__doPostBack(&#39;ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$gvFiyatlar&#39;,&#39;Page$9&#39;)"
+   "Site Haritası"
+  ],
+  [
+   "/Sayfalar/Toptanci-Halleri.aspx",
+   "Toptancı Halleri"
+  ],
+  [
+   "/Sayfalar/Pazar-Yerleri.aspx",
+   "Pazar Yerleri"
+  ],
+  [
+   "/Sayfalar/HalHakemListesi.aspx",
+   "Hal Hakem Heyetleri"
+  ],
+  [
+   "/Sayfalar/UreticiOrgutyeni.aspx",
+   "Üretici Örgütleri"
+  ],
+  [
+   "https://hks.hal.gov.tr/",
+   "Giriş"
+  ],
+  [
+   "/Sayfalar/Sikayet1.aspx",
+   "Şikayet"
+  ],
+  [
+   "/Sayfalar/KunyeSorgulama.aspx",
+   "Künye Sorgulama"
+  ],
+  [
+   "/Sayfalar/BildirimciSorgulama.aspx",
+   "Bildirimci Sorgulama"
+  ],
+  [
+   "/Sayfalar/VideoGalerisi.aspx?folder=Videolar",
+   "HKS Bilgi"
+  ],
+  [
+   "/Sayfalar/Iletisimyeni.aspx",
+   "İletişim"
+  ],
+  [
+   "http://icticaret.ticaret.gov.tr/",
+   "T.C. Ticaret Bakanlığı İç Ticaret Genel Müdürlüğü - © 2011"
   ]
- }
+ ],
+ "sayfalar": {}
 }
