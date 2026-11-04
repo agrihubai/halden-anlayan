@@ -1,0 +1,25 @@
+# Halden Anlayan
+
+Türkiye ve İspanya sebze hal fiyatları panosu. / Turkey–Spain wholesale vegetable price dashboard.
+
+**Pano / Dashboard:** https://agrihubai.github.io/halden-anlayan/
+
+Domates, biber, hıyar, patlıcan ve kabak için:
+- **Türkiye:** İzmir halinin günlük en düşük, en yüksek ve ortalama fiyatları (TL). Grafiğin üstüne gelince o günün ECB kuruyla euro karşılığı görünür.
+- **İspanya:** Avrupa Komisyonu'nun haftalık tarla, paketleme çıkışı ve raf fiyatları (EUR).
+- **Karşılaştırma:** İki ülke haftalık euro/kg olarak aynı grafikte.
+
+## Nasıl çalışır
+
+- `scripts/update_data.py` üç kaynaktan veri çeker ve ham veriyi `data/ham/` klasörüne yazar. Kaynaklardan gelen ilk yanıtların kısa örnekleri `data/_kesif/` klasörüne yazılır; kaynak formatı değişirse buradan görülür.
+- `scripts/build_data.py` ham veriden panonun okuduğu `data/urun/<ürün>.json` dosyalarını üretir.
+- `.github/workflows/veri-guncelle.yml` bu iki betiği **her pazartesi ve perşembe** otomatik çalıştırır. Actions sekmesinden elle de çalıştırılabilir.
+- `index.html` panonun kendisidir (D3 ile, tek dosya).
+
+## Kaynaklar
+
+- [İzmir Büyükşehir Belediyesi açık veri: sebze ve meyve hal fiyatları](https://acikveri.bizizmir.com/dataset/sebze-ve-meyve-hal-fiyatlari)
+- [ECB euro referans kurları](https://data.ecb.europa.eu/) (EUR/TRY)
+- [Avrupa Komisyonu agri-food veri portalı](https://agridata.ec.europa.eu/extensions/DataPortal/fruit-and-vegetables.html)
+
+Hal fiyatı üreticinin eline geçen fiyat değildir. İzmir hali Türkiye'nin tamamını temsil etmez. Bu sayfa yapay zekâ ile hazırlanmıştır; yatırım ya da ticaret tavsiyesi değildir. [AgriHub-AI](https://agrihubai.wordpress.com/)

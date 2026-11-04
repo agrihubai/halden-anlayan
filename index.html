@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Halden Anlayan</title>
+<meta name="description" content="Türkiye ve İspanya sebze hal fiyatları: günlük fiyat, euro karşılığı ve İspanya'nın tarla, paketleme ve raf fiyatlarıyla karşılaştırma. AgriHub-AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+  :root {
+    --sans: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --bg: #fbfaf6; --panel: #ffffff; --fg: #1f2a22; --muted: #5f6b63; --line: #e3e1d8;
+    --pop: #f4f2ea; --pop-border: #d9d6cb; --shadow: 0 6px 24px rgba(31,42,34,.12);
+    --grid: #ecebe4; --axis: #b9b6aa; --band: rgba(47,107,79,.14);
+    --c-tr: #b8442f; --c-es1: #2f6b4f; --c-es2: #3f6fb5; --c-es3: #c9832a; --c-es4: #7a52b3;
+    --ok: #2f7d46; --bad: #b23b2e;
+    --r: 10px; --cap: .8125rem;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141915; --panel: #1b221d; --fg: #e8ebe6; --muted: #a3ada6; --line: #2c352f;
+      --pop: #222a24; --pop-border: #36413a; --shadow: 0 6px 24px rgba(0,0,0,.45);
+      --grid: #232b25; --axis: #4a554d; --band: rgba(108,196,137,.16);
+      --c-tr: #ef8a6e; --c-es1: #6cc489; --c-es2: #7fa6e6; --c-es3: #e0a640; --c-es4: #b292e6;
+      --ok: #6cc489; --bad: #ef7d6e;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141915; --panel: #1b221d; --fg: #e8ebe6; --muted: #a3ada6; --line: #2c352f;
+    --pop: #222a24; --pop-border: #36413a; --shadow: 0 6px 24px rgba(0,0,0,.45);
+    --grid: #232b25; --axis: #4a554d; --band: rgba(108,196,137,.16);
+    --c-tr: #ef8a6e; --c-es1: #6cc489; --c-es2: #7fa6e6; --c-es3: #e0a640; --c-es4: #b292e6;
+    --ok: #6cc489; --bad: #ef7d6e;
+    color-scheme: dark;
+  }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 16px; line-height: 1.45; }
+  a { color: inherit; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+  a:hover { text-decoration-color: currentColor; }
+  :focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+  .wrap { max-width: 72rem; margin: 0 auto; padding: 24px 16px 48px; display: flex; flex-direction: column; gap: 40px; }
+  @media (min-width: 760px) { .wrap { padding: 32px 32px 56px; } }
+  .site { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: var(--cap); color: var(--muted); margin-bottom: -16px; }
+  header { display: flex; flex-direction: column; gap: 10px; }
+  .eyebrow { margin: 0; font-size: var(--cap); color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
+  h1 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: 2.4rem; line-height: 1.1; }
+  .intro { margin: 0; max-width: 46rem; line-height: 1.6; color: var(--muted); }
+  .lede { margin: 4px 0 0; padding-top: 10px; border-top: 1px solid var(--line); max-width: 46rem; line-height: 1.55; }
+  .lede b { font-weight: 600; font-variant-numeric: tabular-nums; }
+  h2 { margin: 0; font-size: 1.2rem; font-weight: 600; }
+  section { display: flex; flex-direction: column; gap: 16px; }
+  .note { margin: 0; font-size: var(--cap); color: var(--muted); line-height: 1.5; max-width: 52rem; }
+  .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .chip { font: inherit; font-size: .95rem; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; }
+  .chip[aria-pressed="true"] { color: var(--fg); border-color: var(--fg); background: var(--panel); }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+  .seg button { font: inherit; font-size: var(--cap); padding: 4px 10px; border: 0; background: transparent; color: var(--muted); cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+  select { font: inherit; font-size: var(--cap); padding: 4px 8px; border-radius: var(--r); border: 1px solid var(--line); background: var(--panel); color: var(--fg); max-width: 100%; }
+  label.ctl { display: inline-flex; gap: 6px; align-items: center; font-size: var(--cap); color: var(--muted); }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: 16px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 20px; min-width: 0; }
+  .tile { display: flex; flex-direction: column; gap: 4px; }
+  .tile .k { margin: 0; font-size: var(--cap); color: var(--muted); }
+  .tile .v { margin: 0; font-family: var(--serif); font-size: 2rem; line-height: 1.1; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+  .tile .s { margin: 0; font-size: var(--cap); color: var(--muted); font-variant-numeric: tabular-nums; }
+  .up { color: var(--bad); } .down { color: var(--ok); }
+  .chart { position: relative; min-height: 320px; }
+  .chart svg { display: block; overflow: visible; }
+  .chart text { font-family: var(--sans); font-size: 12px; fill: var(--muted); }
+  .chart .grid line { stroke: var(--grid); }
+  .chart .domain { stroke: var(--axis); }
+  .chart .tick line { stroke: var(--axis); }
+  .empty { display: grid; place-items: center; min-height: 240px; color: var(--muted); font-size: .95rem; text-align: center; padding: 16px; border: 1px dashed var(--line); border-radius: var(--r); }
+  .tip { position: absolute; top: 0; left: 0; background: var(--pop); border: 1px solid var(--pop-border); border-radius: var(--r); box-shadow: var(--shadow); padding: 6px 10px; font-size: var(--cap); pointer-events: none; white-space: nowrap; font-variant-numeric: tabular-nums; z-index: 2; }
+  .tip .d { color: var(--muted); margin-bottom: 2px; }
+  .tip .row { display: flex; gap: 6px; align-items: center; }
+  .tip .sw { width: 8px; height: 8px; border-radius: 2px; flex: none; }
+  .tip .val { margin-left: auto; padding-left: 12px; }
+  .tip .eur { color: var(--muted); }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: var(--cap); color: var(--muted); }
+  .legend span { display: inline-flex; gap: 6px; align-items: center; }
+  .legend i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+  .legend i.band { height: 10px; background: var(--band); }
+  .notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 16px; }
+  .notes h3 { margin: 0 0 4px; font-size: 1rem; font-weight: 600; }
+  .notes p { margin: 0; font-size: var(--cap); line-height: 1.55; color: var(--muted); }
+  footer { padding-top: 14px; border-top: 1px solid var(--line); font-size: var(--cap); color: var(--muted); }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+<script src="vendor/d3-7.9.0.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <nav class="site" aria-label="AgriHub-AI">
+    <a href="https://agrihubai.wordpress.com/">← AgriHub-AI</a>
+    <a href="https://agrihubai.github.io/emtia/">Emtia Endeksi →</a>
+  </nav>
+
+  <header>
+    <p class="eyebrow">AgriHub-AI · Sebze hal fiyatları · Türkiye – İspanya</p>
+    <h1>Halden Anlayan</h1>
+    <p class="intro">Antalya ile Almería aynı sebzeleri aynı kış penceresinde üretir ve Avrupa pazarında rakiptir. Bu pano iki tarafın fiyatını yan yana koyar: Türkiye'de İzmir halinin günlük fiyatları, İspanya'da Avrupa Komisyonu'nun tarla, paketleme çıkışı ve raf fiyatları.</p>
+    <p class="intro">Türkiye fiyatları TL olarak gösterilir. Grafiğin üstüne gelince o günün ECB kuruyla euro karşılığı da görünür. İki ülkeyi karşılaştıran grafikte her şey euro cinsindendir.</p>
+    <p class="lede" id="lede">Veri yükleniyor…</p>
+  </header>
+
+  <section aria-label="Ürün seçimi">
+    <div class="controls" id="products" role="group" aria-label="Ürün"></div>
+  </section>
+
+  <section class="tiles" id="tiles" aria-label="Göstergeler"></section>
+
+  <section aria-labelledby="h-tr">
+    <h2 id="h-tr">Türkiye · İzmir hali günlük fiyat (TL/kg)</h2>
+    <div class="controls">
+      <label class="ctl">Çeşit <select id="variety"></select></label>
+      <div class="seg" id="range-tr" role="group" aria-label="Dönem">
+        <button type="button" data-r="90">3 ay</button><button type="button" data-r="365">1 yıl</button><button type="button" data-r="1825">5 yıl</button><button type="button" data-r="all">Tümü</button>
+      </div>
+    </div>
+    <div class="legend"><span><i style="background:var(--c-tr)"></i>Ortalama</span><span><i class="band"></i>En düşük – en yüksek</span></div>
+    <div class="chart" id="chart-tr"></div>
+    <p class="note">Kaynak: İzmir Büyükşehir Belediyesi açık veri portalı, sebze-meyve hal fiyatları. Fiyatlar halde işlem gören en düşük, en yüksek ve ortalama fiyatlardır; üreticinin eline geçen fiyat değildir.</p>
+  </section>
+
+  <section aria-labelledby="h-cmp">
+    <h2 id="h-cmp">Türkiye – İspanya karşılaştırması (EUR/kg, haftalık)</h2>
+    <div class="controls">
+      <div class="seg" id="range-cmp" role="group" aria-label="Dönem">
+        <button type="button" data-r="365">1 yıl</button><button type="button" data-r="1095">3 yıl</button><button type="button" data-r="all">Tümü</button>
+      </div>
+    </div>
+    <div class="legend" id="legend-cmp"></div>
+    <div class="chart" id="chart-cmp"></div>
+    <p class="note">Türkiye çizgisi, seçili çeşidin İzmir halindeki haftalık ortalamasıdır; her günün fiyatı o günün ECB EUR/TRY kuruyla çevrilmiştir. İspanya çizgileri Avrupa Komisyonu'nun haftalık ortalama fiyatlarıdır. Hal fiyatı ile İspanya'nın aşama fiyatları aynı şey değildir; en yakın karşılaştırma genellikle "paketleme çıkışı" (ex-packaging) fiyatıdır.</p>
+  </section>
+
+  <section aria-labelledby="h-notes">
+    <h2 id="h-notes">Okurken bilinmesi gerekenler</h2>
+    <div class="notes">
+      <div><h3>Hal fiyatı ≠ üretici fiyatı</h3><p>Hal fiyatına komisyon, rüsum ve nakliye dahildir. Tarladan çıkan fiyat bunun altındadır. İspanya verisi ise zincirin üç noktasını ayrı ayrı verir: tarla, paketleme çıkışı ve raf.</p></div>
+      <div><h3>İzmir, Antalya değildir</h3><p>Türkiye tarafındaki veri İzmir halinden gelir, çünkü düzenli ve açık yayınlanan en uzun hal serisi o. Kışın İzmir halindeki sera ürünlerinin büyük kısmı Akdeniz bölgesinden gelir, ama fiyat İzmir'in arz-talep dengesini yansıtır.</p></div>
+      <div><h3>Kur her şeyi açıklamaz</h3><p>Euro karşılığı TL enflasyonunun büyük kısmını temizler ama tamamını temizlemez. TL'nin reel olarak değer kazandığı dönemlerde Türk ürünleri euroda pahalanmış görünür, ürünün kendisinde bir şey değişmemiş olsa bile.</p></div>
+      <div><h3>Kaynaklar</h3><p><a href="https://acikveri.bizizmir.com/dataset/sebze-ve-meyve-hal-fiyatlari">İzmir açık veri</a> · <a href="https://data.ecb.europa.eu/">ECB kurları</a> · <a href="https://agridata.ec.europa.eu/extensions/DataPortal/fruit-and-vegetables.html">AB agri-food veri portalı</a>. Veri haftada iki kez otomatik güncellenir. <span id="updated"></span></p></div>
+    </div>
+  </section>
+
+  <footer>Bu sayfa yapay zekâ ile hazırlanmıştır; yatırım ya da ticaret tavsiyesi değildir. AgriHub-AI · <a href="https://agrihubai.wordpress.com/">agrihubai.wordpress.com</a> · <a href="https://github.com/agrihubai/halden-anlayan">GitHub</a></footer>
+</div>
+
+<script>
+(() => {
+  const PRODUCTS = [
+    { k: 'domates', ad: 'Domates' }, { k: 'biber', ad: 'Biber' }, { k: 'hiyar', ad: 'Hıyar' },
+    { k: 'patlican', ad: 'Patlıcan' }, { k: 'kabak', ad: 'Kabak' },
+  ];
+  const ES_COLORS = ['--c-es1', '--c-es2', '--c-es3', '--c-es4'];
+  d3.timeFormatDefaultLocale({
+    dateTime: '%e %B %Y %A %X', date: '%d.%m.%Y', time: '%H:%M:%S', periods: ['', ''],
+    days: ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'],
+    shortDays: ['Paz', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt'],
+    months: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
+    shortMonths: ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'],
+  });
+  const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const parse = d3.utcParse('%Y-%m-%d');
+  const fmtDate = (d) => d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+  const nf2 = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const tl = (v) => v == null ? '—' : '₺' + nf2.format(v);
+  const eur = (v) => v == null ? '—' : '€' + nf2.format(v);
+  const pct = (v) => v == null || !isFinite(v) ? '—' : (v > 0 ? '+' : '') + Math.round(v * 100) + '%';
+
+  let state = { p: 'domates', v: null, rTr: '365', rCmp: '1095' };
+  try { Object.assign(state, JSON.parse(localStorage.getItem('halden-anlayan') || '{}')); } catch (e) {}
+  const save = () => { try { localStorage.setItem('halden-anlayan', JSON.stringify(state)); } catch (e) {} };
+
+  let fx = null; let fxDates = []; let fxVals = [];
+  const cache = {};
+
+  // O günün kuru; kur yayınlanmamışsa (hafta sonu, tatil) bir önceki iş günününki
+  function rateOn(date) {
+    if (!fxDates.length) return null;
+    const i = d3.bisectRight(fxDates, date) - 1;
+    return i >= 0 ? fxVals[i] : null;
+  }
+
+  async function load(url) {
+    const r = await fetch(url, { cache: 'no-cache' });
+    if (!r.ok) throw new Error(r.status);
+    return r.json();
+  }
+
+  async function product(k) {
+    if (!cache[k]) cache[k] = load(`data/urun/${k}.json`).catch(() => null);
+    return cache[k];
+  }
+
+  // ---- kontroller
+  const pbox = document.getElementById('products');
+  for (const p of PRODUCTS) {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'chip'; b.textContent = p.ad; b.dataset.k = p.k;
+    b.addEventListener('click', () => { state.p = p.k; state.v = null; save(); render(); });
+    pbox.appendChild(b);
+  }
+  for (const [id, key] of [['range-tr', 'rTr'], ['range-cmp', 'rCmp']]) {
+    document.getElementById(id).addEventListener('click', (e) => {
+      const b = e.target.closest('button'); if (!b) return;
+      state[key] = b.dataset.r; save(); render();
+    });
+  }
+  const vsel = document.getElementById('variety');
+  vsel.addEventListener('change', () => { state.v = vsel.value; save(); render(); });
+
+  function cutoff(series, r) {
+    if (r === 'all' || !series.length) return series;
+    const last = series[series.length - 1].date;
+    const from = new Date(last.getTime() - (+r) * 864e5);
+    return series.filter((d) => d.date >= from);
+  }
+
+  // ---- grafik çatısı
+  function frame(el, h = 320) {
+    el.innerHTML = '';
+    const W = el.clientWidth || 600;
+    const m = { t: 10, r: 12, b: 28, l: 52 };
+    const svg = d3.select(el).append('svg').attr('width', W).attr('height', h).attr('role', 'img');
+    const tip = d3.select(el).append('div').attr('class', 'tip').style('display', 'none');
+    return { svg, tip, W, h, m, iw: W - m.l - m.r, ih: h - m.t - m.b };
+  }
+
+  function axes(f, x, y, yfmt) {
+    const g = f.svg.append('g').attr('transform', `translate(${f.m.l},${f.m.t})`);
+    g.append('g').attr('class', 'grid').call(d3.axisLeft(y).ticks(5).tickSize(-f.iw).tickFormat('')).select('.domain').remove();
+    g.append('g').attr('transform', `translate(0,${f.ih})`).call(d3.axisBottom(x).ticks(Math.max(2, Math.floor(f.iw / 90))).tickSizeOuter(0));
+    g.append('g').call(d3.axisLeft(y).ticks(5).tickFormat(yfmt).tickSizeOuter(0)).select('.domain').remove();
+    return g;
+  }
+
+  function placeTip(f, px, py) {
+    const node = f.tip.node();
+    const w = node.offsetWidth, hh = node.offsetHeight;
+    let left = px + f.m.l + 14; if (left + w > f.W) left = px + f.m.l - w - 14;
+    let top = py + f.m.t - hh / 2; top = Math.max(0, Math.min(f.h - hh, top));
+    f.tip.style('left', Math.max(0, left) + 'px').style('top', top + 'px');
+  }
+
+  function empty(el, msg) { el.innerHTML = `<div class="empty">${msg}</div>`; }
+
+  // ---- Türkiye grafiği (TL, üstüne gelince euro)
+  function drawTr(el, series) {
+    if (!series.length) return empty(el, 'Bu ürün için İzmir hal verisi henüz yok. Veri ilk otomatik güncellemeden sonra burada görünecek.');
+    const f = frame(el);
+    const x = d3.scaleUtc().domain(d3.extent(series, (d) => d.date)).range([0, f.iw]);
+    const ymax = d3.max(series, (d) => d.hi ?? d.avg) * 1.05;
+    const y = d3.scaleLinear().domain([0, ymax]).nice().range([f.ih, 0]);
+    const g = axes(f, x, y, (v) => '₺' + d3.format('~s')(v));
+    const band = series.filter((d) => d.lo != null && d.hi != null);
+    g.append('path').datum(band).attr('fill', css('--band'))
+      .attr('d', d3.area().x((d) => x(d.date)).y0((d) => y(d.lo)).y1((d) => y(d.hi)).curve(d3.curveMonotoneX));
+    g.append('path').datum(series).attr('fill', 'none').attr('stroke', css('--c-tr')).attr('stroke-width', 1.6)
+      .attr('d', d3.line().x((d) => x(d.date)).y((d) => y(d.avg)).curve(d3.curveMonotoneX));
+    const dot = g.append('circle').attr('r', 4).attr('fill', css('--c-tr')).style('display', 'none');
+    const rule = g.append('line').attr('y1', 0).attr('y2', f.ih).attr('stroke', css('--axis')).style('display', 'none');
+    const bis = d3.bisector((d) => d.date).center;
+    g.append('rect').attr('width', f.iw).attr('height', f.ih).attr('fill', 'transparent')
+      .on('pointermove', (ev) => {
+        const [mx] = d3.pointer(ev); const d = series[bis(series, x.invert(mx))]; if (!d) return;
+        const r = rateOn(d.date);
+        const e = (v) => (v != null && r ? ` <span class="eur">≈ ${eur(v / r)}</span>` : '');
+        dot.style('display', null).attr('cx', x(d.date)).attr('cy', y(d.avg));
+        rule.style('display', null).attr('x1', x(d.date)).attr('x2', x(d.date));
+        f.tip.style('display', null).html(
+          `<div class="d">${fmtDate(d.date)}</div>` +
+          `<div class="row"><span class="sw" style="background:${css('--c-tr')}"></span>Ortalama<span class="val">${tl(d.avg)}${e(d.avg)}</span></div>` +
+          (d.lo != null ? `<div class="row"><span class="sw"></span>En düşük<span class="val">${tl(d.lo)}${e(d.lo)}</span></div>` : '') +
+          (d.hi != null ? `<div class="row"><span class="sw"></span>En yüksek<span class="val">${tl(d.hi)}${e(d.hi)}</span></div>` : '') +
+          (r ? `<div class="d" style="margin-top:4px">ECB kuru: 1 € = ₺${nf2.format(r)}</div>` : '<div class="d" style="margin-top:4px">Bu tarih için kur yok</div>'));
+        placeTip(f, x(d.date), y(d.avg));
+      })
+      .on('pointerleave', () => { f.tip.style('display', 'none'); dot.style('display', 'none'); rule.style('display', 'none'); });
+    f.svg.attr('aria-label', `İzmir hali ${series.length} günlük fiyat, son ${tl(series[series.length - 1].avg)}`);
+  }
+
+  // Haftalık (pazartesi başlangıçlı) euro ortalaması; her gün kendi kuruyla çevrilir
+  function weeklyEur(series) {
+    const m = d3.rollup(series.filter((d) => rateOn(d.date)),
+      (v) => ({ eur: d3.mean(v, (d) => d.avg / rateOn(d.date)), tl: d3.mean(v, (d) => d.avg) }),
+      (d) => +d3.utcMonday.floor(d.date));
+    return [...m].map(([t, v]) => ({ date: new Date(t), ...v })).sort((a, b) => a.date - b.date);
+  }
+
+  // ---- karşılaştırma grafiği (EUR)
+  function drawCmp(el, trWeekly, esSeries, legendEl) {
+    const lines = [];
+    if (trWeekly.length) lines.push({ name: 'Türkiye · İzmir hali', color: css('--c-tr'), data: trWeekly, tr: true });
+    esSeries.forEach((s, i) => lines.push({ name: 'İspanya · ' + s.name, color: css(ES_COLORS[i % ES_COLORS.length]), data: s.data }));
+    legendEl.innerHTML = lines.map((l) => `<span><i style="background:${l.color}"></i>${l.name}</span>`).join('');
+    if (!lines.length) return empty(el, 'Karşılaştırma için veri henüz yok. Veri ilk otomatik güncellemeden sonra burada görünecek.');
+    const all = lines.flatMap((l) => l.data);
+    const f = frame(el);
+    const x = d3.scaleUtc().domain(d3.extent(all, (d) => d.date)).range([0, f.iw]);
+    const y = d3.scaleLinear().domain([0, d3.max(all, (d) => d.eur) * 1.05]).nice().range([f.ih, 0]);
+    const g = axes(f, x, y, (v) => '€' + d3.format('.2~f')(v));
+    for (const l of lines) {
+      g.append('path').datum(l.data).attr('fill', 'none').attr('stroke', l.color).attr('stroke-width', l.tr ? 2 : 1.5)
+        .attr('d', d3.line().defined((d) => d.eur != null).x((d) => x(d.date)).y((d) => y(d.eur)).curve(d3.curveMonotoneX));
+    }
+    const rule = g.append('line').attr('y1', 0).attr('y2', f.ih).attr('stroke', css('--axis')).style('display', 'none');
+    const dots = lines.map((l) => g.append('circle').attr('r', 3.5).attr('fill', l.color).style('display', 'none'));
+    g.append('rect').attr('width', f.iw).attr('height', f.ih).attr('fill', 'transparent')
+      .on('pointermove', (ev) => {
+        const [mx] = d3.pointer(ev); const t = d3.utcMonday.floor(x.invert(mx));
+        let html = `<div class="d">${fmtDate(t)} haftası</div>`; let any = false; let py = f.ih / 2;
+        lines.forEach((l, i) => {
+          const d = l.data.find((p) => +d3.utcMonday.floor(p.date) === +t);
+          if (!d || d.eur == null) { dots[i].style('display', 'none'); return; }
+          any = true; py = y(d.eur);
+          dots[i].style('display', null).attr('cx', x(d.date)).attr('cy', y(d.eur));
+          html += `<div class="row"><span class="sw" style="background:${l.color}"></span>${l.name}<span class="val">${eur(d.eur)}${l.tr ? ` <span class="eur">(${tl(d.tl)})</span>` : ''}</span></div>`;
+        });
+        if (!any) { f.tip.style('display', 'none'); rule.style('display', 'none'); return; }
+        rule.style('display', null).attr('x1', x(t)).attr('x2', x(t));
+        f.tip.style('display', null).html(html); placeTip(f, x(t), py);
+      })
+      .on('pointerleave', () => { f.tip.style('display', 'none'); rule.style('display', 'none'); dots.forEach((d) => d.style('display', 'none')); });
+  }
+
+  function tile(k, v, s) { return `<div class="card tile"><p class="k">${k}</p><p class="v">${v}</p><p class="s">${s}</p></div>`; }
+
+  function nearest(series, date, maxDays) {
+    const i = d3.bisector((d) => d.date).center(series, date); const d = series[i];
+    return d && Math.abs(d.date - date) <= maxDays * 864e5 ? d : null;
+  }
+
+  async function render() {
+    for (const b of pbox.children) b.setAttribute('aria-pressed', String(b.dataset.k === state.p));
+    for (const [id, key] of [['range-tr', 'rTr'], ['range-cmp', 'rCmp']])
+      for (const b of document.getElementById(id).children) b.setAttribute('aria-pressed', String(b.dataset.r === state[key]));
+    const name = PRODUCTS.find((p) => p.k === state.p).ad;
+    const doc = await product(state.p);
+    const trEl = document.getElementById('chart-tr'), cmpEl = document.getElementById('chart-cmp');
+    const tilesEl = document.getElementById('tiles'), lede = document.getElementById('lede');
+    if (!doc) {
+      vsel.innerHTML = ''; tilesEl.innerHTML = '';
+      lede.textContent = 'Veri henüz yüklenmedi. İlk otomatik güncellemeden sonra pano dolacak.';
+      empty(trEl, 'Veri henüz yok.'); empty(cmpEl, 'Veri henüz yok.'); document.getElementById('legend-cmp').innerHTML = '';
+      return;
+    }
+    const cesitler = doc.tr.cesitler;
+    if (!state.v || !cesitler.some((c) => c.ad === state.v)) state.v = cesitler[0]?.ad ?? null;
+    vsel.innerHTML = cesitler.map((c) => `<option value="${c.ad.replace(/"/g, '&quot;')}">${c.ad} (${c.birim || 'birim yok'}, ${c.ilk.slice(0, 4)}–${c.son.slice(0, 4)})</option>`).join('');
+    if (state.v) vsel.value = state.v;
+    const unit = cesitler.find((c) => c.ad === state.v)?.birim || '';
+
+    const full = (doc.tr.seriler[state.v] || []).map(([d, lo, hi, avg]) => ({ date: parse(d), lo, hi, avg })).filter((d) => d.date && d.avg != null);
+    drawTr(trEl, cutoff(full, state.rTr));
+
+    // İspanya serileri: en çok gözlemi olan en fazla 4 seri
+    const esAll = Object.entries(doc.es.seriler || {}).map(([n, rows]) => ({ name: n, data: rows.map(([d, v]) => ({ date: parse(d), eur: v })).filter((d) => d.date) }))
+      .sort((a, b) => b.data.length - a.data.length).slice(0, 4);
+    const trW = weeklyEur(full);
+    const lastAll = d3.max([...trW, ...esAll.flatMap((s) => s.data)], (d) => d.date);
+    const from = state.rCmp === 'all' || !lastAll ? null : new Date(lastAll - (+state.rCmp) * 864e5);
+    const clip = (a) => (from ? a.filter((d) => d.date >= from) : a);
+    drawCmp(cmpEl, clip(trW), esAll.map((s) => ({ ...s, data: clip(s.data) })), document.getElementById('legend-cmp'));
+
+    // göstergeler + özet cümlesi
+    const last = full[full.length - 1];
+    if (!last) { tilesEl.innerHTML = ''; lede.textContent = `${name} için İzmir hal verisi henüz yok.`; return; }
+    const r = rateOn(last.date);
+    const wk = nearest(full, new Date(last.date - 7 * 864e5), 3);
+    const yr = nearest(full, new Date(last.date - 365 * 864e5), 7);
+    const yrR = yr && rateOn(yr.date);
+    const chg = (a, b) => (a && b ? a / b - 1 : null);
+    const cls = (v) => (v == null ? '' : v > 0 ? 'up' : 'down');
+    const yE = chg(r && last.avg / r, yrR && yr.avg / yrR);
+    const esLast = esAll.map((s) => ({ name: s.name, d: s.data[s.data.length - 1] })).filter((s) => s.d);
+    tilesEl.innerHTML =
+      tile(`İzmir hali · ${state.v}`, tl(last.avg), `${fmtDate(last.date)} · ${unit}${r ? ` · ≈ ${eur(last.avg / r)}` : ''}`) +
+      tile('Bir hafta önceye göre', `<span class="${cls(chg(last.avg, wk?.avg))}">${pct(chg(last.avg, wk?.avg))}</span>`, wk ? `${tl(wk.avg)} · ${fmtDate(wk.date)}` : 'Karşılaştırılacak gün yok') +
+      tile('Bir yıl önceye göre (euro)', `<span class="${cls(yE)}">${pct(yE)}</span>`, yr ? `TL'de ${pct(chg(last.avg, yr.avg))} · ${fmtDate(yr.date)}` : 'Bir yıl önceki veri yok') +
+      (esLast.length ? tile(`İspanya · ${esLast[0].name}`, eur(esLast[0].d.eur), `${fmtDate(esLast[0].d.date)} haftası · EUR/kg`) : tile('İspanya', '—', 'Bu ürün için İspanya verisi henüz yok'));
+    lede.innerHTML = `${name}, İzmir halinde <b>${fmtDate(last.date)}</b> tarihinde ortalama <b>${tl(last.avg)}</b>${r ? ` (≈ <b>${eur(last.avg / r)}</b>)` : ''}. Euro cinsinden bir yıl önceye göre değişim <b>${pct(yE)}</b>.` +
+      (esLast.length ? ` İspanya'da son haftalık ${esLast[0].name.toLowerCase()} fiyatı <b>${eur(esLast[0].d.eur)}</b>/kg.` : '');
+  }
+
+  Promise.all([load('data/kur-eur-try.json').catch(() => []), load('data/durum.json').catch(() => null)]).then(([k, durum]) => {
+    fx = k; fxDates = k.map(([d]) => parse(d)); fxVals = k.map(([, v]) => v);
+    if (durum) document.getElementById('updated').textContent = 'Son güncelleme: ' + new Date(durum.guncelleme).toLocaleString('tr-TR', { dateStyle: 'long', timeStyle: 'short' }) + '.';
+    render();
+  });
+  let w = innerWidth;
+  addEventListener('resize', () => { if (Math.abs(innerWidth - w) > 8) { w = innerWidth; render(); } });
+})();
+</script>
+</body>
+</html>
