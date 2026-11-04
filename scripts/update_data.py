@@ -388,8 +388,7 @@ def main() -> int:
     import antalya
     import atb
     import junta
-    import hal_kesif
-    for name, fn in (("kur", update_fx), ("izmir", update_izmir), ("antalya", antalya.update), ("atb", atb.update), ("junta", junta.update), ("hal_kesif", hal_kesif.run), ("ispanya", update_eu)):
+    for name, fn in (("kur", update_fx), ("izmir", update_izmir), ("antalya", antalya.update), ("atb", atb.update), ("junta", junta.update), ("ispanya", update_eu)):
         print(name, flush=True)
         t0 = time.time()
         try:
