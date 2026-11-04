@@ -1,4 +1,4 @@
-# Halden Anlayan
+# Hal-den Anlayan
 
 Türkiye ve İspanya sebze hal fiyatları panosu. / Turkey–Spain wholesale vegetable price dashboard.
 
