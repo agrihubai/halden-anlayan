@@ -295,7 +295,7 @@ EU_BASE = "https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSu
 def eu_get(path: str, params: dict | None = None):
     url = EU_BASE + path + ("?" + urllib.parse.urlencode(params) if params else "")
     try:
-        return json.loads(get(url, tries=2, timeout=180)), url
+        return json.loads(get(url, tries=1, timeout=60)), url
     except urllib.error.HTTPError as e:
         if e.code == 404:  # API "bu parametrelerle sonuç yok" için 404 döndürüyor
             return [], url
@@ -317,7 +317,11 @@ def update_eu() -> int:
         raise RuntimeError("AB: ürün listesi alınamadı")
     log, out = [], []
     end = TODAY.strftime("%d/%m/%Y")
+    t_end = time.time() + 12 * 60  # AB için en fazla 12 dakika; kalan ürünler bir sonraki çalıştırmaya kalır
     for prod in products:
+        if time.time() > t_end:
+            log.append("süre doldu, kalan ürünler atlandı")
+            break
         recs = []
         try:
             recs, url = eu_get("", {"memberStateCodes": "ES", "products": prod, "beginDate": f"01/01/{START_YEAR}", "endDate": end})
@@ -360,7 +364,7 @@ def update_eu() -> int:
 def main() -> int:
     DATA.mkdir(exist_ok=True)
     status = {"guncelleme": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes"), "kaynaklar": {}}
-    for name, fn in (("kur", update_fx), ("ispanya", update_eu), ("izmir", update_izmir)):
+    for name, fn in (("kur", update_fx), ("izmir", update_izmir), ("ispanya", update_eu)):
         print(name, flush=True)
         t0 = time.time()
         try:
