@@ -26,8 +26,6 @@ https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?m
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Leeks&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 10
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Lemons&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 7
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Lettuces&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 10
-Mandarins deneme 1: HTTP Error 429: Too Many Requests
-Mandarins deneme 2: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Mandarins&beginDate=13%2F04%2F2026&endDate=04%2F11%2F2026 -> 9
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Melons&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 10
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Nectarines&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 62
@@ -38,6 +36,8 @@ https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?m
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Organic-Oranges&beginDate=06%2F04%2F2017&endDate=04%2F11%2F2026 -> 6
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Peaches&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 88
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Peaches+for+processing&beginDate=07%2F07%2F2026&endDate=04%2F11%2F2026 -> 2
+Pears deneme 1: HTTP Error 429: Too Many Requests
+Pears deneme 2: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Pears&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 28
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Plums&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 10
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Satsumas&beginDate=13%2F10%2F2025&endDate=04%2F11%2F2026 -> 11

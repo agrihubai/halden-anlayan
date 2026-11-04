@@ -1,20 +1,25 @@
 {
- "guncelleme": "2026-11-04T13:27+00:00",
+ "guncelleme": "2026-11-04T13:44+00:00",
  "kaynaklar": {
   "kur": {
    "durum": "tamam",
    "kayit": 5334,
-   "sure_sn": 1
+   "sure_sn": 2
   },
   "izmir": {
    "durum": "tamam",
    "kayit": 28832,
-   "sure_sn": 15
+   "sure_sn": 11
+  },
+  "antalya": {
+   "durum": "tamam",
+   "kayit": 8867,
+   "sure_sn": 420
   },
   "ispanya": {
    "durum": "tamam",
    "kayit": 60985,
-   "sure_sn": 108
+   "sure_sn": 113
   }
  }
 }
