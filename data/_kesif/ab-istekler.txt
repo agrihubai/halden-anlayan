@@ -14,12 +14,14 @@ https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?m
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Apricots&beginDate=29%2F06%2F2026&endDate=04%2F11%2F2026 -> 22
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Asparagus&beginDate=11%2F05%2F2026&endDate=04%2F11%2F2026 -> 10
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Avocados&beginDate=23%2F02%2F2026&endDate=04%2F11%2F2026 -> 18
+Bananas deneme 1: <urlopen error [Errno 104] Connection reset by peer>
+Bananas deneme 2: <urlopen error _ssl.c:993: The handshake operation timed out>
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Bananas&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 21
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Beans&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 10
+Cabbage deneme 1: <urlopen error [Errno 104] Connection reset by peer>
+Cabbage deneme 2: <urlopen error [Errno 104] Connection reset by peer>
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Cabbage&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 8
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Carrots&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 9
-Cauliflowers deneme 1: HTTP Error 429: Too Many Requests
-Cauliflowers deneme 2: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Cauliflowers&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 8
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Cherries&beginDate=29%2F06%2F2026&endDate=04%2F11%2F2026 -> 22
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Clementines&beginDate=22%2F12%2F2025&endDate=04%2F11%2F2026 -> 11
@@ -40,9 +42,10 @@ https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?m
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Peaches+for+processing&beginDate=07%2F07%2F2026&endDate=04%2F11%2F2026 -> 2
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Pears&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 28
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Plums&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 10
-Satsumas deneme 1: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Satsumas&beginDate=13%2F10%2F2025&endDate=04%2F11%2F2026 -> 11
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Strawberries&beginDate=06%2F06%2F2026&endDate=04%2F11%2F2026 -> 3
+Table Grapes deneme 1: HTTP Error 429: Too Many Requests
+Table Grapes deneme 2: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Table+Grapes&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 20
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Tomatoes+for+processing&beginDate=06%2F11%2F2024&endDate=04%2F11%2F2026 -> 1
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Water+Melons&beginDate=24%2F08%2F2026&endDate=04%2F11%2F2026 -> 9
