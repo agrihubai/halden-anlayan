@@ -9,7 +9,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": true,
-"almeria": 48,
+"almeria": 75,
 "antalya": 4
 },
 {
@@ -22,7 +22,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": true,
-"almeria": 35,
+"almeria": 43,
 "antalya": 7
 },
 {
@@ -35,7 +35,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": true,
-"almeria": 16,
+"almeria": 21,
 "antalya": 2
 },
 {
@@ -48,7 +48,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": true,
-"almeria": 16,
+"almeria": 25,
 "antalya": 2
 },
 {
@@ -61,7 +61,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": true,
-"almeria": 8,
+"almeria": 12,
 "antalya": 1
 },
 {
@@ -74,7 +74,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": false,
-"almeria": 0,
+"almeria": 2,
 "antalya": 1
 },
 {
@@ -113,7 +113,7 @@
 "ilk": "2006-01-02",
 "son": "2026-07-10",
 "ispanya": false,
-"almeria": 0,
+"almeria": 4,
 "antalya": 0
 },
 {
@@ -139,7 +139,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": true,
-"almeria": 12,
+"almeria": 39,
 "antalya": 1
 },
 {
@@ -152,7 +152,7 @@
 "ilk": "2006-01-24",
 "son": "2026-08-28",
 "ispanya": false,
-"almeria": 0,
+"almeria": 4,
 "antalya": 0
 },
 {
@@ -191,7 +191,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": false,
-"almeria": 0,
+"almeria": 2,
 "antalya": 1
 },
 {
@@ -217,7 +217,7 @@
 "ilk": "2006-01-05",
 "son": "2026-06-26",
 "ispanya": false,
-"almeria": 0,
+"almeria": 6,
 "antalya": 0
 },
 {
@@ -230,7 +230,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": true,
-"almeria": 0,
+"almeria": 3,
 "antalya": 1
 },
 {
@@ -243,7 +243,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": false,
-"almeria": 0,
+"almeria": 3,
 "antalya": 1
 },
 {
@@ -256,7 +256,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": true,
-"almeria": 0,
+"almeria": 6,
 "antalya": 1
 },
 {
@@ -269,7 +269,7 @@
 "ilk": "2006-03-07",
 "son": "2026-11-05",
 "ispanya": true,
-"almeria": 17,
+"almeria": 29,
 "antalya": 1
 },
 {
@@ -282,7 +282,7 @@
 "ilk": "2006-04-17",
 "son": "2026-11-05",
 "ispanya": true,
-"almeria": 15,
+"almeria": 24,
 "antalya": 1
 },
 {
@@ -308,7 +308,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": true,
-"almeria": 0,
+"almeria": 10,
 "antalya": 2
 },
 {
@@ -334,7 +334,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": true,
-"almeria": 0,
+"almeria": 24,
 "antalya": 2
 },
 {
@@ -347,7 +347,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": false,
-"almeria": 0,
+"almeria": 2,
 "antalya": 1
 },
 {
@@ -360,7 +360,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": false,
-"almeria": 0,
+"almeria": 11,
 "antalya": 1
 },
 {
@@ -373,7 +373,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": false,
-"almeria": 0,
+"almeria": 2,
 "antalya": 1
 },
 {
@@ -386,7 +386,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": true,
-"almeria": 0,
+"almeria": 2,
 "antalya": 1
 },
 {
@@ -399,7 +399,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": true,
-"almeria": 0,
+"almeria": 12,
 "antalya": 1
 },
 {
@@ -425,7 +425,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": true,
-"almeria": 0,
+"almeria": 21,
 "antalya": 3
 },
 {
@@ -594,7 +594,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": true,
-"almeria": 0,
+"almeria": 3,
 "antalya": 1
 },
 {
@@ -633,7 +633,7 @@
 "ilk": "2006-10-12",
 "son": "2026-11-05",
 "ispanya": false,
-"almeria": 0,
+"almeria": 1,
 "antalya": 1
 },
 {
@@ -646,7 +646,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": true,
-"almeria": 0,
+"almeria": 4,
 "antalya": 1
 },
 {
@@ -685,7 +685,7 @@
 "ilk": "2006-04-04",
 "son": "2026-11-05",
 "ispanya": true,
-"almeria": 0,
+"almeria": 7,
 "antalya": 2
 },
 {
@@ -737,7 +737,7 @@
 "ilk": "2006-07-03",
 "son": "2026-11-05",
 "ispanya": false,
-"almeria": 0,
+"almeria": 1,
 "antalya": 3
 },
 {
@@ -750,7 +750,7 @@
 "ilk": "2006-05-12",
 "son": "2026-09-25",
 "ispanya": true,
-"almeria": 0,
+"almeria": 1,
 "antalya": 1
 },
 {
@@ -763,7 +763,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": false,
-"almeria": 0,
+"almeria": 1,
 "antalya": 0
 },
 {
@@ -776,7 +776,7 @@
 "ilk": "2006-05-04",
 "son": "2026-09-25",
 "ispanya": true,
-"almeria": 0,
+"almeria": 19,
 "antalya": 1
 },
 {
@@ -815,7 +815,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": true,
-"almeria": 0,
+"almeria": 14,
 "antalya": 1
 },
 {
@@ -828,7 +828,7 @@
 "ilk": "2006-04-11",
 "son": "2026-06-25",
 "ispanya": false,
-"almeria": 0,
+"almeria": 11,
 "antalya": 0
 },
 {
@@ -854,7 +854,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": true,
-"almeria": 0,
+"almeria": 31,
 "antalya": 1
 },
 {
@@ -880,7 +880,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": false,
-"almeria": 0,
+"almeria": 1,
 "antalya": 1
 },
 {
@@ -893,7 +893,7 @@
 "ilk": "2006-06-22",
 "son": "2026-10-30",
 "ispanya": true,
-"almeria": 0,
+"almeria": 12,
 "antalya": 1
 },
 {
@@ -906,7 +906,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": true,
-"almeria": 0,
+"almeria": 58,
 "antalya": 2
 },
 {
@@ -919,7 +919,7 @@
 "ilk": "2006-05-25",
 "son": "2026-10-28",
 "ispanya": true,
-"almeria": 0,
+"almeria": 23,
 "antalya": 1
 },
 {
@@ -932,7 +932,7 @@
 "ilk": "2006-05-23",
 "son": "2026-11-05",
 "ispanya": true,
-"almeria": 0,
+"almeria": 3,
 "antalya": 2
 },
 {
@@ -971,7 +971,7 @@
 "ilk": "2006-01-02",
 "son": "2026-11-05",
 "ispanya": true,
-"almeria": 0,
+"almeria": 7,
 "antalya": 1
 },
 {
@@ -997,7 +997,7 @@
 "ilk": "2010-02-03",
 "son": "2026-11-05",
 "ispanya": false,
-"almeria": 0,
+"almeria": 10,
 "antalya": 1
 },
 {

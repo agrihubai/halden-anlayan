@@ -1,40 +1,40 @@
 {
- "guncelleme": "2026-11-05T13:35+00:00",
+ "guncelleme": "2026-11-05T16:55+00:00",
  "kaynaklar": {
   "kur": {
-   "durum": "tamam",
-   "kayit": 5335,
-   "sure_sn": 1
+   "durum": "hata",
+   "mesaj": "HTTP Error 503: Service Temporarily Unavailable",
+   "sure_sn": 10
   },
   "izmir": {
    "durum": "tamam",
    "kayit": 28920,
-   "sure_sn": 13
+   "sure_sn": 34
   },
   "antalya": {
    "durum": "tamam",
    "kayit": 8951,
-   "sure_sn": 48
+   "sure_sn": 43
   },
   "atb": {
    "durum": "tamam",
    "kayit": 852,
-   "sure_sn": 3
+   "sure_sn": 2
   },
   "junta": {
    "durum": "tamam",
-   "kayit": 91557,
-   "sure_sn": 4
+   "kayit": 175856,
+   "sure_sn": 36
   },
   "hks": {
    "durum": "tamam",
-   "kayit": 495284,
-   "sure_sn": 1513
+   "kayit": 796786,
+   "sure_sn": 1523
   },
   "ispanya": {
    "durum": "tamam",
    "kayit": 61034,
-   "sure_sn": 145
+   "sure_sn": 120
   }
  }
 }
