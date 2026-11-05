@@ -48,6 +48,7 @@ class Client:
     def __init__(self):
         self.op = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()))
         self.prefix = None
+        self.page = None
 
     def req(self, data: dict | None = None) -> tuple[bytes, dict]:
         body = urllib.parse.urlencode(data).encode() if data is not None else None
@@ -78,7 +79,7 @@ class Client:
 
     def bulletin(self, day: dt.date) -> tuple[str | None, list[dict]]:
         """day tarihli bülten (içinde day-1 verisi). Döner: veri tarihi (ISO), satırlar."""
-        page = self.req()[0].decode("utf-8", "replace")
+        page = self.page or self.req()[0].decode("utf-8", "replace")
         if not self.prefix:
             m = re.search(r'name="([^"]*\$)dateControl\$dateControlDate"', page)
             if not m:
@@ -88,6 +89,7 @@ class Client:
         f = self.form(page)
         f.update({p + "dateControl$dateControlDate": day.strftime("%d.%m.%Y"), p + "btnGet": "Getir", "__EVENTTARGET": "", "__EVENTARGUMENT": ""})
         page2 = self.req(f)[0].decode("utf-8", "replace")
+        self.page = page2 if "__VIEWSTATE" in page2 else None
         f2 = self.form(page2)
         f2.update({p + "rblExcelOptions": "2", p + "btnExcel": "Excel", "__EVENTTARGET": "", "__EVENTARGUMENT": ""})
         data, headers = self.req(f2)
@@ -103,7 +105,7 @@ class Client:
             return None, []
         vd = dt.datetime.strptime(m.group(1), "%d.%m.%Y").date().isoformat()
         rows = []
-        for tr in re.findall(r"<tr>([\s\S]*?)</tr>", t, flags=re.I):
+        for tr in re.findall(r"<tr\b[^>]*>([\s\S]*?)</tr>", t, flags=re.I):
             cells = [html.unescape(re.sub(r"<[^>]+>", "", c)).strip() for c in re.findall(r"<td[^>]*>([\s\S]*?)</td>", tr, flags=re.I)]
             if len(cells) != 6 or cells[0] == "Ürün Adı":
                 continue
@@ -114,6 +116,10 @@ class Client:
                 continue
             rows.append({"d": vd, "urun": cells[0], "cins": cells[1], "tur": TUR.get(plain(cells[2]), plain(cells[2]).lower()),
                          "fiyat": price, "hacim": vol, "birim": cells[5]})
+        if DEBUG is not None and len(DEBUG) < 2:
+            trs = re.findall(r"<tr\b[^>]*>([\s\S]*?)</tr>", t, flags=re.I)
+            DEBUG.append({"vd": vd, "tr": len(trs), "satir": len(rows), "ornek": [re.sub(r"\s+", " ", x)[:300] for x in trs[1:4]],
+                          "uzunluk": len(t), "son": t[-300:]})
         return vd, rows
 
 
