@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-05T10:01+00:00",
+ "guncelleme": "2026-11-05T10:08+00:00",
  "kaynaklar": {
   "kur": {
    "durum": "tamam",
@@ -28,13 +28,13 @@
   },
   "hks": {
    "durum": "tamam",
-   "kayit": 0,
-   "sure_sn": 130
+   "kayit": 924,
+   "sure_sn": 125
   },
   "ispanya": {
    "durum": "tamam",
    "kayit": 61034,
-   "sure_sn": 138
+   "sure_sn": 128
   }
  }
 }
