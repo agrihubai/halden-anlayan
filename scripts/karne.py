@@ -276,31 +276,30 @@ def es_series(doc, ab_name):
     return {}
 
 
-def es_all_types(doc):
-    for lab in (doc.get("ispanya") or {}).get("seriler", {}):
-        st, _, v = lab.partition(" · ")
-        if st == "Paketleme çıkışı" and "All types" in v:
-            return v
-    return None
+KARSILIK = {k: v for k, v in SOZLUK.get("karsilik", {}).items() if not k.startswith("_")}
+
+
+def kars(u: str, seg: str) -> dict:
+    """Segmentin İspanya karşılığı (sözlük 'karsilik'); yoksa {} = karşılaştırma yapılmaz."""
+    return KARSILIK.get(f"{u}/{seg}") or {}
 
 
 def es_karsilastir(doc, seg, seg_eur, ref, ref_eur, ref_ab, last, tr_sezon):
-    ab = (seg.get("ab") or [None])[0]
-    tam = bool(ab)
-    if not ab and seg["k"] == ref:
-        ab = es_all_types(doc)
+    kv = kars(doc["k"], seg["k"])
+    ab = kv.get("ab")
     if not ab:
         return None
+    tam = kv.get("kod") == "E"
     es = es_series(doc, ab)
     if len(es) < MIN_HAFTA:
         return None
     common = sorted(set(es) & set(seg_eur))
     if len(common) < MIN_HAFTA:
-        return {"ab": ab, "tam": tam, "ortak_hafta": len(common), "es_ilk": min(es).isoformat(), "es_son": max(es).isoformat()}
+        return {"ab": ab, "kod": kv.get("kod"), "not": kv.get("not"), "tam": tam, "ortak_hafta": len(common), "es_ilk": min(es).isoformat(), "es_son": max(es).isoformat()}
     end = max(common)
     win = [k for k in common if end - timedelta(days=364) < k <= end]
     duzey = med([seg_eur[k][0] / es[k][0] for k in win]) if len(win) >= MIN_HAFTA else None
-    out = {"ab": ab, "tam": tam, "ortak_hafta": len(common), "donem": [min(win).isoformat(), end.isoformat()] if win else None,
+    out = {"ab": ab, "kod": kv.get("kod"), "not": kv.get("not"), "tam": tam, "ortak_hafta": len(common), "donem": [min(win).isoformat(), end.isoformat()] if win else None,
            "tr_eur": r3(med([seg_eur[k][0] for k in win]), 2) if win else None,
            "es_eur": r3(med([es[k][0] for k in win]), 2) if win else None, "duzey": r3(duzey),
            "es_ilk": min(es).isoformat(), "es_son": max(es).isoformat()}
@@ -325,29 +324,38 @@ def es_karsilastir(doc, seg, seg_eur, ref, ref_eur, ref_ab, last, tr_sezon):
 
 
 # ---------------------------------------------------------------- Almería (Junta de Andalucía, üretici teslim fiyatı)
+AL_SIRA = [("I", "almacen"), ("S.E.", "almacen"), ("EXTRA", "almacen"), ("S.E.", "alhondiga"), ("I", "alhondiga"), ("S.E.", "arbol"), ("I", "arbol"), ("S.E.", "cm"), ("S.E.", "salida")]
+
+
 def al_series(doc, tip, cat="I", pos="almacen"):
     rows = ((doc.get("almeria") or {}).get("seriler") or {}).get(f"{tip} · {cat} · {pos}")
     return {monday(d_(d)): (p, 1) for d, p in rows} if rows else {}
 
 
-def al_pick(doc, seg, last):
-    """Segmentin Almería eşleşmelerinden son bir yılda verisi olan ilk tip (yoksa en uzun seri)."""
+def al_pick(doc, tips, last):
+    """Karşılık listesindeki tiplerden son bir yılda verisi olan ilk seri (yoksa ilk yeterli seri).
+    Kategori ve teslim noktası AL_SIRA sırasıyla denenir (1. kalite depo teslimi önce). → (tip, kategori, pozisyon, seri)"""
     best = None
-    for tip in seg.get("almeria") or []:
-        w = al_series(doc, tip)
-        if len(w) < MIN_HAFTA:
-            continue
-        if max(w) > last - timedelta(days=365):
-            return tip, w
-        best = best or (tip, w)
-    return best or (None, {})
+    for tip in tips or []:
+        for cat, pos in AL_SIRA:
+            w = al_series(doc, tip, cat, pos)
+            if len(w) < MIN_HAFTA:
+                continue
+            if max(w) > last - timedelta(days=365):
+                return tip, cat, pos, w
+            best = best or (tip, cat, pos, w)
+    return best or (None, None, None, {})
 
 
-def al_karsilastir(doc, sz_seg, sz_ref, seg_eur, ref_eur, last, tr_sezon):
-    tip, al = al_pick(doc, sz_seg, last)
+def al_karsilastir(doc, seg_k, ref_k, seg_eur, ref_eur, last, tr_sezon):
+    kv = kars(doc["k"], seg_k)
+    tip, cat, pos, al = al_pick(doc, kv.get("junta"), last)
     if not tip:
         return None
-    out = {"tip": tip, "uyum": sz_seg.get("almeria_uyum"), "ilk": min(al).isoformat(), "son": max(al).isoformat()}
+    key = f"{tip} · {cat} · {pos}"
+    il = ((doc.get("almeria") or {}).get("iller") or {}).get(key) or []
+    out = {"tip": tip, "kategori": cat, "pozisyon": pos, "seri": key, "il": il, "kod": kv.get("kod"), "not": kv.get("not"),
+           "ilk": min(al).isoformat(), "son": max(al).isoformat()}
     common = sorted(set(al) & set(seg_eur))
     if len(common) >= MIN_HAFTA:
         end = max(common)
@@ -356,8 +364,8 @@ def al_karsilastir(doc, sz_seg, sz_ref, seg_eur, ref_eur, last, tr_sezon):
             out |= {"donem": [min(win).isoformat(), end.isoformat()], "tr_eur": r3(med([seg_eur[k][0] for k in win]), 2),
                     "al_eur": r3(med([al[k][0] for k in win]), 2), "duzey": r3(med([seg_eur[k][0] / al[k][0] for k in win]))}
     # prim: Almería'da referans segmentin karşılığına göre
-    if sz_ref is not None and sz_ref.get("k") != sz_seg.get("k"):
-        rtip, ral = al_pick(doc, sz_ref, last)
+    if ref_k != seg_k and kars(doc["k"], ref_k).get("junta"):
+        rtip, _, _, ral = al_pick(doc, kars(doc["k"], ref_k).get("junta"), last)
         if rtip:
             cw = sorted(set(al) & set(ral))
             cur = [al[k][0] / ral[k][0] for k in cw if k > max(cw) - timedelta(days=364)] if cw else []
@@ -369,7 +377,7 @@ def al_karsilastir(doc, sz_seg, sz_ref, seg_eur, ref_eur, last, tr_sezon):
                 if len(trw) >= MIN_HAFTA:
                     out["prim_tr"] = r3(med(trw))
     # kalite primi: aynı tipin 1. / 2. kalitesi
-    al2 = al_series(doc, tip, "II")
+    al2 = al_series(doc, tip, "II", pos) if cat == "I" else {}
     cq = sorted(set(al) & set(al2))
     if len(cq) >= MIN_HAFTA:
         endq = max(cq)
@@ -536,7 +544,7 @@ def build():
         # referans: aynı birimde, son 5 yılda en çok haftada işlem gören segment ("diğer" hariç)
         cand = [s for s in segs if s["birim"] == unit and s["k"] != "diger"] or [s for s in segs if s["birim"] == unit]
         ref = max(cand, key=lambda s: (len(window(W[s["k"]], last, 5 * 365)), s["n"]))["k"]
-        ref_ab = (next(s for s in segs if s["k"] == ref).get("ab") or [None])[0] or es_all_types(doc)
+        ref_ab = kars(doc["k"], ref).get("ab")
         sz_segs = {s["k"]: s for s in sz_index.get(doc["k"], {}).get("segmentler", [])}
         eur_w = {}
         for s in segs:
@@ -547,12 +555,11 @@ def build():
             w = W[s["k"]]
             sz = sezon(w, last)
             k = {"k": s["k"], "tr": s["tr"], "en": s["en"], "birim": s["birim"],
-                 "ab_uyum": sz_segs.get(s["k"], {}).get("ab_uyum"),
                  "prim": prim(w, W[ref], last) if s["k"] != ref and s["birim"] == unit else None,
                  "sezon": sz, "donem": donem(w, last), "sok": sok(w, last), "makas": makas(doc, s, last), "yeni": yeni(doc, s, w, last),
                  "es": es_karsilastir(doc, s, eur_w.get(s["k"], {}), ref, eur_w.get(ref, {}), ref_ab, last, sz)
                  if s["birim"] == "KG" else None}
-            k["almeria"] = al_karsilastir(doc, sz_segs.get(s["k"], {}), sz_segs.get(ref), eur_w.get(s["k"], {}), eur_w.get(ref, {}), last, sz) \
+            k["almeria"] = al_karsilastir(doc, s["k"], ref, eur_w.get(s["k"], {}), eur_w.get(ref, {}), last, sz) \
                 if s["birim"] == "KG" and doc.get("almeria") else None
             k["pazar"] = hks_pazar(doc, s["k"], ref)
             arz = ARZ.get(arz_grubu(doc) or "")
@@ -564,7 +571,7 @@ def build():
                          "genlik": (sz or {}).get("genlik"), "turfanda": (k["donem"] or {}).get("turfanda"), "tepe": ((sz or {}).get("tepe") or {}).get("hafta"),
                          "sok": (k["sok"] or {}).get("sayi"), "sok_hafta": (k["sok"] or {}).get("hafta"),
                          "makas": (k["makas"] or {}).get("simdi"), "ilk": s["ilk"], "durum": k["yeni"]["durum"],
-                         "yeni": k["yeni"]["yeni"], "es_duzey": es.get("duzey"), "es_tam": es.get("tam"),
+                         "yeni": k["yeni"]["yeni"], "es_duzey": es.get("duzey"), "es_kod": es.get("kod"), "al_kod": (k["almeria"] or {}).get("kod"),
                          "es_benzer": es.get("sezon_benzerlik"),
                          "al_duzey": (k["almeria"] or {}).get("duzey"), "pay": (k["pazar"] or {}).get("pay"),
                          "pay_1": (k["pazar"] or {}).get("pay_1"), "it_pay": (k["pazar"] or {}).get("iyi_tarim_pay"), "al_kalite": ((k["almeria"] or {}).get("kalite") or {}).get("simdi")})

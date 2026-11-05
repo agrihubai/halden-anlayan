@@ -6,7 +6,8 @@ Açık veri kaydı: https://www.juntadeandalucia.es/datosabiertos/portal/dataset
 Ticari pozisyonlar (dosyadaki tanımlar): "Alm." = Entrada almacén de agricultor (üreticinin malı depoya teslimi, KDV hariç),
   "Alh." = Alhóndiga (mezat panosu veya açık artırma ağırlıklı ortalaması, alhóndiga komisyonu dahil, KDV hariç).
 
-Sadece sebze ürünleri alınır (örtüaltı ve açık alan). Çıktı: data/ham/junta/YYYY.csv.gz
+Meyve ve sebze ürünleri alınır (URUNLER; tahıl, yağ, şarap, endüstri bitkileri hariç). Ürün listesi değişince bütün yıllar
+yeniden indirilir (data/ham/junta/_urunler.json). Çıktı: data/ham/junta/YYYY.csv.gz
   kolonlar: d (haftanın pazartesisi), bolum, urun, tip, kategori, birim, il, pozisyon, fiyat (EUR/kg)
 Özet: data/_kesif/junta-ozet.json (her dosyada kaç satır okundu, başlık nerede bulundu).
 """
@@ -30,7 +31,13 @@ PAGE = ("https://www.juntadeandalucia.es/organismos/agriculturapescaaguaydesarro
         "estadistica-cartografia/estadisticas-agricolas/paginas/precios-agricolas-semanales.html")
 UA = {"User-Agent": "agrihubai-halden-anlayan/1.0 (+https://github.com/agrihubai/halden-anlayan)"}
 FIELDS = ["d", "bolum", "urun", "tip", "kategori", "birim", "il", "pozisyon", "fiyat"]
-URUNLER = {"TOMATE", "PIMIENTO", "PEPINO", "BERENJENA", "CALABACIN", "JUDIA VERDE", "MELON", "SANDIA"}
+URUNLER = {"TOMATE", "PIMIENTO", "PEPINO", "BERENJENA", "CALABACIN", "JUDIA VERDE", "MELON", "SANDIA",
+           # 2026-11-05: Burcu'nun Almería pazarında gördüğü ürünler ve Junta dosyasındaki öteki meyve-sebzeler
+           "ACELGA", "AGUACATE", "AJO", "ALBARICOQUE", "ALCACHOFA", "BREVAS E HIGOS", "BROCOLI", "CALABAZA", "CAQUI",
+           "CASTANA", "CEBOLLA", "CEBOLLETA", "CEREZA", "CIRUELA", "COL", "COLIFLOR", "ESCAROLA", "ESPARRAGO", "ESPINACA",
+           "FRESON", "GRANADA", "GUISANTE", "HABA VERDE", "LECHUGA", "LIMON", "MANDARINA", "MANGO", "MELOCOTON",
+           "NARANJA", "NECTARINA", "NISPERO", "PATATA", "PERA", "PUERRO", "REMOLACHA DE MESA", "UVA DE MESA", "ZANAHORIA",
+           "BATATA", "CHIRIMOYA", "ARANDANO", "FRAMBUESA"}
 IL = {"AL": "Almería", "GR": "Granada", "MA": "Málaga", "SE": "Sevilla", "CA": "Cádiz", "CO": "Córdoba", "HU": "Huelva", "JA": "Jaén"}
 
 
@@ -145,9 +152,11 @@ def update() -> int:
         raise RuntimeError("yıllık dosya bağlantısı bulunamadı")
     this_year = dt.date.today().year
     summary, total = {}, 0
+    marker = RAW / "_urunler.json"
+    same_list = marker.exists() and json.loads(marker.read_text(encoding="utf-8")) == sorted(URUNLER)
     for y, url in sorted(links.items()):
         p = RAW / f"{y}.csv.gz"
-        if p.exists() and y < this_year - 1:
+        if p.exists() and y < this_year - 1 and same_list:
             with gzip.open(p, "rt", encoding="utf-8") as fh:
                 n = sum(1 for _ in fh) - 1
             summary[y] = {"url": url, "kayit": n, "onbellek": True}
@@ -172,6 +181,8 @@ def update() -> int:
                 w.writeheader()
                 w.writerows(rows)
         total += len(rows)
+    if all("hata" not in v for v in summary.values()):
+        marker.write_text(json.dumps(sorted(URUNLER), ensure_ascii=False), encoding="utf-8")
     PROBE.mkdir(parents=True, exist_ok=True)
     (PROBE / "junta-ozet.json").write_text(json.dumps(summary, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"  junta: {total} kayıt, {len(links)} yıl")

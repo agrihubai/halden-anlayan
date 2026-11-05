@@ -131,7 +131,8 @@ def adlar_of(P):
 
 # ---- Almería (Junta de Andalucía): tip, kategori ve ticari pozisyon adları yıllar içinde değişti; tek biçime getirilir
 POS = {"ALM.": "almacen", "ALMACEN DE AGRICULTOR": "almacen", "ALH.": "alhondiga", "ALHONDIGA": "alhondiga",
-       "C.M.": "cm", "CENTRO DE MANIPULACION": "cm", "S.ALM.": "salida", "SALIDA ALMACEN": "salida"}
+       "C.M.": "cm", "CENTRO DE MANIPULACION": "cm", "S.ALM.": "salida", "SALIDA ALMACEN": "salida",
+       "ARBOL": "arbol", "EN ARBOL": "arbol", "CAM.": "campo"}
 TIP = [(r"^RAMILLETE/RACIMO$|^RACIMO$", "RAMA"), (r"^CALIFORNIA (ROJO|VERDE|AMARILLO)", r"CALIFORNIA-\1"), (r"^(ROJO|VERDE|AMARILLO)-CALIFORNIA", r"CALIFORNIA-\1"),
        (r"^LAMUYO (ROJO|VERDE|AMARILLO)", r"LAMUYO-\1"), (r"^(ROJO|VERDE|AMARILLO)-LAMUYO", r"LAMUYO-\1"),
        (r"^(ROJO|VERDE)-ITALIANO|^ITALIANO[- ](ROJO|VERDE)", "ITALIANO"), (r"DULCE CONICO", "CONICO"), (r"^PERA-ROJO$", "PERA"),
@@ -202,13 +203,15 @@ def read_hks():
 
 
 def read_almeria():
-    """{ürün: {(tip, kategori, pozisyon): {pazartesi: €/kg}}} — sadece Almería ili."""
-    out = defaultdict(lambda: defaultdict(dict))
+    """{ürün: {(tip, kategori, pozisyon): {"seri": {pazartesi: €/kg}, "il": [iller]}}}.
+    Almería ilinin serisi varsa yalnız o kullanılır; yoksa Endülüs'ün öteki illerinin haftalık medyanı.
+    Tip 'NO DESIGNADO' ise yerine Junta ürün adı yazılır (ör. CEBOLLA, CEBOLLETA)."""
     umap = SOZLUK.get("almeria", {}).get("urunler", {})
+    raw = defaultdict(lambda: defaultdict(lambda: defaultdict(lambda: defaultdict(list))))   # ürün → anahtar → il → gün → [fiyat]
     for p in sorted((RAW / "junta").glob("*.csv.gz")):
         with gzip.open(p, "rt", encoding="utf-8") as fh:
             for r in csv.DictReader(fh):
-                if r["il"] != "AL" or r["urun"] not in umap:
+                if r["urun"] not in umap or not r["il"]:
                     continue
                 pos = POS.get(fold(r["pozisyon"]))
                 if not pos:
@@ -217,10 +220,21 @@ def read_almeria():
                 if fold(r["tip"]).endswith(" II") and cat == "S.E.":   # 2008-09: "Liso II"
                     cat = "II"
                 tip = norm_tip(re.sub(r"\s+II$", "", r["tip"]))
+                if tip in ("NO DESIGNADO", "N.D.", ""):
+                    tip = fold(r["urun"])
                 try:
-                    out[umap[r["urun"]]][(tip, cat, pos)][r["d"]] = float(r["fiyat"])
+                    raw[umap[r["urun"]]][(tip, cat, pos)][r["il"]][r["d"]].append(float(r["fiyat"]))
                 except ValueError:
                     pass
+    out = defaultdict(dict)
+    for u, keys in raw.items():
+        for key, by_il in keys.items():
+            iller = ["AL"] if "AL" in by_il else sorted(by_il)
+            days = defaultdict(list)
+            for il in iller:
+                for d, v in by_il[il].items():
+                    days[d].append(statistics.median(v))
+            out[u][key] = {"seri": {d: round(statistics.median(v), 4) for d, v in days.items()}, "il": iller}
     return out
 
 
@@ -279,7 +293,8 @@ def main() -> None:
         for en in u.get("ab", []):
             for lab, d in es.get(en, {}).items():
                 es_series[lab] = sorted(d.items())
-        al = {f"{tip} · {cat} · {pos}": sorted(d.items()) for (tip, cat, pos), d in almeria.get(u["k"], {}).items() if len(d) >= 8}
+        al = {f"{tip} · {cat} · {pos}": sorted(v["seri"].items()) for (tip, cat, pos), v in almeria.get(u["k"], {}).items() if len(v["seri"]) >= 8}
+        al_il = {f"{tip} · {cat} · {pos}": v["il"] for (tip, cat, pos), v in almeria.get(u["k"], {}).items() if len(v["seri"]) >= 8}
         H = hks.get(u["k"])
         hks_doc = None
         if H:
@@ -292,7 +307,7 @@ def main() -> None:
             haller["antalya"] = {"segmentler": segments_of(u, A), "adlar": adlar_of(A)}
         doc = {"k": u["k"], "tr": u["tr"], "en": u["en"], "es": u["es"], "botanik": u["botanik"], "tur": u["tur"],
                "segmentler": segs, "adlar": adlar_of(P), "haller": haller, "ispanya": {"urunler": u.get("ab", []), "seriler": es_series},
-               "hks": hks_doc, "almeria": {"seriler": al, "kaynak": "Junta de Andalucía, Precios agrícolas semanales (CC BY 4.0)"} if al else None}
+               "hks": hks_doc, "almeria": {"seriler": al, "iller": al_il, "kaynak": "Junta de Andalucía, Precios agrícolas semanales (CC BY 4.0)"} if al else None}
         (out / f"{u['k']}.json").write_text(json.dumps(doc, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
         index.append({"k": u["k"], "tr": u["tr"], "en": u["en"], "tur": u["tur"], "segment": len(segs),
                       "n": max(s["n"] for s in segs), "ilk": min(s["ilk"] for s in segs), "son": max(s["son"] for s in segs),
