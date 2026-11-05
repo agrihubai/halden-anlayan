@@ -2332,5 +2332,110 @@
    "SANDIA": "karpuz",
    "JUDIA VERDE": "fasulye"
   }
+ },
+ "hks": {
+  "_aciklama": "HKS (Ticaret Bakanlığı) Türkiye geneli bülten adları için özel eşleşmeler. Ad = ürün adı, cins ürün adıyla aynı ya da 'DİĞER' değilse 'ürün cins'. Burada olmayanlar genel kurallarla eşleşir. 'DOMATES' (cins DİĞER) sofralık yuvarlak domatesin büyük kısmıdır; 'sera' segmentine bağlandı (yaklaşık, tarla dahil).",
+  "eslesme": [
+   {
+    "ad": "^BIBERIYE",
+    "urun": null,
+    "segment": null
+   },
+   {
+    "ad": "^DOMATES$",
+    "urun": "domates",
+    "segment": "sera"
+   },
+   {
+    "ad": "^DOMATES (PETEMEK|YESIL)",
+    "urun": "domates",
+    "segment": "diger"
+   },
+   {
+    "ad": "^BIBER SIVRI KALIFORNIA",
+    "urun": "biber",
+    "segment": "blok"
+   },
+   {
+    "ad": "^BIBER SIVRI KOYBIBERI",
+    "urun": "biber",
+    "segment": "koy"
+   },
+   {
+    "ad": "^BIBER SIVRI (KIL|CIN|MEKSIKA)",
+    "urun": "biber",
+    "segment": "aci"
+   },
+   {
+    "ad": "^BIBER SIVRI (MACAR|SUS)",
+    "urun": "biber",
+    "segment": "diger"
+   },
+   {
+    "ad": "^PATLICAN$",
+    "urun": "patlican",
+    "segment": "uzun"
+   },
+   {
+    "ad": "^SALATALIK$",
+    "urun": "hiyar",
+    "segment": "standart"
+   },
+   {
+    "ad": "^SALATALIK SILOR",
+    "urun": "hiyar",
+    "segment": "silor"
+   },
+   {
+    "ad": "^SALATALIK TURSULUK",
+    "urun": "hiyar",
+    "segment": "kornison"
+   },
+   {
+    "ad": "^SALATALIK CENGELKOY",
+    "urun": "hiyar",
+    "segment": "yerel"
+   },
+   {
+    "ad": "^KABAK( (AMPUL|KARA|MINI|SARI))?$",
+    "urun": "kabak",
+    "segment": null
+   },
+   {
+    "ad": "^BALKABAGI",
+    "urun": "bal-kabagi",
+    "segment": null
+   },
+   {
+    "ad": "^(BEYAZ|KIRMIZI) LAHANA|^KARALAHANA|^BRUKSEL LAHANASI",
+    "urun": "lahana",
+    "segment": null
+   },
+   {
+    "ad": "^YESIL SOGAN",
+    "urun": "sogan",
+    "segment": null
+   },
+   {
+    "ad": "^TRABZON HURMASI",
+    "urun": "cennet-elmasi",
+    "segment": null
+   },
+   {
+    "ad": "^YER ELMASI",
+    "urun": "yerelmasi",
+    "segment": null
+   },
+   {
+    "ad": "^ASMA YAPRAGI",
+    "urun": "yaprak",
+    "segment": null
+   },
+   {
+    "ad": "^CIBES",
+    "urun": "cibez",
+    "segment": null
+   }
+  ]
  }
 }

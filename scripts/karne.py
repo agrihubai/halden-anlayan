@@ -394,6 +394,63 @@ def al_karsilastir(doc, sz_seg, sz_ref, seg_eur, ref_eur, last, tr_sezon):
     return out
 
 
+# ---------------------------------------------------------------- HKS: Türkiye geneli hacim ve pazar payı
+def hks_pazar(doc, seg_k, ref_k):
+    H = (doc.get("hks") or {}).get("segmentler") or {}
+    if seg_k not in H:
+        return None
+    seg = {d_(w): (v, p, it) for w, v, p, it in H[seg_k]}
+    tot = defaultdict(float)
+    for rows in H.values():
+        for w, v, p, it in rows:
+            tot[d_(w)] += v
+    if not tot:
+        return None
+    last = max(tot)
+
+    def win(end, days=364):
+        ks = [k for k in tot if end - timedelta(days=days) < k <= end]
+        sv = sum(seg[k][0] for k in ks if k in seg)
+        tv = sum(tot[k] for k in ks)
+        return ks, sv, tv
+
+    ks, sv, tv = win(last)
+    if len(ks) < 4 or not tv:
+        return None
+    out = {"pay": r3(sv / tv, 4), "hafta": len(ks), "hacim_ton": round(sv / 1000), "toplam_ton": round(tv / 1000),
+           "ilk": min(tot).isoformat(), "son": last.isoformat(), "adlar": (doc["hks"].get("adlar") or {}).get(seg_k, [])}
+    it_v = sum(seg[k][0] * seg[k][2] for k in ks if k in seg)
+    out["iyi_tarim_pay"] = r3(it_v / sv, 3) if sv else None
+    for yil, key in ((1, "pay_1"), (3, "pay_3"), (5, "pay_5")):
+        ks2, sv2, tv2 = win(last - timedelta(days=365 * yil))
+        if len(ks2) >= 26 and tv2:
+            out[key] = r3(sv2 / tv2, 4)
+            out[key.replace("pay", "hacim_degisim")] = r3(sv / sv2 - 1) if sv2 and len(ks) >= 26 else None
+    # ağırlıklı fiyat primi (Türkiye geneli)
+    if ref_k in H and ref_k != seg_k:
+        ref = {d_(w): (v, p) for w, v, p, it in H[ref_k]}
+        cw = [k for k in ks if k in seg and k in ref]
+        if len(cw) >= 4:
+            sp = sum(seg[k][0] * seg[k][1] for k in cw) / sum(seg[k][0] for k in cw)
+            rp = sum(ref[k][0] * ref[k][1] for k in cw) / sum(ref[k][0] for k in cw)
+            out["fiyat_primi"] = r3(sp / rp)
+    yearly = defaultdict(lambda: [0.0, 0.0, 0])
+    for k, t in tot.items():
+        yearly[k.year][1] += t
+        yearly[k.year][2] += 1
+        if k in seg:
+            yearly[k.year][0] += seg[k][0]
+    out["yillar"] = [[y, r3(a / b, 4)] for y, (a, b, n) in sorted(yearly.items()) if n >= 26 and b]
+    if len(tot) >= 52:
+        mon = defaultdict(float)
+        for k in seg:
+            if k > last - timedelta(days=364 * 3):
+                mon[k.month] += seg[k][0]
+        total = sum(mon.values())
+        out["aylik"] = [r3(mon.get(m, 0) / total, 3) if total else None for m in range(1, 13)]
+    return out
+
+
 # ---------------------------------------------------------------- ATB arz (miktar endeksi)
 def atb_arz():
     p = DATA / "ham" / "atb-endeks.json"
@@ -497,6 +554,7 @@ def build():
                  if s["birim"] == "KG" else None}
             k["almeria"] = al_karsilastir(doc, sz_segs.get(s["k"], {}), sz_segs.get(ref), eur_w.get(s["k"], {}), eur_w.get(ref, {}), last, sz) \
                 if s["birim"] == "KG" and doc.get("almeria") else None
+            k["pazar"] = hks_pazar(doc, s["k"], ref)
             arz = ARZ.get(arz_grubu(doc) or "")
             k["arz_r"] = corr(month_profile(sz["profil"]), arz["profil"]) if arz and sz else None
             rows.append(k)
@@ -508,7 +566,8 @@ def build():
                          "makas": (k["makas"] or {}).get("simdi"), "ilk": s["ilk"], "durum": k["yeni"]["durum"],
                          "yeni": k["yeni"]["yeni"], "es_duzey": es.get("duzey"), "es_tam": es.get("tam"),
                          "es_benzer": es.get("sezon_benzerlik"),
-                         "al_duzey": (k["almeria"] or {}).get("duzey"), "al_kalite": ((k["almeria"] or {}).get("kalite") or {}).get("simdi")})
+                         "al_duzey": (k["almeria"] or {}).get("duzey"), "pay": (k["pazar"] or {}).get("pay"),
+                         "pay_1": (k["pazar"] or {}).get("pay_1"), "it_pay": (k["pazar"] or {}).get("iyi_tarim_pay"), "al_kalite": ((k["almeria"] or {}).get("kalite") or {}).get("simdi")})
         karne = {"k": doc["k"], "tr": doc["tr"], "en": doc["en"], "son": last.isoformat(), "birim": unit, "referans": ref,
                  "ref_ab": ref_ab, "yil": YIL, "z": Z_SOK, "segmentler": rows, "kalite": kalite_ciftleri(doc),
                  "arz": ARZ.get(arz_grubu(doc) or "")}

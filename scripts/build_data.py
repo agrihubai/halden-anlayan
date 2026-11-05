@@ -17,6 +17,7 @@ import statistics
 import sys
 import unicodedata
 from collections import Counter, defaultdict
+from datetime import date, timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -151,6 +152,55 @@ def norm_cat(c: str) -> str:
     return c if c in ("I", "II", "EXTRA") else "S.E."
 
 
+HKS_RX = [(re.compile(e["ad"]), e["urun"], e["segment"]) for e in SOZLUK.get("hks", {}).get("eslesme", [])]
+
+
+def classify_hks(fname: str):
+    for rx, uk, sk in HKS_RX:
+        if rx.search(fname):
+            if uk is None:          # bilerek dışarıda bırakılan ad (ör. BİBERİYE)
+                return None, None
+            u = BY_KEY.get(uk)
+            if u:
+                seg = next((x for x in u["segmentler"] if x["k"] == sk), None)
+                return u, seg or next((x for x in u["segmentler"] if not x["kalip"]), None)
+    return classify(fname)
+
+
+def read_hks():
+    """HKS Türkiye geneli: {ürün: {"seg": {segment: {pazartesi: [hacim, fiyat×hacim, iyi tarım+organik hacim]}}, "ad": {segment: {ad}}}}"""
+    out = defaultdict(lambda: {"seg": defaultdict(lambda: defaultdict(lambda: [0.0, 0.0, 0.0])), "ad": defaultdict(set)})
+    unmatched = Counter()
+    for p in sorted((RAW / "hks").glob("*.csv.gz")):
+        with gzip.open(p, "rt", encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                if fold(r["birim"]) != "KG":
+                    continue
+                u, c = r["urun"].strip(), r["cins"].strip()
+                name = u if c in (u, "DİĞER", "DIĞER", "DIGER") or fold(c) == "DIGER" else f"{u} {c}"
+                key = fold(name)
+                pu, s = classify_hks(key)
+                if not pu:
+                    unmatched[name] += 1
+                    continue
+                sk = (s or {"k": "standart"})["k"]
+                try:
+                    v, pr = float(r["hacim"]), float(r["fiyat"])
+                except ValueError:
+                    continue
+                if v <= 0 or pr <= 0:
+                    continue
+                d = date.fromisoformat(r["d"])
+                wk = (d - timedelta(days=d.weekday())).isoformat()
+                cell = out[pu["k"]]["seg"][sk][wk]
+                cell[0] += v
+                cell[1] += v * pr
+                if r["tur"] != "konvansiyonel":
+                    cell[2] += v
+                out[pu["k"]]["ad"][sk].add(name)
+    return out, unmatched
+
+
 def read_almeria():
     """{ürün: {(tip, kategori, pozisyon): {pazartesi: €/kg}}} — sadece Almería ili."""
     out = defaultdict(lambda: defaultdict(dict))
@@ -196,6 +246,7 @@ def main() -> None:
     products, inventory, unmatched = read_hal("izmir", classify)
     ant_products, ant_inventory, ant_unmatched = read_hal("antalya", classify_antalya)
     almeria = read_almeria()
+    hks, hks_unmatched = read_hks()
 
     # ---- İspanya
     es = defaultdict(lambda: defaultdict(dict))
@@ -229,12 +280,19 @@ def main() -> None:
             for lab, d in es.get(en, {}).items():
                 es_series[lab] = sorted(d.items())
         al = {f"{tip} · {cat} · {pos}": sorted(d.items()) for (tip, cat, pos), d in almeria.get(u["k"], {}).items() if len(d) >= 8}
+        H = hks.get(u["k"])
+        hks_doc = None
+        if H:
+            hks_doc = {"kaynak": "T.C. Ticaret Bakanlığı Hal Kayıt Sistemi, Ürün Fiyat Detayları (Türkiye geneli)",
+                       "segmentler": {sk: [[wk, round(c[0]), round(c[1] / c[0], 3), round(c[2] / c[0], 3)] for wk, c in sorted(w.items())]
+                                      for sk, w in H["seg"].items()},
+                       "adlar": {sk: sorted(v) for sk, v in H["ad"].items()}}
         haller = {}
         if A:
             haller["antalya"] = {"segmentler": segments_of(u, A), "adlar": adlar_of(A)}
         doc = {"k": u["k"], "tr": u["tr"], "en": u["en"], "es": u["es"], "botanik": u["botanik"], "tur": u["tur"],
                "segmentler": segs, "adlar": adlar_of(P), "haller": haller, "ispanya": {"urunler": u.get("ab", []), "seriler": es_series},
-               "almeria": {"seriler": al, "kaynak": "Junta de Andalucía, Precios agrícolas semanales (CC BY 4.0)"} if al else None}
+               "hks": hks_doc, "almeria": {"seriler": al, "kaynak": "Junta de Andalucía, Precios agrícolas semanales (CC BY 4.0)"} if al else None}
         (out / f"{u['k']}.json").write_text(json.dumps(doc, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
         index.append({"k": u["k"], "tr": u["tr"], "en": u["en"], "tur": u["tur"], "segment": len(segs),
                       "n": max(s["n"] for s in segs), "ilk": min(s["ilk"] for s in segs), "son": max(s["son"] for s in segs),
@@ -255,6 +313,7 @@ def main() -> None:
         w.writerow(["urun", "asama", "cesit", "birim", "donem", "kayit"])
         w.writerows(sorted([*k, n] for k, n in es_inv.items()))
     print(f"{len(index)} ürün; eşleşmeyen ad: {len(unmatched)} {unmatched[:20]}")
+    print(f"HKS: {len(hks)} ürün; eşleşmeyen ad: {len(hks_unmatched)} (ilk 30: {[n for n, _ in hks_unmatched.most_common(30)]})")
     print(f"Antalya: {len(ant_products)} ürün; eşleşmeyen ad: {len(ant_unmatched)} {ant_unmatched}")
     if unmatched:
         print("UYARI: sözlükte karşılığı olmayan adlar var (data/_kesif/izmir-adlar.csv)", file=sys.stderr)

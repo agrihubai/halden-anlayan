@@ -207,7 +207,7 @@
   <section aria-labelledby="h-karne" id="karne-sec">
     <h2 id="h-karne"></h2>
     <p class="note" id="karne-hal"></p>
-    <p class="note" data-i18n="karneIntro">Islah karnesi, hal fiyatını "hangi segmente, hangi özellikle girilmeli?" sorusuna girdi olacak göstergelere çevirir. Göstergelerin hepsi orandır (segment / referans segment, fiyat / yıllık ortalama), bu yüzden TL enflasyonu ve kur oranda büyük ölçüde sadeleşir. <b>Hacim verisi yok:</b> bir segmentin pahalı olduğu söylenebilir, büyük bir pazar olduğu söylenemez. Göstergeler soru üretir, neden göstermez.</p>
+    <p class="note" data-i18n="karneIntro">Islah karnesi, hal fiyatını "hangi segmente, hangi özellikle girilmeli?" sorusuna girdi olacak göstergelere çevirir. Göstergelerin hepsi orandır (segment / referans segment, fiyat / yıllık ortalama), bu yüzden TL enflasyonu ve kur oranda büyük ölçüde sadeleşir. <b>Hacim:</b> Türkiye geneli için HKS işlem hacmi var (segmentin pazar payı); tek tek haller için hacim yok. Göstergeler soru üretir, neden göstermez.</p>
     <div class="karne" id="karne"></div>
   </section>
 
@@ -219,7 +219,7 @@
       <span id="ozet-n"></span>
     </div>
     <div class="tablewrap tall"><table class="names ozet" id="ozet"></table></div>
-    <p class="note" data-i18n="ozetNote">Bir satıra tıklayınca o segmentin karnesi açılır. Prim: son 52 haftanın medyanı, ürünün referans segmentine göre. Sezon genliği: yılın en pahalı 4 haftası / en ucuz 4 haftası. Turfanda: sezonun ilk 3 haftasının sezon medyanına oranı (sadece mevsimlik segmentler). Şok: son 10 yılda segmentin kendi oynaklığına göre aşırı haftalık yükselişler. Makas: aynı adın en yüksek / en düşük fiyatı. 1./2. kalite: Almería'da aynı tipin 1. kalite fiyatının 2. kaliteye oranı. TR/ES: İzmir hal fiyatı (euro) / Almería üretici teslim fiyatı (yoksa İspanya paketleme çıkışı).</p>
+    <p class="note" data-i18n="ozetNote">Bir satıra tıklayınca o segmentin karnesi açılır. Pazar payı: son 52 haftada Türkiye hallerinden geçen ürün hacminin segmentteki payı (HKS). Prim: son 52 haftanın medyanı, ürünün referans segmentine göre. Sezon genliği: yılın en pahalı 4 haftası / en ucuz 4 haftası. Turfanda: sezonun ilk 3 haftasının sezon medyanına oranı (sadece mevsimlik segmentler). Şok: son 10 yılda segmentin kendi oynaklığına göre aşırı haftalık yükselişler. Makas: aynı adın en yüksek / en düşük fiyatı. 1./2. kalite: Almería'da aynı tipin 1. kalite fiyatının 2. kaliteye oranı. TR/ES: İzmir hal fiyatı (euro) / Almería üretici teslim fiyatı (yoksa İspanya paketleme çıkışı).</p>
   </section>
 
   <section aria-labelledby="h-notes">
@@ -229,7 +229,7 @@
       <div data-i18n="n2"><h3>İzmir ve Antalya, Türkiye'nin tamamı değildir</h3><p>İzmir serisi 2006'dan başlar; düzenli ve açık yayınlanan en uzun hal serisi odur. Antalya Büyükşehir Belediyesi'nin günlük listesi 1 Temmuz 2026'dan bu yana eklenmektedir; listede en düşük ve en yüksek fiyat vardır, ortalama ikisinin orta noktasıdır. Antalya hem büyükşehir hem üretim bölgesidir; halin rolü ürüne ve mevsime göre değişir. Serik, Kumluca gibi ilçe halleri henüz yok.</p></div>
       <div data-i18n="n3"><h3>Segmentler bir sözlükten gelir</h3><p>Haldeki adlar (ör. "DOMATES SALKIM", "BİBER TATLI(ÇARLİSTON)") AgriHub-AI ürün sözlüğüyle ürün ve segmentlere bağlanır. Aynı adın farklı yazımları (BIBER SIVRI / BİBER SİVRİ) tek seride birleşir. Her segmentin hangi adlardan oluştuğu tabloda görünür.</p></div>
       <div data-i18n="n4"><h3>Kur her şeyi açıklamaz</h3><p>Euro karşılığı TL enflasyonunun büyük kısmını temizler ama tamamını temizlemez. TL'nin reel olarak değer kazandığı dönemlerde Türk ürünleri euroda pahalanmış görünür, ürünün kendisinde bir şey değişmemiş olsa bile.</p></div>
-      <div><h3 data-i18n="srcH">Kaynaklar</h3><p><span data-i18n="src"><a href="https://acikveri.bizizmir.com/dataset/sebze-ve-meyve-hal-fiyatlari">İzmir açık veri</a> · <a href="https://antalya.bel.tr/tr/halden-gunluk-fiyatlar">Antalya Büyükşehir günlük hal fiyatları</a> · <a href="https://www.antalyaborsa.org.tr/endeksler">Antalya Ticaret Borsası hal endeksleri</a> · <a href="https://www.juntadeandalucia.es/organismos/agriculturapescaaguaydesarrollorural/servicios/estadistica-cartografia/estadisticas-agricolas/paginas/precios-agricolas-semanales.html">Junta de Andalucía haftalık tarım fiyatları (CC BY 4.0)</a> · <a href="https://data.ecb.europa.eu/">ECB kurları</a> · <a href="https://agridata.ec.europa.eu/extensions/DataPortal/fruit-and-vegetables.html">AB agri-food veri portalı</a> · <a href="https://github.com/agrihubai/halden-anlayan/blob/main/sozluk/urunler.json">Ürün sözlüğü</a>. Veri haftada iki kez otomatik güncellenir.</span> <span id="updated"></span></p></div>
+      <div><h3 data-i18n="srcH">Kaynaklar</h3><p><span data-i18n="src"><a href="https://acikveri.bizizmir.com/dataset/sebze-ve-meyve-hal-fiyatlari">İzmir açık veri</a> · <a href="https://antalya.bel.tr/tr/halden-gunluk-fiyatlar">Antalya Büyükşehir günlük hal fiyatları</a> · <a href="https://www.hal.gov.tr/Sayfalar/FiyatDetaylari.aspx">Ticaret Bakanlığı HKS fiyat ve hacim</a> · <a href="https://www.antalyaborsa.org.tr/endeksler">Antalya Ticaret Borsası hal endeksleri</a> · <a href="https://www.juntadeandalucia.es/organismos/agriculturapescaaguaydesarrollorural/servicios/estadistica-cartografia/estadisticas-agricolas/paginas/precios-agricolas-semanales.html">Junta de Andalucía haftalık tarım fiyatları (CC BY 4.0)</a> · <a href="https://data.ecb.europa.eu/">ECB kurları</a> · <a href="https://agridata.ec.europa.eu/extensions/DataPortal/fruit-and-vegetables.html">AB agri-food veri portalı</a> · <a href="https://github.com/agrihubai/halden-anlayan/blob/main/sozluk/urunler.json">Ürün sözlüğü</a>. Veri haftada iki kez otomatik güncellenir.</span> <span id="updated"></span></p></div>
     </div>
   </section>
 
@@ -270,12 +270,12 @@
     n2: "<h3>İzmir and Antalya are not all of Turkey</h3><p>The İzmir series starts in 2006; it is the longest regularly published open market series. The Antalya Metropolitan Municipality's daily list has been added since 1 July 2026; it gives the lowest and highest price, and the average is their midpoint. Antalya is both a large city and a production region, so the market's role changes with product and season. District markets such as Serik and Kumluca are not included yet.</p>",
     n3: '<h3>Segments come from a dictionary</h3><p>Market names (e.g. "DOMATES SALKIM", "BİBER TATLI(ÇARLİSTON)") are linked to products and segments through the AgriHub-AI product dictionary. Different spellings of the same name (BIBER SIVRI / BİBER SİVRİ) are merged into one series. The table shows which names make up each segment.</p>',
     n4: '<h3>The exchange rate doesn’t explain everything</h3><p>Converting to euros removes most of the effect of Turkish inflation, but not all of it. When the lira strengthens in real terms, Turkish produce looks more expensive in euros even if nothing about the product has changed.</p>',
-    karneIntro: 'The breeding scorecard turns wholesale prices into indicators that can feed the question "which segment, with which traits?". All indicators are ratios (segment / reference segment, price / yearly average), so Turkish inflation and the exchange rate largely cancel out. <b>There is no volume data:</b> we can say a segment is expensive, not that it is a large market. The indicators raise questions; they do not show causes.',
+    karneIntro: 'The breeding scorecard turns wholesale prices into indicators that can feed the question "which segment, with which traits?". All indicators are ratios (segment / reference segment, price / yearly average), so Turkish inflation and the exchange rate largely cancel out. <b>Volume:</b> national HKS trading volume is available (the segment's market share); there is no volume for individual markets. The indicators raise questions; they do not show causes.',
     hOzet: 'Breeding scorecard: all products and segments',
     ozetAktif: 'Only segments traded in the last year',
-    ozetNote: 'Click a row to open that segment’s scorecard. Premium: median of the last 52 weeks against the product’s reference segment. Seasonal amplitude: the most expensive 4 weeks of the year / the cheapest 4 weeks. Early-season: price in the first 3 weeks of the season / season median (seasonal segments only). Shocks: extreme weekly rises over the last 10 years, measured against the segment’s own volatility. Spread: highest / lowest price of the same market name. Grade I/II: in Almería, the grade I price of the same type divided by grade II. TR/ES: İzmir wholesale price (euro) / Almería grower delivery price (otherwise Spanish ex-packaging).',
+    ozetNote: 'Click a row to open that segment’s scorecard. Market share: the segment's share of the product's volume through Turkish markets over the last 52 weeks (HKS). Premium: median of the last 52 weeks against the product’s reference segment. Seasonal amplitude: the most expensive 4 weeks of the year / the cheapest 4 weeks. Early-season: price in the first 3 weeks of the season / season median (seasonal segments only). Shocks: extreme weekly rises over the last 10 years, measured against the segment’s own volatility. Spread: highest / lowest price of the same market name. Grade I/II: in Almería, the grade I price of the same type divided by grade II. TR/ES: İzmir wholesale price (euro) / Almería grower delivery price (otherwise Spanish ex-packaging).',
     srcH: 'Sources',
-    src: '<a href="https://acikveri.bizizmir.com/dataset/sebze-ve-meyve-hal-fiyatlari">İzmir open data</a> · <a href="https://antalya.bel.tr/tr/halden-gunluk-fiyatlar">Antalya Metropolitan daily market prices</a> · <a href="https://www.antalyaborsa.org.tr/endeksler">Antalya Commodity Exchange market indices</a> · <a href="https://www.juntadeandalucia.es/organismos/agriculturapescaaguaydesarrollorural/servicios/estadistica-cartografia/estadisticas-agricolas/paginas/precios-agricolas-semanales.html">Junta de Andalucía weekly agricultural prices (CC BY 4.0)</a> · <a href="https://data.ecb.europa.eu/">ECB exchange rates</a> · <a href="https://agridata.ec.europa.eu/extensions/DataPortal/fruit-and-vegetables.html">EU agri-food data portal</a> · <a href="https://github.com/agrihubai/halden-anlayan/blob/main/sozluk/urunler.json">Product dictionary</a>. Data is updated automatically twice a week.',
+    src: '<a href="https://acikveri.bizizmir.com/dataset/sebze-ve-meyve-hal-fiyatlari">İzmir open data</a> · <a href="https://antalya.bel.tr/tr/halden-gunluk-fiyatlar">Antalya Metropolitan daily market prices</a> · <a href="https://www.hal.gov.tr/Sayfalar/FiyatDetaylari.aspx">Ministry of Trade HKS prices and volumes</a> · <a href="https://www.antalyaborsa.org.tr/endeksler">Antalya Commodity Exchange market indices</a> · <a href="https://www.juntadeandalucia.es/organismos/agriculturapescaaguaydesarrollorural/servicios/estadistica-cartografia/estadisticas-agricolas/paginas/precios-agricolas-semanales.html">Junta de Andalucía weekly agricultural prices (CC BY 4.0)</a> · <a href="https://data.ecb.europa.eu/">ECB exchange rates</a> · <a href="https://agridata.ec.europa.eu/extensions/DataPortal/fruit-and-vegetables.html">EU agri-food data portal</a> · <a href="https://github.com/agrihubai/halden-anlayan/blob/main/sozluk/urunler.json">Product dictionary</a>. Data is updated automatically twice a week.',
     foot: 'This page was prepared with artificial intelligence; it is not investment or trading advice. AgriHub-AI · <a href="https://agrihubai.wordpress.com/">agrihubai.wordpress.com</a> · <a href="https://github.com/agrihubai/halden-anlayan">GitHub</a>',
   };
   const TR = {};
@@ -334,6 +334,13 @@
       alNone: 'Almería istatistiğinde bu segmentin karşılığı yok.', alPeriod: (a, b) => `Almería serisi ${a} – ${b}.`,
       alQ: (x, r, o) => `Almería, ${x}: 1. kalite 2. kalitenin <b>${r}</b> katı${o ? ` (5 yıl önce ${o})` : ''}. Bu gerçek kalite primidir: aynı tip, aynı hafta, aynı teslim noktası.`,
       esEC: 'Avrupa Komisyonu (İspanya ulusal ortalaması):',
+      kPaz: 'Pazar payı · Türkiye halleri (HKS)', pc: (v) => v == null ? '—' : '%' + (v * 100).toLocaleString('tr-TR', { maximumFractionDigits: v < 0.1 ? 1 : 0 }),
+      pazBody: (p, a, b, n) => `Son ${n} haftada Türkiye hallerinden geçen ${p} hacminin bu kadarı bu segmentte (${a} ton / ${b} ton).`,
+      pazPrev: (y, v) => `${y} yıl önce: <b>${v}</b>`, pazVol: (y, v) => `Segmentin hacmi ${y} yılda <b>${v}</b>.`,
+      pazIt: (v) => `İyi tarım ve organik bildirimlerin payı: <b>${v}</b>.`, pazPrim: (v, r) => `Türkiye geneli ağırlıklı fiyat ${r} fiyatının <b>${v}</b> katı.`,
+      pazShort: (a) => `Geçmiş veri dolduruluyor; şu an ${a} tarihinden bu yana.`, pazAd: (x) => `HKS adları: ${x}.`,
+      pazNote: 'HKS bildirimlerinin toplamıdır (bütün haller); hal dışı satışlar (doğrudan ihracat, sözleşmeli satış) dahil değildir. Sayfanın kendi notu: değerler bilgi amaçlıdır ve hatalı olabilir. Kaynak: T.C. Ticaret Bakanlığı Hal Kayıt Sistemi.',
+      pazYil: 'Yıllara göre pay', pazAy: 'Hacmin aylara dağılımı (son 3 yıl)', pazNone: 'Bu segment HKS bültenlerinde ayrı görünmüyor.',
       kArz: 'Arz takvimi · Antalya halleri', arzGrup: { domates: 'domates', sebze: 'bütün sebzeler', meyve: 'bütün meyveler' },
       arzV: (m) => `En yoğun: ${m}`, arzBody: (g, d, n) => `Antalya hallerinden geçen <b>${g}</b> miktarının yılın aylarına dağılımı (son ${n} yılın medyanı, yıllık ortalama = 1). En az: ${d}.`,
       arzTrend: (a, b, e) => `Son 12 ayın ortalaması (${e}'e kadar): <b>${a}</b>; 2015–2017 ortalaması: ${b} (2015=100).`,
@@ -341,7 +348,7 @@
       arzHyp: 'Miktar sadece halden geçen malı ölçer; doğrudan ihracat ve paketleme tesislerine giden mal dahil değildir. Düşüş, üretimin düştüğü anlamına gelmeyebilir. Fiyat ile arzın birlikte değişmesi neden-sonuç göstermez. Grup tek bir segmenti değil, bütün grubu kapsar.',
       arzSrc: 'Kaynak: Antalya Ticaret Borsası, Antalya Halleri miktar endeksi. Excel başlığı 2015=100, metodoloji belgesi temel yılı 2005 olarak veriyor.',
       ozetN: (n, m) => `${n} / ${m} segment`, ozetQ: 'Ürün ya da segment ara',
-      oth: ['Ürün', 'Segment', 'Durum', 'Prim', '5 yılda', 'Sezon genliği', 'Tepe', 'Turfanda', 'Şok (10 yıl)', 'Makas', '1./2. kalite (Almería)', 'İlk görülme', 'TR/ES'], refShort: 'referans',
+      oth: ['Ürün', 'Segment', 'Durum', 'Pazar payı (HKS)', 'Prim', '5 yılda', 'Sezon genliği', 'Tepe', 'Turfanda', 'Şok (10 yıl)', 'Makas', '1./2. kalite (Almería)', 'İlk görülme', 'TR/ES'], refShort: 'referans',
     },
     en: {
       loading: 'Loading data…', noData: 'No data yet.', notLoaded: 'Data could not be loaded.',
@@ -395,6 +402,13 @@
       alNone: 'There is no counterpart for this segment in the Almería statistics.', alPeriod: (a, b) => `Almería series ${a} – ${b}.`,
       alQ: (x, r, o) => `Almería, ${x}: grade I is <b>${r}</b> times grade II${o ? ` (5 years earlier ${o})` : ''}. This is a true quality premium: same type, same week, same delivery point.`,
       esEC: 'European Commission (Spain national average):',
+      kPaz: 'Market share · Turkish markets (HKS)', pc: (v) => v == null ? '—' : (v * 100).toLocaleString('en-GB', { maximumFractionDigits: v < 0.1 ? 1 : 0 }) + '%',
+      pazBody: (p, a, b, n) => `Share of all ${p} volume passing through Turkish wholesale markets over the last ${n} weeks (${a} t of ${b} t).`,
+      pazPrev: (y, v) => `${y} year(s) earlier: <b>${v}</b>`, pazVol: (y, v) => `The segment's volume changed by <b>${v}</b> over ${y} year(s).`,
+      pazIt: (v) => `Share of Good Agricultural Practice and organic declarations: <b>${v}</b>.`, pazPrim: (v, r) => `Volume-weighted national price is <b>${v}</b> times the ${r} price.`,
+      pazShort: (a) => `History is still being filled in; data currently since ${a}.`, pazAd: (x) => `HKS names: ${x}.`,
+      pazNote: 'Sum of HKS declarations across all wholesale markets; sales outside the markets (direct export, contract sales) are not included. The page itself notes that values are for information and may contain errors. Source: Turkish Ministry of Trade, Market Registration System (HKS).',
+      pazYil: 'Share by year', pazAy: 'Volume by month (last 3 years)', pazNone: 'This segment does not appear separately in the HKS bulletins.',
       kArz: 'Supply calendar · Antalya markets', arzGrup: { domates: 'tomatoes', sebze: 'all vegetables', meyve: 'all fruit' },
       arzV: (m) => `Busiest: ${m}`, arzBody: (g, d, n) => `How the quantity of <b>${g}</b> passing through Antalya's wholesale markets spreads across the year (median of the last ${n} years, yearly average = 1). Lowest: ${d}.`,
       arzTrend: (a, b, e) => `Average of the last 12 months (to ${e}): <b>${a}</b>; 2015–2017 average: ${b} (2015=100).`,
@@ -402,7 +416,7 @@
       arzHyp: 'Quantity covers only produce passing through the markets; direct exports and packhouse sales are not included. A fall does not necessarily mean lower production. Price and supply moving together does not show cause and effect. The group covers the whole category, not a single segment.',
       arzSrc: 'Source: Antalya Commodity Exchange, Antalya markets quantity index. The Excel header says 2015=100; the methodology document gives 2005 as the base year.',
       ozetN: (n, m) => `${n} of ${m} segments`, ozetQ: 'Search product or segment',
-      oth: ['Product', 'Segment', 'Status', 'Premium', 'In 5 yrs', 'Seasonal amplitude', 'Peak', 'Early season', 'Shocks (10 yrs)', 'Spread', 'Grade I/II (Almería)', 'First seen', 'TR/ES'], refShort: 'reference',
+      oth: ['Product', 'Segment', 'Status', 'Market share (HKS)', 'Premium', 'In 5 yrs', 'Seasonal amplitude', 'Peak', 'Early season', 'Shocks (10 yrs)', 'Spread', 'Grade I/II (Almería)', 'First seen', 'TR/ES'], refShort: 'reference',
     },
   };
   const LOCALES = {
@@ -864,6 +878,23 @@
     } else if (e) cards.push(kcard(t.kEs, AL && AL.duzey != null ? x2(AL.duzey) : '—', alBlock + P_(t.esNoOver(esc(abShort(e.ab)), shortDate(e.es_ilk), shortDate(e.es_son)))));
     else cards.push(kcard(t.kEs, AL && AL.duzey != null ? x2(AL.duzey) : '—', alBlock + P_(t.noEs)));
 
+    // 6b. pazar payı (HKS)
+    const PZ = k.pazar;
+    if (PZ) {
+      const nf0 = new Intl.NumberFormat(loc, { maximumFractionDigits: 0 });
+      const prev = [[1, PZ.pay_1], [3, PZ.pay_3], [5, PZ.pay_5]].filter(([, v]) => v != null).map(([y, v]) => t.pazPrev(y, t.pc(v))).join(' · ');
+      const vol = [[5, PZ.hacim_degisim_5], [1, PZ.hacim_degisim_1]].find(([, v]) => v != null);
+      cards.push(kcard(t.kPaz, t.pc(PZ.pay), P_(t.pazBody(esc(nm(doc)).toLowerCase(), nf0.format(PZ.hacim_ton), nf0.format(PZ.toplam_ton), PZ.hafta)) +
+        (prev ? P_(prev) : '') + (vol ? P_(t.pazVol(vol[0], pct(vol[1]))) : '') +
+        (PZ.iyi_tarim_pay != null ? P_(t.pazIt(t.pc(PZ.iyi_tarim_pay))) : '') +
+        (PZ.fiyat_primi != null ? P_(t.pazPrim(x2(PZ.fiyat_primi), refName)) : '') +
+        (PZ.hafta < 52 || !PZ.pay_1 ? P_(t.pazShort(shortDate(PZ.ilk))) : '') + P_(t.pazAd(esc(PZ.adlar.join(', ')))) +
+        (PZ.yillar && PZ.yillar.length > 1 ? `<p>${t.pazYil}</p><div class="mini" id="m-paz"></div>` : '') +
+        (PZ.aylik ? `<p>${t.pazAy}</p><div class="mini" id="m-paz2"></div>` : '') + `<p class="hyp">${t.pazNote}</p>`));
+      if (PZ.yillar && PZ.yillar.length > 1) draw.push(() => miniBars($('m-paz'), PZ.yillar.map(([y, v]) => ({ x: String(y), v, c: css('--c-es2') })), t.pc));
+      if (PZ.aylik) draw.push(() => miniBars($('m-paz2'), PZ.aylik.map((v, i) => ({ x: monthShort(i + 1), v: v || 0, c: css('--c-es2') })), t.pc));
+    } else if ((K.segmentler || []).some((x) => x.pazar)) cards.push(kcard(t.kPaz, '—', P_(t.pazNone)));
+
     // 7. arz (ATB)
     const A = K.arz;
     if (A) {
@@ -884,7 +915,7 @@
     { k: 'urun', txt: (o) => esc(L === 'en' ? o.uen : o.utr) },
     { k: 'seg', txt: (o) => esc(L === 'en' ? o.sen : o.str) + (o.ref ? ` <span class="badge">${t.refShort}</span>` : '') },
     { k: 'durum', txt: (o) => t.status[o.durum] + (o.yeni ? ` <span class="badge new">${t.newBadge}</span>` : '') },
-    { k: 'prim', n: 1, txt: (o) => x2(o.prim) }, { k: 'prim_deg', n: 1, txt: (o) => pct(o.prim_deg) },
+    { k: 'pay', n: 1, txt: (o) => t.pc(o.pay) }, { k: 'prim', n: 1, txt: (o) => x2(o.prim) }, { k: 'prim_deg', n: 1, txt: (o) => pct(o.prim_deg) },
     { k: 'genlik', n: 1, txt: (o) => x2(o.genlik) }, { k: 'tepe', n: 1, sv: (o) => o.tepe && o.tepe[0], txt: (o) => o.tepe ? `${monthShort(wkThu(o.tepe[0]).getUTCMonth() + 1)} (${t.wk.toLowerCase()} ${o.tepe[0]}–${o.tepe[1]})` : '—' },
     { k: 'turfanda', n: 1, txt: (o) => x2(o.turfanda) }, { k: 'sok', n: 1, txt: (o) => o.sok ?? '—' },
     { k: 'makas', n: 1, txt: (o) => x2(o.makas) }, { k: 'al_kalite', n: 1, txt: (o) => x2(o.al_kalite) }, { k: 'ilk', n: 1, txt: (o) => o.ilk.slice(0, 4) },
