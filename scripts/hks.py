@@ -33,7 +33,7 @@ PAGE = "https://www.hal.gov.tr/Sayfalar/FiyatDetaylari.aspx"
 UA = {"User-Agent": "agrihubai-halden-anlayan/1.0 (+https://github.com/agrihubai/halden-anlayan)"}
 FIELDS = ["d", "urun", "cins", "tur", "fiyat", "hacim", "birim"]
 START = dt.date(2019, 1, 1)
-DEBUG: list | None = []
+DEBUG: list | None = None
 TUR = {"GELENEKSEL(KONVANSIYONEL)": "konvansiyonel", "IYI TARIM": "iyi-tarim", "ORGANIK TARIM": "organik"}
 
 
@@ -141,7 +141,7 @@ def write_year(y: int, rows: list[dict]) -> None:
         w.writerows(rows)
 
 
-def update(budget_sec: int = 120) -> int:
+def update(budget_sec: int = 1500) -> int:
     today = dt.date.today()
     years = {y: read_year(y) for y in range(START.year, today.year + 1)}
     have = {r["d"] for rows in years.values() for r in rows}
