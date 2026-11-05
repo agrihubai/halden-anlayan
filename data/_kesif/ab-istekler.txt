@@ -19,6 +19,7 @@ https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?m
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Cabbage&beginDate=31%2F08%2F2026&endDate=05%2F11%2F2026 -> 9
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Carrots&beginDate=31%2F08%2F2026&endDate=05%2F11%2F2026 -> 9
 Cauliflowers deneme 1: HTTP Error 429: Too Many Requests
+Cauliflowers deneme 2: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Cauliflowers&beginDate=31%2F08%2F2026&endDate=05%2F11%2F2026 -> 9
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Cherries&beginDate=29%2F06%2F2026&endDate=05%2F11%2F2026 -> 22
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Clementines&beginDate=22%2F12%2F2025&endDate=05%2F11%2F2026 -> 11
@@ -35,11 +36,12 @@ https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?m
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Oranges&beginDate=31%2F08%2F2026&endDate=05%2F11%2F2026 -> 16
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Oranges+for+processing&beginDate=06%2F03%2F2026&endDate=05%2F11%2F2026 -> 2
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Organic-Oranges&beginDate=06%2F04%2F2017&endDate=05%2F11%2F2026 -> 6
+Peaches deneme 1: HTTP Error 429: Too Many Requests
+Peaches deneme 2: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Peaches&beginDate=31%2F08%2F2026&endDate=05%2F11%2F2026 -> 81
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Peaches+for+processing&beginDate=07%2F07%2F2026&endDate=05%2F11%2F2026 -> 2
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Pears&beginDate=31%2F08%2F2026&endDate=05%2F11%2F2026 -> 29
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Plums&beginDate=24%2F08%2F2026&endDate=05%2F11%2F2026 -> 10
-Satsumas deneme 1: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Satsumas&beginDate=13%2F10%2F2025&endDate=05%2F11%2F2026 -> 11
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Strawberries&beginDate=06%2F06%2F2026&endDate=05%2F11%2F2026 -> 3
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Table+Grapes&beginDate=24%2F08%2F2026&endDate=05%2F11%2F2026 -> 20
