@@ -1,0 +1,62 @@
+[
+ {
+  "gun": "2026-11-05",
+  "sayfa1": 64341,
+  "form1": [
+   "MSOGallery_FilterString",
+   "MSOGallery_SelectedLibrary",
+   "MSOLayout_InDesignMode",
+   "MSOLayout_LayoutChanges",
+   "MSOSPWebPartManager_DisplayModeName",
+   "MSOSPWebPartManager_EndWebPartEditing",
+   "MSOSPWebPartManager_ExitingDesignMode",
+   "MSOSPWebPartManager_OldDisplayModeName",
+   "MSOSPWebPartManager_StartWebPartEditingName",
+   "MSOTlPn_Button",
+   "MSOTlPn_SelectedWpId",
+   "MSOTlPn_ShowSettings",
+   "MSOTlPn_View",
+   "MSOWebPartPage_PostbackSource",
+   "MSOWebPartPage_Shared",
+   "__EVENTARGUMENT",
+   "__EVENTTARGET",
+   "__EVENTVALIDATION",
+   "__REQUESTDIGEST",
+   "__VIEWSTATE",
+   "__VIEWSTATEGENERATOR",
+   "__spText1",
+   "__spText2",
+   "_wpSelected",
+   "_wpcmWpid",
+   "_wzSelected",
+   "ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$btnGet",
+   "ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$dateControl$dateControlDate",
+   "ctl00$ctl37$g_7e86b8d6_3aea_47cf_b1c1_939799a091e0$rblExcelOptions",
+   "ctl00$g_c10caf96_9e01_446b_94f9_e6a0341bb595$S5FE43DF8_InputKeywords",
+   "wpcmVal"
+  ],
+  "sayfa2_uzunluk": 64520,
+  "sayfa2_bulten": [
+   "Bülten Tarihi : 5.11.2026 (4.11.2026 Tarihli Veriler Kullanılmıştır.)"
+  ],
+  "form2_tarih": "5.11.2026",
+  "excel_basliklar": {
+   "Cache-Control": "private",
+   "Content-Type": "application/ms-excel; charset=utf-16",
+   "X-SharePointHealthScore": "0",
+   "content-disposition": "attachment; filename=20261105_130345_GenelBulten.xls",
+   "SPRequestGuid": "6ed54ba2-0194-5048-915c-0246e3a3214f",
+   "request-id": "6ed54ba2-0194-5048-915c-0246e3a3214f",
+   "X-FRAME-OPTIONS": "SAMEORIGIN",
+   "SPRequestDuration": "2483",
+   "SPIisLatency": "0",
+   "MicrosoftSharePointTeamServices": "16.0.0.4480",
+   "X-Content-Type-Options": "nosniff",
+   "X-MS-InvokeApp": "1; RequireReadOnly",
+   "Date": "Thu, 05 Nov 2026 10:03:45 GMT",
+   "Connection": "close",
+   "Content-Length": "561218"
+  },
+  "excel_bas": "<style> .textmode { mso-number-format:\\@; } </style><table>\r\n\t<tr>\r\n\t\t<td style=\"text-align:center;font:bold;\">Bülten Tarihi : 5.11.2026 (4.11.2026 Tarihli Veriler Kullanılmıştır.)<br />Bilgi amaçlı olup, zaman zaman insan hatası ya da otomatik sistemlerdeki teknik arızalar nedeni ile hatalı değerl"
+ }
+]
