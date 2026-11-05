@@ -10,12 +10,14 @@ h = get("https://www.hal.gov.tr/Sayfalar/Toptanci-Halleri.aspx?sid=7")
 t = txt(h)
 print("=== Toptancı halleri: Antalya satırları")
 for i, x in enumerate(t):
-    if "ANTALYA" in x.upper() and ("HAL" in x.upper()): print(" |", " ¦ ".join(t[i:i+4]))
+    if "HAL" in x.upper() and any("ANTALYA" in y.upper() for y in t[i:i+3]): print(" |", " ¦ ".join(t[i:i+3]))
 print("sayfalama:", re.findall(r"(?i)(sayfa[^<]{0,40}|__doPostBack\('[^']+','Page\$\d+'\))", h)[:10])
 f = get("https://www.hal.gov.tr/Sayfalar/Fiyat-Sorgulama.aspx")
 print("=== Fiyat-Sorgulama", len(f))
 for s in re.findall(r"<select[^>]*name=\"([^\"]+)\"[^>]*>(.*?)</select>", f, re.S):
     opts = [H.unescape(o) for o in re.findall(r"<option[^>]*>([^<]*)</option>", s[1])]
     print(" select", s[0], len(opts), [o for o in opts if re.search(r"(?i)antalya|kumluca|serik|gazipa|alanya|finike|demre|manavgat", o)][:30], opts[:8])
-print(" inputs:", sorted(set(re.findall(r'<input[^>]*name="([^"]+)"', f)))[:60])
+for n in sorted(set(re.findall(r'(?:name|id)="([^"]*ctl37[^"]*)"', f))): print(" alan:", n.split("$")[-1].split("_")[-1], "|", n[-60:])
+for m in re.findall(r'<(?:select|table)[^>]*id="([^"]+)"', f): print(" eleman:", m[-70:])
+print(" etiketler:", [x for x in txt(f) if 2 < len(x) < 60 and not x.startswith(("Register", "var ", "//"))][:120])
 print(" metin:", [x for x in txt(f) if len(x) > 15][:40])
