@@ -2,8 +2,10 @@
 
 Kaynak sayfa: https://www.antalyaborsa.org.tr/endeksler
 Excel dosyasının adresi her ay değişir (ör. /_fm/206-202610020900000001.xlsx); sayfadan bulunur.
-Metodoloji: https://www.antalyaborsa.org.tr/_fm/221-202206021202141.pdf (Laspeyres; belge "temel yıl 2005"
-diyor, Excel başlıkları "2015=100" diyor: çelişki panoda not edilir).
+Metodoloji: https://www.antalyaborsa.org.tr/_fm/221-202206021202141.pdf (Laspeyres; belge "temel yıl 2005" diyor,
+Excel başlıkları "2015=100" diyor). Veriyle kontrol (2026-11-05): üç miktar endeksinin (domates, sebze, meyve) 2015
+aylık ortalaması tam 100,00 → miktar serileri 2015=100 tabanlıdır. Fiyat endekslerinin 2015 ortalaması 97,97 / 101,92 /
+109,43; tabanları veriyle doğrulanamadı. Panoda yalnızca miktar endeksleri kullanılır.
 ATB endeksi Antalya Büyükşehir Belediyesi ile yapılan protokol kapsamında hesaplar (Bloomberg HT, 2 Ekim 2020).
 
 Çıktı: data/ham/atb-endeks.json  {"kaynak", "dosya", "indirme", "seriler": {"domates_miktar": [["2015-01", 87.44], ...], ...}}
@@ -70,7 +72,7 @@ def update() -> int:
 def write(series: dict, url: str) -> None:
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({"kaynak": PAGE, "dosya": url, "indirme": dt.date.today().isoformat(),
-                               "not": "2015=100 (Excel başlığı); metodoloji belgesi temel yılı 2005 olarak veriyor.",
+                               "not": "Miktar endeksleri 2015=100 (Excel başlığı; 2015 aylık ortalaması 100,00). Metodoloji belgesi temel yılı 2005 olarak veriyor. Fiyat endekslerinin tabanı veriyle doğrulanamadı.",
                                "seriler": series}, ensure_ascii=False, indent=0), encoding="utf-8")
 
 
