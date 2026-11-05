@@ -8,6 +8,8 @@ Kaynak: https://antalya.bel.tr/tr/halden-gunluk-fiyatlar sayfasındaki liste
 Listenin dipnotu: "5957 sayılı Kanunun 6. maddesinin 4. fıkrası ve 16. maddesinin 3. fıkrası gereğince" yayınlanır.
 Listede sadece en düşük ve en yüksek fiyat vardır; ortalama sütunu (avg) iki değerin orta noktasıdır.
 Arşiv 2026 Temmuz başından itibaren erişilebilir (2026-11-04'te denendi).
+Bazı günlerin PDF'i metin değil taranmış görüntüdür (ör. 10 ve 12 Ekim 2026, PaperPort ile taranmış). Bu günler
+OCR ile okunmaz (rakam hatası riski); data/ham/antalya/goruntu-gunler.json dosyasına yazılır ve yeniden denenmez.
 
 PDF'ler saklanmaz; okunan satırlar data/ham/antalya/YYYY.csv.gz dosyasına yazılır (İzmir ile aynı kolonlar).
 """
@@ -101,6 +103,13 @@ def _pdfplumber():
     return pdfplumber
 
 
+def is_scanned(data: bytes) -> bool:
+    """Metin katmanı olmayan, yalnızca görüntü içeren PDF mi?"""
+    pdfplumber = _pdfplumber()
+    with pdfplumber.open(io.BytesIO(data)) as pdf:
+        return all(not p.chars and p.images for p in pdf.pages)
+
+
 def parse_pdf(data: bytes) -> tuple[list[dict], str | None]:
     pdfplumber = _pdfplumber()
     with pdfplumber.open(io.BytesIO(data)) as pdf:
@@ -153,12 +162,14 @@ def update(budget_sec: int = 900) -> int:
         days_have |= {r["d"] for r in have[y]}
     missing_file = RAW / "bos-gunler.json"
     empty = set(json.loads(missing_file.read_text())) if missing_file.exists() else set()
+    scan_file = RAW / "goruntu-gunler.json"
+    scanned = set(json.loads(scan_file.read_text())) if scan_file.exists() else set()
     t0 = time.time()
     d, new, probed = START, 0, False
     while d <= today and time.time() - t0 < budget_sec:
         iso = d.isoformat()
         recent = (today - d).days <= 10
-        if (iso in days_have or iso in empty) and not recent:
+        if (iso in days_have or iso in empty or iso in scanned) and not recent:
             d += dt.timedelta(days=1)
             continue
         try:
@@ -172,7 +183,14 @@ def update(budget_sec: int = 900) -> int:
                 empty.add(iso)
             d += dt.timedelta(days=1)
             continue
-        rows, pdf_date = parse_pdf(get(j["PdfUrl"]))
+        data = get(j["PdfUrl"])
+        rows, pdf_date = parse_pdf(data)
+        if not rows and is_scanned(data):
+            print(f"  antalya {iso}: PDF taranmış görüntü, metin yok; okunmadı", file=sys.stderr)
+            if not recent:
+                scanned.add(iso)
+            d += dt.timedelta(days=1)
+            continue
         if pdf_date and dt.datetime.strptime(pdf_date, "%d.%m.%Y").date() != d:
             print(f"  antalya {iso}: PDF tarihi {pdf_date}", file=sys.stderr)
         if not probed:
@@ -193,6 +211,7 @@ def update(budget_sec: int = 900) -> int:
             write_year(y, rows)
     RAW.mkdir(parents=True, exist_ok=True)
     missing_file.write_text(json.dumps(sorted(empty)), encoding="utf-8")
+    scan_file.write_text(json.dumps(sorted(scanned)), encoding="utf-8")
     total = sum(len(r) for r in have.values())
     print(f"  antalya: {new} yeni/yenilenen satır, toplam {total}")
     return total
