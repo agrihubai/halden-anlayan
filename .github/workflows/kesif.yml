@@ -1,7 +1,11 @@
 name: Keşif (elle)
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      betik:
+        description: ".github/kesif altındaki betik"
+        default: "ilce.py"
 
 permissions:
   contents: read
@@ -15,5 +19,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Antalya ilçe halleri kaynak keşfi
-        run: python .github/kesif/ilce.py
+      - name: Keşif betiği
+        run: python .github/kesif/${{ inputs.betik }}
