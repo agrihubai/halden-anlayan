@@ -1,0 +1,21 @@
+name: Pano sözdizimi kontrolü
+
+on:
+  push:
+    paths: ["index.html"]
+  pull_request:
+    paths: ["index.html"]
+
+permissions:
+  contents: read
+
+jobs:
+  kontrol:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: index.html içindeki betik derlenebiliyor mu
+        run: |
+          python3 -c "import re;s=open('index.html',encoding='utf-8').read();open('pano.mjs','w').write(chr(10).join(re.findall(r'<script(?![^>]*src)[^>]*>(.*?)</script>',s,re.S)))"
+          node --check pano.mjs
