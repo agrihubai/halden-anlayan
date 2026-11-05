@@ -1,0 +1,40 @@
+name: HKS geçmişini doldur
+
+on:
+  schedule:
+    - cron: "17 */2 * * *"   # iki saatte bir; geçmiş dolunca birkaç saniyede biter
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: veri
+  cancel-in-progress: false
+
+jobs:
+  doldur:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: HKS eksik günleri indir (45 dk, 3 bağlantı)
+        run: python scripts/hks.py 2700 3
+      - name: Ürün dosyalarını ve karneyi üret
+        run: python scripts/build_data.py
+      - name: Değiştiyse kaydet
+        run: |
+          git config user.name "agrihubai-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch -q origin main
+          git reset -q --mixed origin/main
+          git add data
+          if git diff --cached --quiet; then
+            echo "Yeni veri yok."
+          else
+            git commit -m "HKS geçmişi dolduruldu"
+            git push origin HEAD:main
+          fi

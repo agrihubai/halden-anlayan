@@ -141,53 +141,68 @@ def write_year(y: int, rows: list[dict]) -> None:
         w.writerows(rows)
 
 
-def update(budget_sec: int = 1500) -> int:
+def update(budget_sec: int = 1500, workers: int = 3) -> int:
+    """Eksik günleri (son 7 gün her zaman yeniden) yeniden eskiye doğru, `workers` paralel bağlantıyla doldurur."""
+    import threading
+    from concurrent.futures import ThreadPoolExecutor
     today = dt.date.today()
     years = {y: read_year(y) for y in range(START.year, today.year + 1)}
     have = {r["d"] for rows in years.values() for r in rows}
     empty_p = RAW / "bos-gunler.json"
     empty = set(json.loads(empty_p.read_text())) if empty_p.exists() else set()
-    c, t0, new, fails = Client(), time.time(), 0, 0
-    # bülten günü = veri günü + 1; yeniden eskiye
+    todo = []
     day = today
-    while day > START and time.time() - t0 < budget_sec and fails < 10:
+    while day > START:
         data_day = (day - dt.timedelta(days=1)).isoformat()
-        recent = (today - day).days <= 7
-        if (data_day in have or data_day in empty) and not recent:
-            day -= dt.timedelta(days=1)
-            continue
-        try:
-            vd, rows = c.bulletin(day)
-            fails = 0
-        except Exception as e:  # noqa: BLE001
-            print(f"  hks {day}: {e}", file=sys.stderr)
-            fails += 1
-            c = Client()
-            day -= dt.timedelta(days=1)
-            continue
-        if not rows:
-            if not recent:
-                empty.add(data_day)
-        else:
-            y = int(vd[:4])
-            years.setdefault(y, [])
-            years[y] = [r for r in years[y] if r["d"] != vd] + rows
-            have.add(vd)
-            new += len(rows)
-        time.sleep(1)
+        if (today - day).days <= 7 or (data_day not in have and data_day not in empty):
+            todo.append(day)
         day -= dt.timedelta(days=1)
+    t0, lock, got, fails = time.time(), threading.Lock(), {}, [0]
+    it = iter(todo)
+
+    def worker():
+        c = Client()
+        while time.time() - t0 < budget_sec and fails[0] < 30:
+            with lock:
+                d = next(it, None)
+            if d is None:
+                return
+            try:
+                vd, rows = c.bulletin(d)
+            except Exception as e:  # noqa: BLE001
+                print(f"  hks {d}: {e}", file=sys.stderr)
+                with lock:
+                    fails[0] += 1
+                c = Client()
+                continue
+            with lock:
+                got[d] = (vd, rows)
+            time.sleep(0.5)
+
+    with ThreadPoolExecutor(workers) as ex:
+        for _ in range(workers):
+            ex.submit(worker)
+    new = 0
+    for d, (vd, rows) in got.items():
+        data_day = (d - dt.timedelta(days=1)).isoformat()
+        if not rows:
+            if (today - d).days > 7:
+                empty.add(data_day)
+            continue
+        y = int(vd[:4])
+        years.setdefault(y, [])
+        years[y] = [r for r in years[y] if r["d"] != vd] + rows
+        have.add(vd)
+        new += len(rows)
     for y, rows in years.items():
         if rows:
             write_year(y, rows)
     RAW.mkdir(parents=True, exist_ok=True)
     empty_p.write_text(json.dumps(sorted(empty)), encoding="utf-8")
-    if DEBUG:
-        (ROOT / "data" / "_kesif").mkdir(parents=True, exist_ok=True)
-        (ROOT / "data" / "_kesif" / "hks-tani.json").write_text(json.dumps(DEBUG, ensure_ascii=False, indent=1, default=str), encoding="utf-8")
-    first = min(have) if have else None
-    print(f"  hks: {new} yeni satır; {len(have)} gün ({first} – {max(have) if have else None})")
+    left = sum(1 for d in todo if d not in got)
+    print(f"  hks: {new} yeni satır; {len(have)} gün ({min(have) if have else None} – {max(have) if have else None}); kalan {left} gün")
     return sum(len(r) for r in years.values())
 
 
 if __name__ == "__main__":
-    update(int(sys.argv[1]) if len(sys.argv) > 1 else 1500)
+    update(int(sys.argv[1]) if len(sys.argv) > 1 else 1500, int(sys.argv[2]) if len(sys.argv) > 2 else 3)
