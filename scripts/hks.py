@@ -33,6 +33,7 @@ PAGE = "https://www.hal.gov.tr/Sayfalar/FiyatDetaylari.aspx"
 UA = {"User-Agent": "agrihubai-halden-anlayan/1.0 (+https://github.com/agrihubai/halden-anlayan)"}
 FIELDS = ["d", "urun", "cins", "tur", "fiyat", "hacim", "birim"]
 START = dt.date(2019, 1, 1)
+DEBUG: list | None = []
 TUR = {"GELENEKSEL(KONVANSIYONEL)": "konvansiyonel", "IYI TARIM": "iyi-tarim", "ORGANIK TARIM": "organik"}
 
 
@@ -90,6 +91,10 @@ class Client:
         f2 = self.form(page2)
         f2.update({p + "rblExcelOptions": "2", p + "btnExcel": "Excel", "__EVENTTARGET": "", "__EVENTARGUMENT": ""})
         data, headers = self.req(f2)
+        if DEBUG is not None and not DEBUG:
+            DEBUG.append({"gun": day.isoformat(), "sayfa1": len(page), "form1": sorted(f)[:60], "sayfa2_uzunluk": len(page2),
+                          "sayfa2_bulten": re.findall(r"B[üu]lten Tarihi[^<]{0,80}", page2)[:2], "form2_tarih": f2.get(p + "dateControl$dateControlDate"),
+                          "excel_basliklar": headers, "excel_bas": data[:600].decode("utf-16", "replace") if data[:2] in (b"\xff\xfe", b"\xfe\xff") else data[:600].decode("utf-8", "replace")})
         if "excel" not in headers.get("Content-Type", headers.get("content-type", "")).lower():
             raise RuntimeError("Excel dönmedi")
         t = data.decode("utf-16")
@@ -130,7 +135,7 @@ def write_year(y: int, rows: list[dict]) -> None:
         w.writerows(rows)
 
 
-def update(budget_sec: int = 1500) -> int:
+def update(budget_sec: int = 120) -> int:
     today = dt.date.today()
     years = {y: read_year(y) for y in range(START.year, today.year + 1)}
     have = {r["d"] for rows in years.values() for r in rows}
@@ -170,6 +175,9 @@ def update(budget_sec: int = 1500) -> int:
             write_year(y, rows)
     RAW.mkdir(parents=True, exist_ok=True)
     empty_p.write_text(json.dumps(sorted(empty)), encoding="utf-8")
+    if DEBUG:
+        (ROOT / "data" / "_kesif").mkdir(parents=True, exist_ok=True)
+        (ROOT / "data" / "_kesif" / "hks-tani.json").write_text(json.dumps(DEBUG, ensure_ascii=False, indent=1, default=str), encoding="utf-8")
     first = min(have) if have else None
     print(f"  hks: {new} yeni satır; {len(have)} gün ({first} – {max(have) if have else None})")
     return sum(len(r) for r in years.values())
