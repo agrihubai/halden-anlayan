@@ -1,6 +1,6 @@
 """Hal-den Anlayan veri güncelleyici.
 
-Altı kaynaktan veri çeker (Antalya: scripts/antalya.py, ATB endeksleri: scripts/atb.py, Junta de Andalucía: scripts/junta.py):
+Yedi kaynaktan veri çeker (HKS Türkiye geneli fiyat ve hacim: scripts/hks.py, Antalya: scripts/antalya.py, ATB endeksleri: scripts/atb.py, Junta de Andalucía: scripts/junta.py):
   1. İzmir Büyükşehir Belediyesi hal fiyatları (yıllık CSV'ler + güncel günler için API), TL, bütün ürünler
   2. ECB günlük euro referans kurları (EUR/TRY)
   3. Avrupa Komisyonu agri-food API: İspanya meyve-sebze fiyatları (tarla, paketleme çıkışı, raf), EUR
@@ -388,7 +388,8 @@ def main() -> int:
     import antalya
     import atb
     import junta
-    for name, fn in (("kur", update_fx), ("izmir", update_izmir), ("antalya", antalya.update), ("atb", atb.update), ("junta", junta.update), ("ispanya", update_eu)):
+    import hks
+    for name, fn in (("kur", update_fx), ("izmir", update_izmir), ("antalya", antalya.update), ("atb", atb.update), ("junta", junta.update), ("hks", hks.update), ("ispanya", update_eu)):
         print(name, flush=True)
         t0 = time.time()
         try:
