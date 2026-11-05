@@ -201,6 +201,8 @@
     </div>
     <div class="legend" id="legend-cmp"></div>
     <div class="chart" id="chart-cmp"></div>
+    <p class="note" id="cmp-note" hidden></p>
+    <p class="note"><label><input type="checkbox" id="yakin"> <span data-i18n="yakinL">Yalnız eşdeğer karşılıkları göster (≈ işaretli yakın karşılıkları gizle)</span></label> <span class="muted" data-i18n="yakinN">Eşdeğer: aynı ticari tip. Yakın (≈): benzer tip, birebir aynı değil. Karşılığı olmayan segment karşılaştırılmaz.</span></p>
     <p class="note" data-i18n="noteCmp">Türkiye çizgileri seçili segmentin İzmir ve (varsa) Antalya halindeki haftalık ortalamasıdır; her günün fiyatı o günün ECB EUR/TRY kuruyla çevrilmiştir. İspanya çizgileri Avrupa Komisyonu'nun haftalık fiyatlarıdır. Hal fiyatı ile İspanya'nın aşama fiyatları aynı şey değildir; en yakın karşılaştırma genellikle paketleme çıkışı (ex-packaging) fiyatıdır.</p>
   </section>
 
@@ -208,7 +210,6 @@
     <h2 id="h-karne"></h2>
     <p class="note" id="karne-hal"></p>
     <p class="note" data-i18n="karneIntro">Islah karnesi, hal fiyatını "hangi segmente, hangi özellikle girilmeli?" sorusuna girdi olacak göstergelere çevirir. Göstergelerin hepsi orandır (segment / referans segment, fiyat / yıllık ortalama), bu yüzden TL enflasyonu ve kur oranda büyük ölçüde sadeleşir. <b>Hacim:</b> Türkiye geneli için HKS işlem hacmi var (segmentin pazar payı); tek tek haller için hacim yok. Göstergeler soru üretir, neden göstermez.</p>
-    <p class="note"><label><input type="checkbox" id="yakin"> <span data-i18n="yakinL">Türkiye–İspanya karşılaştırmasında yakın karşılıkları (Y) da göster</span></label> <span class="muted" data-i18n="yakinN">Varsayılan: yalnız eşdeğer segmentler (E). Karşılığı olmayan segment karşılaştırılmaz.</span></p>
     <div class="karne" id="karne"></div>
   </section>
 
@@ -274,8 +275,8 @@
     karneIntro: 'The breeding scorecard turns wholesale prices into indicators that can feed the question "which segment, with which traits?". All indicators are ratios (segment / reference segment, price / yearly average), so Turkish inflation and the exchange rate largely cancel out. <b>Volume:</b> national HKS trading volume is available (the segment’s market share); there is no volume for individual markets. The indicators raise questions; they do not show causes.',
     hOzet: 'Breeding scorecard: all products and segments',
     ozetAktif: 'Only segments traded in the last year',
-    yakinL: 'Also show close counterparts (Y) in the Turkey–Spain comparison',
-    yakinN: 'Default: equivalent segments only (E). Segments without a counterpart are not compared.',
+    yakinL: 'Show equivalent counterparts only (hide close ones marked ≈)',
+    yakinN: 'Equivalent: same commercial type. Close (≈): similar type, not identical. Segments without a counterpart are not compared.',
     ozetNote: 'Click a row to open that segment’s scorecard. Market share: the segment’s share of the product’s volume through Turkish markets over the last 52 weeks (HKS). Premium: median of the last 52 weeks against the product’s reference segment. Seasonal amplitude: the most expensive 4 weeks of the year / the cheapest 4 weeks. Early-season: price in the first 3 weeks of the season / season median (seasonal segments only). Shocks: extreme weekly rises over the last 10 years, measured against the segment’s own volatility. Spread: highest / lowest price of the same market name. Grade I/II: in Almería, the grade I price of the same type divided by grade II. TR/ES: İzmir wholesale price (euro) / Almería grower delivery price (otherwise Spanish ex-packaging).',
     srcH: 'Sources',
     src: '<a href="https://acikveri.bizizmir.com/dataset/sebze-ve-meyve-hal-fiyatlari">İzmir open data</a> · <a href="https://antalya.bel.tr/tr/halden-gunluk-fiyatlar">Antalya Metropolitan daily market prices</a> · <a href="https://www.hal.gov.tr/Sayfalar/FiyatDetaylari.aspx">Ministry of Trade HKS prices and volumes</a> · <a href="https://www.antalyaborsa.org.tr/endeksler">Antalya Commodity Exchange market indices</a> · <a href="https://www.juntadeandalucia.es/organismos/agriculturapescaaguaydesarrollorural/servicios/estadistica-cartografia/estadisticas-agricolas/paginas/precios-agricolas-semanales.html">Junta de Andalucía weekly agricultural prices (CC BY 4.0)</a> · <a href="https://data.ecb.europa.eu/">ECB exchange rates</a> · <a href="https://agridata.ec.europa.eu/extensions/DataPortal/fruit-and-vegetables.html">EU agri-food data portal</a> · <a href="https://github.com/agrihubai/halden-anlayan/blob/main/sozluk/urunler.json">Product dictionary</a>. Data is updated automatically twice a week. See also (third-party source; its data is not copied into this dashboard): <a href="https://antalyakomisyonculardernegi.com/">Antalya Commission Agents Association (ANTKOMDER)</a>.',
@@ -287,6 +288,7 @@
   const M = {
     tr: {
       loading: 'Veri yükleniyor…', noData: 'Veri henüz yok.', notLoaded: 'Veri yüklenemedi.',
+      cmpNone: (s, l) => `${s} segmentinin İspanya verisinde karşılığı yok. ` + (l.length ? `İspanya ile karşılaştırılabilen segmentler: ${l.join(', ')}.` : 'Bu ürünün hiçbir segmenti için İspanya karşılığı tanımlı değil.'),
       noCmp: (p) => `${p} için İspanya verisi henüz eklenmedi. Avrupa Komisyonu verisi eşleştirildikçe burada görünecek.`,
       avg: 'Ortalama', lo: 'En düşük', hi: 'En yüksek', rate: (r) => `ECB kuru: 1 € = ₺${r}`, noRate: 'Bu tarih için kur yok',
       week: (d) => `${d} haftası`, trLine: (s, h) => `Türkiye · ${h} · ${s}`, es: 'İspanya',
@@ -357,6 +359,7 @@
     },
     en: {
       loading: 'Loading data…', noData: 'No data yet.', notLoaded: 'Data could not be loaded.',
+      cmpNone: (s, l) => `${s} has no counterpart in the Spanish data. ` + (l.length ? `Segments comparable with Spain: ${l.join(', ')}.` : 'No segment of this product has a Spanish counterpart defined.'),
       noCmp: (p) => `No Spanish data has been added for ${p.toLowerCase()} yet. It will appear here as European Commission data is matched.`,
       avg: 'Average', lo: 'Lowest', hi: 'Highest', rate: (r) => `ECB rate: €1 = ₺${r}`, noRate: 'No exchange rate for this date',
       week: (d) => `Week of ${d}`, trLine: (s, h) => `Turkey · ${h} · ${s}`, es: 'Spain',
@@ -442,7 +445,7 @@
   const parse = d3.utcParse('%Y-%m-%d');
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-  let state = { p: 'domates', s: null, n: '', hal: 'izmir', rAll: '365', rSeg: '365', rCmp: '1095', sm: 'w', lang: 'tr', off: {}, yakin: false };
+  let state = { p: 'domates', s: null, n: '', hal: 'izmir', rAll: '365', rSeg: '365', rCmp: '1095', sm: 'w', lang: 'tr', off: {}, esSadece: false };
   try { Object.assign(state, JSON.parse(localStorage.getItem('halden-anlayan') || '{}')); } catch (e) {}
   if (location.hash === '#en') state.lang = 'en'; else if (location.hash === '#tr') state.lang = 'tr';
   const save = () => { try { localStorage.setItem('halden-anlayan', JSON.stringify(state)); } catch (e) {} };
@@ -692,7 +695,7 @@
     const kSeg = Kc && (Kc.segmentler.find((x) => x.k === S.k) || {});
     const alTip = kSeg && kSeg.almeria && showKod(kSeg.almeria.kod) ? kSeg.almeria : null;
     const alRows = alTip && doc.almeria && doc.almeria.seriler[alTip.seri];
-    if (alRows) cmpLines.push({ name: t.alLine(alName(alTip.tip), ilName(alTip.il)), color: css('--c-es2'), data: alRows.map(([d, v]) => ({ date: parse(d), eur: v })), al: true });
+    if (alRows) cmpLines.push({ name: t.alLine(alName(alTip.tip), ilName(alTip.il)) + (alTip.kod === 'Y' ? ' ≈' : ''), color: css('--c-es2'), data: alRows.map(([d, v]) => ({ date: parse(d), eur: v })), al: true });
     const otherSegs = useAnt ? doc.segmentler : (ANT ? ANT.segmentler : []);
     const oS = otherSegs.find((x) => x.k === S.k);
     if (oS) { const oW = weeklyEur(rowsOf(oS.seri)); if (oW.length) cmpLines.push({ name: t.trLine(nm(oS), t.halName[useAnt ? 'izmir' : 'antalya']), color: css('--s8'), data: oW, tr: true }); }
@@ -705,10 +708,16 @@
     const esName = (n) => (L === 'en' ? n.replace(/^[^·]+/, (m) => (STG.en[m.trim()] || m.trim()) + ' ') : n)
       .replace(/·\s*[^·-]+ - /, '· ').replace(/=.*$/, '').replace('All types and varieties', L === 'en' ? 'all types' : 'bütün tipler');
     esPick.sort((a, b) => b.data.length - a.data.length).slice(0, 4)
-      .forEach((s, i) => cmpLines.push({ name: t.es + ' · ' + esName(s.n), color: css(['--c-es1', '--c-es3', '--c-es4', '--s5'][i]), data: s.data }));
+      .forEach((s, i) => cmpLines.push({ name: t.es + ' · ' + esName(s.n) + (kSeg.es.kod === 'Y' ? ' ≈' : ''), color: css(['--c-es1', '--c-es3', '--c-es4', '--s5'][i]), data: s.data }));
     const lastC = d3.max(cmpLines, (l) => l.data[l.data.length - 1]?.date) || trW[trW.length - 1]?.date;
     const from = state.rCmp === 'all' || !lastC ? null : new Date(lastC - (+state.rCmp) * 864e5);
-    drawCmp($('chart-cmp'), cmpLines.map((l) => ({ ...l, data: from ? l.data.filter((d) => d.date >= from) : l.data })), $('legend-cmp'), t.noCmp(P));
+    // seçili dönemde verisi olmayan çizgi (ör. AB çeşit serileri 2017'de bitiyor) gösterilmez
+    const cmpIn = cmpLines.map((l) => ({ ...l, data: from ? l.data.filter((d) => d.date >= from) : l.data })).filter((l) => l.data.length);
+    const esVar = cmpIn.some((l) => !l.tr);
+    const esSeg = Kc ? Kc.segmentler.filter((x) => (x.es && showKod(x.es.kod)) || (x.almeria && showKod(x.almeria.kod))).map((x) => { const o = doc.segmentler.find((y) => y.k === x.k) || segs.find((y) => y.k === x.k); return o ? nm(o) : x.k; }) : [];
+    $('cmp-note').hidden = esVar || !trW.length;
+    $('cmp-note').textContent = esVar ? '' : t.cmpNone(nm(S), esSeg);
+    drawCmp($('chart-cmp'), cmpIn, $('legend-cmp'), t.noCmp(P));
 
     // göstergeler + özet
     const last = full[full.length - 1];
@@ -752,7 +761,7 @@
   const monthShort = (m) => new Date(Date.UTC(2025, m - 1, 1)).toLocaleDateString(loc, { month: 'short', timeZone: 'UTC' }).replace('.', '');
   const shortDate = (d) => parse(d).toLocaleDateString(loc, { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
   const r2 = (v) => v == null ? '—' : v.toLocaleString(loc, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  const showKod = (kod) => kod === 'E' || (kod === 'Y' && state.yakin);
+  const showKod = (kod) => kod === 'E' || (kod === 'Y' && !state.esSadece);
   const IL = { AL: 'Almería', GR: 'Granada', MA: 'Málaga', SE: 'Sevilla', CA: 'Cádiz', CO: 'Córdoba', HU: 'Huelva', JA: 'Jaén' };
   const ilName = (a) => (a || []).map((x) => IL[x] || x).join(', ') || 'Endülüs';
   const alName = (tip) => (AL_TIP[L][tip] || tip.charAt(0) + tip.slice(1).toLowerCase());
@@ -960,8 +969,8 @@
   });
   $('ozet-q').addEventListener('input', renderOzet);
   $('ozet-aktif').addEventListener('change', renderOzet);
-  $('yakin').checked = !!state.yakin;
-  $('yakin').addEventListener('change', (e) => { state.yakin = e.target.checked; save(); render(); });
+  $('yakin').checked = !!state.esSadece;
+  $('yakin').addEventListener('change', (e) => { state.esSadece = e.target.checked; save(); render(); });
 
   setLang();
   $('lede').textContent = t.loading;
