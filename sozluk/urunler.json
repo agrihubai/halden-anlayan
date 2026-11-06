@@ -2711,20 +2711,20 @@
   "hiyar/standart": {
    "kod": "Y",
    "junta": [
-    "FRANCES"
+    "ESPANOL"
    ],
    "ab": "Cucumbers - Smooth varieties",
-   "not": "TR standart = düz kabuklu Beit Alpha tipi; Francés orta boy düz kabuklu",
-   "eklenme": "2026-11-06, Claude önerisi, kontrol edilecek"
+   "not": "TR standart = Beit Alpha (Persian) tipi; İspanya'da Persian = Español",
+   "eklenme": "Burcu eşlemesi, 6 Kasım 2026: Español = Persian, Francés = Pickling, Largo Almería = Long European"
   },
   "hiyar/torba": {
    "kod": "Y",
    "junta": [
-    "FRANCES"
+    "ESPANOL"
    ],
    "ab": "Cucumbers - Smooth varieties",
-   "not": "Torba = paketli küçük düz kabuklu hıyar",
-   "eklenme": "2026-11-06, Claude önerisi, kontrol edilecek"
+   "not": "Paketli küçük Beit Alpha (Persian) tipi",
+   "eklenme": "Burcu eşlemesi, 6 Kasım 2026: Español = Persian, Francés = Pickling, Largo Almería = Long European"
   },
   "biber/dolma": {
    "kod": "Y",
@@ -2849,6 +2849,50 @@
    "ab": "Table Grapes - With seeds in large packaging",
    "not": "Red Globe çekirdekli; AB grubu bütün çekirdekli üzümler",
    "eklenme": "2026-11-06, Claude önerisi, kontrol edilecek"
+  },
+  "hiyar/kornison": {
+   "kod": "Y",
+   "junta": [
+    "FRANCES"
+   ],
+   "ab": null,
+   "not": "Turşuluk ↔ Pickling; İspanya'da Pickling = Francés (medio largo)",
+   "eklenme": "Burcu eşlemesi, 6 Kasım 2026: Español = Persian, Francés = Pickling, Largo Almería = Long European"
   }
+ },
+ "ispanya_segment": {
+  "_aciklama": "İspanya görünümünde segment listesi (Junta tip adları yerine). tipler boşsa resmî seri yok: segment listelenir, veri yok yazar.",
+  "hiyar": [
+   {
+    "k": "long-european",
+    "tr": "Long European (Largo Almería)",
+    "en": "Long European (Largo Almería)",
+    "tipler": [
+     "LARGO ALMERIA"
+    ]
+   },
+   {
+    "k": "persian",
+    "tr": "Persian (Español)",
+    "en": "Persian (Español)",
+    "tipler": [
+     "ESPANOL"
+    ]
+   },
+   {
+    "k": "pickling",
+    "tr": "Pickling (Francés)",
+    "en": "Pickling (Francés)",
+    "tipler": [
+     "FRANCES"
+    ]
+   },
+   {
+    "k": "snack",
+    "tr": "Snack",
+    "en": "Snack",
+    "tipler": []
+   }
+  ]
  }
 }
