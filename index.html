@@ -694,7 +694,7 @@
     for (const [tip, ks, o] of groups) {
       const live = ks.filter((k) => parse(AS[k][AS[k].length - 1][0]) >= cut);
       if (!live.length) {
-        if (o) segs.push({ k: 'es:' + o.k, tip: null, tipler: [], ana: null, tr: o.tr, en: o.en, birim: 'KG', seri: [], n: 0, adlar: [], act: 0, genel: false, al: true, bos: true });
+        if (o) segs.push({ k: 'es:' + o.k, not: o['not_' + L], tip: null, tipler: [], ana: null, tr: o.tr, en: o.en, birim: 'KG', seri: [], n: 0, adlar: [], act: 0, genel: false, al: true, bos: true });
         continue;
       }
       const rank = (k) => { const i = ES_SIRA.indexOf(k.split(' · ').slice(1).join(' · ')); return (inAl(k) ? 0 : 100) + (i < 0 ? 50 : i); };
@@ -765,7 +765,7 @@
     const full = state.n ? rowsOf(ADL[state.n].seri) : segRows.get(S.k);
     const unitS = unitName(state.n ? ADL[state.n].birim : S.birim);
     $('h-seg').textContent = curFix(t.hSeg(P, nm(S), unitS)).replace(ES ? (L === 'en' ? 'daily' : 'günlük') : '\u0000', L === 'en' ? 'weekly' : 'haftalık');
-    if (ES && !S.ana) empty($('chart-seg'), t.esBos); else drawSeg($('chart-seg'), since(full, state.rSeg));
+    if (ES && !S.ana) empty($('chart-seg'), t.esBos + (S.not ? ' ' + S.not : '')); else drawSeg($('chart-seg'), since(full, state.rSeg));
     $('names').innerHTML = `<thead><tr>${(ES ? t.thEs : t.th).map((h) => `<th>${h}</th>`).join('')}</tr></thead><tbody>` +
       (ES ? [ADL[S.ana], ...names].filter(Boolean) : names).map((a) => `<tr><td>${esc(a.ad)}</td><td>${unitName(a.birim)}</td><td>${a.n}</td><td>${a.ilk}</td><td>${a.son}</td><td class="muted">${a.yan ? t.side : ''}</td></tr>`).join('') + '</tbody>';
 
@@ -839,7 +839,7 @@
   // İspanya görünümünde karşılaştırma: seçili İspanya tipi + karşılığı olan Türkiye segmentleri (İzmir, Antalya)
   async function renderCmpEs(doc, S, segs) {
     const Kc = await karneOf(doc.k);
-    if (!S.ana) { $('cmp-note').hidden = true; drawCmp($('chart-cmp'), [], $('legend-cmp'), t.esBos); S._tr = null; return; }
+    if (!S.ana) { $('cmp-note').hidden = true; drawCmp($('chart-cmp'), [], $('legend-cmp'), t.esBos + (S.not ? ' ' + S.not : '')); S._tr = null; return; }
     const lines = [{ name: t.esTr(nm(S)), color: css('--c-es2'), data: doc.almeria.seriler[S.ana].map(([d, v]) => ({ date: parse(d), eur: v })).filter((d) => d.date) }];
     const mates = Kc ? Kc.segmentler.filter((x) => x.almeria && S.tipler.includes(x.almeria.tip)) : [];
     const ANT = doc.haller && doc.haller.antalya;
@@ -913,7 +913,7 @@
   const showKod = (kod) => kod === 'E' || (kod === 'Y' && !state.esSadece);
   const IL = { AL: 'Almería', GR: 'Granada', MA: 'Málaga', SE: 'Sevilla', CA: 'Cádiz', CO: 'Córdoba', HU: 'Huelva', JA: 'Jaén' };
   const ALU = {"domates":["TOMATE"],"biber":["PIMIENTO"],"hiyar":["PEPINO"],"patlican":["BERENJENA"],"kabak":["CALABACIN"],"kavun":["MELON"],"karpuz":["SANDIA"],"fasulye":["JUDIA VERDE"],"lahana":["COL"],"marul":["LECHUGA"],"portakal":["NARANJA"],"mandalina":["MANDARINA"],"nektarin":["NECTARINA"],"seftali":["MELOCOTON"],"avokado":["AGUACATE"],"sarimsak":["AJO"],"sogan":["CEBOLLA","CEBOLLETA"],"karnabahar":["COLIFLOR"],"patates":["PATATA"],"brokoli":["BROCOLI"],"cennet-elmasi":["CAQUI"],"incir":["BREVAS E HIGOS"],"ispanak":["ESPINACA"],"kestane":["CASTANA"],"malta-erigi":["NISPERO"],"mango":["MANGO"],"pancar":["REMOLACHA DE MESA"],"pazi":["ACELGA"],"bal-kabagi":["CALABAZA"],"nar":["GRANADA"],"enginar":["ALCACHOFA"],"bezelye":["GUISANTE"],"bakla":["HABA VERDE"],"pirasa":["PUERRO"],"havuc":["ZANAHORIA"],"cilek":["FRESON"],"limon":["LIMON"],"armut":["PERA"],"uzum":["UVA DE MESA"],"erik":["CIRUELA"],"kiraz":["CEREZA"],"kayisi":["ALBARICOQUE"]};   // Junta ürün adı (genel, tip ayırmayan seri) — sozluk/urunler.json almeria.urunler
-  const ES_SEG = {"hiyar":[{"k":"long-european","tr":"Long European (Largo Almería)","en":"Long European (Largo Almería)","tipler":["LARGO ALMERIA"]},{"k":"persian","tr":"Persian (Español)","en":"Persian (Español)","tipler":["ESPANOL"]},{"k":"pickling","tr":"Pickling (Francés)","en":"Pickling (Francés)","tipler":["FRANCES"]},{"k":"snack","tr":"Snack","en":"Snack","tipler":[]}]};   // İspanya görünümünde segment listesi — sozluk/urunler.json ispanya_segment
+  const ES_SEG = {"hiyar":[{"k":"long-european","tr":"Long European (Largo Almería)","en":"Long European (Largo Almería)","tipler":["LARGO ALMERIA"]},{"k":"persian","tr":"Persian (Español)","en":"Persian (Español)","tipler":["ESPANOL"]},{"k":"pickling","tr":"Pickling (Francés)","en":"Pickling (Francés)","tipler":["FRANCES"]},{"k":"snack","tr":"Snack / mini","en":"Snack / mini","tipler":[],"not_tr":"Türkiye'deki karşılığı: Silor.","not_en":"Turkish counterpart: Silor."}]};   // İspanya görünümünde segment listesi — sozluk/urunler.json ispanya_segment
   const ilName = (a) => (a || []).map((x) => IL[x] || x).join(', ') || 'Endülüs';
   const alName = (tip) => (AL_TIP[L][tip] || tip.charAt(0) + tip.slice(1).toLowerCase());
   const abShort = (a) => (a || '').replace(/^[^-]+ - /, '').replace(/=.*$/, '').replace('All types and varieties', L === 'en' ? 'all types' : 'bütün tipler');

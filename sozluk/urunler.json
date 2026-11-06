@@ -2317,11 +2317,10 @@
   },
   "hiyar/silor": {
    "kod": "Y",
-   "junta": [
-    "ESPANOL"
-   ],
+   "junta": [],
    "ab": null,
-   "not": "Kısa tip; kabuk dokusu doğrulanacak"
+   "not": "Silor = snack/mini tip; İspanya'da snack için resmî fiyat serisi yok",
+   "eklenme": "Burcu, 6 Kasım 2026"
   },
   "patlican/uzun": {
    "kod": "Y",
@@ -2889,9 +2888,11 @@
    },
    {
     "k": "snack",
-    "tr": "Snack",
-    "en": "Snack",
-    "tipler": []
+    "tr": "Snack / mini",
+    "en": "Snack / mini",
+    "tipler": [],
+    "not_tr": "Türkiye'deki karşılığı: Silor.",
+    "not_en": "Turkish counterpart: Silor."
    }
   ]
  }
