@@ -156,7 +156,7 @@
     <div class="picker">
       <select id="product" aria-label="Ürün / Product"></select>
       <span class="controls" id="quick" aria-label="Sera ürünleri / Greenhouse crops"></span>
-      <span class="seg" id="hal" role="group" aria-label="Hal / Market"><button type="button" data-h="izmir">İzmir</button><button type="button" data-h="antalya">Antalya</button></span>
+      <span class="seg" id="hal" role="group" aria-label="Hal / Market"><button type="button" data-h="izmir">İzmir</button><button type="button" data-h="antalya">Antalya</button><button type="button" data-h="ispanya" data-i18n="halEs">İspanya (Almería)</button></span>
     </div>
     <div class="controls" id="segments" role="group" aria-label="Segment"></div>
     <p class="seg-desc" id="botanik"></p>
@@ -246,11 +246,11 @@
   const TUR = { tr: { Sebze: 'Sebze', 'Yeşillik': 'Yeşillik', Meyve: 'Meyve', 'İthal': 'İthal' }, en: { Sebze: 'Vegetables', 'Yeşillik': 'Herbs and greens', Meyve: 'Fruit', 'İthal': 'Imported' } };
   const AL_TIP = {
     tr: { RAMA: 'Salkım (rama)', LISO: 'Düz yuvarlak (liso)', REDONDO: 'Yuvarlak (redondo)', 'LARGA VIDA': 'Uzun raf ömürlü', PERA: 'Armut tipi (pera)', ASURCADO: 'Dilimli (asurcado)',
-      'CHERRY-REDONDO RAMA': 'Çeri · yuvarlak salkım', 'CHERRY-REDONDO SUELTO': 'Çeri · yuvarlak dökme', 'CHERRY-PERA SUELTO': 'Çeri · armut dökme', CHERRY: 'Çeri',
+      'CHERRY-REDONDO RAMA': 'Çeri · yuvarlak salkım', 'CHERRY-REDONDO SUELTO': 'Çeri · yuvarlak dökme', 'CHERRY-PERA SUELTO': 'Çeri · armut dökme', 'CHERRY-PERA': 'Çeri · armut tipi', CHERRY: 'Çeri', ESPANOL: 'İspanyol (kısa)', FRANCES: 'Fransız (orta boy, düz)', 'LARGO ALMERIA': 'Uzun (Almería)', PLANA: 'Yassı (plana)', REDONDA: 'Yuvarlak', BLANCO: 'Beyaz', 'PIEL DE SAPO': 'Piel de sapo', AMARILLO: 'Sarı', GALIA: 'Galia',
       'CALIFORNIA-ROJO': 'California kırmızı', 'CALIFORNIA-AMARILLO': 'California sarı', 'CALIFORNIA-VERDE': 'California yeşil', ITALIANO: 'İtalyan (uzun tatlı)', CONICO: 'Konik (kapya tipi)',
       'LAMUYO-ROJO': 'Lamuyo kırmızı', 'LAMUYO-VERDE': 'Lamuyo yeşil', SNACK: 'Snack', NEGRA: 'Siyah uzun', LARGA: 'Uzun', RAYADA: 'Alacalı', VERDE: 'Yeşil' },
     en: { RAMA: 'Truss (rama)', LISO: 'Smooth round (liso)', REDONDO: 'Round (redondo)', 'LARGA VIDA': 'Long shelf life', PERA: 'Plum (pera)', ASURCADO: 'Ribbed (asurcado)',
-      'CHERRY-REDONDO RAMA': 'Cherry · round truss', 'CHERRY-REDONDO SUELTO': 'Cherry · round loose', 'CHERRY-PERA SUELTO': 'Cherry · plum loose', CHERRY: 'Cherry',
+      'CHERRY-REDONDO RAMA': 'Cherry · round truss', 'CHERRY-REDONDO SUELTO': 'Cherry · round loose', 'CHERRY-PERA SUELTO': 'Cherry · plum loose', 'CHERRY-PERA': 'Cherry · plum type', CHERRY: 'Cherry', ESPANOL: 'Spanish (short)', FRANCES: 'French (medium, smooth)', 'LARGO ALMERIA': 'Long (Almería)', PLANA: 'Flat (plana)', REDONDA: 'Round', BLANCO: 'White', 'PIEL DE SAPO': 'Piel de sapo', AMARILLO: 'Yellow', GALIA: 'Galia',
       'CALIFORNIA-ROJO': 'California red', 'CALIFORNIA-AMARILLO': 'California yellow', 'CALIFORNIA-VERDE': 'California green', ITALIANO: 'Italian (long sweet)', CONICO: 'Conical (kapya type)',
       'LAMUYO-ROJO': 'Lamuyo red', 'LAMUYO-VERDE': 'Lamuyo green', SNACK: 'Snack', NEGRA: 'Black long', LARGA: 'Long', RAYADA: 'Striped', VERDE: 'Green' },
   };
@@ -258,6 +258,7 @@
 
   const EN = {
     emtia: 'Commodity Index →',
+    halEs: 'Spain (Almería)',
     eyebrow: 'AgriHub-AI · Wholesale fruit and vegetable prices · Turkey – Spain',
     intro1: 'At a wholesale market, "tomato" is not one price: truss, cherry, pink and beef tomatoes are separate markets and their prices can move in different directions. This dashboard shows daily prices at the İzmir wholesale market from 2006 to today for 79 products and their market segments. As Spain\'s farmgate, ex-packaging and retail prices are added, the two countries appear side by side.',
     intro2: "Turkish prices are shown in Turkish lira (TRY). Hover over a chart to see the euro equivalent at that day's ECB rate. The chart comparing the two countries is entirely in euros.",
@@ -306,7 +307,18 @@
       lede: (p, s, d, v, e, y, h) => `${p} · ${s}, ${h} halinde <b>${d}</b> tarihinde ortalama <b>${v}</b>${e ? ` (≈ <b>${e}</b>)` : ''}. Euro cinsinden bir yıl önceye göre değişim <b>${y}</b>.`,
       ledeN: (n, s) => ` Pano şu anda <b>${n}</b> ürünü ve <b>${s}</b> segmenti izliyor.`,
       updated: (d) => `Son güncelleme: ${d}.`, quick: 'Sera ürünleri:', botanik: (b) => `Botanik ad: ${b}`,
-      halName: { izmir: 'İzmir', antalya: 'Antalya' }, noAnt: (p) => `${p} Antalya listesinde yok; İzmir gösteriliyor.`, antSince: 'Antalya verisi 1 Temmuz 2026\'dan başlıyor; listede sadece en düşük ve en yüksek fiyat var, ortalama ikisinin orta noktası.', karneIzmir: 'Karne İzmir halinin 2006\'dan bugüne verisiyle hesaplanır; Antalya serisi karne için henüz kısa.',
+      halName: { izmir: 'İzmir', antalya: 'Antalya', ispanya: 'Almería' },
+      noEsHal: (p) => `${p} için Junta de Andalucía'da fiyat serisi yok; İzmir gösteriliyor.`,
+      esSrc: 'İspanya: Junta de Andalucía haftalık üretici fiyatları (€/kg, KDV hariç). Segmentler İspanya\'nın kendi tip adlarıdır; her tipte ana seri 1. kalite depo teslimidir, öteki kalite ve teslim noktaları "Seri" listesindedir. Son 3 yılda işlem görmeyen tipler listelenmez.',
+      esMain: (x) => `${x} · ana seri`, thEs: ['Seri', 'Birim', 'Hafta', 'İlk', 'Son', ''],
+      esNoteAll: 'Her çizgi bir İspanya tipinin ana serisidir (haftalık, €/kg, üretici teslim fiyatı). Lejanttaki bir tipe tıklayarak gizleyebilirsiniz.',
+      esGenel: 'Genel (tip ayrımı yok)', esIl: 'öteki Endülüs illeri',
+      kat: { I: '1. kalite', II: '2. kalite', 'S.E.': 'kalite ayrımı yok', EXTRA: 'Ekstra' },
+      pos: { almacen: 'depo teslimi', alhondiga: 'mezat (alhóndiga)', cm: 'paketleme tesisi', salida: 'depo çıkışı', arbol: 'ağaçta', campo: 'tarlada' },
+      ledeEs: (p, s, d, v, y) => `${p} · ${s}, Almería'da <b>${d}</b> haftasında üretici fiyatı <b>${v}</b>/kg. Bir yıl önceye göre değişim <b>${y}</b>.`,
+      esTr: (s) => `İspanya · ${s}`, esNoTr: (s, l) => `${s} tipinin Türkiye hallerinde karşılığı yok; grafikte yalnız İspanya var.` + (l.length ? ` Türkiye ile karşılaştırılabilen İspanya tipleri: ${l.join(', ')}.` : ''),
+      karneEs: (s) => s ? `Islah karnesi Türkiye hallerinin verisiyle hesaplanır. Aşağıda bu İspanya tipine karşılık gelen Türkiye segmentinin (${s}) karnesi var.` : 'Islah karnesi Türkiye hallerinin verisiyle hesaplanır; bu İspanya tipinin Türkiye karşılığı olmadığı için karne gösterilmiyor.',
+      noAnt: (p) => `${p} Antalya listesinde yok; İzmir gösteriliyor.`, antSince: 'Antalya verisi 1 Temmuz 2026\'dan başlıyor; listede sadece en düşük ve en yüksek fiyat var, ortalama ikisinin orta noktası.', karneIzmir: 'Karne İzmir halinin 2006\'dan bugüne verisiyle hesaplanır; Antalya serisi karne için henüz kısa.',
       hKarne: (p, s) => `Islah karnesi · ${p} · ${s}`, noKarne: 'Bu ürün için karne henüz hesaplanmadı.', noKarneSeg: 'Bu segmentte karne için yeterli veri yok.',
       wk: 'Hafta', kPrim: 'Segment primi', kSez: 'Sezon ve turfanda', kSok: 'Şok haftaları', kKal: 'Kalite ve fiyat makası', kYeni: 'Segmentin halde görünmesi', kEs: 'Türkiye – İspanya',
       isRef: 'Referans', refBody: (r) => `<b>${r}</b> bu ürünün referans segmenti: son 5 yılda en çok haftada işlem gören segment. Öteki segmentlerin primi ona göre ölçülür (son 52 haftanın medyanı):`,
@@ -382,7 +394,18 @@
       lede: (p, s, d, v, e, y, h) => `${p} · ${s} averaged <b>${v}</b>${e ? ` (≈ <b>${e}</b>)` : ''} at the ${h} market on <b>${d}</b>. In euro terms that is <b>${y}</b> on a year earlier.`,
       ledeN: (n, s) => ` The dashboard currently tracks <b>${n}</b> products and <b>${s}</b> segments.`,
       updated: (d) => `Last updated: ${d}.`, quick: 'Greenhouse crops:', botanik: (b) => `Botanical name: ${b}`,
-      halName: { izmir: 'İzmir', antalya: 'Antalya' }, noAnt: (p) => `${p} is not on the Antalya list; showing İzmir.`, antSince: 'Antalya data starts on 1 July 2026; the list gives only the lowest and highest price, and the average is their midpoint.', karneIzmir: 'The scorecard is calculated from İzmir market data since 2006; the Antalya series is still too short for it.',
+      halName: { izmir: 'İzmir', antalya: 'Antalya', ispanya: 'Almería' },
+      noEsHal: (p) => `Junta de Andalucía has no price series for ${p.toLowerCase()}; showing İzmir.`,
+      esSrc: 'Spain: Junta de Andalucía weekly grower prices (€/kg, excl. VAT). Segments are Spain\'s own type names; each type\'s main series is grade I warehouse delivery, other grades and delivery points are in the "Series" list. Types not traded in the last 3 years are not listed.',
+      esMain: (x) => `${x} · main series`, thEs: ['Series', 'Unit', 'Weeks', 'First', 'Last', ''],
+      esNoteAll: 'Each line is the main series of a Spanish type (weekly, €/kg, grower delivery price). Click a type in the legend to hide it.',
+      esGenel: 'General (no type split)', esIl: 'other Andalusian provinces',
+      kat: { I: 'Grade I', II: 'Grade II', 'S.E.': 'no grade split', EXTRA: 'Extra' },
+      pos: { almacen: 'warehouse delivery', alhondiga: 'auction (alhóndiga)', cm: 'packing house', salida: 'warehouse exit', arbol: 'on the tree', campo: 'in the field' },
+      ledeEs: (p, s, d, v, y) => `${p} · ${s}: grower price in Almería in the week of <b>${d}</b> was <b>${v}</b>/kg, <b>${y}</b> on a year earlier.`,
+      esTr: (s) => `Spain · ${s}`, esNoTr: (s, l) => `${s} has no counterpart at the Turkish markets; the chart shows Spain only.` + (l.length ? ` Spanish types comparable with Turkey: ${l.join(', ')}.` : ''),
+      karneEs: (s) => s ? `The breeding scorecard is calculated from Turkish market data. Below is the scorecard of the Turkish segment matching this Spanish type (${s}).` : 'The breeding scorecard is calculated from Turkish market data; this Spanish type has no Turkish counterpart, so no scorecard is shown.',
+      noAnt: (p) => `${p} is not on the Antalya list; showing İzmir.`, antSince: 'Antalya data starts on 1 July 2026; the list gives only the lowest and highest price, and the average is their midpoint.', karneIzmir: 'The scorecard is calculated from İzmir market data since 2006; the Antalya series is still too short for it.',
       hKarne: (p, s) => `Breeding scorecard · ${p} · ${s}`, noKarne: 'No scorecard has been calculated for this product yet.', noKarneSeg: 'Not enough data for a scorecard in this segment.',
       wk: 'Week', kPrim: 'Segment premium', kSez: 'Season and early-season premium', kSok: 'Shock weeks', kKal: 'Quality and price spread', kYeni: 'Presence at the market', kEs: 'Turkey – Spain',
       isRef: 'Reference', refBody: (r) => `<b>${r}</b> is this product’s reference segment: the segment traded in the most weeks over the last 5 years. The other segments’ premiums are measured against it (median of the last 52 weeks):`,
@@ -455,13 +478,15 @@
   const parse = d3.utcParse('%Y-%m-%d');
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
+  const NOTE_TR = document.querySelector('[data-i18n="noteAll"]').textContent;   // HTML'deki Türkçe metin
   let state = { p: 'domates', s: null, n: '', hal: 'izmir', rAll: '365', rSeg: '365', rCmp: '1095', sm: 'w', lang: 'tr', off: {}, esSadece: false };
   try { Object.assign(state, JSON.parse(localStorage.getItem('halden-anlayan') || '{}')); } catch (e) {}
   if (location.hash === '#en') state.lang = 'en'; else if (location.hash === '#tr') state.lang = 'tr';
   const save = () => { try { localStorage.setItem('halden-anlayan', JSON.stringify(state)); } catch (e) {} };
 
   let L, t, loc, nf2, fmtDate;
-  const tl = (v) => v == null ? '—' : '₺' + nf2.format(v);
+  let ESM = false;   // İspanya (Almería) görünümü: fiyatlar €/kg
+  const tl = (v) => v == null ? '—' : (ESM ? '€' : '₺') + nf2.format(v);
   const eur = (v) => v == null ? '—' : '€' + nf2.format(v);
   const pct = (v) => v == null || !isFinite(v) ? '—' : (v > 0 ? '+' : '') + Math.round(v * 100) + '%';
   const unitName = (u) => UNIT[L][u] || (u || '').toLowerCase();
@@ -554,8 +579,8 @@
     f.tip.style('left', Math.max(0, left) + 'px').style('top', top + 'px');
   }
   const empty = (el, msg) => { el.innerHTML = `<div class="empty">${msg}</div>`; };
-  const yTl = (v) => '₺' + d3.format('~s')(v);
-  const eurOf = (v, d) => { const r = rateOn(d); return v != null && r ? ` <span class="eur">≈ ${eur(v / r)}</span>` : ''; };
+  const yTl = (v) => (ESM ? '€' + d3.format('.2~f')(v) : '₺' + d3.format('~s')(v));
+  const eurOf = (v, d) => { if (ESM) return ''; const r = rateOn(d); return v != null && r ? ` <span class="eur">≈ ${eur(v / r)}</span>` : ''; };
 
   // ---- 1. segmentler yan yana
   function drawAll(el, lines) {
@@ -612,7 +637,7 @@
           `<div class="row"><span class="sw" style="background:${css('--c-tr')}"></span>${t.avg}<span class="val">${tl(d.avg)}${eurOf(d.avg, d.date)}</span></div>` +
           (d.lo != null ? `<div class="row"><span class="sw"></span>${t.lo}<span class="val">${tl(d.lo)}${eurOf(d.lo, d.date)}</span></div>` : '') +
           (d.hi != null ? `<div class="row"><span class="sw"></span>${t.hi}<span class="val">${tl(d.hi)}${eurOf(d.hi, d.date)}</span></div>` : '') +
-          `<div class="d" style="margin-top:4px">${r ? t.rate(nf2.format(r)) : t.noRate}</div>`);
+          (ESM ? '' : `<div class="d" style="margin-top:4px">${r ? t.rate(nf2.format(r)) : t.noRate}</div>`));
         placeTip(f, x(d.date), y(d.avg));
       })
       .on('pointerleave', () => { f.tip.style('display', 'none'); dot.style('display', 'none'); rule.style('display', 'none'); });
@@ -646,6 +671,41 @@
       .on('pointerleave', () => { f.tip.style('display', 'none'); rule.style('display', 'none'); });
   }
 
+  // ---- İspanya (Almería) görünümü: Junta tipleri segment, her tipte ana seri + öteki kalite/teslim noktaları
+  const ES_SIRA = ['I · almacen', 'S.E. · almacen', 'EXTRA · almacen', 'S.E. · alhondiga', 'I · alhondiga', 'S.E. · arbol', 'I · arbol', 'S.E. · campo', 'S.E. · cm', 'S.E. · salida', 'II · almacen', 'II · alhondiga'];
+  const esHalCache = {};
+  function esHal(doc) {
+    if (esHalCache[doc.k + L]) return esHalCache[doc.k + L];
+    const AS = doc.almeria?.seriler || {};
+    const IL_ = doc.almeria?.iller || {};
+    const keys = Object.keys(AS).filter((k) => AS[k].length >= 8);
+    if (!keys.length) return null;
+    const lastAll = d3.max(keys, (k) => AS[k][AS[k].length - 1][0]);
+    const cut = new Date(+parse(lastAll) - 3 * 365 * 864e5);
+    const pl = (x) => (x || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase();
+    const gen = new Set([pl(doc.es), ...(ALU[doc.k] || [])]);
+    const inAl = (k) => (IL_[k] || ['AL']).includes('AL');
+    const byTip = d3.group(keys, (k) => k.split(' · ')[0]);
+    const segs = [], adlar = {};
+    for (const [tip, ks] of byTip) {
+      const live = ks.filter((k) => parse(AS[k][AS[k].length - 1][0]) >= cut);
+      if (!live.length) continue;
+      const rank = (k) => { const i = ES_SIRA.indexOf(k.split(' · ').slice(1).join(' · ')); return (inAl(k) ? 0 : 100) + (i < 0 ? 50 : i); };
+      live.sort((a, b) => rank(a) - rank(b) || AS[b].length - AS[a].length);
+      const main = live[0];
+      const name = (gen.has(pl(tip)) ? t.esGenel : alName(tip)) + (inAl(main) ? '' : ` (${ilName(IL_[main])})`);
+      const seriOf = (k) => AS[k].map(([d, v]) => [d, null, null, v]);
+      const ad = (k) => { const [, kat, pos] = k.split(' · '); return `${t.kat[kat] || kat} · ${t.pos[pos] || pos}${inAl(k) ? '' : ' · ' + ilName(IL_[k])}`; };
+      for (const k of ks) adlar[k] = { anahtar: k, ad: ad(k), birim: 'KG', n: AS[k].length, ilk: AS[k][0][0], son: AS[k][AS[k].length - 1][0], seri: seriOf(k), yan: false };
+      const rows = AS[main];
+      segs.push({ k: 'es:' + tip, tip, ana: main, tr: name, en: name, birim: 'KG', seri: seriOf(main), n: rows.length, ilk: rows[0][0], son: rows[rows.length - 1][0],
+        adlar: ks.filter((k) => k !== main).sort((a, b) => rank(a) - rank(b)), act: rows.filter(([d]) => parse(d) >= cut).length, genel: gen.has(pl(tip)), al: inAl(main) });
+    }
+    // önce Almería ilinin serileri, içlerinde en çok işlem gören; genel (tip ayırmayan) seri sona; öteki Endülüs illeri en sonda
+    segs.sort((a, b) => b.al - a.al || a.genel - b.genel || b.act - a.act);
+    return (esHalCache[doc.k + L] = segs.length ? { segmentler: segs, adlar } : null);
+  }
+
   const tile = (k, v, s) => `<div class="card tile"><p class="k">${k}</p><p class="v">${v}</p><p class="s">${s}</p></div>`;
 
   async function render() {
@@ -661,19 +721,24 @@
     for (const b of $('hal').children) b.setAttribute('aria-pressed', String(b.dataset.h === state.hal));
     const ANT = doc.haller && doc.haller.antalya;
     const useAnt = state.hal === 'antalya' && ANT && ANT.segmentler.length;
-    const halK = useAnt ? 'antalya' : 'izmir', halN = t.halName[halK];
-    const segs = useAnt ? ANT.segmentler : doc.segmentler;
-    const ADL = useAnt ? ANT.adlar : doc.adlar;
+    const ES = state.hal === 'ispanya' ? esHal(doc) : null;
+    ESM = !!ES;
+    const halK = ES ? 'ispanya' : useAnt ? 'antalya' : 'izmir', halN = t.halName[halK];
+    const segs = ES ? ES.segmentler : useAnt ? ANT.segmentler : doc.segmentler;
+    const ADL = ES ? ES.adlar : useAnt ? ANT.adlar : doc.adlar;
     if (!segs.some((s) => s.k === state.s)) state.s = segs[0].k;
     const color = new Map(segs.map((s, i) => [s.k, css(SEGC[i % SEGC.length])]));
     $('segments').innerHTML = segs.map((s) => `<button type="button" class="chip sm" data-k="${s.k}" aria-pressed="${s.k === state.s}"><span class="sw" style="background:${color.get(s.k)}"></span>${esc(nm(s))}</button>`).join('');
     $('segments').hidden = segs.length < 2;
-    $('botanik').textContent = (doc.botanik ? t.botanik(doc.botanik) : '') + (state.hal === 'antalya' ? ' · ' + (useAnt ? t.antSince : t.noAnt(P)) : '');
+    $('botanik').textContent = (doc.botanik ? t.botanik(doc.botanik) : '') + (state.hal === 'antalya' ? ' · ' + (useAnt ? t.antSince : t.noAnt(P)) : '') + (state.hal === 'ispanya' ? ' · ' + (ES ? t.esSrc : t.noEsHal(P)) : '');
     const S = segs.find((s) => s.k === state.s);
     const unitAll = unitName(d3.greatest(d3.rollups(segs, (v) => v.length, (s) => s.birim), (d) => d[1])[0]);
 
     // 1. segmentler yan yana
-    $('h-all').textContent = t.hAll(P, unitAll);
+    const curFix = (x) => (ES ? x.replace('TL/', '€/').replace('TRY/', '€/') : x);
+    $('h-all').textContent = curFix(t.hAll(P, unitAll));
+    const nAll = document.querySelector('[data-i18n="noteAll"]'); nAll.textContent = ES ? t.esNoteAll : (L === 'en' ? EN.noteAll : NOTE_TR);
+    document.querySelector('[data-i18n="range"]').parentElement.hidden = !!ES;
     const off = state.off[state.p] || [];
     const segRows = new Map(segs.map((s) => [s.k, rowsOf(s.seri)]));
     const lastAll = d3.max(segs, (s) => parse(s.son));
@@ -688,16 +753,17 @@
     // 2. seçili segment ya da ad
     const names = S.adlar.map((k) => ADL[k]);
     if (state.n && !S.adlar.includes(state.n)) state.n = '';
-    $('name').innerHTML = `<option value="">${esc(t.segAvg(nm(S)))}</option>` + names.map((a) => `<option value="${esc(a.anahtar)}">${esc(a.ad)}${a.yan ? ' · ' + t.side : ''}</option>`).join('');
+    $('name').innerHTML = `<option value="">${esc(ES ? t.esMain(ADL[S.ana].ad) : t.segAvg(nm(S)))}</option>` + names.map((a) => `<option value="${esc(a.anahtar)}">${esc(a.ad)}${a.yan ? ' · ' + t.side : ''}</option>`).join('');
     $('name').value = state.n;
     const full = state.n ? rowsOf(ADL[state.n].seri) : segRows.get(S.k);
     const unitS = unitName(state.n ? ADL[state.n].birim : S.birim);
-    $('h-seg').textContent = t.hSeg(P, nm(S), unitS);
+    $('h-seg').textContent = curFix(t.hSeg(P, nm(S), unitS)).replace(ES ? (L === 'en' ? 'daily' : 'günlük') : '\u0000', L === 'en' ? 'weekly' : 'haftalık');
     drawSeg($('chart-seg'), since(full, state.rSeg));
-    $('names').innerHTML = `<thead><tr>${t.th.map((h) => `<th>${h}</th>`).join('')}</tr></thead><tbody>` +
-      names.map((a) => `<tr><td>${esc(a.ad)}</td><td>${unitName(a.birim)}</td><td>${a.n}</td><td>${a.ilk}</td><td>${a.son}</td><td class="muted">${a.yan ? t.side : ''}</td></tr>`).join('') + '</tbody>';
+    $('names').innerHTML = `<thead><tr>${(ES ? t.thEs : t.th).map((h) => `<th>${h}</th>`).join('')}</tr></thead><tbody>` +
+      (ES ? [ADL[S.ana], ...names] : names).map((a) => `<tr><td>${esc(a.ad)}</td><td>${unitName(a.birim)}</td><td>${a.n}</td><td>${a.ilk}</td><td>${a.son}</td><td class="muted">${a.yan ? t.side : ''}</td></tr>`).join('') + '</tbody>';
 
     // 3. Türkiye – İspanya
+    if (ES) { await renderCmpEs(doc, S, segs); await renderRest(doc, S, segs, segRows, full, ADL, unitS, halN, P, ES); return; }
     const cmpLines = [];
     const kgU = S.birim === 'KG';
     const trW = kgU ? weeklyEur(segRows.get(S.k)) : [];
@@ -760,15 +826,46 @@
     const esData = Object.keys(doc.ispanya?.seriler || {}).length + Object.keys(doc.almeria?.seriler || {}).length > 0;
     drawCmp($('chart-cmp'), cmpIn, $('legend-cmp'), esData ? t.cmpNone(nm(S), esSeg) : t.noCmp(P));
 
+    await renderRest(doc, S, segs, segRows, full, ADL, unitS, halN, P, null);
+  }
+
+  // İspanya görünümünde karşılaştırma: seçili İspanya tipi + karşılığı olan Türkiye segmentleri (İzmir, Antalya)
+  async function renderCmpEs(doc, S, segs) {
+    const Kc = await karneOf(doc.k);
+    const lines = [{ name: t.esTr(nm(S)), color: css('--c-es2'), data: doc.almeria.seriler[S.ana].map(([d, v]) => ({ date: parse(d), eur: v })).filter((d) => d.date) }];
+    const mates = Kc ? Kc.segmentler.filter((x) => x.almeria && x.almeria.tip === S.tip) : [];
+    const ANT = doc.haller && doc.haller.antalya;
+    const trSeg = [];
+    mates.forEach((x) => {
+      for (const [h, src, c] of [['izmir', doc.segmentler, '--c-tr'], ['antalya', ANT ? ANT.segmentler : [], '--s8']]) {
+        const o = src.find((y) => y.k === x.k);
+        if (!o || o.birim !== 'KG') continue;
+        const w = weeklyEur(rowsOf(o.seri));
+        if (w.length) lines.push({ name: t.trLine(nm(o), t.halName[h]) + (x.almeria.kod === 'Y' ? ' ≈' : ''), color: css(c), data: w, tr: true });
+        if (h === 'izmir') trSeg.push(o);
+      }
+    });
+    const lastC = d3.max(lines, (l) => l.data[l.data.length - 1]?.date);
+    const from = state.rCmp === 'all' || !lastC ? null : new Date(lastC - (+state.rCmp) * 864e5);
+    const inP = lines.map((l) => ({ ...l, data: from ? l.data.filter((d) => d.date >= from) : l.data })).filter((l) => l.data.length);
+    const withTr = Kc ? [...new Set(Kc.segmentler.filter((x) => x.almeria && x.almeria.tip !== S.tip).map((x) => x.almeria.tip))]
+      .filter((tp) => segs.some((s) => s.tip === tp)).map((tp) => nm(segs.find((s) => s.tip === tp))) : [];
+    $('cmp-note').hidden = mates.length > 0;
+    $('cmp-note').textContent = mates.length ? '' : t.esNoTr(nm(S), withTr);
+    drawCmp($('chart-cmp'), inP, $('legend-cmp'), t.noData);
+    S._tr = trSeg[0] || null;
+  }
+
+  async function renderRest(doc, S, segs, segRows, full, ADL, unitS, halN, P, ES) {
     // göstergeler + özet
     const last = full[full.length - 1];
-    const r = last && rateOn(last.date);
+    const r = last && (ES ? null : rateOn(last.date));
     const wk = last && nearest(full, new Date(last.date - 7 * 864e5), 3);
     const yr = last && nearest(full, new Date(last.date - 365 * 864e5), 7);
-    const yrR = yr && rateOn(yr.date);
+    const yrR = yr && (ES ? null : rateOn(yr.date));
     const chg = (a, b) => (a && b ? a / b - 1 : null);
     const cls = (v) => (v == null ? '' : v > 0 ? 'up' : 'down');
-    const yE = last && chg(r && last.avg / r, yrR && yr.avg / yrR);
+    const yE = last && (ES ? chg(last.avg, yr?.avg) : chg(r && last.avg / r, yrR && yr.avg / yrR));
     const label = state.n ? ADL[state.n].ad : nm(S);
     const stale = last && (Date.now() - last.date) > 30 * 864e5;
     // segment sıralaması: son 7 gün ortalaması, aynı birimdeki ve son 30 günde işlem gören segmentler
@@ -781,11 +878,14 @@
     $('tiles').innerHTML = !last ? '' :
       tile(t.tLast(esc(label)), tl(last.avg), `${fmtDate(last.date)} · ${unitS}${r ? ` · ≈ ${eur(last.avg / r)}` : ''}`) +
       tile(t.tWeek, `<span class="${cls(chg(last.avg, wk?.avg))}">${pct(chg(last.avg, wk?.avg))}</span>`, wk ? `${tl(wk.avg)} · ${fmtDate(wk.date)}` : t.noWeek) +
-      tile(t.tYear, `<span class="${cls(yE)}">${pct(yE)}</span>`, yr ? `${t.inTl(pct(chg(last.avg, yr.avg)))} · ${fmtDate(yr.date)}` : t.noYear) +
+      tile(t.tYear, `<span class="${cls(yE)}">${pct(yE)}</span>`, yr ? `${ES ? tl(yr.avg) : t.inTl(pct(chg(last.avg, yr.avg)))} · ${fmtDate(yr.date)}` : t.noYear) +
       (recent.length > 1 && rk >= 0 ? tile(t.tRank, t.rank(rk + 1, recent.length), t.rankSub(esc(nm(recent[0].s)), tl(recent[0].v))) : '');
-    $('lede').innerHTML = (last ? t.lede(esc(P), esc(label), fmtDate(last.date), tl(last.avg), r ? eur(last.avg / r) : null, pct(yE), halN) + (stale ? ` <span class="muted">(${t.stale(fmtDate(last.date))})</span>` : '') : '') +
+    $('lede').innerHTML = (last ? (ES ? t.ledeEs(esc(P), esc(label), fmtDate(last.date), tl(last.avg), pct(yE)) : t.lede(esc(P), esc(label), fmtDate(last.date), tl(last.avg), r ? eur(last.avg / r) : null, pct(yE), halN)) + (stale ? ` <span class="muted">(${t.stale(fmtDate(last.date))})</span>` : '') : '') +
       t.ledeN(index.length, d3.sum(index, (p) => p.segment));
-    await renderKarne(doc, S);
+    if (ES) {
+      if (S._tr) await renderKarne(doc, S._tr); else { $('h-karne').textContent = t.hKarne(nm(doc), nm(S)); $('karne').innerHTML = ''; }
+      $('karne-hal').textContent = t.karneEs(S._tr ? nm(S._tr) : null);
+    } else await renderKarne(doc, S);
     renderOzet();
   }
 
