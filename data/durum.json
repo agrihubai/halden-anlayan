@@ -1,40 +1,40 @@
 {
- "guncelleme": "2026-11-05T16:55+00:00",
+ "guncelleme": "2026-11-06T13:08+00:00",
  "kaynaklar": {
   "kur": {
-   "durum": "hata",
-   "mesaj": "HTTP Error 503: Service Temporarily Unavailable",
-   "sure_sn": 10
+   "durum": "tamam",
+   "kayit": 5336,
+   "sure_sn": 2
   },
   "izmir": {
    "durum": "tamam",
-   "kayit": 28920,
-   "sure_sn": 34
+   "kayit": 29008,
+   "sure_sn": 25
   },
   "antalya": {
    "durum": "tamam",
-   "kayit": 8951,
-   "sure_sn": 43
+   "kayit": 9035,
+   "sure_sn": 50
   },
   "atb": {
    "durum": "tamam",
    "kayit": 852,
-   "sure_sn": 2
+   "sure_sn": 3
   },
   "junta": {
    "durum": "tamam",
    "kayit": 175856,
-   "sure_sn": 36
+   "sure_sn": 5
   },
   "hks": {
    "durum": "tamam",
-   "kayit": 796786,
-   "sure_sn": 1523
+   "kayit": 1181460,
+   "sure_sn": 84
   },
   "ispanya": {
-   "durum": "tamam",
-   "kayit": 61034,
-   "sure_sn": 120
+   "durum": "hata",
+   "mesaj": "AB: ürün listesi alınamadı",
+   "sure_sn": 2
   }
  }
 }

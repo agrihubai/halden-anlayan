@@ -1,8 +1,8 @@
 {
- "tarih": "2026-10-26",
+ "tarih": "2026-10-27",
  "kaynak": {
-  "PdfUrl": "/Hal/Uploads/GunlukFiyatlar/4bead306-4899-4a24-acd6-4d25f7f3a193_26.10.2026.pdf",
-  "PdfDate": "26.10.2026"
+  "PdfUrl": "/Hal/Uploads/GunlukFiyatlar/877c376f-0d81-4348-9627-e01f95871035_27.10.2026.pdf",
+  "PdfDate": "27.10.2026"
  },
  "satir": [
   {
@@ -186,16 +186,16 @@
    "v": "Karnabahar",
    "u": "KG",
    "lo": 35.0,
-   "hi": 65.0,
-   "avg": 50.0
+   "hi": 60.0,
+   "avg": 47.5
   },
   {
    "tur": "SEBZE",
    "v": "Kereviz",
    "u": "KG",
    "lo": 30.0,
-   "hi": 60.0,
-   "avg": 45.0
+   "hi": 50.0,
+   "avg": 40.0
   },
   {
    "tur": "SEBZE",
@@ -224,7 +224,7 @@
   {
    "tur": "SEBZE",
    "v": "Mısır",
-   "u": "KG",
+   "u": "ADET",
    "lo": 12.0,
    "hi": 22.0,
    "avg": 17.0
@@ -378,8 +378,8 @@
    "v": "Soğan (Yeşil)",
    "u": "KG",
    "lo": 35.0,
-   "hi": 60.0,
-   "avg": 47.5
+   "hi": 70.0,
+   "avg": 52.5
   },
   {
    "tur": "SEBZE",
@@ -441,9 +441,9 @@
    "tur": "MEYVE",
    "v": "Elma (Golden)",
    "u": "KG",
-   "lo": 40.0,
-   "hi": 70.0,
-   "avg": 55.0
+   "lo": 30.0,
+   "hi": 65.0,
+   "avg": 47.5
   },
   {
    "tur": "MEYVE",
@@ -457,9 +457,9 @@
    "tur": "MEYVE",
    "v": "Elma (Starking)",
    "u": "KG",
-   "lo": 45.0,
-   "hi": 70.0,
-   "avg": 57.5
+   "lo": 30.0,
+   "hi": 65.0,
+   "avg": 47.5
   },
   {
    "tur": "MEYVE",
