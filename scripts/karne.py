@@ -324,7 +324,7 @@ def es_karsilastir(doc, seg, seg_eur, ref, ref_eur, ref_ab, last, tr_sezon):
 
 
 # ---------------------------------------------------------------- Almería (Junta de Andalucía, üretici teslim fiyatı)
-AL_SIRA = [("I", "almacen"), ("S.E.", "almacen"), ("EXTRA", "almacen"), ("S.E.", "alhondiga"), ("I", "alhondiga"), ("S.E.", "arbol"), ("I", "arbol"), ("S.E.", "cm"), ("S.E.", "salida")]
+AL_SIRA = [("I", "almacen"), ("S.E.", "almacen"), ("EXTRA", "almacen"), ("S.E.", "alhondiga"), ("I", "alhondiga"), ("S.E.", "arbol"), ("I", "arbol"), ("S.E.", "cm"), ("S.E.", "campo"), ("S.E.", "salida")]
 
 
 def al_series(doc, tip, cat="I", pos="almacen"):

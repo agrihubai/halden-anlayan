@@ -289,7 +289,12 @@
     tr: {
       loading: 'Veri yükleniyor…', noData: 'Veri henüz yok.', notLoaded: 'Veri yüklenemedi.',
       cmpNone: (s, l) => `${s} segmentinin İspanya verisinde karşılığı yok. ` + (l.length ? `İspanya ile karşılaştırılabilen segmentler: ${l.join(', ')}.` : 'Bu ürünün hiçbir segmenti için İspanya karşılığı tanımlı değil.'),
-      noCmp: (p) => `${p} için İspanya verisi henüz eklenmedi. Avrupa Komisyonu verisi eşleştirildikçe burada görünecek.`,
+      noCmp: (p) => `${p} için resmî İspanya kaynaklarında (Junta de Andalucía, Avrupa Komisyonu) fiyat serisi yok.`,
+      cmpNoEs: (p) => `${p} için resmî İspanya kaynaklarında (Junta de Andalucía, Avrupa Komisyonu) fiyat serisi yok.`,
+      cmpUnit: (u) => `Türkiye'de bu segment ${u} başına satılıyor; İspanya fiyatı kg başına. Birimler farklı olduğu için Türkiye çizgisi bu grafikte yok, İspanya tek başına gösteriliyor.`,
+      cmpGen: (s, l) => `${s} segmentinin İspanya'da birebir ya da yakın karşılığı yok ya da seçili dönemde verisi yok. Kesikli çizgiler ürünün İspanya'daki bütün tiplerinin genel fiyatıdır; segment karşılaştırması değil, genel düzey içindir.` + (l.length ? ` Segment düzeyinde karşılaştırılabilenler: ${l.join(', ')}.` : ''),
+      genAb: 'İspanya · ürün geneli · AB paketleme çıkışı (bütün tipler)',
+      genAl: (x, il) => `İspanya · ürün geneli · ${il} · ${x} (Junta)`,
       avg: 'Ortalama', lo: 'En düşük', hi: 'En yüksek', rate: (r) => `ECB kuru: 1 € = ₺${r}`, noRate: 'Bu tarih için kur yok',
       week: (d) => `${d} haftası`, trLine: (s, h) => `Türkiye · ${h} · ${s}`, es: 'İspanya',
       hAll: (p, u) => `${p}: segmentler yan yana (TL/${u})`, hSeg: (p, s, u) => `${p} · ${s}: günlük fiyat (TL/${u})`,
@@ -360,7 +365,12 @@
     en: {
       loading: 'Loading data…', noData: 'No data yet.', notLoaded: 'Data could not be loaded.',
       cmpNone: (s, l) => `${s} has no counterpart in the Spanish data. ` + (l.length ? `Segments comparable with Spain: ${l.join(', ')}.` : 'No segment of this product has a Spanish counterpart defined.'),
-      noCmp: (p) => `No Spanish data has been added for ${p.toLowerCase()} yet. It will appear here as European Commission data is matched.`,
+      noCmp: (p) => `Official Spanish sources (Junta de Andalucía, European Commission) have no price series for ${p.toLowerCase()}.`,
+      cmpNoEs: (p) => `Official Spanish sources (Junta de Andalucía, European Commission) have no price series for ${p.toLowerCase()}.`,
+      cmpUnit: (u) => `In Turkey this segment is sold per ${u}; Spanish prices are per kg. As the units differ, the Turkish line is left out and Spain is shown on its own.`,
+      cmpGen: (s, l) => `${s} has no equivalent or close counterpart in Spain, or none with data in the selected period. Dashed lines are the product's general Spanish price across all types: a general level, not a segment comparison.` + (l.length ? ` Comparable at segment level: ${l.join(', ')}.` : ''),
+      genAb: 'Spain · product-wide · EU ex-packaging (all types)',
+      genAl: (x, il) => `Spain · product-wide · ${il} · ${x} (Junta)`,
       avg: 'Average', lo: 'Lowest', hi: 'Highest', rate: (r) => `ECB rate: €1 = ₺${r}`, noRate: 'No exchange rate for this date',
       week: (d) => `Week of ${d}`, trLine: (s, h) => `Turkey · ${h} · ${s}`, es: 'Spain',
       hAll: (p, u) => `${p}: segments side by side (TRY/${u})`, hSeg: (p, s, u) => `${p} · ${s}: daily price (TRY/${u})`,
@@ -610,14 +620,14 @@
 
   // ---- 3. Türkiye – İspanya (EUR)
   function drawCmp(el, lines, legendEl, emptyMsg) {
-    legendEl.innerHTML = lines.map((l) => `<span><i style="background:${l.color}"></i>${esc(l.name)}</span>`).join('');
-    if (lines.length < 2) return empty(el, emptyMsg);
+    legendEl.innerHTML = lines.map((l) => `<span><i style="background:${l.dash ? `repeating-linear-gradient(90deg,${l.color} 0 4px,transparent 4px 6px)` : l.color}"></i>${esc(l.name)}</span>`).join('');
+    if (!lines.some((l) => !l.tr)) return empty(el, emptyMsg);
     const all = lines.flatMap((l) => l.data);
     const f = frame(el);
     const x = d3.scaleUtc().domain(d3.extent(all, (d) => d.date)).range([0, f.iw]);
     const y = d3.scaleLinear().domain([0, d3.max(all, (d) => d.eur) * 1.05]).nice().range([f.ih, 0]);
     const g = axes(f, x, y, (v) => '€' + d3.format('.2~f')(v));
-    for (const l of lines) g.append('path').datum(l.data).attr('fill', 'none').attr('stroke', l.color).attr('stroke-width', l.tr ? 2 : 1.5)
+    for (const l of lines) g.append('path').datum(l.data).attr('fill', 'none').attr('stroke', l.color).attr('stroke-width', l.tr ? 2 : 1.5).attr('stroke-dasharray', l.dash ? '5 3' : null)
       .attr('d', d3.line().x((d) => x(d.date)).y((d) => y(d.eur)).curve(d3.curveMonotoneX));
     const rule = g.append('line').attr('y1', 0).attr('y2', f.ih).attr('stroke', css('--axis')).style('display', 'none');
     g.append('rect').attr('width', f.iw).attr('height', f.ih).attr('fill', 'transparent')
@@ -689,7 +699,8 @@
 
     // 3. Türkiye – İspanya
     const cmpLines = [];
-    const trW = weeklyEur(segRows.get(S.k));
+    const kgU = S.birim === 'KG';
+    const trW = kgU ? weeklyEur(segRows.get(S.k)) : [];
     if (trW.length) cmpLines.push({ name: t.trLine(nm(S), halN), color: css('--c-tr'), data: trW, tr: true });
     const Kc = await karneOf(doc.k);
     const kSeg = Kc && (Kc.segmentler.find((x) => x.k === S.k) || {});
@@ -698,8 +709,8 @@
     if (alRows) cmpLines.push({ name: t.alLine(alName(alTip.tip), ilName(alTip.il)) + (alTip.kod === 'Y' ? ' ≈' : ''), color: css('--c-es2'), data: alRows.map(([d, v]) => ({ date: parse(d), eur: v })), al: true });
     const otherSegs = useAnt ? doc.segmentler : (ANT ? ANT.segmentler : []);
     const oS = otherSegs.find((x) => x.k === S.k);
-    if (oS) { const oW = weeklyEur(rowsOf(oS.seri)); if (oW.length) cmpLines.push({ name: t.trLine(nm(oS), t.halName[useAnt ? 'izmir' : 'antalya']), color: css('--s8'), data: oW, tr: true }); }
-    // İspanya: yalnız karşılık tablosundaki AB çeşidi (E; Y düğmeyle). "Bütün tipler" serisi kullanılmaz.
+    if (oS && oS.birim === 'KG' && kgU) { const oW = weeklyEur(rowsOf(oS.seri)); if (oW.length) cmpLines.push({ name: t.trLine(nm(oS), t.halName[useAnt ? 'izmir' : 'antalya']), color: css('--s8'), data: oW, tr: true }); }
+    // İspanya: önce karşılık tablosundaki segment karşılığı (E, Y ≈). Karşılık yoksa aşağıda ürün geneli seri kesikli çizgiyle, etiketli.
     const esAll = Object.entries(doc.ispanya?.seriler || {}).map(([n, rows]) => ({ n, data: rows.map(([d, v]) => ({ date: parse(d), eur: v })).filter((d) => d.date) }));
     const esK = kSeg && kSeg.es && showKod(kSeg.es.kod) ? kSeg.es.ab : null;
     const esPick = esK ? esAll.filter((s) => s.n.endsWith(' · ' + esK)) : [];
@@ -713,11 +724,41 @@
     const from = state.rCmp === 'all' || !lastC ? null : new Date(lastC - (+state.rCmp) * 864e5);
     // seçili dönemde verisi olmayan çizgi (ör. AB çeşit serileri 2017'de bitiyor) gösterilmez
     const cmpIn = cmpLines.map((l) => ({ ...l, data: from ? l.data.filter((d) => d.date >= from) : l.data })).filter((l) => l.data.length);
-    const esVar = cmpIn.some((l) => !l.tr);
-    const esSeg = Kc ? Kc.segmentler.filter((x) => (x.es && showKod(x.es.kod)) || (x.almeria && showKod(x.almeria.kod))).map((x) => { const o = doc.segmentler.find((y) => y.k === x.k) || segs.find((y) => y.k === x.k); return o ? nm(o) : x.k; }) : [];
-    $('cmp-note').hidden = esVar || !trW.length;
-    $('cmp-note').textContent = esVar ? '' : t.cmpNone(nm(S), esSeg);
-    drawCmp($('chart-cmp'), cmpIn, $('legend-cmp'), t.noCmp(P));
+    let esVar = cmpIn.some((l) => !l.tr), genel = false;
+    if (!esVar) {
+      const fromOk = (l) => ({ ...l, data: from ? l.data.filter((d) => d.date >= from) : l.data });
+      const lastOf = (rows) => rows[rows.length - 1]?.[0] || '';
+      // Yalnız ürünün bütününü temsil eden seriler: AB 'bütün tipler' ve Junta'nın tip ayırmadığı genel seri (ör. LECHUGA, COL)
+      const n3 = (r) => r.filter(([d]) => d >= String(new Date().getFullYear() - 3)).length;
+      const gAb = Object.entries(doc.ispanya?.seriler || {}).filter(([n]) => /All types|All sweet|National weighted/.test(n))
+        .sort((a, b) => (b[0].startsWith('Paketleme') - a[0].startsWith('Paketleme')) || n3(b[1]) - n3(a[1]) || b[1].length - a[1].length)[0];
+      const posR = (k) => (/· (I|S\.E\.) · (almacen|arbol)$/.test(k) ? 0 : 1);
+      const pl = (x) => (x || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase();
+      const alE = Object.entries(doc.almeria?.seriler || {}).filter(([, r]) => r.length >= 13);
+      const gen = new Set([pl(doc.es), ...(ALU[doc.k] || [])]);
+      const recentAl = alE.filter(([k]) => gen.has(pl(k.split(' · ')[0])));
+      const inAl = (k) => (((doc.almeria.iller || {})[k]) || ['AL']).includes('AL');
+      const gAl = recentAl.sort((a, b) => inAl(b[0]) - inAl(a[0]) || posR(a[0]) - posR(b[0]) || n3(b[1]) - n3(a[1]) || b[1].length - a[1].length)[0];
+      const gl = [];
+      if (gAl) gl.push({ name: t.genAl(alName(gAl[0].split(' · ')[0]), ilName(((doc.almeria.iller || {})[gAl[0]]) || [])), color: css('--c-es2'), dash: true, data: gAl[1].map(([d, v]) => ({ date: parse(d), eur: v })).filter((d) => d.date) });
+      if (gAb) gl.push({ name: t.genAb, color: css('--c-es1'), dash: true, data: gAb[1].map(([d, v]) => ({ date: parse(d), eur: v })).filter((d) => d.date) });
+      let gIn = lastC ? gl.map(fromOk).filter((l) => l.data.length) : [];
+      if (!lastC) {   // Türkiye çizgisi yoksa (birim farklı) dönem İspanya serisine göre
+        const lg = d3.max(gl, (l) => l.data[l.data.length - 1]?.date);
+        const f2 = state.rCmp === 'all' || !lg ? null : new Date(lg - (+state.rCmp) * 864e5);
+        gIn = gl.map((l) => ({ ...l, data: f2 ? l.data.filter((d) => d.date >= f2) : l.data })).filter((l) => l.data.length);
+      }
+      if (!gIn.length) gIn = gl.filter((l) => l.data.length);   // seçili dönemde yoksa bütün dönem
+      if (gIn.length) { cmpIn.push(...gIn); esVar = genel = true; }
+    }
+    const esSeg = Kc ? Kc.segmentler.filter((x) => x.k !== S.k && ((x.es && showKod(x.es.kod)) || (x.almeria && showKod(x.almeria.kod)))).map((x) => { const o = doc.segmentler.find((y) => y.k === x.k) || segs.find((y) => y.k === x.k); return o ? nm(o) : x.k; }) : [];
+    const notes = [];
+    if (!kgU) notes.push(t.cmpUnit(unitName(S.birim)));
+    if (genel) notes.push(t.cmpGen(nm(S), esSeg));
+    $('cmp-note').hidden = !notes.length;
+    $('cmp-note').textContent = notes.join(' ');
+    const esData = Object.keys(doc.ispanya?.seriler || {}).length + Object.keys(doc.almeria?.seriler || {}).length > 0;
+    drawCmp($('chart-cmp'), cmpIn, $('legend-cmp'), esData ? t.cmpNone(nm(S), esSeg) : t.noCmp(P));
 
     // göstergeler + özet
     const last = full[full.length - 1];
@@ -763,6 +804,7 @@
   const r2 = (v) => v == null ? '—' : v.toLocaleString(loc, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   const showKod = (kod) => kod === 'E' || (kod === 'Y' && !state.esSadece);
   const IL = { AL: 'Almería', GR: 'Granada', MA: 'Málaga', SE: 'Sevilla', CA: 'Cádiz', CO: 'Córdoba', HU: 'Huelva', JA: 'Jaén' };
+  const ALU = {"domates":["TOMATE"],"biber":["PIMIENTO"],"hiyar":["PEPINO"],"patlican":["BERENJENA"],"kabak":["CALABACIN"],"kavun":["MELON"],"karpuz":["SANDIA"],"fasulye":["JUDIA VERDE"],"lahana":["COL"],"marul":["LECHUGA"],"portakal":["NARANJA"],"mandalina":["MANDARINA"],"nektarin":["NECTARINA"],"seftali":["MELOCOTON"],"avokado":["AGUACATE"],"sarimsak":["AJO"],"sogan":["CEBOLLA","CEBOLLETA"],"karnabahar":["COLIFLOR"],"patates":["PATATA"],"brokoli":["BROCOLI"],"cennet-elmasi":["CAQUI"],"incir":["BREVAS E HIGOS"],"ispanak":["ESPINACA"],"kestane":["CASTANA"],"malta-erigi":["NISPERO"],"mango":["MANGO"],"pancar":["REMOLACHA DE MESA"],"pazi":["ACELGA"],"bal-kabagi":["CALABAZA"],"nar":["GRANADA"],"enginar":["ALCACHOFA"],"bezelye":["GUISANTE"],"bakla":["HABA VERDE"],"pirasa":["PUERRO"],"havuc":["ZANAHORIA"],"cilek":["FRESON"],"limon":["LIMON"],"armut":["PERA"],"uzum":["UVA DE MESA"],"erik":["CIRUELA"],"kiraz":["CEREZA"],"kayisi":["ALBARICOQUE"]};   // Junta ürün adı (genel, tip ayırmayan seri) — sozluk/urunler.json almeria.urunler
   const ilName = (a) => (a || []).map((x) => IL[x] || x).join(', ') || 'Endülüs';
   const alName = (tip) => (AL_TIP[L][tip] || tip.charAt(0) + tip.slice(1).toLowerCase());
   const abShort = (a) => (a || '').replace(/^[^-]+ - /, '').replace(/=.*$/, '').replace('All types and varieties', L === 'en' ? 'all types' : 'bütün tipler');

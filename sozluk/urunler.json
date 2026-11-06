@@ -2448,7 +2448,9 @@
   "portakal/washington": {
    "kod": "Y",
    "junta": [
-    "NAVEL/WASHINGTON-THOMSON"
+    "NAVEL/S.E.",
+    "NAVEL/WASHINGTON-THOMSON",
+    "NAVEL"
    ],
    "ab": "Oranges - Navel",
    "not": "Junta tipi birebir ama seyrek; AB 'Navel' grubu daha geniş"
@@ -2705,6 +2707,148 @@
    ],
    "ab": null,
    "not": ""
+  },
+  "hiyar/standart": {
+   "kod": "Y",
+   "junta": [
+    "FRANCES"
+   ],
+   "ab": "Cucumbers - Smooth varieties",
+   "not": "TR standart = düz kabuklu Beit Alpha tipi; Francés orta boy düz kabuklu",
+   "eklenme": "2026-11-06, Claude önerisi, kontrol edilecek"
+  },
+  "hiyar/torba": {
+   "kod": "Y",
+   "junta": [
+    "FRANCES"
+   ],
+   "ab": "Cucumbers - Smooth varieties",
+   "not": "Torba = paketli küçük düz kabuklu hıyar",
+   "eklenme": "2026-11-06, Claude önerisi, kontrol edilecek"
+  },
+  "biber/dolma": {
+   "kod": "Y",
+   "junta": [
+    "CALIFORNIA-VERDE"
+   ],
+   "ab": "Peppers - Carré vert",
+   "not": "Dolmalık yeşil ↔ yeşil California (blok); TR dolma daha ince etli",
+   "eklenme": "2026-11-06, Claude önerisi, kontrol edilecek"
+  },
+  "biber/sivri": {
+   "kod": "Y",
+   "junta": [
+    "ITALIANO"
+   ],
+   "ab": "Peppers - Allongé vert",
+   "not": "Sivri yeşil ↔ uzun ince yeşil Italiano; acılık farklı olabilir",
+   "eklenme": "2026-11-06, Claude önerisi, kontrol edilecek"
+  },
+  "kavun/tarla": {
+   "kod": "Y",
+   "junta": [
+    "PIEL DE SAPO"
+   ],
+   "ab": null,
+   "not": "İkisi de Inodorus grubu (kışlık, kokusuz) kavun",
+   "eklenme": "2026-11-06, Claude önerisi, kontrol edilecek"
+  },
+  "kavun/kirkagac": {
+   "kod": "Y",
+   "junta": [
+    "PIEL DE SAPO"
+   ],
+   "ab": null,
+   "not": "Kırkağaç Inodorus grubu; Piel de sapo aynı grubun İspanya tipi",
+   "eklenme": "2026-11-06, Claude önerisi, kontrol edilecek"
+  },
+  "lahana/standart": {
+   "kod": "Y",
+   "junta": [
+    "COL"
+   ],
+   "ab": "Cabbage - All types and varieties",
+   "not": "Tip belirtilmemiş lahana ↔ İspanya genel 'col'",
+   "eklenme": "2026-11-06, Claude önerisi, kontrol edilecek"
+  },
+  "limon/lamas": {
+   "kod": "Y",
+   "junta": [
+    "FINO O MESERO"
+   ],
+   "ab": null,
+   "not": "Lamas kışlık Akdeniz tipi; Fino (Primofiori) İspanya'nın kışlık limonu",
+   "eklenme": "2026-11-06, Claude önerisi, kontrol edilecek"
+  },
+  "patates/calma": {
+   "kod": "Y",
+   "junta": [
+    "MEDIA ESTACION"
+   ],
+   "ab": null,
+   "not": "Ana ürün (çalma) ↔ orta mevsim hasadı",
+   "eklenme": "2026-11-06, Claude önerisi, kontrol edilecek"
+  },
+  "patates/standart": {
+   "kod": "Y",
+   "junta": [
+    "MEDIA ESTACION"
+   ],
+   "ab": null,
+   "not": "",
+   "eklenme": "2026-11-06, Claude önerisi, kontrol edilecek"
+  },
+  "patates/eski": {
+   "kod": "Y",
+   "junta": [
+    "TARDIA"
+   ],
+   "ab": null,
+   "not": "Depolanmış geççi patates ↔ geç hasat",
+   "eklenme": "2026-11-06, Claude önerisi, kontrol edilecek"
+  },
+  "mandalina/murkot": {
+   "kod": "Y",
+   "junta": [
+    "MANDARINOS E HIBRIDOS-AFOURER-NADORCOTT"
+   ],
+   "ab": null,
+   "not": "Afourer/Nadorcott, Murcott'tan elde edilmiş geççi melez",
+   "eklenme": "2026-11-06, Claude önerisi, kontrol edilecek"
+  },
+  "portakal/sikmalik": {
+   "kod": "Y",
+   "junta": [
+    "INDUSTRIA"
+   ],
+   "ab": null,
+   "not": "Sıkmalık ↔ sanayilik (meyve suyu) portakal",
+   "eklenme": "2026-11-06, Claude önerisi, kontrol edilecek"
+  },
+  "kiraz/salihli": {
+   "kod": "Y",
+   "junta": [
+    "CEREZA"
+   ],
+   "ab": "Cherries - All sweet varieties",
+   "not": "İspanya tatlı kirazı tek grup veriyor",
+   "eklenme": "2026-11-06, Claude önerisi, kontrol edilecek"
+  },
+  "kiraz/napolyon": {
+   "kod": "Y",
+   "junta": [
+    "CEREZA"
+   ],
+   "ab": "Cherries - All sweet varieties",
+   "not": "İspanya tatlı kirazı tek grup veriyor",
+   "eklenme": "2026-11-06, Claude önerisi, kontrol edilecek"
+  },
+  "uzum/red-globe": {
+   "kod": "Y",
+   "junta": [],
+   "ab": "Table Grapes - With seeds in large packaging",
+   "not": "Red Globe çekirdekli; AB grubu bütün çekirdekli üzümler",
+   "eklenme": "2026-11-06, Claude önerisi, kontrol edilecek"
   }
  }
 }
