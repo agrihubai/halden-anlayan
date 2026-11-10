@@ -1,7 +1,7 @@
 {
 "kaynak": "https://www.antalyaborsa.org.tr/endeksler",
 "dosya": "https://www.antalyaborsa.org.tr/_fm/206-202610020900000001.xlsx",
-"indirme": "2026-11-09",
+"indirme": "2026-11-10",
 "not": "Miktar endeksleri 2015=100 (Excel başlığı; 2015 aylık ortalaması 100,00). Metodoloji belgesi temel yılı 2005 olarak veriyor. Fiyat endekslerinin tabanı veriyle doğrulanamadı.",
 "seriler": {
 "domates_miktar": [

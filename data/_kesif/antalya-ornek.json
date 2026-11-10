@@ -1,8 +1,8 @@
 {
- "tarih": "2026-10-30",
+ "tarih": "2026-10-31",
  "kaynak": {
-  "PdfUrl": "/Hal/Uploads/GunlukFiyatlar/1145d2b5-f040-49c8-b422-444afab7a8e7_30.10.2026.pdf",
-  "PdfDate": "30.10.2026"
+  "PdfUrl": "/Hal/Uploads/GunlukFiyatlar/4a85129c-ffdd-4f9f-9519-0fe9e6bc25b0_31.10.20266.pdf",
+  "PdfDate": "31.10.2026"
  },
  "satir": [
   {
@@ -10,8 +10,8 @@
    "v": "Biber(Dolma)",
    "u": "KG",
    "lo": 35.0,
-   "hi": 55.0,
-   "avg": 45.0
+   "hi": 50.0,
+   "avg": 42.5
   },
   {
    "tur": "SEBZE",
@@ -34,32 +34,32 @@
    "v": "Biber (Kapya)",
    "u": "KG",
    "lo": 50.0,
-   "hi": 90.0,
-   "avg": 70.0
+   "hi": 100.0,
+   "avg": 75.0
   },
   {
    "tur": "SEBZE",
    "v": "Biber (Şili)",
    "u": "KG",
    "lo": 100.0,
-   "hi": 180.0,
-   "avg": 140.0
+   "hi": 200.0,
+   "avg": 150.0
   },
   {
    "tur": "SEBZE",
    "v": "Biber (Sivri)",
    "u": "KG",
    "lo": 40.0,
-   "hi": 80.0,
-   "avg": 60.0
+   "hi": 70.0,
+   "avg": 55.0
   },
   {
    "tur": "SEBZE",
    "v": "Biber (Üçburun)",
    "u": "KG",
    "lo": 45.0,
-   "hi": 75.0,
-   "avg": 60.0
+   "hi": 70.0,
+   "avg": 57.5
   },
   {
    "tur": "SEBZE",
@@ -82,8 +82,8 @@
    "v": "Domates(Çeri)",
    "u": "KG",
    "lo": 100.0,
-   "hi": 200.0,
-   "avg": 150.0
+   "hi": 180.0,
+   "avg": 140.0
   },
   {
    "tur": "SEBZE",
@@ -106,16 +106,16 @@
    "v": "Domates (Kokteyl)",
    "u": "KG",
    "lo": 50.0,
-   "hi": 110.0,
-   "avg": 80.0
+   "hi": 100.0,
+   "avg": 75.0
   },
   {
    "tur": "SEBZE",
    "v": "Fasulye",
    "u": "KG",
    "lo": 50.0,
-   "hi": 90.0,
-   "avg": 70.0
+   "hi": 110.0,
+   "avg": 80.0
   },
   {
    "tur": "SEBZE",
@@ -138,8 +138,8 @@
    "v": "Hıyar",
    "u": "KG",
    "lo": 20.0,
-   "hi": 45.0,
-   "avg": 32.5
+   "hi": 50.0,
+   "avg": 35.0
   },
   {
    "tur": "SEBZE",
@@ -234,8 +234,8 @@
    "v": "Mantar",
    "u": "KG",
    "lo": 80.0,
-   "hi": 120.0,
-   "avg": 100.0
+   "hi": 135.0,
+   "avg": 107.5
   },
   {
    "tur": "SEBZE",
@@ -314,16 +314,16 @@
    "v": "Patlıcan",
    "u": "KG",
    "lo": 25.0,
-   "hi": 70.0,
-   "avg": 47.5
+   "hi": 60.0,
+   "avg": 42.5
   },
   {
    "tur": "SEBZE",
    "v": "Patlıcan (Topak)",
    "u": "KG",
    "lo": 25.0,
-   "hi": 60.0,
-   "avg": 42.5
+   "hi": 50.0,
+   "avg": 37.5
   },
   {
    "tur": "SEBZE",
