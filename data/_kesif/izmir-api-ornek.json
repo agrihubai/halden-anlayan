@@ -1,5 +1,5 @@
 {
- "BultenTarihi": "2026-11-06T00:00:00",
+ "BultenTarihi": "2026-11-07T00:00:00",
  "HalFiyatListesi": [
   {
    "OrtalamaUcret": 125,
@@ -15,10 +15,10 @@
    "Gorsel": "8d021386-fa36-4850-bb28-bc0e6b7c7a56.jpg"
   },
   {
-   "OrtalamaUcret": 55,
+   "OrtalamaUcret": 52.5,
    "MalAdi": "ARMUT  DEVECI",
    "Birim": "KG",
-   "AsgariUcret": 40,
+   "AsgariUcret": 35,
    "AzamiUcret": 70,
    "MalId": 199,
    "tarih": null,
@@ -54,11 +54,11 @@
    "Gorsel": "5522646d-2ece-4abe-b528-38a9fefc8dea.jpg"
   },
   {
-   "OrtalamaUcret": 42.5,
+   "OrtalamaUcret": 35,
    "MalAdi": "AVAKADO",
    "Birim": "ADET",
-   "AsgariUcret": 35,
-   "AzamiUcret": 50,
+   "AsgariUcret": 30,
+   "AzamiUcret": 40,
    "MalId": 52,
    "tarih": null,
    "HalTuru": 1,
@@ -67,11 +67,11 @@
    "Gorsel": "3dd663f5-15d9-461f-b7e0-a4a51ad10606.jpg"
   },
   {
-   "OrtalamaUcret": 60,
+   "OrtalamaUcret": 40,
    "MalAdi": "AYVA",
    "Birim": "KG",
-   "AsgariUcret": 40,
-   "AzamiUcret": 80,
+   "AsgariUcret": 20,
+   "AzamiUcret": 60,
    "MalId": 1,
    "tarih": null,
    "HalTuru": 1,
@@ -80,11 +80,11 @@
    "Gorsel": "b1f678d0-4bfa-4bd5-acc5-268a99511a21.jpg"
   },
   {
-   "OrtalamaUcret": 80,
+   "OrtalamaUcret": 85,
    "MalAdi": "BARBUNYA TAZE",
    "Birim": "KG",
    "AsgariUcret": 60,
-   "AzamiUcret": 100,
+   "AzamiUcret": 110,
    "MalId": 112,
    "tarih": null,
    "HalTuru": 1,
@@ -93,11 +93,11 @@
    "Gorsel": "1d2b43f4-bdf5-416f-9828-c5ec625d480c.jpg"
   },
   {
-   "OrtalamaUcret": 55,
+   "OrtalamaUcret": 52.5,
    "MalAdi": "BİBER  DOLMA",
    "Birim": "KG",
    "AsgariUcret": 40,
-   "AzamiUcret": 70,
+   "AzamiUcret": 65,
    "MalId": 107,
    "tarih": null,
    "HalTuru": 1,
@@ -106,11 +106,11 @@
    "Gorsel": "fcda6250-7681-4fa9-91ab-b1dd47369ccf.jpg"
   },
   {
-   "OrtalamaUcret": 85,
+   "OrtalamaUcret": 90,
    "MalAdi": "BİBER  KIL ACI",
    "Birim": "KG",
    "AsgariUcret": 50,
-   "AzamiUcret": 120,
+   "AzamiUcret": 130,
    "MalId": 148,
    "tarih": null,
    "HalTuru": 1,
@@ -119,11 +119,11 @@
    "Gorsel": "caaa92a9-b043-4558-b273-ede182151744.jpg"
   },
   {
-   "OrtalamaUcret": 57.5,
+   "OrtalamaUcret": 55,
    "MalAdi": "BİBER  SİVRİ",
    "Birim": "KG",
    "AsgariUcret": 40,
-   "AzamiUcret": 75,
+   "AzamiUcret": 70,
    "MalId": 106,
    "tarih": null,
    "HalTuru": 1,
@@ -145,11 +145,11 @@
    "Gorsel": "7f5bb06d-aaba-4e9f-8ed5-ae38b5c12dd7.jpg"
   },
   {
-   "OrtalamaUcret": 55,
+   "OrtalamaUcret": 50,
    "MalAdi": "BİBER ÇARLİSTON",
    "Birim": "KG",
    "AsgariUcret": 40,
-   "AzamiUcret": 70,
+   "AzamiUcret": 60,
    "MalId": 138,
    "tarih": null,
    "HalTuru": 1,
@@ -158,10 +158,10 @@
    "Gorsel": "4847eb03-18ef-4d61-8de9-bf004fe54dac.jpg"
   },
   {
-   "OrtalamaUcret": 90,
+   "OrtalamaUcret": 100,
    "MalAdi": "BİBER KIRMIZI",
    "Birim": "KG",
-   "AsgariUcret": 60,
+   "AsgariUcret": 80,
    "AzamiUcret": 120,
    "MalId": 142,
    "tarih": null,
@@ -171,11 +171,11 @@
    "Gorsel": "e57aa2f6-5f58-4e78-bf4c-46797317e932.jpg"
   },
   {
-   "OrtalamaUcret": 57.5,
+   "OrtalamaUcret": 60,
    "MalAdi": "BİBER KÖY(MAZO)",
    "Birim": "KG",
    "AsgariUcret": 40,
-   "AzamiUcret": 75,
+   "AzamiUcret": 80,
    "MalId": 1554,
    "tarih": null,
    "HalTuru": 1,
@@ -213,8 +213,8 @@
    "OrtalamaUcret": 60,
    "MalAdi": "CENNET ELMASI",
    "Birim": "KG",
-   "AsgariUcret": 40,
-   "AzamiUcret": 80,
+   "AsgariUcret": 30,
+   "AzamiUcret": 90,
    "MalId": 61,
    "tarih": null,
    "HalTuru": 1,
@@ -223,11 +223,11 @@
    "Gorsel": "ee709a33-f4f3-4954-a560-0dc28f8a0501.jpg"
   },
   {
-   "OrtalamaUcret": 250,
+   "OrtalamaUcret": 400,
    "MalAdi": "CILEK",
    "Birim": "KG",
-   "AsgariUcret": 150,
-   "AzamiUcret": 350,
+   "AsgariUcret": 300,
+   "AzamiUcret": 500,
    "MalId": 5,
    "tarih": null,
    "HalTuru": 1,
@@ -283,4 +283,4 @@
    "MalId": 161,
    "tarih": null,
    "HalTuru": 1,
-   "M
+   "Ma
