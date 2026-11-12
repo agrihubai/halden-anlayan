@@ -11,7 +11,7 @@
 "ispanya": true,
 "almeria": 75,
 "antalya": 4,
-"gazipasa": 0
+"gazipasa": 1
 },
 {
 "k": "biber",
@@ -25,7 +25,7 @@
 "ispanya": true,
 "almeria": 43,
 "antalya": 7,
-"gazipasa": 0
+"gazipasa": 5
 },
 {
 "k": "hiyar",
@@ -39,7 +39,7 @@
 "ispanya": true,
 "almeria": 21,
 "antalya": 2,
-"gazipasa": 0
+"gazipasa": 3
 },
 {
 "k": "patlican",
@@ -53,7 +53,7 @@
 "ispanya": true,
 "almeria": 25,
 "antalya": 2,
-"gazipasa": 0
+"gazipasa": 2
 },
 {
 "k": "kabak",
@@ -67,7 +67,7 @@
 "ispanya": true,
 "almeria": 12,
 "antalya": 1,
-"gazipasa": 0
+"gazipasa": 1
 },
 {
 "k": "bal-kabagi",
@@ -151,7 +151,7 @@
 "ispanya": true,
 "almeria": 39,
 "antalya": 1,
-"gazipasa": 0
+"gazipasa": 1
 },
 {
 "k": "bezelye",
@@ -935,7 +935,7 @@
 "ispanya": true,
 "almeria": 0,
 "antalya": 2,
-"gazipasa": 0
+"gazipasa": 1
 },
 {
 "k": "nar",

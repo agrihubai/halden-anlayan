@@ -1,15 +1,15 @@
 {
- "guncelleme": "2026-11-12T11:14+00:00",
+ "guncelleme": "2026-11-12T11:43+00:00",
  "kaynaklar": {
   "kur": {
    "durum": "tamam",
    "kayit": 5340,
-   "sure_sn": 2
+   "sure_sn": 3
   },
   "izmir": {
    "durum": "tamam",
    "kayit": 28920,
-   "sure_sn": 15
+   "sure_sn": 19
   },
   "antalya": {
    "durum": "tamam",
@@ -17,8 +17,8 @@
    "sure_sn": 41
   },
   "gazipasa": {
-   "durum": "hata",
-   "mesaj": "Gazipaşa: liste tarihi okunamadı ya da beklenmedik (None); kaydedilmedi",
+   "durum": "tamam",
+   "kayit": 16,
    "sure_sn": 0
   },
   "atb": {
@@ -29,17 +29,17 @@
   "junta": {
    "durum": "tamam",
    "kayit": 175970,
-   "sure_sn": 4
+   "sure_sn": 3
   },
   "hks": {
    "durum": "tamam",
    "kayit": 1184169,
-   "sure_sn": 74
+   "sure_sn": 81
   },
   "ispanya": {
    "durum": "tamam",
    "kayit": 61034,
-   "sure_sn": 1505
+   "sure_sn": 1303
   }
  }
 }
