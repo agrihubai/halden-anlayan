@@ -57,12 +57,20 @@ def num(s: str) -> float | None:
 
 def parse(page: str) -> tuple[dt.date | None, list[dict]]:
     """Sayfa HTML'i → (liste tarihi, satırlar)."""
-    m = re.search(r"<h1[^>]*>(.*?)</h1>", page, re.S | re.I)
+    # Tarih: sayfada birden çok <h1> olabilir (site başlığı); tarihi taşıyan ilk başlık, yoksa "Güncel Liste" öncesi metin
     d = None
-    if m:
-        dm = re.search(r"(\d{1,2})\s+([A-Za-zÇĞİÖŞÜçğıöşü]+)\s+(\d{4})", text(m.group(1)))
-        if dm and upper_tr(dm.group(2)) in AYLAR:
-            d = dt.date(int(dm.group(3)), AYLAR[upper_tr(dm.group(2))], int(dm.group(1)))
+    adaylar = [text(x) for x in re.findall(r"<h1[^>]*>(.*?)</h1>", page, re.S | re.I)]
+    g = page.upper().find("GÜNCEL LISTE") if "GÜNCEL LISTE" in page.upper() else page.find("Güncel Liste")
+    if g > 0:
+        adaylar.append(text(page[max(0, g - 600):g]))
+    for aday in adaylar:
+        for dm in re.finditer(r"(\d{1,2})\s+([A-Za-zÇĞİÖŞÜçğıöşü]+)\s+(\d{4})", aday):
+            ay = AYLAR.get(upper_tr(dm.group(2)))
+            if ay:
+                d = dt.date(int(dm.group(3)), ay, int(dm.group(1)))
+                break
+        if d:
+            break
     t = re.search(r'<table[^>]*class="[^"]*price-table[^"]*"[^>]*>(.*?)</table>', page, re.S | re.I)
     if not t:
         return d, []
