@@ -62,6 +62,19 @@ def classify_antalya(fname: str):
     return classify(fname)
 
 
+GAZIPASA = [(re.compile(e["ad"]), e["urun"], e["segment"]) for e in SOZLUK.get("gazipasa", {}).get("eslesme", [])]
+
+
+def classify_gazipasa(fname: str):
+    for rx, uk, sk in GAZIPASA:
+        if rx.search(fname):
+            u = BY_KEY.get(uk)
+            if u:
+                seg = next((x for x in u["segmentler"] if x["k"] == sk), None)
+                return u, seg or next((x for x in u["segmentler"] if not x["kalip"]), None)
+    return classify(fname)
+
+
 def read_hal(folder: str, classify_fn):
     """data/ham/<folder>/*.csv.gz → {ürün: {"u", "ad": {anahtar: {...}}, "seg": {segment: [anahtar]}}}, envanter, eşleşmeyenler."""
     series = defaultdict(dict)
@@ -123,6 +136,21 @@ def segments_of(u, P):
                      "adlar": sorted(keys, key=lambda k: (P["ad"][k]["yan"], -P["ad"][k]["n"])),
                      "n": len(seri), "ilk": seri[0][0], "son": seri[-1][0], "seri": seri})
     return segs
+
+
+AL_SIRA = [("I", "almacen"), ("S.E.", "almacen"), ("EXTRA", "almacen"), ("S.E.", "alhondiga"), ("I", "alhondiga")]
+
+
+def al_ref(uk: str, sk: str, al: dict) -> dict | None:
+    """Yerel hal segmentinin Almería karşılığı (sözlük 'karsilik'): karnede olmayan segmentler için (ör. yalnız Gazipaşa'da
+    görülen dikenli hıyar). → {"tip", "seri", "il", "kod"} ya da None."""
+    kv = SOZLUK.get("karsilik", {}).get(f"{uk}/{sk}") or {}
+    for tip in kv.get("junta") or []:
+        for cat, pos in AL_SIRA:
+            key = f"{tip} · {cat} · {pos}"
+            if key in al:
+                return {"tip": tip, "seri": key, "il": al.get("_il", {}).get(key, []), "kod": kv.get("kod"), "not": kv.get("not")}
+    return None
 
 
 def adlar_of(P):
@@ -259,6 +287,7 @@ def main() -> None:
     # ---- Türkiye: aynı adın farklı yazımları (BIBER SIVRI / BİBER SİVRİ) tek seride birleşir
     products, inventory, unmatched = read_hal("izmir", classify)
     ant_products, ant_inventory, ant_unmatched = read_hal("antalya", classify_antalya)
+    gaz_products, gaz_inventory, gaz_unmatched = read_hal("gazipasa", classify_gazipasa)
     almeria = read_almeria()
     hks, hks_unmatched = read_hks()
 
@@ -286,6 +315,7 @@ def main() -> None:
     for u in SOZLUK["urunler"]:
         P = products.get(u["k"])
         A = ant_products.get(u["k"])
+        G = gaz_products.get(u["k"])
         if not P:
             continue
         segs = segments_of(u, P)
@@ -305,13 +335,21 @@ def main() -> None:
         haller = {}
         if A:
             haller["antalya"] = {"segmentler": segments_of(u, A), "adlar": adlar_of(A)}
+        if G:
+            haller["gazipasa"] = {"segmentler": segments_of(u, G), "adlar": adlar_of(G)}
+        izmir_k = {x["k"] for x in segs}
+        for hv in haller.values():
+            for x in hv["segmentler"]:
+                if x["k"] not in izmir_k:      # karnede yok: Almería karşılığını doğrudan sözlükten ekle
+                    x["almeria"] = al_ref(u["k"], x["k"], {**al, "_il": al_il})
         doc = {"k": u["k"], "tr": u["tr"], "en": u["en"], "es": u["es"], "botanik": u["botanik"], "tur": u["tur"],
                "segmentler": segs, "adlar": adlar_of(P), "haller": haller, "ispanya": {"urunler": u.get("ab", []), "seriler": es_series},
                "hks": hks_doc, "almeria": {"seriler": al, "iller": al_il, "kaynak": "Junta de Andalucía, Precios agrícolas semanales (CC BY 4.0)"} if al else None}
         (out / f"{u['k']}.json").write_text(json.dumps(doc, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
         index.append({"k": u["k"], "tr": u["tr"], "en": u["en"], "tur": u["tur"], "segment": len(segs),
                       "n": max(s["n"] for s in segs), "ilk": min(s["ilk"] for s in segs), "son": max(s["son"] for s in segs),
-                      "ispanya": bool(es_series), "almeria": len(al), "antalya": len(haller.get("antalya", {}).get("segmentler", []))})
+                      "ispanya": bool(es_series), "almeria": len(al), "antalya": len(haller.get("antalya", {}).get("segmentler", [])),
+                      "gazipasa": len(haller.get("gazipasa", {}).get("segmentler", []))})
     (DATA / "urunler.json").write_text(json.dumps(index, ensure_ascii=False, indent=0), encoding="utf-8")
 
     (DATA / "_kesif").mkdir(parents=True, exist_ok=True)
@@ -323,6 +361,10 @@ def main() -> None:
         w = csv.writer(fh)
         w.writerow(["urun", "segment", "ad", "birim", "gun", "ilk", "son", "yan"])
         w.writerows(sorted(ant_inventory))
+    with (DATA / "_kesif" / "gazipasa-adlar.csv").open("w", encoding="utf-8", newline="") as fh:
+        w = csv.writer(fh)
+        w.writerow(["urun", "segment", "ad", "birim", "gun", "ilk", "son", "yan"])
+        w.writerows(sorted(gaz_inventory))
     with (DATA / "_kesif" / "ab-adlar.csv").open("w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh)
         w.writerow(["urun", "asama", "cesit", "birim", "donem", "kayit"])
@@ -330,6 +372,7 @@ def main() -> None:
     print(f"{len(index)} ürün; eşleşmeyen ad: {len(unmatched)} {unmatched[:20]}")
     print(f"HKS: {len(hks)} ürün; eşleşmeyen ad: {len(hks_unmatched)} (ilk 30: {[n for n, _ in hks_unmatched.most_common(30)]})")
     print(f"Antalya: {len(ant_products)} ürün; eşleşmeyen ad: {len(ant_unmatched)} {ant_unmatched}")
+    print(f"Gazipaşa: {len(gaz_products)} ürün; eşleşmeyen ad: {len(gaz_unmatched)} {gaz_unmatched}")
     if unmatched:
         print("UYARI: sözlükte karşılığı olmayan adlar var (data/_kesif/izmir-adlar.csv)", file=sys.stderr)
 

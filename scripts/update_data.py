@@ -391,10 +391,11 @@ def main() -> int:
     status = {"guncelleme": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes"), "kaynaklar": {}}
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     import antalya
+    import gazipasa
     import atb
     import junta
     import hks
-    for name, fn in (("kur", update_fx), ("izmir", update_izmir), ("antalya", antalya.update), ("atb", atb.update), ("junta", junta.update), ("hks", hks.update), ("ispanya", update_eu)):
+    for name, fn in (("kur", update_fx), ("izmir", update_izmir), ("antalya", antalya.update), ("gazipasa", gazipasa.update), ("atb", atb.update), ("junta", junta.update), ("hks", hks.update), ("ispanya", update_eu)):
         print(name, flush=True)
         t0 = time.time()
         try:

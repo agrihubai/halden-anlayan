@@ -156,7 +156,7 @@
     <div class="picker">
       <select id="product" aria-label="Ürün / Product"></select>
       <span class="controls" id="quick" aria-label="Sera ürünleri / Greenhouse crops"></span>
-      <span class="seg" id="hal" role="group" aria-label="Hal / Market"><button type="button" data-h="izmir">İzmir</button><button type="button" data-h="antalya">Antalya</button><button type="button" data-h="ispanya" data-i18n="halEs">İspanya (Almería)</button></span>
+      <span class="seg" id="hal" role="group" aria-label="Hal / Market"><button type="button" data-h="izmir">İzmir</button><button type="button" data-h="antalya">Antalya</button><button type="button" data-h="gazipasa">Gazipaşa</button><button type="button" data-h="ispanya" data-i18n="halEs">İspanya (Almería)</button></span>
     </div>
     <div class="controls" id="segments" role="group" aria-label="Segment"></div>
     <p class="seg-desc" id="botanik"></p>
@@ -231,7 +231,7 @@
       <div data-i18n="n2"><h3>İzmir ve Antalya, Türkiye'nin tamamı değildir</h3><p>İzmir serisi 2006'dan başlar; düzenli ve açık yayınlanan en uzun hal serisi odur. Antalya Büyükşehir Belediyesi'nin günlük listesi 1 Temmuz 2026'dan bu yana eklenmektedir; listede en düşük ve en yüksek fiyat vardır, ortalama ikisinin orta noktasıdır. 10 ve 12 Ekim 2026 listeleri metin değil taranmış görüntü olarak yayınlandığı için okunmadı; bu iki gün seride boştur. Antalya hem büyükşehir hem üretim bölgesidir; halin rolü ürüne ve mevsime göre değişir. İlçe halleri yok: Ticaret Bakanlığı HKS toptancı hal listesinde Antalya Büyükşehir Belediyesi'ne bağlı 17 şube (Kumluca, Serik, Demre, Finike, Alanya, Manavgat vb.) ile Gazipaşa ve Elmalı belediye halleri görünür; ancak bunların fiyatları açık resmî kaynakta ayrı yayınlanmıyor (5 Kasım 2026'da kontrol edildi). Türkiye geneli için HKS ulusal toplamı kullanılır; HKS'de hal ya da il ayrımı yoktur.</p></div>
       <div data-i18n="n3"><h3>Segmentler bir sözlükten gelir</h3><p>Haldeki adlar (ör. "DOMATES SALKIM", "BİBER TATLI(ÇARLİSTON)") AgriHub-AI ürün sözlüğüyle ürün ve segmentlere bağlanır. Aynı adın farklı yazımları (BIBER SIVRI / BİBER SİVRİ) tek seride birleşir. Her segmentin hangi adlardan oluştuğu tabloda görünür.</p></div>
       <div data-i18n="n4"><h3>Kur her şeyi açıklamaz</h3><p>Euro karşılığı TL enflasyonunun büyük kısmını temizler ama tamamını temizlemez. TL'nin reel olarak değer kazandığı dönemlerde Türk ürünleri euroda pahalanmış görünür, ürünün kendisinde bir şey değişmemiş olsa bile.</p></div>
-      <div><h3 data-i18n="srcH">Kaynaklar</h3><p><span data-i18n="src"><a href="https://acikveri.bizizmir.com/dataset/sebze-ve-meyve-hal-fiyatlari">İzmir açık veri</a> · <a href="https://antalya.bel.tr/tr/halden-gunluk-fiyatlar">Antalya Büyükşehir günlük hal fiyatları</a> · <a href="https://www.hal.gov.tr/Sayfalar/FiyatDetaylari.aspx">Ticaret Bakanlığı HKS fiyat ve hacim</a> · <a href="https://www.antalyaborsa.org.tr/endeksler">Antalya Ticaret Borsası hal endeksleri</a> · <a href="https://www.juntadeandalucia.es/organismos/agriculturapescaaguaydesarrollorural/servicios/estadistica-cartografia/estadisticas-agricolas/paginas/precios-agricolas-semanales.html">Junta de Andalucía haftalık tarım fiyatları (CC BY 4.0)</a> · <a href="https://data.ecb.europa.eu/">ECB kurları</a> · <a href="https://agridata.ec.europa.eu/extensions/DataPortal/fruit-and-vegetables.html">AB agri-food veri portalı</a> · <a href="https://github.com/agrihubai/halden-anlayan/blob/main/sozluk/urunler.json">Ürün sözlüğü</a>. Veri haftada iki kez otomatik güncellenir. Ayrıca bakılabilir (üçüncü taraf kaynak; veri panoya alınmaz): <a href="https://antalyakomisyonculardernegi.com/">Antalya Komisyoncular Derneği (ANTKOMDER)</a>.</span> <span id="updated"></span></p></div>
+      <div><h3 data-i18n="srcH">Kaynaklar</h3><p><span data-i18n="src"><a href="https://acikveri.bizizmir.com/dataset/sebze-ve-meyve-hal-fiyatlari">İzmir açık veri</a> · <a href="https://antalya.bel.tr/tr/halden-gunluk-fiyatlar">Antalya Büyükşehir günlük hal fiyatları</a> · <a href="https://www.batiakdeniztv.com/gazipasa-hal-fiyatlari">Gazipaşa hal fiyatları (Batı Akdeniz Haber Ajansı)</a> · <a href="https://www.hal.gov.tr/Sayfalar/FiyatDetaylari.aspx">Ticaret Bakanlığı HKS fiyat ve hacim</a> · <a href="https://www.antalyaborsa.org.tr/endeksler">Antalya Ticaret Borsası hal endeksleri</a> · <a href="https://www.juntadeandalucia.es/organismos/agriculturapescaaguaydesarrollorural/servicios/estadistica-cartografia/estadisticas-agricolas/paginas/precios-agricolas-semanales.html">Junta de Andalucía haftalık tarım fiyatları (CC BY 4.0)</a> · <a href="https://data.ecb.europa.eu/">ECB kurları</a> · <a href="https://agridata.ec.europa.eu/extensions/DataPortal/fruit-and-vegetables.html">AB agri-food veri portalı</a> · <a href="https://github.com/agrihubai/halden-anlayan/blob/main/sozluk/urunler.json">Ürün sözlüğü</a>. Veri haftada iki kez otomatik güncellenir. Ayrıca bakılabilir (üçüncü taraf kaynak; veri panoya alınmaz): <a href="https://antalyakomisyonculardernegi.com/">Antalya Komisyoncular Derneği (ANTKOMDER)</a>.</span> <span id="updated"></span></p></div>
     </div>
   </section>
 
@@ -241,6 +241,7 @@
 <script>
 (() => {
   const QUICK = ['domates', 'biber', 'hiyar', 'patlican', 'kabak'];
+  const LOCALS = ['antalya', 'gazipasa'];   // il/ilçe halleri (İzmir ana seri, İspanya ayrı görünüm)
   const SEGC = ['--s1', '--s2', '--s3', '--s4', '--s5', '--s6', '--s7', '--s8', '--s9'];
   const ES_COLORS = ['--c-es1', '--c-es2', '--c-es3', '--c-es4'];
   const TUR = { tr: { Sebze: 'Sebze', 'Yeşillik': 'Yeşillik', Meyve: 'Meyve', 'İthal': 'İthal' }, en: { Sebze: 'Vegetables', 'Yeşillik': 'Herbs and greens', Meyve: 'Fruit', 'İthal': 'Imported' } };
@@ -280,7 +281,7 @@
     yakinN: 'Equivalent: same commercial type. Close (≈): similar type, not identical. Segments without a counterpart are not compared.',
     ozetNote: 'Click a row to open that segment’s scorecard. Market share: the segment’s share of the product’s volume through Turkish markets over the last 52 weeks (HKS). Premium: median of the last 52 weeks against the product’s reference segment. Seasonal amplitude: the most expensive 4 weeks of the year / the cheapest 4 weeks. Early-season: price in the first 3 weeks of the season / season median (seasonal segments only). Shocks: extreme weekly rises over the last 10 years, measured against the segment’s own volatility. Spread: highest / lowest price of the same market name. Grade I/II: in Almería, the grade I price of the same type divided by grade II. TR/ES: İzmir wholesale price (euro) / Almería grower delivery price (otherwise Spanish ex-packaging).',
     srcH: 'Sources',
-    src: '<a href="https://acikveri.bizizmir.com/dataset/sebze-ve-meyve-hal-fiyatlari">İzmir open data</a> · <a href="https://antalya.bel.tr/tr/halden-gunluk-fiyatlar">Antalya Metropolitan daily market prices</a> · <a href="https://www.hal.gov.tr/Sayfalar/FiyatDetaylari.aspx">Ministry of Trade HKS prices and volumes</a> · <a href="https://www.antalyaborsa.org.tr/endeksler">Antalya Commodity Exchange market indices</a> · <a href="https://www.juntadeandalucia.es/organismos/agriculturapescaaguaydesarrollorural/servicios/estadistica-cartografia/estadisticas-agricolas/paginas/precios-agricolas-semanales.html">Junta de Andalucía weekly agricultural prices (CC BY 4.0)</a> · <a href="https://data.ecb.europa.eu/">ECB exchange rates</a> · <a href="https://agridata.ec.europa.eu/extensions/DataPortal/fruit-and-vegetables.html">EU agri-food data portal</a> · <a href="https://github.com/agrihubai/halden-anlayan/blob/main/sozluk/urunler.json">Product dictionary</a>. Data is updated automatically twice a week. See also (third-party source; its data is not copied into this dashboard): <a href="https://antalyakomisyonculardernegi.com/">Antalya Commission Agents Association (ANTKOMDER)</a>.',
+    src: '<a href="https://acikveri.bizizmir.com/dataset/sebze-ve-meyve-hal-fiyatlari">İzmir open data</a> · <a href="https://antalya.bel.tr/tr/halden-gunluk-fiyatlar">Antalya Metropolitan daily market prices</a> · <a href="https://www.batiakdeniztv.com/gazipasa-hal-fiyatlari">Gazipaşa market prices (Batı Akdeniz news agency)</a> · <a href="https://www.hal.gov.tr/Sayfalar/FiyatDetaylari.aspx">Ministry of Trade HKS prices and volumes</a> · <a href="https://www.antalyaborsa.org.tr/endeksler">Antalya Commodity Exchange market indices</a> · <a href="https://www.juntadeandalucia.es/organismos/agriculturapescaaguaydesarrollorural/servicios/estadistica-cartografia/estadisticas-agricolas/paginas/precios-agricolas-semanales.html">Junta de Andalucía weekly agricultural prices (CC BY 4.0)</a> · <a href="https://data.ecb.europa.eu/">ECB exchange rates</a> · <a href="https://agridata.ec.europa.eu/extensions/DataPortal/fruit-and-vegetables.html">EU agri-food data portal</a> · <a href="https://github.com/agrihubai/halden-anlayan/blob/main/sozluk/urunler.json">Product dictionary</a>. Data is updated automatically twice a week. See also (third-party source; its data is not copied into this dashboard): <a href="https://antalyakomisyonculardernegi.com/">Antalya Commission Agents Association (ANTKOMDER)</a>.',
     foot: 'This page was prepared with artificial intelligence; it is not investment or trading advice. AgriHub-AI · <a href="https://agrihubai.wordpress.com/">agrihubai.wordpress.com</a> · <a href="https://github.com/agrihubai/halden-anlayan">GitHub</a>',
   };
   const TR = {};
@@ -307,7 +308,7 @@
       lede: (p, s, d, v, e, y, h) => `${p} · ${s}, ${h} halinde <b>${d}</b> tarihinde ortalama <b>${v}</b>${e ? ` (≈ <b>${e}</b>)` : ''}. Euro cinsinden bir yıl önceye göre değişim <b>${y}</b>.`,
       ledeN: (n, s) => ` Pano şu anda <b>${n}</b> ürünü ve <b>${s}</b> segmenti izliyor.`,
       updated: (d) => `Son güncelleme: ${d}.`, quick: 'Sera ürünleri:', botanik: (b) => `Botanik ad: ${b}`,
-      halName: { izmir: 'İzmir', antalya: 'Antalya', ispanya: 'Almería' },
+      halName: { izmir: 'İzmir', antalya: 'Antalya', gazipasa: 'Gazipaşa', ispanya: 'Almería' },
       noEsHal: (p) => `${p} için Junta de Andalucía'da fiyat serisi yok; İzmir gösteriliyor.`,
       esSrc: 'İspanya: Junta de Andalucía haftalık üretici fiyatları (€/kg, KDV hariç). Segmentler İspanya\'nın kendi tip adlarıdır; her tipte ana seri 1. kalite depo teslimidir, öteki kalite ve teslim noktaları "Seri" listesindedir. Son 3 yılda işlem görmeyen tipler listelenmez.',
       esMain: (x) => `${x} · ana seri`, thEs: ['Seri', 'Birim', 'Hafta', 'İlk', 'Son', ''],
@@ -319,7 +320,7 @@
       ledeEs: (p, s, d, v, y) => `${p} · ${s}, Almería'da <b>${d}</b> haftasında üretici fiyatı <b>${v}</b>/kg. Bir yıl önceye göre değişim <b>${y}</b>.`,
       esTr: (s) => `İspanya · ${s}`, esNoTr: (s, l) => `${s} tipinin Türkiye hallerinde karşılığı yok; grafikte yalnız İspanya var.` + (l.length ? ` Türkiye ile karşılaştırılabilen İspanya tipleri: ${l.join(', ')}.` : ''),
       karneEs: (s) => s ? `Islah karnesi Türkiye hallerinin verisiyle hesaplanır. Aşağıda bu İspanya tipine karşılık gelen Türkiye segmentinin (${s}) karnesi var.` : 'Islah karnesi Türkiye hallerinin verisiyle hesaplanır; bu İspanya tipinin Türkiye karşılığı olmadığı için karne gösterilmiyor.',
-      noAnt: (p) => `${p} Antalya listesinde yok; İzmir gösteriliyor.`, antSince: 'Antalya verisi 1 Temmuz 2026\'dan başlıyor; listede sadece en düşük ve en yüksek fiyat var, ortalama ikisinin orta noktası.', karneIzmir: 'Karne İzmir halinin 2006\'dan bugüne verisiyle hesaplanır; Antalya serisi karne için henüz kısa.',
+      noAnt: (p, h) => `${p} ${h} listesinde yok; İzmir gösteriliyor.`, antSince: { antalya: 'Antalya verisi 1 Temmuz 2026\'dan başlıyor; listede sadece en düşük ve en yüksek fiyat var, ortalama ikisinin orta noktası.', gazipasa: 'Gazipaşa verisi 12 Kasım 2026\'dan başlıyor (Batı Akdeniz Haber Ajansı günlük listesi); en düşük ve en yüksek fiyat, ortalama ikisinin orta noktası.' }, karneIzmir: 'Karne İzmir halinin 2006\'dan bugüne verisiyle hesaplanır; bu halin serisi karne için henüz kısa.',
       hKarne: (p, s) => `Islah karnesi · ${p} · ${s}`, noKarne: 'Bu ürün için karne henüz hesaplanmadı.', noKarneSeg: 'Bu segmentte karne için yeterli veri yok.',
       wk: 'Hafta', kPrim: 'Segment primi', kSez: 'Sezon ve turfanda', kSok: 'Şok haftaları', kKal: 'Kalite ve fiyat makası', kYeni: 'Segmentin halde görünmesi', kEs: 'Türkiye – İspanya',
       isRef: 'Referans', refBody: (r) => `<b>${r}</b> bu ürünün referans segmenti: son 5 yılda en çok haftada işlem gören segment. Öteki segmentlerin primi ona göre ölçülür (son 52 haftanın medyanı):`,
@@ -395,7 +396,7 @@
       lede: (p, s, d, v, e, y, h) => `${p} · ${s} averaged <b>${v}</b>${e ? ` (≈ <b>${e}</b>)` : ''} at the ${h} market on <b>${d}</b>. In euro terms that is <b>${y}</b> on a year earlier.`,
       ledeN: (n, s) => ` The dashboard currently tracks <b>${n}</b> products and <b>${s}</b> segments.`,
       updated: (d) => `Last updated: ${d}.`, quick: 'Greenhouse crops:', botanik: (b) => `Botanical name: ${b}`,
-      halName: { izmir: 'İzmir', antalya: 'Antalya', ispanya: 'Almería' },
+      halName: { izmir: 'İzmir', antalya: 'Antalya', gazipasa: 'Gazipaşa', ispanya: 'Almería' },
       noEsHal: (p) => `Junta de Andalucía has no price series for ${p.toLowerCase()}; showing İzmir.`,
       esSrc: 'Spain: Junta de Andalucía weekly grower prices (€/kg, excl. VAT). Segments are Spain\'s own type names; each type\'s main series is grade I warehouse delivery, other grades and delivery points are in the "Series" list. Types not traded in the last 3 years are not listed.',
       esMain: (x) => `${x} · main series`, thEs: ['Series', 'Unit', 'Weeks', 'First', 'Last', ''],
@@ -407,7 +408,7 @@
       ledeEs: (p, s, d, v, y) => `${p} · ${s}: grower price in Almería in the week of <b>${d}</b> was <b>${v}</b>/kg, <b>${y}</b> on a year earlier.`,
       esTr: (s) => `Spain · ${s}`, esNoTr: (s, l) => `${s} has no counterpart at the Turkish markets; the chart shows Spain only.` + (l.length ? ` Spanish types comparable with Turkey: ${l.join(', ')}.` : ''),
       karneEs: (s) => s ? `The breeding scorecard is calculated from Turkish market data. Below is the scorecard of the Turkish segment matching this Spanish type (${s}).` : 'The breeding scorecard is calculated from Turkish market data; this Spanish type has no Turkish counterpart, so no scorecard is shown.',
-      noAnt: (p) => `${p} is not on the Antalya list; showing İzmir.`, antSince: 'Antalya data starts on 1 July 2026; the list gives only the lowest and highest price, and the average is their midpoint.', karneIzmir: 'The scorecard is calculated from İzmir market data since 2006; the Antalya series is still too short for it.',
+      noAnt: (p, h) => `${p} is not on the ${h} list; showing İzmir.`, antSince: { antalya: 'Antalya data starts on 1 July 2026; the list gives only the lowest and highest price, and the average is their midpoint.', gazipasa: 'Gazipaşa data starts on 12 November 2026 (Batı Akdeniz news agency daily list); lowest and highest price, the average is their midpoint.' }, karneIzmir: 'The scorecard is calculated from İzmir market data since 2006; this market\'s series is still too short for it.',
       hKarne: (p, s) => `Breeding scorecard · ${p} · ${s}`, noKarne: 'No scorecard has been calculated for this product yet.', noKarneSeg: 'Not enough data for a scorecard in this segment.',
       wk: 'Week', kPrim: 'Segment premium', kSez: 'Season and early-season premium', kSok: 'Shock weeks', kKal: 'Quality and price spread', kYeni: 'Presence at the market', kEs: 'Turkey – Spain',
       isRef: 'Reference', refBody: (r) => `<b>${r}</b> is this product’s reference segment: the segment traded in the most weeks over the last 5 years. The other segments’ premiums are measured against it (median of the last 52 weeks):`,
@@ -726,18 +727,19 @@
     if (!doc) { $('lede').textContent = t.notLoaded; return; }
     const P = nm(doc);
     for (const b of $('hal').children) b.setAttribute('aria-pressed', String(b.dataset.h === state.hal));
-    const ANT = doc.haller && doc.haller.antalya;
-    const useAnt = state.hal === 'antalya' && ANT && ANT.segmentler.length;
+    const LOCAL = LOCALS.includes(state.hal);
+    const ANT = LOCAL ? doc.haller && doc.haller[state.hal] : null;
+    const useAnt = LOCAL && ANT && ANT.segmentler.length;
     const ES = state.hal === 'ispanya' ? esHal(doc) : null;
     ESM = !!ES;
-    const halK = ES ? 'ispanya' : useAnt ? 'antalya' : 'izmir', halN = t.halName[halK];
+    const halK = ES ? 'ispanya' : useAnt ? state.hal : 'izmir', halN = t.halName[halK];
     const segs = ES ? ES.segmentler : useAnt ? ANT.segmentler : doc.segmentler;
     const ADL = ES ? ES.adlar : useAnt ? ANT.adlar : doc.adlar;
     if (!segs.some((s) => s.k === state.s)) state.s = segs[0].k;
     const color = new Map(segs.map((s, i) => [s.k, css(SEGC[i % SEGC.length])]));
     $('segments').innerHTML = segs.map((s) => `<button type="button" class="chip sm" data-k="${s.k}" aria-pressed="${s.k === state.s}"><span class="sw" style="background:${color.get(s.k)}"></span>${esc(nm(s))}</button>`).join('');
     $('segments').hidden = segs.length < 2;
-    $('botanik').textContent = (doc.botanik ? t.botanik(doc.botanik) : '') + (state.hal === 'antalya' ? ' · ' + (useAnt ? t.antSince : t.noAnt(P)) : '') + (state.hal === 'ispanya' ? ' · ' + (ES ? t.esSrc : t.noEsHal(P)) : '');
+    $('botanik').textContent = (doc.botanik ? t.botanik(doc.botanik) : '') + (LOCAL ? ' · ' + (useAnt ? t.antSince[state.hal] : t.noAnt(P, t.halName[state.hal])) : '') + (state.hal === 'ispanya' ? ' · ' + (ES ? t.esSrc : t.noEsHal(P)) : '');
     const S = segs.find((s) => s.k === state.s);
     const unitAll = unitName(d3.greatest(d3.rollups(segs, (v) => v.length, (s) => s.birim), (d) => d[1])[0]);
 
@@ -776,13 +778,15 @@
     const trW = kgU ? weeklyEur(segRows.get(S.k)) : [];
     if (trW.length) cmpLines.push({ name: t.trLine(nm(S), halN), color: css('--c-tr'), data: trW, tr: true });
     const Kc = await karneOf(doc.k);
-    const kSeg = Kc && (Kc.segmentler.find((x) => x.k === S.k) || {});
+    const kSeg = (Kc && Kc.segmentler.find((x) => x.k === S.k)) || (S.almeria ? { almeria: S.almeria } : {});   // yalnız yerel halde olan segment: karşılık sözlükten
     const alTip = kSeg && kSeg.almeria && showKod(kSeg.almeria.kod) ? kSeg.almeria : null;
     const alRows = alTip && doc.almeria && doc.almeria.seriler[alTip.seri];
     if (alRows) cmpLines.push({ name: t.alLine(alName(alTip.tip), ilName(alTip.il)) + (alTip.kod === 'Y' ? ' ≈' : ''), color: css('--c-es2'), data: alRows.map(([d, v]) => ({ date: parse(d), eur: v })), al: true });
-    const otherSegs = useAnt ? doc.segmentler : (ANT ? ANT.segmentler : []);
-    const oS = otherSegs.find((x) => x.k === S.k);
-    if (oS && oS.birim === 'KG' && kgU) { const oW = weeklyEur(rowsOf(oS.seri)); if (oW.length) cmpLines.push({ name: t.trLine(nm(oS), t.halName[useAnt ? 'izmir' : 'antalya']), color: css('--s8'), data: oW, tr: true }); }
+    const others = [['izmir', doc.segmentler], ...LOCALS.map((h) => [h, (doc.haller && doc.haller[h] || {}).segmentler || []])].filter(([h]) => h !== halK);
+    others.forEach(([h, src], i) => {
+      const oS = src.find((x) => x.k === S.k);
+      if (oS && oS.birim === 'KG' && kgU) { const oW = weeklyEur(rowsOf(oS.seri)); if (oW.length) cmpLines.push({ name: t.trLine(nm(oS), t.halName[h]), color: css(i ? '--s9' : '--s8'), data: oW, tr: true }); }
+    });
     // İspanya: önce karşılık tablosundaki segment karşılığı (E, Y ≈). Karşılık yoksa aşağıda ürün geneli seri kesikli çizgiyle, etiketli.
     const esAll = Object.entries(doc.ispanya?.seriler || {}).map(([n, rows]) => ({ n, data: rows.map(([d, v]) => ({ date: parse(d), eur: v })).filter((d) => d.date) }));
     const esK = kSeg && kSeg.es && showKod(kSeg.es.kod) ? kSeg.es.ab : null;
@@ -842,10 +846,10 @@
     if (!S.ana) { $('cmp-note').hidden = true; drawCmp($('chart-cmp'), [], $('legend-cmp'), t.esBos + (S.not ? ' ' + S.not : '')); S._tr = null; return; }
     const lines = [{ name: t.esTr(nm(S)), color: css('--c-es2'), data: doc.almeria.seriler[S.ana].map(([d, v]) => ({ date: parse(d), eur: v })).filter((d) => d.date) }];
     const mates = Kc ? Kc.segmentler.filter((x) => x.almeria && S.tipler.includes(x.almeria.tip)) : [];
-    const ANT = doc.haller && doc.haller.antalya;
+    for (const lh of LOCALS) for (const x of ((doc.haller && doc.haller[lh] || {}).segmentler || [])) if (x.almeria && S.tipler.includes(x.almeria.tip) && !mates.some((m) => m.k === x.k)) mates.push(x);
     const trSeg = [];
     mates.forEach((x) => {
-      for (const [h, src, c] of [['izmir', doc.segmentler, '--c-tr'], ['antalya', ANT ? ANT.segmentler : [], '--s8']]) {
+      for (const [h, src, c] of [['izmir', doc.segmentler, '--c-tr'], ...LOCALS.map((lh, i) => [lh, (doc.haller && doc.haller[lh] || {}).segmentler || [], i ? '--s9' : '--s8'])]) {
         const o = src.find((y) => y.k === x.k);
         if (!o || o.birim !== 'KG') continue;
         const w = weeklyEur(rowsOf(o.seri));
@@ -967,7 +971,7 @@
   async function renderKarne(doc, S) {
     const K = await karneOf(doc.k);
     $('h-karne').textContent = t.hKarne(nm(doc), nm(S));
-    $('karne-hal').textContent = state.hal === 'antalya' ? t.karneIzmir : '';
+    $('karne-hal').textContent = LOCALS.includes(state.hal) ? t.karneIzmir : '';
     const box = $('karne');
     const k = K && K.segmentler.find((x) => x.k === S.k);
     if (!K || !k) { box.innerHTML = `<div class="empty">${K ? t.noKarneSeg : t.noKarne}</div>`; return; }

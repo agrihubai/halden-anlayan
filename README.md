@@ -20,6 +20,7 @@ Domates, biber, hıyar, patlıcan ve kabak için:
 ## Kaynaklar
 
 - [İzmir Büyükşehir Belediyesi açık veri: sebze ve meyve hal fiyatları](https://acikveri.bizizmir.com/dataset/sebze-ve-meyve-hal-fiyatlari)
+- [Gazipaşa hal fiyatları, Batı Akdeniz Haber Ajansı](https://www.batiakdeniztv.com/gazipasa-hal-fiyatlari) — günlük güncel liste; arşivi olmadığı için seri 12 Kasım 2026'dan itibaren birikir. Dikenli salatalık (İspanyol tipi kısa hıyar) yalnız bu listede ayrı fiyatlanır.
 - [ECB euro referans kurları](https://data.ecb.europa.eu/) (EUR/TRY)
 - [Avrupa Komisyonu agri-food veri portalı](https://agridata.ec.europa.eu/extensions/DataPortal/fruit-and-vegetables.html)
 
