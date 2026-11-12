@@ -1,15 +1,19 @@
 name: Hal verisini güncelle
 
+# Bütün kaynaklar (İzmir, Antalya, HKS, ATB, Junta, AB, ECB kuru) tek işte, günde üç kez.
+# GitHub zamanlanmış işleri saatlerce geciktirebilir ya da atlayabilir; üç deneme bunu telafi eder.
+# Saatler dakika başına konmadı (:41), çünkü tam saatlerde GitHub kuyruğu en yoğun.
 on:
   schedule:
-    - cron: "23 5 * * 1,4"   # pazartesi ve perşembe 05:23 UTC
+    - cron: "41 6,11,17 * * *"   # 06:41, 11:41, 17:41 UTC (Madrid 07:41, 12:41, 18:41 kışın)
   workflow_dispatch: {}
   push:
     branches: [main]
-    paths: ["scripts/**", ".github/workflows/veri-guncelle.yml"]
+    paths: ["scripts/**", "sozluk/**", ".github/workflows/veri-guncelle.yml"]
 
 permissions:
   contents: write
+  actions: write     # zamanlanmış işleri canlı tutmak için (aşağıda)
 
 concurrency:
   group: veri
@@ -26,19 +30,30 @@ jobs:
           python-version: "3.12"
       - name: Kaynaklardan indir
         run: python scripts/update_data.py
-      - name: Ürün dosyalarını üret
+      - name: Ürün dosyalarını ve karneyi üret
         run: python scripts/build_data.py
       - name: Değiştiyse kaydet
         run: |
           git config user.name "agrihubai-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # Bu arada main ilerlemiş olabilir: sadece data/ klasörünü en güncel main'in üstüne koy
-          git fetch -q origin main
-          git reset -q --mixed origin/main
-          git add data
-          if git diff --cached --quiet; then
-            echo "Yeni veri yok."
-          else
-            git commit -m "Hal verisi güncellendi"
-            git push origin HEAD:main
-          fi
+          # Bu arada main ilerlemiş olabilir: sadece data/ klasörünü en güncel main'in üstüne koy; itme çakışırsa 3 kez dene
+          for i in 1 2 3; do
+            git fetch -q origin main
+            git reset -q --mixed origin/main
+            git add data
+            if git diff --cached --quiet; then echo "Yeni veri yok."; exit 0; fi
+            git commit -q -m "Hal verisi güncellendi"
+            if git push -q origin HEAD:main; then exit 0; fi
+            echo "İtme reddedildi, yeniden deneniyor ($i)"; sleep 15
+          done
+          exit 1
+      - name: Zamanlanmış işleri canlı tut
+        # GitHub, 60 gün etkinlik olmayan depolarda zamanlanmış işleri kapatır.
+        # Her çalıştırmada iş yeniden 'etkin' işaretlenir; bu süre sayacını sıfırlar.
+        if: always() && github.event_name == 'schedule'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for wf in veri-guncelle.yml hks-gecmis.yml; do
+            gh api -X PUT "repos/${{ github.repository }}/actions/workflows/$wf/enable" || true
+          done

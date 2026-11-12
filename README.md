@@ -13,7 +13,8 @@ Domates, biber, hıyar, patlıcan ve kabak için:
 
 - `scripts/update_data.py` üç kaynaktan veri çeker ve ham veriyi `data/ham/` klasörüne yazar. Kaynaklardan gelen ilk yanıtların kısa örnekleri `data/_kesif/` klasörüne yazılır; kaynak formatı değişirse buradan görülür.
 - `scripts/build_data.py` ham veriden panonun okuduğu `data/urun/<ürün>.json` dosyalarını üretir.
-- `.github/workflows/veri-guncelle.yml` bu iki betiği **her pazartesi ve perşembe** otomatik çalıştırır. Actions sekmesinden elle de çalıştırılabilir.
+- `.github/workflows/veri-guncelle.yml` bu iki betiği **her gün üç kez** (06:41, 11:41, 17:41 UTC) otomatik çalıştırır; GitHub'ın zamanlanmış işleri geciktirmesine karşı üç deneme vardır. İş her çalıştırmada kendini yeniden etkinleştirir, böylece GitHub'ın 60 günlük hareketsizlik kapatması devreye girmez. Actions sekmesinden elle de çalıştırılabilir.
+- `.github/workflows/hks-gecmis.yml` HKS'nin eksik geçmiş günlerini iki saatte bir doldurur.
 - `index.html` panonun kendisidir (D3 ile, tek dosya).
 
 ## Kaynaklar
