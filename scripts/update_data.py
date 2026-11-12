@@ -295,7 +295,7 @@ EU_BASE = "https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSu
 def eu_get(path: str, params: dict | None = None):
     url = EU_BASE + path + ("?" + urllib.parse.urlencode(params) if params else "")
     try:
-        return json.loads(get(url, tries=1, timeout=60)), url
+        return json.loads(get(url, tries=2, timeout=90)), url
     except urllib.error.HTTPError as e:
         if e.code == 404:  # API "bu parametrelerle sonuç yok" için 404 döndürüyor
             return [], url
@@ -313,14 +313,19 @@ def update_eu() -> int:
     probe("ab-listeler.json", json.dumps(lists, ensure_ascii=False, indent=1), limit=60000)
     products = [p if isinstance(p, str) else (pick(p, "product", "name", "productName") or "") for p in lists["products"]]
     products = [p for p in products if p]
-    if not products:
-        raise RuntimeError("AB: ürün listesi alınamadı")
     # Daha önce indirilenler korunur; her ürün için sadece son 8 hafta yeniden istenir.
     p = RAW / "ispanya.json.gz"
     old = []
     if p.exists():
         with gzip.open(p, "rt", encoding="utf-8") as f:
             old = json.load(f)
+    if not products:
+        # Ürün listesi uç noktası zaman aşımına uğrayabiliyor: daha önce indirilen ürünlerle devam et
+        products = sorted({r["urun"] for r in old if r.get("urun")})
+        if products:
+            print(f"  AB: ürün listesi alınamadı, önceki {len(products)} ürünle devam ediliyor")
+    if not products:
+        raise RuntimeError("AB: ürün listesi alınamadı")
     last = {}
     for r in old:
         last[r["urun"]] = max(last.get(r["urun"], ""), r["d"])

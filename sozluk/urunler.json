@@ -1,6 +1,6 @@
 {
  "_aciklama": "AgriHub-AI ürün sözlüğü. Ürün → segment → (ileride) çeşit. 'izmir' ve segment 'kalip' alanları, Türkçe karakterleri sadeleştirilmiş büyük harfli hal adına uygulanan düzenli ifadelerdir (Ç→C, Ğ→G, İ/ı→I, Ö→O, Ş→S, Ü→U). Ürünler listedeki sırayla denenir; kalıbı olmayan segment o ürünün varsayılanıdır. 'yan' kalıbına uyan adlar (ikinci kalite, diğer, sertifikalı, paketli) segment ortalamasına katılmaz ama ayrı seri olarak görünür. 'eppo' kodları EPPO Global Database'den doğrulanarak doldurulacaktır. 'ab' (ürün düzeyinde) Avrupa Komisyonu fiyat verisindeki ürün adlarıdır. Türkiye–İspanya segment karşılıkları 'karsilik' bölümündedir (E = eşdeğer, Y = yakın); karşılığı olmayan segment karşılaştırılmaz, 'tüm tipler' ortalaması kullanılmaz.",
- "surum": "0.4",
+ "surum": "0.5",
  "yan": "\\bII\\b|DIGER|KUTU|PAKET|\\(TARLA\\)",
  "urunler": [
   {
@@ -60,16 +60,16 @@
     },
     {
      "k": "salcalik",
-     "tr": "Salçalık (sanayi)",
-     "en": "Processing",
-     "es": "Industria",
+     "tr": "Salçalık / armut (Rio)",
+     "en": "Processing / plum (Rio)",
+     "es": "Pera (industria)",
      "kalip": "SALCALIK|RIO"
     },
     {
      "k": "yerel",
-     "tr": "Yerel",
-     "en": "Local",
-     "es": "Local",
+     "tr": "Yerel (Ayaş, köy)",
+     "en": "Local (Ayaş, village)",
+     "es": "Local (Ayaş, de pueblo)",
      "kalip": "\\bARI\\b|AYAS"
     },
     {
@@ -97,8 +97,8 @@
     {
      "k": "sivri",
      "tr": "Sivri",
-     "en": "Sivri (long green)",
-     "es": "Sivri (verde largo)",
+     "en": "Sivri (long sweet green)",
+     "es": "Sivri (verde largo dulce)",
      "kalip": "SIVRI"
     },
     {
@@ -127,20 +127,20 @@
      "tr": "Kırmızı (kapya)",
      "en": "Red (Kapia)",
      "es": "Rojo (Kapia)",
-     "kalip": "KIRMIZI"
+     "kalip": "^(?!.*SALCALIK).*(KIRMIZI|KAPYA)"
     },
     {
      "k": "aci",
-     "tr": "Acı",
-     "en": "Hot",
-     "es": "Picante",
-     "kalip": "ACI|\\bCIN\\b|JALEPENO|MEKSIKA|SILI"
+     "tr": "Acı (kıl acı, şili, cin, jalapeño)",
+     "en": "Hot (kıl, chili, cin, jalapeño)",
+     "es": "Picante (kıl, chile, cin, jalapeño)",
+     "kalip": "ACI|\\bCIN\\b|JALAPENO|JALEPENO|MEKSIKA|SILI"
     },
     {
      "k": "koy",
-     "tr": "Köy (mazo)",
-     "en": "Village (Mazo)",
-     "es": "Local (Mazo)",
+     "tr": "Köy / Üçburun",
+     "en": "Village / Üçburun",
+     "es": "Local (köy / üçburun)",
      "kalip": "\\bKOY\\b"
     },
     {
@@ -174,15 +174,15 @@
    "segmentler": [
     {
      "k": "silor",
-     "tr": "Silor",
-     "en": "Silor",
-     "es": "Silor",
+     "tr": "Silor (badem)",
+     "en": "Silor (mini)",
+     "es": "Silor (mini)",
      "kalip": "SILOR"
     },
     {
      "k": "kornison",
-     "tr": "Kornişon",
-     "en": "Gherkin",
+     "tr": "Kornişon (turşuluk)",
+     "en": "Gherkin (pickling)",
      "es": "Pepinillo",
      "kalip": "KORNISON"
     },
@@ -202,9 +202,9 @@
     },
     {
      "k": "standart",
-     "tr": "Standart (kasa)",
-     "en": "Standard (crate)",
-     "es": "Estándar (caja)",
+     "tr": "Standart (Beit Alpha tipi)",
+     "en": "Standard (Beit Alpha type)",
+     "es": "Estándar (tipo Beit Alpha)",
      "kalip": null
     }
    ]
@@ -247,7 +247,7 @@
   },
   {
    "k": "kabak",
-   "tr": "Kabak (sakız)",
+   "tr": "Kabak",
    "en": "Courgette",
    "es": "Calabacín",
    "botanik": "Cucurbita pepo",
@@ -260,10 +260,31 @@
    "segmentler": [
     {
      "k": "taze",
-     "tr": "Taze",
-     "en": "Fresh",
-     "es": "Fresco",
+     "tr": "Sakız (açık yeşil)",
+     "en": "Light green (sakız)",
+     "es": "Blanco / verde claro (sakız)",
      "kalip": null
+    },
+    {
+     "k": "kara",
+     "tr": "Kara / siyah (koyu yeşil)",
+     "en": "Dark green (kara)",
+     "es": "Verde oscuro",
+     "kalip": "\\bKARA\\b|SIYAH"
+    },
+    {
+     "k": "yuvarlak",
+     "tr": "Yuvarlak (ampul)",
+     "en": "Round (ampul)",
+     "es": "Redondo",
+     "kalip": "AMPUL|YUVARLAK"
+    },
+    {
+     "k": "diger",
+     "tr": "Diğer (mini, sarı)",
+     "en": "Other (mini, yellow)",
+     "es": "Otros (mini, amarillo)",
+     "kalip": "\\bMINI\\b|\\bSARI\\b"
     }
    ]
   },
@@ -578,10 +599,10 @@
    "segmentler": [
     {
      "k": "sera",
-     "tr": "Sera",
-     "en": "Greenhouse",
-     "es": "Invernadero",
-     "kalip": "SERA"
+     "tr": "Sera (Galia)",
+     "en": "Greenhouse (Galia)",
+     "es": "Invernadero (Galia)",
+     "kalip": "SERA|GALYA|GALIA"
     },
     {
      "k": "tarla",
@@ -2144,7 +2165,7 @@
   }
  },
  "hks": {
-  "_aciklama": "HKS (Ticaret Bakanlığı) Türkiye geneli bülten adları için özel eşleşmeler. Ad = ürün adı, cins ürün adıyla aynı ya da 'DİĞER' değilse 'ürün cins'. Burada olmayanlar genel kurallarla eşleşir. 'DOMATES' (cins DİĞER) sofralık yuvarlak domatesin büyük kısmıdır; 'sera' segmentine bağlandı (yaklaşık, tarla dahil).",
+  "_aciklama": "HKS (Ticaret Bakanlığı) Türkiye geneli bülten adları için özel eşleşmeler. Ad = ürün adı, cins ürün adıyla aynı ya da 'DİĞER' değilse 'ürün cins'. Burada olmayanlar genel kurallarla eşleşir. 'DOMATES' (cins DİĞER) sofralık yuvarlak domatesin büyük kısmıdır; 'sera' segmentine bağlandı (yaklaşık, tarla dahil). KABAK cinsleri ayrıldı (12 Kasım 2026): DİĞER → sakız, KARA → kara/siyah, AMPUL → yuvarlak, MİNİ/SARI → diğer.",
   "eslesme": [
    {
     "ad": "^BIBERIYE",
@@ -2207,9 +2228,24 @@
     "segment": "yerel"
    },
    {
-    "ad": "^KABAK( (AMPUL|KARA|MINI|SARI))?$",
+    "ad": "^KABAK$",
     "urun": "kabak",
-    "segment": null
+    "segment": "taze"
+   },
+   {
+    "ad": "^KABAK KARA",
+    "urun": "kabak",
+    "segment": "kara"
+   },
+   {
+    "ad": "^KABAK AMPUL",
+    "urun": "kabak",
+    "segment": "yuvarlak"
+   },
+   {
+    "ad": "^KABAK (MINI|SARI)$",
+    "urun": "kabak",
+    "segment": "diger"
    },
    {
     "ad": "^BALKABAGI",
@@ -2857,42 +2893,50 @@
    "ab": null,
    "not": "Turşuluk ↔ Pickling; İspanya'da Pickling = Francés (medio largo)",
    "eklenme": "Burcu eşlemesi, 6 Kasım 2026: Español = Persian, Francés = Pickling, Largo Almería = Long European"
+  },
+  "kabak/kara": {
+   "kod": "Y",
+   "junta": [
+    "VERDE"
+   ],
+   "ab": null,
+   "not": "Kara/siyah kabak ↔ calabacín verde (koyu yeşil); Junta fino/gordo ayırmıyor. Claude önerisi, 12 Kasım 2026 — Burcu onayı bekliyor"
   }
  },
  "ispanya_segment": {
   "_aciklama": "İspanya görünümünde segment listesi (Junta tip adları yerine). tipler boşsa resmî seri yok: segment listelenir, veri yok yazar.",
   "hiyar": [
    {
-    "k": "long-european",
-    "tr": "Long European (Largo Almería)",
-    "en": "Long European (Largo Almería)",
+    "k": "largo-almeria",
+    "tr": "Uzun · Almería (Hollanda tipi)",
+    "en": "Long · Almería (Dutch type)",
     "tipler": [
      "LARGO ALMERIA"
     ]
    },
    {
-    "k": "persian",
-    "tr": "Persian (Español)",
-    "en": "Persian (Español)",
+    "k": "espanol",
+    "tr": "Kısa · İspanyol (Español, dikenli)",
+    "en": "Short · Spanish (Español, spiny)",
     "tipler": [
      "ESPANOL"
     ]
    },
    {
-    "k": "pickling",
-    "tr": "Pickling (Francés)",
-    "en": "Pickling (Francés)",
+    "k": "frances",
+    "tr": "Orta boy · Fransız (Francés)",
+    "en": "Mid-long · French (Francés)",
     "tipler": [
      "FRANCES"
     ]
    },
    {
-    "k": "snack",
-    "tr": "Snack / mini",
-    "en": "Snack / mini",
+    "k": "mini",
+    "tr": "Mini / Persa (snack)",
+    "en": "Mini / Persian (snack)",
     "tipler": [],
-    "not_tr": "Türkiye'deki karşılığı: Silor.",
-    "not_en": "Turkish counterpart: Silor."
+    "not_tr": "Junta'da resmî seri yok. Türkiye'deki karşılığı: Silor.",
+    "not_en": "No official Junta series. Turkish counterpart: Silor."
    }
   ]
  }
