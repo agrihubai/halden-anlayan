@@ -10,7 +10,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 75,
-"antalya": 4
+"antalya": 4,
+"gazipasa": 0
 },
 {
 "k": "biber",
@@ -23,7 +24,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 43,
-"antalya": 7
+"antalya": 7,
+"gazipasa": 0
 },
 {
 "k": "hiyar",
@@ -36,7 +38,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 21,
-"antalya": 2
+"antalya": 2,
+"gazipasa": 0
 },
 {
 "k": "patlican",
@@ -49,7 +52,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 25,
-"antalya": 2
+"antalya": 2,
+"gazipasa": 0
 },
 {
 "k": "kabak",
@@ -62,7 +66,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 12,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "bal-kabagi",
@@ -75,7 +80,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 2,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "acur",
@@ -88,7 +94,8 @@
 "son": "2026-10-23",
 "ispanya": false,
 "almeria": 0,
-"antalya": 0
+"antalya": 0,
+"gazipasa": 0
 },
 {
 "k": "alabas",
@@ -101,7 +108,8 @@
 "son": "2024-06-27",
 "ispanya": false,
 "almeria": 0,
-"antalya": 0
+"antalya": 0,
+"gazipasa": 0
 },
 {
 "k": "bakla",
@@ -114,7 +122,8 @@
 "son": "2026-07-10",
 "ispanya": false,
 "almeria": 4,
-"antalya": 0
+"antalya": 0,
+"gazipasa": 0
 },
 {
 "k": "bamya",
@@ -127,7 +136,8 @@
 "son": "2026-10-23",
 "ispanya": false,
 "almeria": 0,
-"antalya": 0
+"antalya": 0,
+"gazipasa": 0
 },
 {
 "k": "fasulye",
@@ -140,7 +150,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 39,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "bezelye",
@@ -153,7 +164,8 @@
 "son": "2026-08-28",
 "ispanya": false,
 "almeria": 4,
-"antalya": 0
+"antalya": 0,
+"gazipasa": 0
 },
 {
 "k": "deniz-borulcesi",
@@ -166,7 +178,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 0,
-"antalya": 0
+"antalya": 0,
+"gazipasa": 0
 },
 {
 "k": "borulce",
@@ -179,7 +192,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 0,
-"antalya": 0
+"antalya": 0,
+"gazipasa": 0
 },
 {
 "k": "brokoli",
@@ -192,7 +206,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 2,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "cibez",
@@ -205,7 +220,8 @@
 "son": "2026-05-30",
 "ispanya": false,
 "almeria": 0,
-"antalya": 0
+"antalya": 0,
+"gazipasa": 0
 },
 {
 "k": "enginar",
@@ -218,7 +234,8 @@
 "son": "2026-06-26",
 "ispanya": false,
 "almeria": 6,
-"antalya": 0
+"antalya": 0,
+"gazipasa": 0
 },
 {
 "k": "havuc",
@@ -231,7 +248,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 3,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "ispanak",
@@ -244,7 +262,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 3,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "karnabahar",
@@ -257,7 +276,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 6,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "karpuz",
@@ -270,7 +290,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 29,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "kavun",
@@ -283,7 +304,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 24,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "kereviz",
@@ -296,7 +318,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 0,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "lahana",
@@ -309,7 +332,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 10,
-"antalya": 2
+"antalya": 2,
+"gazipasa": 0
 },
 {
 "k": "mantar",
@@ -322,7 +346,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 0,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "marul",
@@ -335,7 +360,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 24,
-"antalya": 2
+"antalya": 2,
+"gazipasa": 0
 },
 {
 "k": "pancar",
@@ -348,7 +374,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 2,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "patates",
@@ -361,7 +388,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 11,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "pazi",
@@ -374,7 +402,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 2,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "pirasa",
@@ -387,7 +416,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 2,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "sarimsak",
@@ -400,7 +430,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 12,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "semizotu",
@@ -413,7 +444,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 0,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "sogan",
@@ -426,7 +458,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 21,
-"antalya": 3
+"antalya": 3,
+"gazipasa": 0
 },
 {
 "k": "turp",
@@ -439,7 +472,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 0,
-"antalya": 2
+"antalya": 2,
+"gazipasa": 0
 },
 {
 "k": "salgam",
@@ -452,7 +486,8 @@
 "son": "2021-04-15",
 "ispanya": false,
 "almeria": 0,
-"antalya": 0
+"antalya": 0,
+"gazipasa": 0
 },
 {
 "k": "dari",
@@ -465,7 +500,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 0,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "yaprak",
@@ -478,7 +514,8 @@
 "son": "2025-07-14",
 "ispanya": false,
 "almeria": 0,
-"antalya": 0
+"antalya": 0,
+"gazipasa": 0
 },
 {
 "k": "yerelmasi",
@@ -491,7 +528,8 @@
 "son": "2025-07-14",
 "ispanya": false,
 "almeria": 0,
-"antalya": 0
+"antalya": 0,
+"gazipasa": 0
 },
 {
 "k": "dereotu",
@@ -504,7 +542,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 0,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "maydanoz",
@@ -517,7 +556,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 0,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "nane",
@@ -530,7 +570,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 0,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "reyhan",
@@ -543,7 +584,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 0,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "roka",
@@ -556,7 +598,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 0,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "tere",
@@ -569,7 +612,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 0,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "zencefil",
@@ -582,7 +626,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 0,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "armut",
@@ -595,7 +640,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 3,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "ayva",
@@ -608,7 +654,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 0,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "badem-cagla",
@@ -621,7 +668,8 @@
 "son": "2026-05-30",
 "ispanya": false,
 "almeria": 0,
-"antalya": 0
+"antalya": 0,
+"gazipasa": 0
 },
 {
 "k": "cennet-elmasi",
@@ -634,7 +682,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 1,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "cilek",
@@ -647,7 +696,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 4,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "dut",
@@ -660,7 +710,8 @@
 "son": "2022-06-04",
 "ispanya": false,
 "almeria": 0,
-"antalya": 0
+"antalya": 0,
+"gazipasa": 0
 },
 {
 "k": "elma",
@@ -673,7 +724,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 0,
-"antalya": 3
+"antalya": 3,
+"gazipasa": 0
 },
 {
 "k": "erik",
@@ -686,7 +738,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 7,
-"antalya": 2
+"antalya": 2,
+"gazipasa": 0
 },
 {
 "k": "greyfurt",
@@ -699,7 +752,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 0,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "hunnap",
@@ -712,7 +766,8 @@
 "son": "2025-11-29",
 "ispanya": false,
 "almeria": 0,
-"antalya": 0
+"antalya": 0,
+"gazipasa": 0
 },
 {
 "k": "hurma",
@@ -725,7 +780,8 @@
 "son": "2006-10-31",
 "ispanya": false,
 "almeria": 0,
-"antalya": 0
+"antalya": 0,
+"gazipasa": 0
 },
 {
 "k": "incir",
@@ -738,7 +794,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 1,
-"antalya": 3
+"antalya": 3,
+"gazipasa": 0
 },
 {
 "k": "kayisi",
@@ -751,7 +808,8 @@
 "son": "2026-09-25",
 "ispanya": true,
 "almeria": 1,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "kestane",
@@ -764,7 +822,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 1,
-"antalya": 0
+"antalya": 0,
+"gazipasa": 0
 },
 {
 "k": "kiraz",
@@ -777,7 +836,8 @@
 "son": "2026-09-25",
 "ispanya": true,
 "almeria": 19,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "kivi",
@@ -790,7 +850,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 0,
-"antalya": 2
+"antalya": 2,
+"gazipasa": 0
 },
 {
 "k": "kizilcik",
@@ -803,7 +864,8 @@
 "son": "2022-12-01",
 "ispanya": false,
 "almeria": 0,
-"antalya": 0
+"antalya": 0,
+"gazipasa": 0
 },
 {
 "k": "limon",
@@ -816,7 +878,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 14,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "malta-erigi",
@@ -829,7 +892,8 @@
 "son": "2026-06-25",
 "ispanya": false,
 "almeria": 11,
-"antalya": 0
+"antalya": 0,
+"gazipasa": 0
 },
 {
 "k": "musmula",
@@ -842,7 +906,8 @@
 "son": "2025-02-14",
 "ispanya": false,
 "almeria": 0,
-"antalya": 0
+"antalya": 0,
+"gazipasa": 0
 },
 {
 "k": "mandalina",
@@ -855,7 +920,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 31,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "muz",
@@ -868,7 +934,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 0,
-"antalya": 2
+"antalya": 2,
+"gazipasa": 0
 },
 {
 "k": "nar",
@@ -881,7 +948,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 1,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "nektarin",
@@ -894,7 +962,8 @@
 "son": "2026-10-30",
 "ispanya": true,
 "almeria": 12,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "portakal",
@@ -907,7 +976,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 58,
-"antalya": 2
+"antalya": 2,
+"gazipasa": 0
 },
 {
 "k": "seftali",
@@ -920,7 +990,8 @@
 "son": "2026-10-28",
 "ispanya": true,
 "almeria": 23,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "uzum",
@@ -933,7 +1004,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 3,
-"antalya": 2
+"antalya": 2,
+"gazipasa": 0
 },
 {
 "k": "visne",
@@ -946,7 +1018,8 @@
 "son": "2026-09-18",
 "ispanya": false,
 "almeria": 0,
-"antalya": 0
+"antalya": 0,
+"gazipasa": 0
 },
 {
 "k": "ananas",
@@ -959,7 +1032,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 0,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "avokado",
@@ -972,7 +1046,8 @@
 "son": "2026-11-12",
 "ispanya": true,
 "almeria": 7,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "hindistan-cevizi",
@@ -985,7 +1060,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 0,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "mango",
@@ -998,7 +1074,8 @@
 "son": "2026-11-12",
 "ispanya": false,
 "almeria": 10,
-"antalya": 1
+"antalya": 1,
+"gazipasa": 0
 },
 {
 "k": "pitahaya",
@@ -1011,7 +1088,8 @@
 "son": "2025-05-22",
 "ispanya": false,
 "almeria": 0,
-"antalya": 0
+"antalya": 0,
+"gazipasa": 0
 },
 {
 "k": "pomelo",
@@ -1024,6 +1102,7 @@
 "son": "2020-01-02",
 "ispanya": false,
 "almeria": 0,
-"antalya": 0
+"antalya": 0,
+"gazipasa": 0
 }
 ]
