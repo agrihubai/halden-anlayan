@@ -3009,7 +3009,7 @@
     "segment": "kirmizi"
    },
    {
-    "ad": "^DOLMA BIBER",
+    "ad": "^DOLMA(LIK)? BIBER",
     "urun": "biber",
     "segment": "dolma"
    },
