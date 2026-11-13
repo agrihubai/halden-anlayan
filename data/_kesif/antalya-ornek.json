@@ -1,8 +1,8 @@
 {
- "tarih": "2026-11-02",
+ "tarih": "2026-11-03",
  "kaynak": {
-  "PdfUrl": "/Hal/Uploads/GunlukFiyatlar/8cb5bfcb-fe28-4125-98bc-a91e747b6860_02.11.2026.pdf",
-  "PdfDate": "02.11.2026"
+  "PdfUrl": "/Hal/Uploads/GunlukFiyatlar/140e18fe-cdb7-44e4-8fa5-2f94a2fe7790_03.11.2026.pdf",
+  "PdfDate": "03.11.2026"
  },
  "satir": [
   {
@@ -82,8 +82,8 @@
    "v": "Domates(Çeri)",
    "u": "KG",
    "lo": 100.0,
-   "hi": 180.0,
-   "avg": 140.0
+   "hi": 170.0,
+   "avg": 135.0
   },
   {
    "tur": "SEBZE",
@@ -474,8 +474,8 @@
    "v": "Çilek",
    "u": "KG",
    "lo": 150.0,
-   "hi": 300.0,
-   "avg": 225.0
+   "hi": 280.0,
+   "avg": 215.0
   },
   {
    "tur": "MEYVE",
@@ -514,8 +514,8 @@
    "v": "Kivi(Yerli)",
    "u": "KG",
    "lo": 60.0,
-   "hi": 110.0,
-   "avg": 85.0
+   "hi": 100.0,
+   "avg": 80.0
   },
   {
    "tur": "MEYVE",
@@ -578,8 +578,8 @@
    "v": "Portakal (Meyvelik)",
    "u": "KG",
    "lo": 30.0,
-   "hi": 55.0,
-   "avg": 42.5
+   "hi": 50.0,
+   "avg": 40.0
   },
   {
    "tur": "İTHAL",
