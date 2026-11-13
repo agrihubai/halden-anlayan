@@ -1,5 +1,5 @@
 {
- "BultenTarihi": "2026-11-09T00:00:00",
+ "BultenTarihi": "2026-11-10T00:00:00",
  "HalFiyatListesi": [
   {
    "OrtalamaUcret": 125,
@@ -223,11 +223,11 @@
    "Gorsel": "ee709a33-f4f3-4954-a560-0dc28f8a0501.jpg"
   },
   {
-   "OrtalamaUcret": 400,
+   "OrtalamaUcret": 625,
    "MalAdi": "CILEK",
    "Birim": "KG",
-   "AsgariUcret": 300,
-   "AzamiUcret": 500,
+   "AsgariUcret": 450,
+   "AzamiUcret": 800,
    "MalId": 5,
    "tarih": null,
    "HalTuru": 1,
