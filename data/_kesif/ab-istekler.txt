@@ -4,13 +4,4 @@ Courgettes deneme 3: HTTP Error 500:
 Cucumbers deneme 1: HTTP Error 500: 
 Cucumbers deneme 2: HTTP Error 500: 
 Cucumbers deneme 3: HTTP Error 500: 
-Egg Plants deneme 1: HTTP Error 500: 
-Egg Plants deneme 2: HTTP Error 500: 
-Egg Plants deneme 3: HTTP Error 500: 
-Peppers deneme 1: HTTP Error 500: 
-Peppers deneme 2: HTTP Error 500: 
-Peppers deneme 3: HTTP Error 500: 
-Tomatoes deneme 1: HTTP Error 500: 
-Tomatoes deneme 2: HTTP Error 500: 
-Tomatoes deneme 3: HTTP Error 500: 
 süre doldu, kalan ürünler bir sonraki çalıştırmaya kaldı

@@ -10,7 +10,7 @@
   "num_tags": 2,
   "id": "39f883f1-5627-4ec0-b424-8f65baf01969",
   "metadata_created": "2020-09-01T09:29:52.786668",
-  "metadata_modified": "2026-11-12T23:03:46.604688",
+  "metadata_modified": "2026-11-13T23:03:51.543106",
   "author": "İzBB Sebze Halleri Şube Müdürlüğü",
   "author_email": "acikveri@bizizmir.com",
   "state": "active",
@@ -530,9 +530,9 @@
     "created": "2024-01-03T07:48:33.194665",
     "state": "active",
     "mimetype_inner": null,
-    "last_modified": "2026-11-12T22:15:08.304120",
+    "last_modified": "2026-11-13T22:15:08.681362",
     "position": 19,
-    "revision_id": "39727d47-3640-4d4e-8fe0-842e7edb793d",
+    "revision_id": "41c9fcbb-cbba-41c9-97ce-928ae9aa0b9e",
     "url_type": null,
     "id": "71ab2fea-f2f5-4401-85cf-dba09baf5135",
     "resource_type": null,
@@ -542,6 +542,6 @@
     "mimetype": "text/csv",
     "cache_url": null,
     "tracking_summary": {
-     "total": 46,
-     "recent": 6
+     "total": 47,
+     "recent": 3
     },
