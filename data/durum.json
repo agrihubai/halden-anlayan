@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-15T14:17+00:00",
+ "guncelleme": "2026-11-15T22:04+00:00",
  "kaynaklar": {
   "kur": {
    "durum": "tamam",
@@ -9,12 +9,12 @@
   "izmir": {
    "durum": "tamam",
    "kayit": 28920,
-   "sure_sn": 12
+   "sure_sn": 16
   },
   "antalya": {
    "durum": "tamam",
    "kayit": 9621,
-   "sure_sn": 40
+   "sure_sn": 35
   },
   "gazipasa": {
    "durum": "tamam",
@@ -34,12 +34,12 @@
   "hks": {
    "durum": "tamam",
    "kayit": 1185550,
-   "sure_sn": 59
+   "sure_sn": 77
   },
   "ispanya": {
    "durum": "tamam",
    "kayit": 61034,
-   "sure_sn": 1249
+   "sure_sn": 1063
   }
  }
 }
