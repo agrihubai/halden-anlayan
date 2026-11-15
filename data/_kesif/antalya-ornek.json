@@ -1,8 +1,8 @@
 {
- "tarih": "2026-11-04",
+ "tarih": "2026-11-05",
  "kaynak": {
-  "PdfUrl": "/Hal/Uploads/GunlukFiyatlar/5a71e2ce-cdfc-4f7b-bbb3-ad4cd9dff504_04.11.2026.pdf",
-  "PdfDate": "04.11.2026"
+  "PdfUrl": "/Hal/Uploads/GunlukFiyatlar/9a37af4f-fc2b-45eb-a17d-4e0bc523e37d_05.11.2026.pdf",
+  "PdfDate": "05.11.2026"
  },
  "satir": [
   {
@@ -81,9 +81,9 @@
    "tur": "SEBZE",
    "v": "Domates(Çeri)",
    "u": "KG",
-   "lo": 100.0,
-   "hi": 160.0,
-   "avg": 130.0
+   "lo": 80.0,
+   "hi": 150.0,
+   "avg": 115.0
   },
   {
    "tur": "SEBZE",
@@ -474,8 +474,8 @@
    "v": "Çilek",
    "u": "KG",
    "lo": 150.0,
-   "hi": 280.0,
-   "avg": 215.0
+   "hi": 300.0,
+   "avg": 225.0
   },
   {
    "tur": "MEYVE",
