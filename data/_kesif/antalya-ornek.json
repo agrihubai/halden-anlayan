@@ -1,8 +1,8 @@
 {
- "tarih": "2026-11-05",
+ "tarih": "2026-11-06",
  "kaynak": {
-  "PdfUrl": "/Hal/Uploads/GunlukFiyatlar/9a37af4f-fc2b-45eb-a17d-4e0bc523e37d_05.11.2026.pdf",
-  "PdfDate": "05.11.2026"
+  "PdfUrl": "/Hal/Uploads/GunlukFiyatlar/d4068da6-2bd0-45a9-bdb3-98a0f66a3f37_06.11.2026.pdf",
+  "PdfDate": "06.11.2026"
  },
  "satir": [
   {
@@ -161,9 +161,9 @@
    "tur": "SEBZE",
    "v": "Kabak(Bal)",
    "u": "KG",
-   "lo": 15.0,
-   "hi": 30.0,
-   "avg": 22.5
+   "lo": 10.0,
+   "hi": 25.0,
+   "avg": 17.5
   },
   {
    "tur": "SEBZE",
@@ -242,24 +242,24 @@
    "v": "Marul (Aysberk)",
    "u": "ADET",
    "lo": 18.0,
-   "hi": 40.0,
-   "avg": 29.0
+   "hi": 35.0,
+   "avg": 26.5
   },
   {
    "tur": "SEBZE",
    "v": "Marul (Düz)",
    "u": "ADET",
    "lo": 18.0,
-   "hi": 36.0,
-   "avg": 27.0
+   "hi": 35.0,
+   "avg": 26.5
   },
   {
    "tur": "SEBZE",
    "v": "Marul (Kıvırcık)",
    "u": "ADET",
    "lo": 18.0,
-   "hi": 36.0,
-   "avg": 27.0
+   "hi": 35.0,
+   "avg": 26.5
   },
   {
    "tur": "SEBZE",
@@ -474,8 +474,8 @@
    "v": "Çilek",
    "u": "KG",
    "lo": 150.0,
-   "hi": 300.0,
-   "avg": 225.0
+   "hi": 350.0,
+   "avg": 250.0
   },
   {
    "tur": "MEYVE",
@@ -577,9 +577,9 @@
    "tur": "MEYVE",
    "v": "Portakal (Meyvelik)",
    "u": "KG",
-   "lo": 30.0,
-   "hi": 50.0,
-   "avg": 40.0
+   "lo": 20.0,
+   "hi": 45.0,
+   "avg": 32.5
   },
   {
    "tur": "İTHAL",
