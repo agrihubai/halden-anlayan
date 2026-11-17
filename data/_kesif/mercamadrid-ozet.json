@@ -1,0 +1,175 @@
+{
+ "300357-0-mercamadrid-volumen-precio-csv": {
+  "yil": 2025,
+  "kayit": 17128,
+  "ay": [
+   "01",
+   "02",
+   "03",
+   "04",
+   "05",
+   "06",
+   "07",
+   "08",
+   "09",
+   "10",
+   "11",
+   "12"
+  ]
+ },
+ "300357-1-mercamadrid-volumen-precio-csv": {
+  "yil": 2024,
+  "kayit": 17016,
+  "ay": [
+   "01",
+   "02",
+   "03",
+   "04",
+   "05",
+   "06",
+   "07",
+   "08",
+   "09",
+   "10",
+   "11",
+   "12"
+  ]
+ },
+ "300357-10-mercamadrid-volumen-precio-csv": {
+  "yil": 2020,
+  "kayit": 23272,
+  "ay": [
+   "01",
+   "02",
+   "03",
+   "04",
+   "05",
+   "06",
+   "07",
+   "08",
+   "09",
+   "10",
+   "11",
+   "12"
+  ]
+ },
+ "300357-12-mercamadrid-volumen-precio-csv": {
+  "yil": 2019,
+  "kayit": 23418,
+  "ay": [
+   "01",
+   "02",
+   "03",
+   "04",
+   "05",
+   "06",
+   "07",
+   "08",
+   "09",
+   "10",
+   "11",
+   "12"
+  ]
+ },
+ "300357-15-mercamadrid-volumen-precio": {
+  "yil": 2026,
+  "kayit": 12266,
+  "ay": [
+   "01",
+   "02",
+   "03",
+   "04",
+   "05",
+   "06",
+   "07",
+   "08",
+   "09"
+  ]
+ },
+ "300357-4-mercamadrid-volumen-precio-csv": {
+  "yil": 2023,
+  "kayit": 17001,
+  "ay": [
+   "01",
+   "02",
+   "03",
+   "04",
+   "05",
+   "06",
+   "07",
+   "08",
+   "09",
+   "10",
+   "11",
+   "12"
+  ]
+ },
+ "300357-6-mercamadrid-volumen-precio-csv": {
+  "yil": 2022,
+  "kayit": 17833,
+  "ay": [
+   "01",
+   "02",
+   "03",
+   "04",
+   "05",
+   "06",
+   "07",
+   "08",
+   "09",
+   "10",
+   "11",
+   "12"
+  ]
+ },
+ "300357-8-mercamadrid-volumen-precio-csv": {
+  "yil": 2021,
+  "kayit": 21072,
+  "ay": [
+   "01",
+   "02",
+   "03",
+   "04",
+   "05",
+   "06",
+   "07",
+   "08",
+   "09",
+   "10",
+   "11",
+   "12"
+  ]
+ },
+ "300357-11-mercamadrid-volumen-precio-txt": {
+  "yil": null,
+  "atlandi": true
+ },
+ "300357-13-mercamadrid-volumen-precio-txt": {
+  "yil": null,
+  "atlandi": true
+ },
+ "300357-16-mercamadrid-volumen-precio": {
+  "yil": null,
+  "atlandi": true
+ },
+ "300357-2-mercamadrid-volumen-precio-txt": {
+  "yil": null,
+  "atlandi": true
+ },
+ "300357-3-mercamadrid-volumen-precio-txt": {
+  "yil": null,
+  "atlandi": true
+ },
+ "300357-5-mercamadrid-volumen-precio-txt": {
+  "yil": null,
+  "atlandi": true
+ },
+ "300357-7-mercamadrid-volumen-precio-txt": {
+  "yil": null,
+  "atlandi": true
+ },
+ "300357-9-mercamadrid-volumen-precio-txt": {
+  "yil": null,
+  "atlandi": true
+ }
+}
