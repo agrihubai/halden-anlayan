@@ -1,1 +1,1 @@
-HTTP Error 502: Bad Gateway
+HTTP Error 500: 

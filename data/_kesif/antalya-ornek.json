@@ -1,8 +1,8 @@
 {
- "tarih": "2026-11-06",
+ "tarih": "2026-11-07",
  "kaynak": {
-  "PdfUrl": "/Hal/Uploads/GunlukFiyatlar/d4068da6-2bd0-45a9-bdb3-98a0f66a3f37_06.11.2026.pdf",
-  "PdfDate": "06.11.2026"
+  "PdfUrl": "/Hal/Uploads/GunlukFiyatlar/0f79779a-f1ba-4565-a605-c51ffa149872_07.11.2026.pdf",
+  "PdfDate": "07.11.2026"
  },
  "satir": [
   {
@@ -90,8 +90,8 @@
    "v": "Domates",
    "u": "KG",
    "lo": 25.0,
-   "hi": 55.0,
-   "avg": 40.0
+   "hi": 50.0,
+   "avg": 37.5
   },
   {
    "tur": "SEBZE",
@@ -106,8 +106,8 @@
    "v": "Domates (Kokteyl)",
    "u": "KG",
    "lo": 50.0,
-   "hi": 100.0,
-   "avg": 75.0
+   "hi": 85.0,
+   "avg": 67.5
   },
   {
    "tur": "SEBZE",
@@ -170,8 +170,8 @@
    "v": "Kabak (Sakız)",
    "u": "KG",
    "lo": 15.0,
-   "hi": 35.0,
-   "avg": 25.0
+   "hi": 40.0,
+   "avg": 27.5
   },
   {
    "tur": "SEBZE",
@@ -188,14 +188,6 @@
    "lo": 20.0,
    "hi": 40.0,
    "avg": 30.0
-  },
-  {
-   "tur": "SEBZE",
-   "v": "Kereviz",
-   "u": "KG",
-   "lo": 25.0,
-   "hi": 40.0,
-   "avg": 32.5
   },
   {
    "tur": "SEBZE",
@@ -314,16 +306,16 @@
    "v": "Patlıcan",
    "u": "KG",
    "lo": 25.0,
-   "hi": 60.0,
-   "avg": 42.5
+   "hi": 70.0,
+   "avg": 47.5
   },
   {
    "tur": "SEBZE",
    "v": "Patlıcan (Topak)",
    "u": "KG",
    "lo": 25.0,
-   "hi": 45.0,
-   "avg": 35.0
+   "hi": 55.0,
+   "avg": 40.0
   },
   {
    "tur": "SEBZE",
@@ -498,8 +490,8 @@
    "v": "Kavun",
    "u": "KG",
    "lo": 14.0,
-   "hi": 25.0,
-   "avg": 19.5
+   "hi": 30.0,
+   "avg": 22.0
   },
   {
    "tur": "MEYVE",
@@ -588,14 +580,6 @@
    "lo": 500.0,
    "hi": 600.0,
    "avg": 550.0
-  },
-  {
-   "tur": "İTHAL",
-   "v": "Ahududu",
-   "u": "KG",
-   "lo": 1200.0,
-   "hi": 2400.0,
-   "avg": 1800.0
   },
   {
    "tur": "İTHAL",
