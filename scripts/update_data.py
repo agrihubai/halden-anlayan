@@ -394,8 +394,9 @@ def main() -> int:
     import gazipasa
     import atb
     import junta
+    import mercamadrid
     import hks
-    for name, fn in (("kur", update_fx), ("izmir", update_izmir), ("antalya", antalya.update), ("gazipasa", gazipasa.update), ("atb", atb.update), ("junta", junta.update), ("hks", hks.update), ("ispanya", update_eu)):
+    for name, fn in (("kur", update_fx), ("izmir", update_izmir), ("antalya", antalya.update), ("gazipasa", gazipasa.update), ("atb", atb.update), ("junta", junta.update), ("mercamadrid", mercamadrid.update), ("hks", hks.update), ("ispanya", update_eu)):
         print(name, flush=True)
         t0 = time.time()
         try:

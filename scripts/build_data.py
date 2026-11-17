@@ -266,6 +266,41 @@ def read_almeria():
     return out
 
 
+MM_RX = [(re.compile(e["ad"]), e["urun"], e["tip"]) for e in SOZLUK.get("mercamadrid", {}).get("cesitler", [])]
+
+
+def read_mercamadrid():
+    """Mercamadrid aylık çeşit fiyatı: {ürün: {tip: {"seri": [[ayın ilk günü, en düşük, en yüksek, kg-ağırlıklı en sık fiyat]], "kg": {gün: kg}}}}.
+    Yalnız İspanya menşeli satırlar (il kodu 1–52); ithal menşeler (İtalya, Belçika, Şili...) dışarıda."""
+    acc = defaultdict(lambda: defaultdict(lambda: defaultdict(lambda: [0.0, 0.0, None, None])))   # ürün → tip → ay → [kg, kg×fiyat, min, max]
+    for p in sorted((RAW / "mercamadrid").glob("*.csv.gz")):
+        with gzip.open(p, "rt", encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                try:
+                    mk, kg, pr = int(r["mense_kod"]), float(r["kg"]), float(r["fiyat"])
+                except ValueError:
+                    continue
+                if not 1 <= mk <= 52 or kg <= 0 or pr <= 0:
+                    continue
+                hit = next(((u, t) for rx, u, t in MM_RX if rx.search(r["cesit"])), None)
+                if not hit:
+                    continue
+                c = acc[hit[0]][hit[1]][r["d"]]
+                c[0] += kg
+                c[1] += kg * pr
+                lo, hi = f(r["en_dusuk"]), f(r["en_yuksek"])
+                if lo:
+                    c[2] = lo if c[2] is None else min(c[2], lo)
+                if hi:
+                    c[3] = hi if c[3] is None else max(c[3], hi)
+    out = defaultdict(dict)
+    for u, tips in acc.items():
+        for tip, months in tips.items():
+            out[u][tip] = {"seri": [[d, c[2], c[3], round(c[1] / c[0], 3)] for d, c in sorted(months.items())],
+                           "kg": {d: round(c[0]) for d, c in sorted(months.items())}}
+    return out
+
+
 def f(v):
     try:
         x = float(v)
@@ -290,6 +325,7 @@ def main() -> None:
     gaz_products, gaz_inventory, gaz_unmatched = read_hal("gazipasa", classify_gazipasa)
     almeria = read_almeria()
     hks, hks_unmatched = read_hks()
+    mercamadrid = read_mercamadrid()
 
     # ---- İspanya
     es = defaultdict(lambda: defaultdict(dict))
@@ -325,6 +361,7 @@ def main() -> None:
                 es_series[lab] = sorted(d.items())
         al = {f"{tip} · {cat} · {pos}": sorted(v["seri"].items()) for (tip, cat, pos), v in almeria.get(u["k"], {}).items() if len(v["seri"]) >= 8}
         al_il = {f"{tip} · {cat} · {pos}": v["il"] for (tip, cat, pos), v in almeria.get(u["k"], {}).items() if len(v["seri"]) >= 8}
+        mm = {tip: v for tip, v in mercamadrid.get(u["k"], {}).items() if len(v["seri"]) >= 4}
         H = hks.get(u["k"])
         hks_doc = None
         if H:
@@ -344,11 +381,14 @@ def main() -> None:
                     x["almeria"] = al_ref(u["k"], x["k"], {**al, "_il": al_il})
         doc = {"k": u["k"], "tr": u["tr"], "en": u["en"], "es": u["es"], "botanik": u["botanik"], "tur": u["tur"],
                "segmentler": segs, "adlar": adlar_of(P), "haller": haller, "ispanya": {"urunler": u.get("ab", []), "seriler": es_series},
-               "hks": hks_doc, "almeria": {"seriler": al, "iller": al_il, "kaynak": "Junta de Andalucía, Precios agrícolas semanales (CC BY 4.0)"} if al else None}
+               "hks": hks_doc, "almeria": {"seriler": al, "iller": al_il, "kaynak": "Junta de Andalucía, Precios agrícolas semanales (CC BY 4.0)"} if al else None,
+               "mercamadrid": {"seriler": {f"{tip} · S.E. · mercamadrid": v["seri"] for tip, v in mm.items()},
+                               "kg": {f"{tip} · S.E. · mercamadrid": v["kg"] for tip, v in mm.items()},
+                               "kaynak": "Mercamadrid, volumen y precio de productos comercializados (Ayuntamiento de Madrid, CC BY 4.0)"} if mm else None}
         (out / f"{u['k']}.json").write_text(json.dumps(doc, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
         index.append({"k": u["k"], "tr": u["tr"], "en": u["en"], "tur": u["tur"], "segment": len(segs),
                       "n": max(s["n"] for s in segs), "ilk": min(s["ilk"] for s in segs), "son": max(s["son"] for s in segs),
-                      "ispanya": bool(es_series), "almeria": len(al), "antalya": len(haller.get("antalya", {}).get("segmentler", [])),
+                      "ispanya": bool(es_series), "almeria": len(al), "mercamadrid": len(mm), "antalya": len(haller.get("antalya", {}).get("segmentler", [])),
                       "gazipasa": len(haller.get("gazipasa", {}).get("segmentler", []))})
     (DATA / "urunler.json").write_text(json.dumps(index, ensure_ascii=False, indent=0), encoding="utf-8")
 

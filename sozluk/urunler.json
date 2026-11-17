@@ -3034,5 +3034,70 @@
     "segment": "aci"
    }
   ]
+ },
+ "mercamadrid": {
+  "_aciklama": "Mercamadrid aylık çeşit fiyatları (datos.madrid.es, CC BY 4.0): çeşit adı (düzenli ifade) → [TR ürün, İspanya tipi]. Tip adı Junta'daki adla aynıysa İspanya görünümünde o tipin segmentine ek seri olarak düşer; yoksa yeni segment olur. Yalnız İspanya menşeli satırlar (il kodu 1–52), kiloyla ağırlıklı. Toptancı hali fiyatıdır, üretici ilk satışı değildir.",
+  "cesitler": [
+   {
+    "ad": "^PERAS? LIMONERAS?$",
+    "urun": "armut",
+    "tip": "LIMONERA",
+    "not": "Limonera = Dr. Jules Guyot. Türkiye'deki 'Limon armudu' ayrı bir yerel çeşittir (Ege TAE çeşit denemesinde Limon ve Dr. J. Guyot ayrı yer alır); bu yüzden TR Limon segmentiyle eşlenmez."
+   },
+   {
+    "ad": "^PERAS? BLANQUILLAS?$",
+    "urun": "armut",
+    "tip": "BLANQUILLA"
+   },
+   {
+    "ad": "^PERAS? CONFERENCE$",
+    "urun": "armut",
+    "tip": "CONFERENCIA"
+   },
+   {
+    "ad": "^PERAS? ERCOLINI$",
+    "urun": "armut",
+    "tip": "ERCOLINI",
+    "not": "Ercolini = Coscia."
+   },
+   {
+    "ad": "^PERAS? CASTELL O SANJUANER",
+    "urun": "armut",
+    "tip": "SANJUANERA",
+    "not": "Castell ve Sanjuanera aynı erkenci çeşidin iki adı."
+   },
+   {
+    "ad": "^PERAS? PASSA CRASSANA",
+    "urun": "armut",
+    "tip": "PASSA CRASSANA"
+   },
+   {
+    "ad": "^PERAS? DOYAN DE COMICE$",
+    "urun": "armut",
+    "tip": "COMICE"
+   },
+   {
+    "ad": "^PERAS? ETRUSCA$",
+    "urun": "armut",
+    "tip": "ETRUSCA"
+   },
+   {
+    "ad": "^PERAS? MAGALLON$",
+    "urun": "armut",
+    "tip": "MAGALLON"
+   },
+   {
+    "ad": "^PERAS? MORATINI$",
+    "urun": "armut",
+    "tip": "MORETTINI",
+    "not": "Mercamadrid'in yazımı 'Moratini'. Hangi Morettini çeşidi olduğu belirtilmiyor (Butirra Precoce Morettini olabilir); Santa Maria ile eşlenmez."
+   },
+   {
+    "ad": "^PERAS? BARTLET",
+    "urun": "armut",
+    "tip": "WILLIAMS",
+    "not": "Bartlett = Williams."
+   }
+  ]
  }
 }

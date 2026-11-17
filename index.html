@@ -246,11 +246,11 @@
   const ES_COLORS = ['--c-es1', '--c-es2', '--c-es3', '--c-es4'];
   const TUR = { tr: { Sebze: 'Sebze', 'Yeşillik': 'Yeşillik', Meyve: 'Meyve', 'İthal': 'İthal' }, en: { Sebze: 'Vegetables', 'Yeşillik': 'Herbs and greens', Meyve: 'Fruit', 'İthal': 'Imported' } };
   const AL_TIP = {
-    tr: { RAMA: 'Salkım (rama)', LISO: 'Düz yuvarlak (liso)', REDONDO: 'Yuvarlak (redondo)', 'LARGA VIDA': 'Uzun raf ömürlü', PERA: 'Armut tipi (pera)', ASURCADO: 'Dilimli (asurcado)',
+    tr: { LIMONERA: 'Limonera (Dr. Jules Guyot)', COMICE: 'Doyenné du Comice', 'PASSA CRASSANA': 'Passa Crassana', SANJUANERA: 'Sanjuanera (Castell)', ERCOLINI: 'Ercolini (Coscia)', MAGALLON: 'Magallón', MORETTINI: 'Morettini', WILLIAMS: 'Williams (Bartlett)', RAMA: 'Salkım (rama)', LISO: 'Düz yuvarlak (liso)', REDONDO: 'Yuvarlak (redondo)', 'LARGA VIDA': 'Uzun raf ömürlü', PERA: 'Armut tipi (pera)', ASURCADO: 'Dilimli (asurcado)',
       'CHERRY-REDONDO RAMA': 'Çeri · yuvarlak salkım', 'CHERRY-REDONDO SUELTO': 'Çeri · yuvarlak dökme', 'CHERRY-PERA SUELTO': 'Çeri · armut dökme', 'CHERRY-PERA': 'Çeri · armut tipi', CHERRY: 'Çeri', ESPANOL: 'Kısa İspanyol (español)', FRANCES: 'Orta boy Fransız (francés)', 'LARGO ALMERIA': 'Uzun Almería (Hollanda tipi)', PLANA: 'Yassı (plana)', REDONDA: 'Yuvarlak', BLANCO: 'Açık yeşil (blanco)', CALABAZA: 'Bal kabağı (calabaza)', 'PIEL DE SAPO': 'Piel de sapo (kurbağa derisi)', AMARILLO: 'Sarı (amarillo)', GALIA: 'Galia',
       'CALIFORNIA-ROJO': 'California kırmızı', 'CALIFORNIA-AMARILLO': 'California sarı', 'CALIFORNIA-VERDE': 'California yeşil', ITALIANO: 'İtalyan (ince, kızartmalık)', CONICO: 'Konik tatlı (kapya tipi)',
       'LAMUYO-ROJO': 'Lamuyo kırmızı (iri, uzun blok)', 'LAMUYO-VERDE': 'Lamuyo yeşil (iri, uzun blok)', SNACK: 'Snack (mini biber)', NEGRA: 'Siyah uzun', LARGA: 'Uzun', RAYADA: 'Alacalı', VERDE: 'Koyu yeşil (verde)' },
-    en: { RAMA: 'Truss (rama)', LISO: 'Smooth round (liso)', REDONDO: 'Round (redondo)', 'LARGA VIDA': 'Long shelf life', PERA: 'Plum (pera)', ASURCADO: 'Ribbed (asurcado)',
+    en: { LIMONERA: 'Limonera (Dr. Jules Guyot)', COMICE: 'Doyenné du Comice', 'PASSA CRASSANA': 'Passa Crassana', SANJUANERA: 'Sanjuanera (Castell)', ERCOLINI: 'Ercolini (Coscia)', MAGALLON: 'Magallón', MORETTINI: 'Morettini', WILLIAMS: 'Williams (Bartlett)', RAMA: 'Truss (rama)', LISO: 'Smooth round (liso)', REDONDO: 'Round (redondo)', 'LARGA VIDA': 'Long shelf life', PERA: 'Plum (pera)', ASURCADO: 'Ribbed (asurcado)',
       'CHERRY-REDONDO RAMA': 'Cherry · round truss', 'CHERRY-REDONDO SUELTO': 'Cherry · round loose', 'CHERRY-PERA SUELTO': 'Cherry · plum loose', 'CHERRY-PERA': 'Cherry · plum type', CHERRY: 'Cherry', ESPANOL: 'Short Spanish (español)', FRANCES: 'Mid-long French (francés)', 'LARGO ALMERIA': 'Long Almería (Dutch type)', PLANA: 'Flat (plana)', REDONDA: 'Round', BLANCO: 'Light green (blanco)', CALABAZA: 'Pumpkin (calabaza)', 'PIEL DE SAPO': 'Piel de sapo (toad skin)', AMARILLO: 'Yellow (amarillo)', GALIA: 'Galia',
       'CALIFORNIA-ROJO': 'California red', 'CALIFORNIA-AMARILLO': 'California yellow', 'CALIFORNIA-VERDE': 'California green', ITALIANO: 'Italian (thin-walled, frying)', CONICO: 'Conical (kapya type)',
       'LAMUYO-ROJO': 'Lamuyo red', 'LAMUYO-VERDE': 'Lamuyo green', SNACK: 'Snack (mini pepper)', NEGRA: 'Black long', LARGA: 'Long', RAYADA: 'Striped', VERDE: 'Dark green (verde)' },
@@ -310,13 +310,14 @@
       updated: (d) => `Son güncelleme: ${d}.`, quick: 'Sera ürünleri:', botanik: (b) => `Botanik ad: ${b}`,
       halName: { izmir: 'İzmir', antalya: 'Antalya', gazipasa: 'Gazipaşa', ispanya: 'Almería' },
       noEsHal: (p) => `${p} için Junta de Andalucía'da fiyat serisi yok; İzmir gösteriliyor.`,
-      esSrc: 'İspanya: Junta de Andalucía haftalık üretici fiyatları (€/kg, KDV hariç). Segmentler İspanya\'nın kendi tip adlarıdır; her tipte ana seri 1. kalite depo teslimidir, öteki kalite ve teslim noktaları "Seri" listesindedir. Son 3 yılda işlem görmeyen tipler listelenmez.',
+      esSrc: 'İspanya: Junta de Andalucía haftalık üretici fiyatları (€/kg, KDV hariç). Segmentler İspanya\'nın kendi tip adlarıdır; her tipte ana seri 1. kalite depo teslimidir, öteki kalite ve teslim noktaları "Seri" listesindedir. Junta\'da olmayan çeşitler (ör. armutta Limonera) Mercamadrid\'in aylık toptancı hali fiyatından gelir ve adlarında "(Madrid)" yazar; bu fiyat üretici teslim fiyatından yüksektir, yalnız İspanya menşeli mallar alınır. Son 3 yılda işlem görmeyen tipler listelenmez.',
       esMain: (x) => `${x} · ana seri`, thEs: ['Seri', 'Birim', 'Hafta', 'İlk', 'Son', ''],
       esNoteAll: 'Her çizgi bir İspanya tipinin ana serisidir (haftalık, €/kg, üretici teslim fiyatı). Lejanttaki bir tipe tıklayarak gizleyebilirsiniz.',
       esBos: 'Bu segment için Junta de Andalucía\'da (haftalık fiyatlar ve Fiyat Gözlemevi) resmî fiyat serisi yok.',
       esGenel: 'Genel (tip ayrımı yok)', esIl: 'öteki Endülüs illeri',
       kat: { I: '1. kalite', II: '2. kalite', 'S.E.': 'kalite ayrımı yok', EXTRA: 'Ekstra' },
-      pos: { almacen: 'depo teslimi', alhondiga: 'mezat (alhóndiga)', cm: 'paketleme tesisi', salida: 'depo çıkışı', arbol: 'ağaçta', campo: 'tarlada' },
+      pos: { mercamadrid: 'Mercamadrid toptancı hali, aylık', almacen: 'depo teslimi', alhondiga: 'mezat (alhóndiga)', cm: 'paketleme tesisi', salida: 'depo çıkışı', arbol: 'ağaçta', campo: 'tarlada' },
+      ledeMm: (p, s, d, v, y) => `${p} · ${s}, Mercamadrid toptancı halinde <b>${d}</b> ayında en sık fiyat <b>${v}</b>/kg (yalnız İspanya menşeli). Bir yıl önceye göre değişim <b>${y}</b>.`,
       ledeEs: (p, s, d, v, y) => `${p} · ${s}, Almería'da <b>${d}</b> haftasında üretici fiyatı <b>${v}</b>/kg. Bir yıl önceye göre değişim <b>${y}</b>.`,
       esTr: (s) => `İspanya · ${s}`, esNoTr: (s, l) => `${s} tipinin Türkiye hallerinde karşılığı yok; grafikte yalnız İspanya var.` + (l.length ? ` Türkiye ile karşılaştırılabilen İspanya tipleri: ${l.join(', ')}.` : ''),
       karneEs: (s) => s ? `Islah karnesi Türkiye hallerinin verisiyle hesaplanır. Aşağıda bu İspanya tipine karşılık gelen Türkiye segmentinin (${s}) karnesi var.` : 'Islah karnesi Türkiye hallerinin verisiyle hesaplanır; bu İspanya tipinin Türkiye karşılığı olmadığı için karne gösterilmiyor.',
@@ -398,13 +399,14 @@
       updated: (d) => `Last updated: ${d}.`, quick: 'Greenhouse crops:', botanik: (b) => `Botanical name: ${b}`,
       halName: { izmir: 'İzmir', antalya: 'Antalya', gazipasa: 'Gazipaşa', ispanya: 'Almería' },
       noEsHal: (p) => `Junta de Andalucía has no price series for ${p.toLowerCase()}; showing İzmir.`,
-      esSrc: 'Spain: Junta de Andalucía weekly grower prices (€/kg, excl. VAT). Segments are Spain\'s own type names; each type\'s main series is grade I warehouse delivery, other grades and delivery points are in the "Series" list. Types not traded in the last 3 years are not listed.',
+      esSrc: 'Spain: Junta de Andalucía weekly grower prices (€/kg, excl. VAT). Segments are Spain\'s own type names; each type\'s main series is grade I warehouse delivery, other grades and delivery points are in the "Series" list. Varieties Junta does not report (e.g. Limonera pears) come from Mercamadrid\'s monthly wholesale-market price and are marked "(Madrid)"; that price is above the grower delivery price, and only Spanish-origin produce is used. Types not traded in the last 3 years are not listed.',
       esMain: (x) => `${x} · main series`, thEs: ['Series', 'Unit', 'Weeks', 'First', 'Last', ''],
       esNoteAll: 'Each line is the main series of a Spanish type (weekly, €/kg, grower delivery price). Click a type in the legend to hide it.',
       esBos: 'Junta de Andalucía (weekly prices and the Price Observatory) publishes no official price series for this segment.',
       esGenel: 'General (no type split)', esIl: 'other Andalusian provinces',
       kat: { I: 'Grade I', II: 'Grade II', 'S.E.': 'no grade split', EXTRA: 'Extra' },
-      pos: { almacen: 'warehouse delivery', alhondiga: 'auction (alhóndiga)', cm: 'packing house', salida: 'warehouse exit', arbol: 'on the tree', campo: 'in the field' },
+      pos: { mercamadrid: 'Mercamadrid wholesale market, monthly', almacen: 'warehouse delivery', alhondiga: 'auction (alhóndiga)', cm: 'packing house', salida: 'warehouse exit', arbol: 'on the tree', campo: 'in the field' },
+      ledeMm: (p, s, d, v, y) => `${p} · ${s}: most frequent price at the Mercamadrid wholesale market in <b>${d}</b> was <b>${v}</b>/kg (Spanish origin only), <b>${y}</b> on a year earlier.`,
       ledeEs: (p, s, d, v, y) => `${p} · ${s}: grower price in Almería in the week of <b>${d}</b> was <b>${v}</b>/kg, <b>${y}</b> on a year earlier.`,
       esTr: (s) => `Spain · ${s}`, esNoTr: (s, l) => `${s} has no counterpart at the Turkish markets; the chart shows Spain only.` + (l.length ? ` Spanish types comparable with Turkey: ${l.join(', ')}.` : ''),
       karneEs: (s) => s ? `The breeding scorecard is calculated from Turkish market data. Below is the scorecard of the Turkish segment matching this Spanish type (${s}).` : 'The breeding scorecard is calculated from Turkish market data; this Spanish type has no Turkish counterpart, so no scorecard is shown.',
@@ -679,8 +681,11 @@
   const esHalCache = {};
   function esHal(doc) {
     if (esHalCache[doc.k + L]) return esHalCache[doc.k + L];
-    const AS = doc.almeria?.seriler || {};
-    const IL_ = doc.almeria?.iller || {};
+    // Junta (haftalık, üretici teslim) + Mercamadrid (aylık, toptancı hali; yalnız İspanya menşeli). Mercamadrid serileri [gün, min, maks, ort].
+    const MM = doc.mercamadrid?.seriler || {};
+    const AS = { ...(doc.almeria?.seriler || {}), ...Object.fromEntries(Object.entries(MM).map(([k, r]) => [k, r.map(([d, , , v]) => [d, v])])) };
+    const IL_ = { ...(doc.almeria?.iller || {}), ...Object.fromEntries(Object.keys(MM).map((k) => [k, ['MAD']])) };
+    doc._AS = AS;
     const keys = Object.keys(AS).filter((k) => AS[k].length >= 8);
     if (!keys.length) return null;
     const lastAll = d3.max(keys, (k) => AS[k][AS[k].length - 1][0]);
@@ -702,7 +707,7 @@
       live.sort((a, b) => rank(a) - rank(b) || AS[b].length - AS[a].length);
       const main = live[0];
       const name = o ? o[L] : (gen.has(pl(tip)) ? t.esGenel : alName(tip)) + (inAl(main) ? '' : ` (${ilName(IL_[main])})`);
-      const seriOf = (k) => AS[k].map(([d, v]) => [d, null, null, v]);
+      const seriOf = (k) => MM[k] || AS[k].map(([d, v]) => [d, null, null, v]);
       const ad = (k) => { const [, kat, pos] = k.split(' · '); return `${t.kat[kat] || kat} · ${t.pos[pos] || pos}${inAl(k) ? '' : ' · ' + ilName(IL_[k])}`; };
       for (const k of ks) adlar[k] = { anahtar: k, ad: ad(k), birim: 'KG', n: AS[k].length, ilk: AS[k][0][0], son: AS[k][AS[k].length - 1][0], seri: seriOf(k), yan: false };
       const rows = AS[main];
@@ -844,7 +849,7 @@
   async function renderCmpEs(doc, S, segs) {
     const Kc = await karneOf(doc.k);
     if (!S.ana) { $('cmp-note').hidden = true; drawCmp($('chart-cmp'), [], $('legend-cmp'), t.esBos + (S.not ? ' ' + S.not : '')); S._tr = null; return; }
-    const lines = [{ name: t.esTr(nm(S)), color: css('--c-es2'), data: doc.almeria.seriler[S.ana].map(([d, v]) => ({ date: parse(d), eur: v })).filter((d) => d.date) }];
+    const lines = [{ name: t.esTr(nm(S)), color: css('--c-es2'), data: (doc._AS || doc.almeria.seriler)[S.ana].map(([d, v]) => ({ date: parse(d), eur: v })).filter((d) => d.date) }];
     const mates = Kc ? Kc.segmentler.filter((x) => x.almeria && S.tipler.includes(x.almeria.tip)) : [];
     for (const lh of LOCALS) for (const x of ((doc.haller && doc.haller[lh] || {}).segmentler || [])) if (x.almeria && S.tipler.includes(x.almeria.tip) && !mates.some((m) => m.k === x.k)) mates.push(x);
     const trSeg = [];
@@ -892,7 +897,7 @@
       tile(t.tWeek, `<span class="${cls(chg(last.avg, wk?.avg))}">${pct(chg(last.avg, wk?.avg))}</span>`, wk ? `${tl(wk.avg)} · ${fmtDate(wk.date)}` : t.noWeek) +
       tile(t.tYear, `<span class="${cls(yE)}">${pct(yE)}</span>`, yr ? `${ES ? tl(yr.avg) : t.inTl(pct(chg(last.avg, yr.avg)))} · ${fmtDate(yr.date)}` : t.noYear) +
       (recent.length > 1 && rk >= 0 ? tile(t.tRank, t.rank(rk + 1, recent.length), t.rankSub(esc(nm(recent[0].s)), tl(recent[0].v))) : '');
-    $('lede').innerHTML = (last ? (ES ? t.ledeEs(esc(P), esc(label), fmtDate(last.date), tl(last.avg), pct(yE)) : t.lede(esc(P), esc(label), fmtDate(last.date), tl(last.avg), r ? eur(last.avg / r) : null, pct(yE), halN)) + (stale ? ` <span class="muted">(${t.stale(fmtDate(last.date))})</span>` : '') : '') +
+    $('lede').innerHTML = (last ? (ES ? (/· mercamadrid$/.test(state.n || S.ana || '') ? t.ledeMm(esc(P), esc(label), last.date.toLocaleDateString(loc, { month: 'long', year: 'numeric', timeZone: 'UTC' }), tl(last.avg), pct(yE)) : t.ledeEs(esc(P), esc(label), fmtDate(last.date), tl(last.avg), pct(yE))) : t.lede(esc(P), esc(label), fmtDate(last.date), tl(last.avg), r ? eur(last.avg / r) : null, pct(yE), halN)) + (stale ? ` <span class="muted">(${t.stale(fmtDate(last.date))})</span>` : '') : '') +
       t.ledeN(index.length, d3.sum(index, (p) => p.segment));
     if (ES) {
       if (S._tr) await renderKarne(doc, S._tr); else { $('h-karne').textContent = t.hKarne(nm(doc), nm(S)); $('karne').innerHTML = ''; }
@@ -915,7 +920,7 @@
   const shortDate = (d) => parse(d).toLocaleDateString(loc, { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
   const r2 = (v) => v == null ? '—' : v.toLocaleString(loc, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   const showKod = (kod) => kod === 'E' || (kod === 'Y' && !state.esSadece);
-  const IL = { AL: 'Almería', GR: 'Granada', MA: 'Málaga', SE: 'Sevilla', CA: 'Cádiz', CO: 'Córdoba', HU: 'Huelva', JA: 'Jaén' };
+  const IL = { MAD: 'Madrid', AL: 'Almería', GR: 'Granada', MA: 'Málaga', SE: 'Sevilla', CA: 'Cádiz', CO: 'Córdoba', HU: 'Huelva', JA: 'Jaén' };
   const ALU = {"domates":["TOMATE"],"biber":["PIMIENTO"],"hiyar":["PEPINO"],"patlican":["BERENJENA"],"kabak":["CALABACIN"],"kavun":["MELON"],"karpuz":["SANDIA"],"fasulye":["JUDIA VERDE"],"lahana":["COL"],"marul":["LECHUGA"],"portakal":["NARANJA"],"mandalina":["MANDARINA"],"nektarin":["NECTARINA"],"seftali":["MELOCOTON"],"avokado":["AGUACATE"],"sarimsak":["AJO"],"sogan":["CEBOLLA","CEBOLLETA"],"karnabahar":["COLIFLOR"],"patates":["PATATA"],"brokoli":["BROCOLI"],"cennet-elmasi":["CAQUI"],"incir":["BREVAS E HIGOS"],"ispanak":["ESPINACA"],"kestane":["CASTANA"],"malta-erigi":["NISPERO"],"mango":["MANGO"],"pancar":["REMOLACHA DE MESA"],"pazi":["ACELGA"],"bal-kabagi":["CALABAZA"],"nar":["GRANADA"],"enginar":["ALCACHOFA"],"bezelye":["GUISANTE"],"bakla":["HABA VERDE"],"pirasa":["PUERRO"],"havuc":["ZANAHORIA"],"cilek":["FRESON"],"limon":["LIMON"],"armut":["PERA"],"uzum":["UVA DE MESA"],"erik":["CIRUELA"],"kiraz":["CEREZA"],"kayisi":["ALBARICOQUE"]};   // Junta ürün adı (genel, tip ayırmayan seri) — sozluk/urunler.json almeria.urunler
   const ES_SEG = {"hiyar":[{"k":"largo-almeria","tr":"Uzun · Almería (Hollanda tipi)","en":"Long · Almería (Dutch type)","tipler":["LARGO ALMERIA"]},{"k":"espanol","tr":"Kısa · İspanyol (Español, dikenli)","en":"Short · Spanish (Español, spiny)","tipler":["ESPANOL"]},{"k":"frances","tr":"Orta boy · Fransız (Francés)","en":"Mid-long · French (Francés)","tipler":["FRANCES"]},{"k":"mini","tr":"Mini / Persa (snack)","en":"Mini / Persian (snack)","tipler":[],"not_tr":"Junta'da resmî seri yok. Türkiye'deki karşılığı: Silor.","not_en":"No official Junta series. Turkish counterpart: Silor."}]};   // İspanya görünümünde segment listesi — sozluk/urunler.json ispanya_segment
   const ilName = (a) => (a || []).map((x) => IL[x] || x).join(', ') || 'Endülüs';
