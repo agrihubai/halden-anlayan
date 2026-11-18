@@ -2,7 +2,7 @@
  "help": "https://acikveri.bizizmir.com/api/3/action/help_show?name=package_show",
  "success": true,
  "result": {
-  "license_title": "İzmir Büyükşehir Belediyesi Açık Veri Lisansı",
+  "license_title": "Izmir Metropolitan Municipality Open Data License",
   "maintainer": "İzBB Sebze Halleri Şube Müdürlüğü",
   "relationships_as_object": [],
   "private": false,
@@ -22,8 +22,8 @@
     "mimetype": null,
     "cache_url": null,
     "tracking_summary": {
-     "total": 693,
-     "recent": 4
+     "total": 694,
+     "recent": 5
     },
     "hash": "",
     "description": "Güncel sebze ve meyve hal fiyatları bilgisini içeren web sayfası.",
@@ -545,4 +545,3 @@
      "total": 48,
      "recent": 3
     },
-   
