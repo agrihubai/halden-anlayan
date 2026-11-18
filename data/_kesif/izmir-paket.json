@@ -2,7 +2,7 @@
  "help": "https://acikveri.bizizmir.com/api/3/action/help_show?name=package_show",
  "success": true,
  "result": {
-  "license_title": "Izmir Metropolitan Municipality Open Data License",
+  "license_title": "İzmir Büyükşehir Belediyesi Açık Veri Lisansı",
   "maintainer": "İzBB Sebze Halleri Şube Müdürlüğü",
   "relationships_as_object": [],
   "private": false,
@@ -10,7 +10,7 @@
   "num_tags": 2,
   "id": "39f883f1-5627-4ec0-b424-8f65baf01969",
   "metadata_created": "2020-09-01T09:29:52.786668",
-  "metadata_modified": "2026-11-17T23:03:08.030410",
+  "metadata_modified": "2026-11-18T23:03:45.581986",
   "author": "İzBB Sebze Halleri Şube Müdürlüğü",
   "author_email": "acikveri@bizizmir.com",
   "state": "active",
@@ -530,9 +530,9 @@
     "created": "2024-01-03T07:48:33.194665",
     "state": "active",
     "mimetype_inner": null,
-    "last_modified": "2026-11-17T22:15:09.138762",
+    "last_modified": "2026-11-18T22:15:08.439146",
     "position": 19,
-    "revision_id": "116f5f97-c5c2-4c1a-a724-f52519d04b15",
+    "revision_id": "ce7feaea-3239-4d98-a9ce-67ebc254f361",
     "url_type": null,
     "id": "71ab2fea-f2f5-4401-85cf-dba09baf5135",
     "resource_type": null,
@@ -545,3 +545,4 @@
      "total": 48,
      "recent": 3
     },
+   
