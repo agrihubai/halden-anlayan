@@ -1,11 +1,13 @@
 name: Hal verisini güncelle
 
-# Bütün kaynaklar (İzmir, Antalya, HKS, ATB, Junta, AB, ECB kuru) tek işte, günde üç kez.
-# GitHub zamanlanmış işleri saatlerce geciktirebilir ya da atlayabilir; üç deneme bunu telafi eder.
+# Bütün kaynaklar (İzmir, Antalya, HKS, ATB, Junta, AB, ECB kuru) tek işte, üç saatte bir.
+# GitHub zamanlanmış işleri saatlerce geciktirebilir ya da atlayabilir (günde 3 denemeden
+# ancak 2'si, 9-10 saat geç çalışıyordu); sık deneme bunu telafi eder. Üst üste binen
+# koşular 'concurrency' ile sıraya girer.
 # Saatler dakika başına konmadı (:41), çünkü tam saatlerde GitHub kuyruğu en yoğun.
 on:
   schedule:
-    - cron: "41 6,11,17 * * *"   # 06:41, 11:41, 17:41 UTC (Madrid 07:41, 12:41, 18:41 kışın)
+    - cron: "23 */3 * * *"   # 00:23, 03:23 ... 21:23 UTC (günde 8 kez)
   workflow_dispatch: {}
   push:
     branches: [main]
