@@ -1,8 +1,8 @@
 {
- "tarih": "2026-11-09",
+ "tarih": "2026-11-10",
  "kaynak": {
-  "PdfUrl": "/Hal/Uploads/GunlukFiyatlar/53bbdde3-1df6-4216-8214-b7850dce0387_09.11.2026.pdf",
-  "PdfDate": "09.11.2026"
+  "PdfUrl": "/Hal/Uploads/GunlukFiyatlar/8086fdc1-bd47-4c56-a839-93d6565d3c2a_10.11.2026.pdf",
+  "PdfDate": "10.11.2026"
  },
  "satir": [
   {
@@ -74,8 +74,8 @@
    "v": "Dereotu",
    "u": "BAĞ",
    "lo": 5.0,
-   "hi": 12.0,
-   "avg": 8.5
+   "hi": 14.0,
+   "avg": 9.5
   },
   {
    "tur": "SEBZE",
@@ -234,8 +234,8 @@
    "v": "Mantar",
    "u": "KG",
    "lo": 80.0,
-   "hi": 135.0,
-   "avg": 107.5
+   "hi": 130.0,
+   "avg": 105.0
   },
   {
    "tur": "SEBZE",
@@ -290,8 +290,8 @@
    "v": "Patates (Baby)",
    "u": "KG",
    "lo": 25.0,
-   "hi": 40.0,
-   "avg": 32.5
+   "hi": 50.0,
+   "avg": 37.5
   },
   {
    "tur": "SEBZE",
@@ -385,9 +385,9 @@
    "tur": "SEBZE",
    "v": "Soğan (Kuru)",
    "u": "KG",
-   "lo": 20.0,
-   "hi": 34.0,
-   "avg": 27.0
+   "lo": 15.0,
+   "hi": 30.0,
+   "avg": 22.5
   },
   {
    "tur": "SEBZE",
@@ -473,17 +473,17 @@
    "tur": "MEYVE",
    "v": "Çilek",
    "u": "KG",
-   "lo": 250.0,
-   "hi": 550.0,
-   "avg": 400.0
+   "lo": 350.0,
+   "hi": 600.0,
+   "avg": 475.0
   },
   {
    "tur": "MEYVE",
    "v": "Greyfurt",
    "u": "KG",
-   "lo": 25.0,
-   "hi": 35.0,
-   "avg": 30.0
+   "lo": 15.0,
+   "hi": 30.0,
+   "avg": 22.5
   },
   {
    "tur": "MEYVE",
@@ -498,8 +498,8 @@
    "v": "Kavun",
    "u": "KG",
    "lo": 14.0,
-   "hi": 30.0,
-   "avg": 22.0
+   "hi": 33.0,
+   "avg": 23.5
   },
   {
    "tur": "MEYVE",
@@ -530,8 +530,8 @@
    "v": "Mandalina",
    "u": "KG",
    "lo": 18.0,
-   "hi": 35.0,
-   "avg": 26.5
+   "hi": 30.0,
+   "avg": 24.0
   },
   {
    "tur": "MEYVE",
@@ -545,9 +545,9 @@
    "tur": "MEYVE",
    "v": "Muz (Yerli)",
    "u": "KG",
-   "lo": 50.0,
-   "hi": 90.0,
-   "avg": 70.0
+   "lo": 40.0,
+   "hi": 80.0,
+   "avg": 60.0
   },
   {
    "tur": "MEYVE",

@@ -1,24 +1,24 @@
 {
- "guncelleme": "2026-11-19T23:47+00:00",
+ "guncelleme": "2026-11-20T11:06+00:00",
  "kaynaklar": {
   "kur": {
    "durum": "tamam",
    "kayit": 5346,
-   "sure_sn": 2
+   "sure_sn": 5
   },
   "izmir": {
    "durum": "tamam",
-   "kayit": 28916,
-   "sure_sn": 20
+   "kayit": 29003,
+   "sure_sn": 18
   },
   "antalya": {
    "durum": "tamam",
-   "kayit": 9957,
-   "sure_sn": 44
+   "kayit": 10041,
+   "sure_sn": 57
   },
   "gazipasa": {
    "durum": "tamam",
-   "kayit": 96,
+   "kayit": 110,
    "sure_sn": 0
   },
   "atb": {
@@ -32,19 +32,19 @@
    "sure_sn": 5
   },
   "mercamadrid": {
-   "durum": "hata",
-   "mesaj": "https://datos.madrid.es/api/3/action/package_show?id=300357-0-mercamadrid-volumen-precio: The read operation timed out",
-   "sure_sn": 420
+   "durum": "tamam",
+   "kayit": 149006,
+   "sure_sn": 130
   },
   "hks": {
    "durum": "tamam",
-   "kayit": 1187354,
-   "sure_sn": 116
+   "kayit": 1187821,
+   "sure_sn": 89
   },
   "ispanya": {
    "durum": "tamam",
    "kayit": 61034,
-   "sure_sn": 764
+   "sure_sn": 1029
   }
  }
 }
