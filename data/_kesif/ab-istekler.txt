@@ -19,25 +19,4 @@ Apples deneme 3: HTTP Error 500:
 Apples for processing deneme 1: HTTP Error 500: 
 Apples for processing deneme 2: HTTP Error 500: 
 Apples for processing deneme 3: HTTP Error 500: 
-Apricots deneme 1: HTTP Error 500: 
-Apricots deneme 2: HTTP Error 500: 
-Apricots deneme 3: HTTP Error 500: 
-Asparagus deneme 1: HTTP Error 500: 
-Asparagus deneme 2: HTTP Error 500: 
-Asparagus deneme 3: HTTP Error 500: 
-Avocados deneme 1: HTTP Error 500: 
-Avocados deneme 2: HTTP Error 500: 
-Avocados deneme 3: HTTP Error 500: 
-Bananas deneme 1: HTTP Error 500: 
-Bananas deneme 2: HTTP Error 500: 
-Bananas deneme 3: HTTP Error 500: 
-Beans deneme 1: HTTP Error 500: 
-Beans deneme 2: HTTP Error 500: 
-Beans deneme 3: HTTP Error 500: 
-Cabbage deneme 1: HTTP Error 500: 
-Cabbage deneme 2: HTTP Error 500: 
-Cabbage deneme 3: HTTP Error 500: 
-Carrots deneme 1: HTTP Error 500: 
-Carrots deneme 2: HTTP Error 500: 
-Carrots deneme 3: HTTP Error 500: 
 süre doldu, kalan ürünler bir sonraki çalıştırmaya kaldı
