@@ -10,7 +10,7 @@
   "num_tags": 2,
   "id": "39f883f1-5627-4ec0-b424-8f65baf01969",
   "metadata_created": "2020-09-01T09:29:52.786668",
-  "metadata_modified": "2026-11-20T23:04:11.149519",
+  "metadata_modified": "2026-11-21T23:04:13.770400",
   "author": "İzBB Sebze Halleri Şube Müdürlüğü",
   "author_email": "acikveri@bizizmir.com",
   "state": "active",
@@ -22,8 +22,8 @@
     "mimetype": null,
     "cache_url": null,
     "tracking_summary": {
-     "total": 694,
-     "recent": 5
+     "total": 695,
+     "recent": 6
     },
     "hash": "",
     "description": "Güncel sebze ve meyve hal fiyatları bilgisini içeren web sayfası.",
@@ -530,9 +530,9 @@
     "created": "2024-01-03T07:48:33.194665",
     "state": "active",
     "mimetype_inner": null,
-    "last_modified": "2026-11-20T22:15:08.653234",
+    "last_modified": "2026-11-21T22:15:08.926432",
     "position": 19,
-    "revision_id": "74bb2718-d8f1-4970-a251-66dfd2296eba",
+    "revision_id": "91c5c335-dffc-43c0-9966-5f499e98fc85",
     "url_type": null,
     "id": "71ab2fea-f2f5-4401-85cf-dba09baf5135",
     "resource_type": null,

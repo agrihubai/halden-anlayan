@@ -1,8 +1,8 @@
 {
- "tarih": "2026-11-11",
+ "tarih": "2026-11-12",
  "kaynak": {
-  "PdfUrl": "/Hal/Uploads/GunlukFiyatlar/da5b925b-0539-41f1-9e1b-61e2290799a9_11.11.2026.pdf",
-  "PdfDate": "11.11.2026"
+  "PdfUrl": "/Hal/Uploads/GunlukFiyatlar/11b49a91-2f96-4685-8c09-73fc7de73b3c_12.11.2026.pdf",
+  "PdfDate": "12.11.2026"
  },
  "satir": [
   {
@@ -546,8 +546,8 @@
    "v": "Muz (Yerli)",
    "u": "KG",
    "lo": 40.0,
-   "hi": 80.0,
-   "avg": 60.0
+   "hi": 78.0,
+   "avg": 59.0
   },
   {
    "tur": "MEYVE",
