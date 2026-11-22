@@ -18,8 +18,8 @@ Apples deneme 2: HTTP Error 500: Internal Server Error
 Apples deneme 3: HTTP Error 500: Internal Server Error
 Apples for processing deneme 1: HTTP Error 500: Internal Server Error
 Apples for processing deneme 2: HTTP Error 500: Internal Server Error
-Apples for processing deneme 3: HTTP Error 429: Too Many Requests
-Apricots deneme 1: HTTP Error 429: Too Many Requests
+Apples for processing deneme 3: HTTP Error 500: Internal Server Error
+Apricots deneme 1: HTTP Error 500: Internal Server Error
 Apricots deneme 2: HTTP Error 500: Internal Server Error
 Apricots deneme 3: HTTP Error 500: Internal Server Error
 Asparagus deneme 1: HTTP Error 500: Internal Server Error
@@ -30,7 +30,7 @@ Avocados deneme 2: HTTP Error 500: Internal Server Error
 Avocados deneme 3: HTTP Error 500: Internal Server Error
 Bananas deneme 1: HTTP Error 500: Internal Server Error
 Bananas deneme 2: HTTP Error 500: Internal Server Error
-Bananas deneme 3: HTTP Error 429: Too Many Requests
+Bananas deneme 3: HTTP Error 500: Internal Server Error
 Beans deneme 1: HTTP Error 500: Internal Server Error
 Beans deneme 2: HTTP Error 500: Internal Server Error
 Beans deneme 3: HTTP Error 500: Internal Server Error
@@ -68,9 +68,15 @@ Mandarins deneme 1: HTTP Error 500: Internal Server Error
 Mandarins deneme 2: HTTP Error 500: Internal Server Error
 Mandarins deneme 3: HTTP Error 500: Internal Server Error
 Melons deneme 1: HTTP Error 500: Internal Server Error
-Melons deneme 2: HTTP Error 429: Too Many Requests
-Melons deneme 3: HTTP Error 429: Too Many Requests
+Melons deneme 2: HTTP Error 500: Internal Server Error
+Melons deneme 3: HTTP Error 500: Internal Server Error
 Nectarines deneme 1: HTTP Error 500: Internal Server Error
 Nectarines deneme 2: HTTP Error 500: Internal Server Error
 Nectarines deneme 3: HTTP Error 500: Internal Server Error
+Nectarines for processing deneme 1: HTTP Error 500: Internal Server Error
+Nectarines for processing deneme 2: HTTP Error 500: Internal Server Error
+Nectarines for processing deneme 3: HTTP Error 500: Internal Server Error
+Onions deneme 1: HTTP Error 500: Internal Server Error
+Onions deneme 2: HTTP Error 500: Internal Server Error
+Onions deneme 3: HTTP Error 500: Internal Server Error
 süre doldu, kalan ürünler bir sonraki çalıştırmaya kaldı
