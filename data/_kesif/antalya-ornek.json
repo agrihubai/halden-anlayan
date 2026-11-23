@@ -1,8 +1,8 @@
 {
- "tarih": "2026-11-12",
+ "tarih": "2026-11-13",
  "kaynak": {
-  "PdfUrl": "/Hal/Uploads/GunlukFiyatlar/11b49a91-2f96-4685-8c09-73fc7de73b3c_12.11.2026.pdf",
-  "PdfDate": "12.11.2026"
+  "PdfUrl": "/Hal/Uploads/GunlukFiyatlar/5ce8d3f8-9cb7-4812-be1b-98de9fe7f472_13.11.2026.pdf",
+  "PdfDate": "13.11.2026"
  },
  "satir": [
   {
@@ -105,17 +105,17 @@
    "tur": "SEBZE",
    "v": "Domates (Kokteyl)",
    "u": "KG",
-   "lo": 50.0,
-   "hi": 90.0,
-   "avg": 70.0
+   "lo": 40.0,
+   "hi": 80.0,
+   "avg": 60.0
   },
   {
    "tur": "SEBZE",
    "v": "Fasulye",
    "u": "KG",
    "lo": 50.0,
-   "hi": 120.0,
-   "avg": 85.0
+   "hi": 100.0,
+   "avg": 75.0
   },
   {
    "tur": "SEBZE",
@@ -129,33 +129,33 @@
    "tur": "SEBZE",
    "v": "Havuç (Beypazarı)",
    "u": "KG",
-   "lo": 8.0,
-   "hi": 15.0,
-   "avg": 11.5
+   "lo": 10.0,
+   "hi": 20.0,
+   "avg": 15.0
   },
   {
    "tur": "SEBZE",
    "v": "Hıyar",
    "u": "KG",
    "lo": 30.0,
-   "hi": 65.0,
-   "avg": 47.5
+   "hi": 75.0,
+   "avg": 52.5
   },
   {
    "tur": "SEBZE",
    "v": "Hıyar (Silorpaket)",
    "u": "KG",
    "lo": 35.0,
-   "hi": 70.0,
-   "avg": 52.5
+   "hi": 75.0,
+   "avg": 55.0
   },
   {
    "tur": "SEBZE",
    "v": "Ispanak",
    "u": "KG",
    "lo": 20.0,
-   "hi": 45.0,
-   "avg": 32.5
+   "hi": 55.0,
+   "avg": 37.5
   },
   {
    "tur": "SEBZE",
@@ -194,8 +194,8 @@
    "v": "Kereviz",
    "u": "KG",
    "lo": 25.0,
-   "hi": 50.0,
-   "avg": 37.5
+   "hi": 40.0,
+   "avg": 32.5
   },
   {
    "tur": "SEBZE",
@@ -210,8 +210,8 @@
    "v": "Lahana (Beyaz)",
    "u": "KG",
    "lo": 10.0,
-   "hi": 20.0,
-   "avg": 15.0
+   "hi": 18.0,
+   "avg": 14.0
   },
   {
    "tur": "SEBZE",
@@ -250,16 +250,16 @@
    "v": "Marul (Düz)",
    "u": "ADET",
    "lo": 18.0,
-   "hi": 34.0,
-   "avg": 26.0
+   "hi": 30.0,
+   "avg": 24.0
   },
   {
    "tur": "SEBZE",
    "v": "Marul (Kıvırcık)",
    "u": "ADET",
    "lo": 18.0,
-   "hi": 34.0,
-   "avg": 26.0
+   "hi": 30.0,
+   "avg": 24.0
   },
   {
    "tur": "SEBZE",
@@ -377,9 +377,9 @@
    "tur": "SEBZE",
    "v": "Soğan (Yeşil)",
    "u": "KG",
-   "lo": 30.0,
-   "hi": 60.0,
-   "avg": 45.0
+   "lo": 25.0,
+   "hi": 50.0,
+   "avg": 37.5
   },
   {
    "tur": "SEBZE",
@@ -450,8 +450,8 @@
    "v": "Elma (Golden)",
    "u": "KG",
    "lo": 30.0,
-   "hi": 60.0,
-   "avg": 45.0
+   "hi": 55.0,
+   "avg": 42.5
   },
   {
    "tur": "MEYVE",
@@ -466,16 +466,16 @@
    "v": "Elma (Starking)",
    "u": "KG",
    "lo": 30.0,
-   "hi": 60.0,
-   "avg": 45.0
+   "hi": 55.0,
+   "avg": 42.5
   },
   {
    "tur": "MEYVE",
    "v": "Çilek",
    "u": "KG",
    "lo": 350.0,
-   "hi": 600.0,
-   "avg": 475.0
+   "hi": 650.0,
+   "avg": 500.0
   },
   {
    "tur": "MEYVE",
@@ -578,8 +578,8 @@
    "v": "Portakal (Meyvelik)",
    "u": "KG",
    "lo": 20.0,
-   "hi": 45.0,
-   "avg": 32.5
+   "hi": 50.0,
+   "avg": 35.0
   },
   {
    "tur": "İTHAL",
