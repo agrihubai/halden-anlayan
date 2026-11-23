@@ -8,8 +8,8 @@ Egg Plants deneme 1: HTTP Error 500: Internal Server Error
 Egg Plants deneme 2: HTTP Error 500: Internal Server Error
 Egg Plants deneme 3: HTTP Error 500: Internal Server Error
 Peppers deneme 1: HTTP Error 500: Internal Server Error
-Peppers deneme 2: HTTP Error 500: Internal Server Error
-Peppers deneme 3: HTTP Error 500: Internal Server Error
+Peppers deneme 2: HTTP Error 429: Too Many Requests
+Peppers deneme 3: HTTP Error 429: Too Many Requests
 Tomatoes deneme 1: HTTP Error 500: Internal Server Error
 Tomatoes deneme 2: HTTP Error 500: Internal Server Error
 Tomatoes deneme 3: HTTP Error 500: Internal Server Error
@@ -69,11 +69,8 @@ Mandarins deneme 2: HTTP Error 500: Internal Server Error
 Mandarins deneme 3: HTTP Error 500: Internal Server Error
 Melons deneme 1: HTTP Error 500: Internal Server Error
 Melons deneme 2: HTTP Error 500: Internal Server Error
-Melons deneme 3: HTTP Error 429: Too Many Requests
+Melons deneme 3: HTTP Error 500: Internal Server Error
 Nectarines deneme 1: HTTP Error 500: Internal Server Error
 Nectarines deneme 2: HTTP Error 500: Internal Server Error
 Nectarines deneme 3: HTTP Error 500: Internal Server Error
-Nectarines for processing deneme 1: HTTP Error 500: Internal Server Error
-Nectarines for processing deneme 2: HTTP Error 500: Internal Server Error
-Nectarines for processing deneme 3: HTTP Error 500: Internal Server Error
 süre doldu, kalan ürünler bir sonraki çalıştırmaya kaldı
