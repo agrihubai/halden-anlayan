@@ -1,76 +1,48 @@
-Courgettes deneme 1: HTTP Error 500: Internal Server Error
-Courgettes deneme 2: HTTP Error 500: Internal Server Error
-Courgettes deneme 3: HTTP Error 500: Internal Server Error
-Cucumbers deneme 1: HTTP Error 500: Internal Server Error
-Cucumbers deneme 2: HTTP Error 500: Internal Server Error
-Cucumbers deneme 3: HTTP Error 500: Internal Server Error
-Egg Plants deneme 1: HTTP Error 500: Internal Server Error
-Egg Plants deneme 2: HTTP Error 500: Internal Server Error
-Egg Plants deneme 3: HTTP Error 500: Internal Server Error
-Peppers deneme 1: HTTP Error 500: Internal Server Error
-Peppers deneme 2: HTTP Error 429: Too Many Requests
-Peppers deneme 3: HTTP Error 429: Too Many Requests
-Tomatoes deneme 1: HTTP Error 500: Internal Server Error
-Tomatoes deneme 2: HTTP Error 500: Internal Server Error
-Tomatoes deneme 3: HTTP Error 500: Internal Server Error
-Apples deneme 1: HTTP Error 500: Internal Server Error
-Apples deneme 2: HTTP Error 500: Internal Server Error
-Apples deneme 3: HTTP Error 500: Internal Server Error
-Apples for processing deneme 1: HTTP Error 500: Internal Server Error
-Apples for processing deneme 2: HTTP Error 500: Internal Server Error
-Apples for processing deneme 3: HTTP Error 500: Internal Server Error
-Apricots deneme 1: HTTP Error 500: Internal Server Error
-Apricots deneme 2: HTTP Error 500: Internal Server Error
-Apricots deneme 3: HTTP Error 500: Internal Server Error
-Asparagus deneme 1: HTTP Error 500: Internal Server Error
-Asparagus deneme 2: HTTP Error 500: Internal Server Error
-Asparagus deneme 3: HTTP Error 500: Internal Server Error
-Avocados deneme 1: HTTP Error 500: Internal Server Error
-Avocados deneme 2: HTTP Error 500: Internal Server Error
-Avocados deneme 3: HTTP Error 500: Internal Server Error
-Bananas deneme 1: HTTP Error 500: Internal Server Error
-Bananas deneme 2: HTTP Error 500: Internal Server Error
-Bananas deneme 3: HTTP Error 500: Internal Server Error
-Beans deneme 1: HTTP Error 500: Internal Server Error
-Beans deneme 2: HTTP Error 500: Internal Server Error
-Beans deneme 3: HTTP Error 500: Internal Server Error
-Cabbage deneme 1: HTTP Error 500: Internal Server Error
-Cabbage deneme 2: HTTP Error 500: Internal Server Error
-Cabbage deneme 3: HTTP Error 500: Internal Server Error
-Carrots deneme 1: HTTP Error 500: Internal Server Error
-Carrots deneme 2: HTTP Error 500: Internal Server Error
-Carrots deneme 3: HTTP Error 500: Internal Server Error
-Cauliflowers deneme 1: HTTP Error 500: Internal Server Error
-Cauliflowers deneme 2: HTTP Error 500: Internal Server Error
-Cauliflowers deneme 3: HTTP Error 500: Internal Server Error
-Cherries deneme 1: HTTP Error 500: Internal Server Error
-Cherries deneme 2: HTTP Error 500: Internal Server Error
-Cherries deneme 3: HTTP Error 500: Internal Server Error
-Clementines deneme 1: HTTP Error 500: Internal Server Error
-Clementines deneme 2: HTTP Error 500: Internal Server Error
-Clementines deneme 3: HTTP Error 500: Internal Server Error
-Cultivated Mushrooms deneme 1: HTTP Error 500: Internal Server Error
-Cultivated Mushrooms deneme 2: HTTP Error 500: Internal Server Error
-Cultivated Mushrooms deneme 3: HTTP Error 500: Internal Server Error
-Garlic deneme 1: HTTP Error 500: Internal Server Error
-Garlic deneme 2: HTTP Error 500: Internal Server Error
-Garlic deneme 3: HTTP Error 500: Internal Server Error
-Leeks deneme 1: HTTP Error 500: Internal Server Error
-Leeks deneme 2: HTTP Error 500: Internal Server Error
-Leeks deneme 3: HTTP Error 500: Internal Server Error
-Lemons deneme 1: HTTP Error 500: Internal Server Error
-Lemons deneme 2: HTTP Error 500: Internal Server Error
-Lemons deneme 3: HTTP Error 500: Internal Server Error
-Lettuces deneme 1: HTTP Error 500: Internal Server Error
-Lettuces deneme 2: HTTP Error 500: Internal Server Error
-Lettuces deneme 3: HTTP Error 500: Internal Server Error
-Mandarins deneme 1: HTTP Error 500: Internal Server Error
-Mandarins deneme 2: HTTP Error 500: Internal Server Error
-Mandarins deneme 3: HTTP Error 500: Internal Server Error
-Melons deneme 1: HTTP Error 500: Internal Server Error
-Melons deneme 2: HTTP Error 500: Internal Server Error
-Melons deneme 3: HTTP Error 500: Internal Server Error
-Nectarines deneme 1: HTTP Error 500: Internal Server Error
-Nectarines deneme 2: HTTP Error 500: Internal Server Error
-Nectarines deneme 3: HTTP Error 500: Internal Server Error
-süre doldu, kalan ürünler bir sonraki çalıştırmaya kaldı
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Kiwis+Hayward&beginDate=01%2F01%2F2006&endDate=24%2F11%2F2026 -> 0
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Organic-Apples&beginDate=01%2F01%2F2006&endDate=24%2F11%2F2026 -> 0
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Organic-Nectarines&beginDate=01%2F01%2F2006&endDate=24%2F11%2F2026 -> 0
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Organic-Peaches&beginDate=01%2F01%2F2006&endDate=24%2F11%2F2026 -> 0
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Organic-Tomatoes&beginDate=01%2F01%2F2006&endDate=24%2F11%2F2026 -> 0
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Ware+potatoes%2C+size+that+do+not+pass+a+square+mesh+of+35+mm+x+35+mm+but+can+pass+a+square+mesh+of+75+mm+x+75+mm%2C+in+packages+below+10+kg&beginDate=01%2F01%2F2006&endDate=24%2F11%2F2026 -> 0
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Courgettes&beginDate=31%2F08%2F2026&endDate=24%2F11%2F2026 -> 13
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Cucumbers&beginDate=31%2F08%2F2026&endDate=24%2F11%2F2026 -> 26
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Egg+Plants&beginDate=31%2F08%2F2026&endDate=24%2F11%2F2026 -> 13
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Peppers&beginDate=31%2F08%2F2026&endDate=24%2F11%2F2026 -> 13
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Tomatoes&beginDate=31%2F08%2F2026&endDate=24%2F11%2F2026 -> 88
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Apples&beginDate=31%2F08%2F2026&endDate=24%2F11%2F2026 -> 155
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Apples+for+processing&beginDate=07%2F07%2F2026&endDate=24%2F11%2F2026 -> 2
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Apricots&beginDate=29%2F06%2F2026&endDate=24%2F11%2F2026 -> 22
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Asparagus&beginDate=11%2F05%2F2026&endDate=24%2F11%2F2026 -> 10
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Avocados&beginDate=23%2F02%2F2026&endDate=24%2F11%2F2026 -> 22
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Bananas&beginDate=31%2F08%2F2026&endDate=24%2F11%2F2026 -> 30
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Beans&beginDate=31%2F08%2F2026&endDate=24%2F11%2F2026 -> 13
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Cabbage&beginDate=31%2F08%2F2026&endDate=24%2F11%2F2026 -> 12
+Carrots deneme 1: HTTP Error 429: Too Many Requests
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Carrots&beginDate=31%2F08%2F2026&endDate=24%2F11%2F2026 -> 12
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Cauliflowers&beginDate=31%2F08%2F2026&endDate=24%2F11%2F2026 -> 12
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Cherries&beginDate=29%2F06%2F2026&endDate=24%2F11%2F2026 -> 22
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Clementines&beginDate=22%2F12%2F2025&endDate=24%2F11%2F2026 -> 12
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Cultivated+Mushrooms&beginDate=31%2F08%2F2026&endDate=24%2F11%2F2026 -> 26
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Garlic&beginDate=31%2F08%2F2026&endDate=24%2F11%2F2026 -> 52
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Leeks&beginDate=31%2F08%2F2026&endDate=24%2F11%2F2026 -> 13
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Lemons&beginDate=31%2F08%2F2026&endDate=24%2F11%2F2026 -> 10
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Lettuces&beginDate=31%2F08%2F2026&endDate=24%2F11%2F2026 -> 13
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Mandarins&beginDate=13%2F04%2F2026&endDate=24%2F11%2F2026 -> 9
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Melons&beginDate=24%2F08%2F2026&endDate=24%2F11%2F2026 -> 11
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Nectarines&beginDate=31%2F08%2F2026&endDate=24%2F11%2F2026 -> 69
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Nectarines+for+processing&beginDate=07%2F07%2F2026&endDate=24%2F11%2F2026 -> 2
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Onions&beginDate=31%2F08%2F2026&endDate=24%2F11%2F2026 -> 13
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Oranges&beginDate=31%2F08%2F2026&endDate=24%2F11%2F2026 -> 27
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Oranges+for+processing&beginDate=06%2F03%2F2026&endDate=24%2F11%2F2026 -> 2
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Organic-Oranges&beginDate=06%2F04%2F2017&endDate=24%2F11%2F2026 -> 6
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Peaches&beginDate=31%2F08%2F2026&endDate=24%2F11%2F2026 -> 96
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Peaches+for+processing&beginDate=07%2F07%2F2026&endDate=24%2F11%2F2026 -> 2
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Pears&beginDate=31%2F08%2F2026&endDate=24%2F11%2F2026 -> 38
+Plums deneme 1: HTTP Error 429: Too Many Requests
+Plums deneme 2: HTTP Error 429: Too Many Requests
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Plums&beginDate=24%2F08%2F2026&endDate=24%2F11%2F2026 -> 11
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Satsumas&beginDate=13%2F10%2F2025&endDate=24%2F11%2F2026 -> 12
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Strawberries&beginDate=06%2F06%2F2026&endDate=24%2F11%2F2026 -> 3
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Table+Grapes&beginDate=24%2F08%2F2026&endDate=24%2F11%2F2026 -> 24
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Tomatoes+for+processing&beginDate=06%2F11%2F2024&endDate=24%2F11%2F2026 -> 1
+https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Water+Melons&beginDate=24%2F08%2F2026&endDate=24%2F11%2F2026 -> 10
