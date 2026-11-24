@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-24T02:18+00:00",
+ "guncelleme": "2026-11-24T13:54+00:00",
  "kaynaklar": {
   "kur": {
    "durum": "tamam",
@@ -8,43 +8,43 @@
   },
   "izmir": {
    "durum": "tamam",
-   "kayit": 28827,
-   "sure_sn": 14
+   "kayit": 28913,
+   "sure_sn": 21
   },
   "antalya": {
    "durum": "tamam",
-   "kayit": 10207,
-   "sure_sn": 30
+   "kayit": 10291,
+   "sure_sn": 45
   },
   "gazipasa": {
    "durum": "tamam",
-   "kayit": 138,
+   "kayit": 152,
    "sure_sn": 0
   },
   "atb": {
    "durum": "tamam",
    "kayit": 852,
-   "sure_sn": 3
+   "sure_sn": 2
   },
   "junta": {
-   "durum": "hata",
-   "mesaj": "Remote end closed connection without response",
-   "sure_sn": 14
+   "durum": "tamam",
+   "kayit": 176078,
+   "sure_sn": 6
   },
   "mercamadrid": {
    "durum": "tamam",
    "kayit": 149006,
-   "sure_sn": 129
+   "sure_sn": 127
   },
   "hks": {
    "durum": "tamam",
    "kayit": 1189604,
-   "sure_sn": 45
+   "sure_sn": 140
   },
   "ispanya": {
    "durum": "tamam",
-   "kayit": 61229,
-   "sure_sn": 156
+   "kayit": 61230,
+   "sure_sn": 163
   }
  }
 }
