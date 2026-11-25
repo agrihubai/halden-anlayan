@@ -24,12 +24,12 @@ https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?m
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Cultivated+Mushrooms&beginDate=14%2F09%2F2026&endDate=25%2F11%2F2026 -> 20
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Garlic&beginDate=14%2F09%2F2026&endDate=25%2F11%2F2026 -> 40
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Leeks&beginDate=14%2F09%2F2026&endDate=25%2F11%2F2026 -> 10
+Lemons deneme 1: HTTP Error 429: Too Many Requests
+Lemons deneme 2: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Lemons&beginDate=14%2F09%2F2026&endDate=25%2F11%2F2026 -> 9
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Lettuces&beginDate=14%2F09%2F2026&endDate=25%2F11%2F2026 -> 10
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Mandarins&beginDate=13%2F04%2F2026&endDate=25%2F11%2F2026 -> 9
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Melons&beginDate=24%2F08%2F2026&endDate=25%2F11%2F2026 -> 11
-Nectarines deneme 1: HTTP Error 429: Too Many Requests
-Nectarines deneme 2: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Nectarines&beginDate=31%2F08%2F2026&endDate=25%2F11%2F2026 -> 69
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Nectarines+for+processing&beginDate=07%2F07%2F2026&endDate=25%2F11%2F2026 -> 2
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Onions&beginDate=14%2F09%2F2026&endDate=25%2F11%2F2026 -> 10
