@@ -1,8 +1,8 @@
 {
- "tarih": "2026-11-14",
+ "tarih": "2026-11-16",
  "kaynak": {
-  "PdfUrl": "/Hal/Uploads/GunlukFiyatlar/2e5ddc71-344b-49ea-bcea-9c5944f0806e_14.11.2026.pdf",
-  "PdfDate": "14.11.2026"
+  "PdfUrl": "/Hal/Uploads/GunlukFiyatlar/9c40b10a-8e53-4717-a640-b3a9285af630_16.11.2026.pdf",
+  "PdfDate": "16.11.2026"
  },
  "satir": [
   {
@@ -10,8 +10,8 @@
    "v": "Biber(Dolma)",
    "u": "KG",
    "lo": 20.0,
-   "hi": 55.0,
-   "avg": 37.5
+   "hi": 50.0,
+   "avg": 35.0
   },
   {
    "tur": "SEBZE",
@@ -26,8 +26,8 @@
    "v": "Biber (Çarli)",
    "u": "KG",
    "lo": 20.0,
-   "hi": 50.0,
-   "avg": 35.0
+   "hi": 40.0,
+   "avg": 30.0
   },
   {
    "tur": "SEBZE",
@@ -50,8 +50,8 @@
    "v": "Biber (Sivri)",
    "u": "KG",
    "lo": 30.0,
-   "hi": 65.0,
-   "avg": 47.5
+   "hi": 55.0,
+   "avg": 42.5
   },
   {
    "tur": "SEBZE",
@@ -90,8 +90,8 @@
    "v": "Domates",
    "u": "KG",
    "lo": 25.0,
-   "hi": 60.0,
-   "avg": 42.5
+   "hi": 55.0,
+   "avg": 40.0
   },
   {
    "tur": "SEBZE",
@@ -106,8 +106,8 @@
    "v": "Domates (Kokteyl)",
    "u": "KG",
    "lo": 40.0,
-   "hi": 80.0,
-   "avg": 60.0
+   "hi": 70.0,
+   "avg": 55.0
   },
   {
    "tur": "SEBZE",
@@ -122,8 +122,8 @@
    "v": "Fesleğen",
    "u": "KG",
    "lo": 8.0,
-   "hi": 15.0,
-   "avg": 11.5
+   "hi": 12.0,
+   "avg": 10.0
   },
   {
    "tur": "SEBZE",
@@ -137,17 +137,17 @@
    "tur": "SEBZE",
    "v": "Hıyar",
    "u": "KG",
-   "lo": 30.0,
-   "hi": 75.0,
-   "avg": 52.5
+   "lo": 40.0,
+   "hi": 80.0,
+   "avg": 60.0
   },
   {
    "tur": "SEBZE",
    "v": "Hıyar (Silorpaket)",
    "u": "KG",
-   "lo": 35.0,
-   "hi": 75.0,
-   "avg": 55.0
+   "lo": 45.0,
+   "hi": 85.0,
+   "avg": 65.0
   },
   {
    "tur": "SEBZE",
@@ -170,8 +170,8 @@
    "v": "Kabak (Sakız)",
    "u": "KG",
    "lo": 20.0,
-   "hi": 55.0,
-   "avg": 37.5
+   "hi": 60.0,
+   "avg": 40.0
   },
   {
    "tur": "SEBZE",
@@ -258,16 +258,16 @@
    "v": "Marul (Kıvırcık)",
    "u": "ADET",
    "lo": 18.0,
-   "hi": 28.0,
-   "avg": 23.0
+   "hi": 30.0,
+   "avg": 24.0
   },
   {
    "tur": "SEBZE",
    "v": "Maydanoz",
    "u": "BAĞ",
    "lo": 6.0,
-   "hi": 12.0,
-   "avg": 9.0
+   "hi": 10.0,
+   "avg": 8.0
   },
   {
    "tur": "SEBZE",
@@ -314,16 +314,16 @@
    "v": "Patlıcan",
    "u": "KG",
    "lo": 40.0,
-   "hi": 85.0,
-   "avg": 62.5
+   "hi": 70.0,
+   "avg": 55.0
   },
   {
    "tur": "SEBZE",
    "v": "Patlıcan (Topak)",
    "u": "KG",
    "lo": 30.0,
-   "hi": 60.0,
-   "avg": 45.0
+   "hi": 50.0,
+   "avg": 40.0
   },
   {
    "tur": "SEBZE",
@@ -346,8 +346,8 @@
    "v": "Roka",
    "u": "BAĞ",
    "lo": 8.0,
-   "hi": 15.0,
-   "avg": 11.5
+   "hi": 12.0,
+   "avg": 10.0
   },
   {
    "tur": "SEBZE",
@@ -362,8 +362,8 @@
    "v": "Semizotu",
    "u": "BAĞ",
    "lo": 8.0,
-   "hi": 15.0,
-   "avg": 11.5
+   "hi": 13.0,
+   "avg": 10.5
   },
   {
    "tur": "SEBZE",
@@ -402,16 +402,16 @@
    "v": "Tere",
    "u": "BAĞ",
    "lo": 7.0,
-   "hi": 15.0,
-   "avg": 11.0
+   "hi": 12.0,
+   "avg": 9.5
   },
   {
    "tur": "SEBZE",
    "v": "Tere (Su)",
    "u": "BAĞ",
    "lo": 7.0,
-   "hi": 15.0,
-   "avg": 11.0
+   "hi": 12.0,
+   "avg": 9.5
   },
   {
    "tur": "SEBZE",
@@ -433,9 +433,9 @@
    "tur": "MEYVE",
    "v": "Ayva",
    "u": "KG",
-   "lo": 30.0,
-   "hi": 60.0,
-   "avg": 45.0
+   "lo": 25.0,
+   "hi": 50.0,
+   "avg": 37.5
   },
   {
    "tur": "MEYVE",
@@ -458,8 +458,8 @@
    "v": "Elma (Grannysmith)",
    "u": "KG",
    "lo": 40.0,
-   "hi": 80.0,
-   "avg": 60.0
+   "hi": 70.0,
+   "avg": 55.0
   },
   {
    "tur": "MEYVE",
@@ -473,9 +473,9 @@
    "tur": "MEYVE",
    "v": "Çilek",
    "u": "KG",
-   "lo": 350.0,
-   "hi": 650.0,
-   "avg": 500.0
+   "lo": 500.0,
+   "hi": 900.0,
+   "avg": 700.0
   },
   {
    "tur": "MEYVE",
@@ -490,16 +490,16 @@
    "v": "Amme(Trabzon Hurması)",
    "u": "KG",
    "lo": 45.0,
-   "hi": 80.0,
-   "avg": 62.5
+   "hi": 70.0,
+   "avg": 57.5
   },
   {
    "tur": "MEYVE",
    "v": "Kavun",
    "u": "KG",
    "lo": 14.0,
-   "hi": 33.0,
-   "avg": 23.5
+   "hi": 35.0,
+   "avg": 24.5
   },
   {
    "tur": "MEYVE",
@@ -522,8 +522,8 @@
    "v": "Limon",
    "u": "KG",
    "lo": 15.0,
-   "hi": 30.0,
-   "avg": 22.5
+   "hi": 25.0,
+   "avg": 20.0
   },
   {
    "tur": "MEYVE",
@@ -537,17 +537,17 @@
    "tur": "MEYVE",
    "v": "Nar",
    "u": "KG",
-   "lo": 15.0,
-   "hi": 50.0,
-   "avg": 32.5
+   "lo": 40.0,
+   "hi": 85.0,
+   "avg": 62.5
   },
   {
    "tur": "MEYVE",
    "v": "Muz (Yerli)",
    "u": "KG",
    "lo": 40.0,
-   "hi": 78.0,
-   "avg": 59.0
+   "hi": 73.0,
+   "avg": 56.5
   },
   {
    "tur": "MEYVE",
@@ -578,16 +578,16 @@
    "v": "Portakal (Meyvelik)",
    "u": "KG",
    "lo": 20.0,
-   "hi": 50.0,
-   "avg": 35.0
+   "hi": 45.0,
+   "avg": 32.5
   },
   {
    "tur": "İTHAL",
    "v": "Altınçilek (Gooseberry)",
    "u": "KG",
-   "lo": 500.0,
-   "hi": 600.0,
-   "avg": 550.0
+   "lo": 250.0,
+   "hi": 500.0,
+   "avg": 375.0
   },
   {
    "tur": "İTHAL",
@@ -602,40 +602,40 @@
    "v": "Böğürtlen",
    "u": "KG",
    "lo": 1000.0,
-   "hi": 2500.0,
-   "avg": 1750.0
+   "hi": 2800.0,
+   "avg": 1900.0
   },
   {
    "tur": "İTHAL",
    "v": "Ananas",
    "u": "ADET",
    "lo": 100.0,
-   "hi": 145.0,
-   "avg": 122.5
+   "hi": 140.0,
+   "avg": 120.0
   },
   {
    "tur": "İTHAL",
    "v": "Avakado",
    "u": "ADET",
-   "lo": 45.0,
-   "hi": 75.0,
-   "avg": 60.0
+   "lo": 30.0,
+   "hi": 60.0,
+   "avg": 45.0
   },
   {
    "tur": "İTHAL",
    "v": "BlueBerry",
    "u": "KG",
    "lo": 500.0,
-   "hi": 1000.0,
-   "avg": 750.0
+   "hi": 960.0,
+   "avg": 730.0
   },
   {
    "tur": "İTHAL",
    "v": "Frenk Üzümü",
    "u": "KG",
-   "lo": 1200.0,
-   "hi": 1700.0,
-   "avg": 1450.0
+   "lo": 1000.0,
+   "hi": 1600.0,
+   "avg": 1300.0
   },
   {
    "tur": "İTHAL",
@@ -674,8 +674,8 @@
    "v": "Zencefil",
    "u": "KG",
    "lo": 150.0,
-   "hi": 245.0,
-   "avg": 197.5
+   "hi": 240.0,
+   "avg": 195.0
   }
  ]
 }
