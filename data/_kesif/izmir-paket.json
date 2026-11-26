@@ -10,7 +10,7 @@
   "num_tags": 2,
   "id": "39f883f1-5627-4ec0-b424-8f65baf01969",
   "metadata_created": "2020-09-01T09:29:52.786668",
-  "metadata_modified": "2026-11-24T23:03:54.146333",
+  "metadata_modified": "2026-11-25T23:03:06.013355",
   "author": "İzBB Sebze Halleri Şube Müdürlüğü",
   "author_email": "acikveri@bizizmir.com",
   "state": "active",
@@ -516,8 +516,8 @@
     "mimetype": "text/csv",
     "cache_url": null,
     "tracking_summary": {
-     "total": 157,
-     "recent": 4
+     "total": 158,
+     "recent": 1
     },
     "hash": "",
     "description": "2024 Yılı günlük sebze ve meyve hal fiyatlarını içeren CSV dosyası.",
@@ -530,9 +530,9 @@
     "created": "2024-01-03T07:48:33.194665",
     "state": "active",
     "mimetype_inner": null,
-    "last_modified": "2026-11-24T22:15:08.608582",
+    "last_modified": "2026-11-25T22:15:08.355209",
     "position": 19,
-    "revision_id": "c01bd56d-119f-4a11-8fca-0c51bf9cda7e",
+    "revision_id": "15e4069d-4b8d-47fb-907d-616ee4eb6ff2",
     "url_type": null,
     "id": "71ab2fea-f2f5-4401-85cf-dba09baf5135",
     "resource_type": null,
