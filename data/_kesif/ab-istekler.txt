@@ -17,8 +17,8 @@ https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?m
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Bananas&beginDate=21%2F09%2F2026&endDate=27%2F11%2F2026 -> 22
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Beans&beginDate=21%2F09%2F2026&endDate=27%2F11%2F2026 -> 10
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Cabbage&beginDate=21%2F09%2F2026&endDate=27%2F11%2F2026 -> 9
-Carrots deneme 1: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Carrots&beginDate=21%2F09%2F2026&endDate=27%2F11%2F2026 -> 10
+Cauliflowers deneme 1: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Cauliflowers&beginDate=21%2F09%2F2026&endDate=27%2F11%2F2026 -> 10
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Cherries&beginDate=29%2F06%2F2026&endDate=27%2F11%2F2026 -> 22
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Clementines&beginDate=07%2F09%2F2026&endDate=27%2F11%2F2026 -> 1
@@ -38,9 +38,8 @@ https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?m
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Peaches&beginDate=31%2F08%2F2026&endDate=27%2F11%2F2026 -> 96
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Peaches+for+processing&beginDate=07%2F07%2F2026&endDate=27%2F11%2F2026 -> 2
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Pears&beginDate=21%2F09%2F2026&endDate=27%2F11%2F2026 -> 30
-Plums deneme 1: HTTP Error 429: Too Many Requests
-Plums deneme 2: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Plums&beginDate=24%2F08%2F2026&endDate=27%2F11%2F2026 -> 11
+Satsumas deneme 1: HTTP Error 429: Too Many Requests
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Satsumas&beginDate=07%2F09%2F2026&endDate=27%2F11%2F2026 -> 1
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Strawberries&beginDate=06%2F06%2F2026&endDate=27%2F11%2F2026 -> 3
 https://api.tech.ec.europa.eu/agrifood/api/fruitAndVegetable/pricesSupplyChain?memberStateCodes=ES&products=Table+Grapes&beginDate=21%2F09%2F2026&endDate=27%2F11%2F2026 -> 16

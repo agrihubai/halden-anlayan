@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-27T01:47+00:00",
+ "guncelleme": "2026-11-27T12:42+00:00",
  "kaynaklar": {
   "kur": {
    "durum": "tamam",
@@ -9,22 +9,22 @@
   "izmir": {
    "durum": "tamam",
    "kayit": 28912,
-   "sure_sn": 16
+   "sure_sn": 18
   },
   "antalya": {
    "durum": "tamam",
-   "kayit": 10459,
-   "sure_sn": 43
+   "kayit": 10543,
+   "sure_sn": 57
   },
   "gazipasa": {
    "durum": "tamam",
-   "kayit": 180,
+   "kayit": 194,
    "sure_sn": 0
   },
   "atb": {
    "durum": "tamam",
    "kayit": 852,
-   "sure_sn": 3
+   "sure_sn": 2
   },
   "junta": {
    "durum": "tamam",
@@ -34,17 +34,17 @@
   "mercamadrid": {
    "durum": "tamam",
    "kayit": 149006,
-   "sure_sn": 133
+   "sure_sn": 137
   },
   "hks": {
    "durum": "tamam",
    "kayit": 1191029,
-   "sure_sn": 136
+   "sure_sn": 74
   },
   "ispanya": {
    "durum": "tamam",
    "kayit": 61278,
-   "sure_sn": 167
+   "sure_sn": 152
   }
  }
 }
