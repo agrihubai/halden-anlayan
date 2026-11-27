@@ -1,8 +1,8 @@
 {
- "tarih": "2026-11-16",
+ "tarih": "2026-11-17",
  "kaynak": {
-  "PdfUrl": "/Hal/Uploads/GunlukFiyatlar/9c40b10a-8e53-4717-a640-b3a9285af630_16.11.2026.pdf",
-  "PdfDate": "16.11.2026"
+  "PdfUrl": "/Hal/Uploads/GunlukFiyatlar/18de1e88-f60e-4cec-9d2e-61007d2ff4d9_17.11.2026..pdf",
+  "PdfDate": "17.11.2026"
  },
  "satir": [
   {
@@ -154,8 +154,8 @@
    "v": "Ispanak",
    "u": "KG",
    "lo": 20.0,
-   "hi": 55.0,
-   "avg": 37.5
+   "hi": 50.0,
+   "avg": 35.0
   },
   {
    "tur": "SEBZE",
@@ -186,8 +186,8 @@
    "v": "Karnabahar",
    "u": "KG",
    "lo": 25.0,
-   "hi": 50.0,
-   "avg": 37.5
+   "hi": 40.0,
+   "avg": 32.5
   },
   {
    "tur": "SEBZE",
@@ -338,8 +338,8 @@
    "v": "Pırasa",
    "u": "KG",
    "lo": 30.0,
-   "hi": 60.0,
-   "avg": 45.0
+   "hi": 50.0,
+   "avg": 40.0
   },
   {
    "tur": "SEBZE",
@@ -473,9 +473,9 @@
    "tur": "MEYVE",
    "v": "Çilek",
    "u": "KG",
-   "lo": 500.0,
-   "hi": 900.0,
-   "avg": 700.0
+   "lo": 350.0,
+   "hi": 700.0,
+   "avg": 525.0
   },
   {
    "tur": "MEYVE",
@@ -489,9 +489,9 @@
    "tur": "MEYVE",
    "v": "Amme(Trabzon Hurması)",
    "u": "KG",
-   "lo": 45.0,
-   "hi": 70.0,
-   "avg": 57.5
+   "lo": 30.0,
+   "hi": 60.0,
+   "avg": 45.0
   },
   {
    "tur": "MEYVE",
@@ -570,8 +570,8 @@
    "v": "Üzüm(Beyaz)",
    "u": "KG",
    "lo": 25.0,
-   "hi": 45.0,
-   "avg": 35.0
+   "hi": 40.0,
+   "avg": 32.5
   },
   {
    "tur": "MEYVE",
