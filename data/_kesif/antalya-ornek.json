@@ -1,8 +1,8 @@
 {
- "tarih": "2026-11-17",
+ "tarih": "2026-11-18",
  "kaynak": {
-  "PdfUrl": "/Hal/Uploads/GunlukFiyatlar/18de1e88-f60e-4cec-9d2e-61007d2ff4d9_17.11.2026..pdf",
-  "PdfDate": "17.11.2026"
+  "PdfUrl": "/Hal/Uploads/GunlukFiyatlar/d7f5f1f2-99c5-4862-92f3-8a94eae53b72_18.11.2026.pdf",
+  "PdfDate": "18.11.2026"
  },
  "satir": [
   {
@@ -10,8 +10,8 @@
    "v": "Biber(Dolma)",
    "u": "KG",
    "lo": 20.0,
-   "hi": 50.0,
-   "avg": 35.0
+   "hi": 40.0,
+   "avg": 30.0
   },
   {
    "tur": "SEBZE",
@@ -25,41 +25,41 @@
    "tur": "SEBZE",
    "v": "Biber (Çarli)",
    "u": "KG",
-   "lo": 20.0,
-   "hi": 40.0,
-   "avg": 30.0
+   "lo": 15.0,
+   "hi": 35.0,
+   "avg": 25.0
   },
   {
    "tur": "SEBZE",
    "v": "Biber (Kapya)",
    "u": "KG",
    "lo": 45.0,
-   "hi": 95.0,
-   "avg": 70.0
+   "hi": 90.0,
+   "avg": 67.5
   },
   {
    "tur": "SEBZE",
    "v": "Biber (Şili)",
    "u": "KG",
    "lo": 80.0,
-   "hi": 120.0,
-   "avg": 100.0
+   "hi": 110.0,
+   "avg": 95.0
   },
   {
    "tur": "SEBZE",
    "v": "Biber (Sivri)",
    "u": "KG",
-   "lo": 30.0,
-   "hi": 55.0,
-   "avg": 42.5
+   "lo": 25.0,
+   "hi": 50.0,
+   "avg": 37.5
   },
   {
    "tur": "SEBZE",
    "v": "Biber (Üçburun)",
    "u": "KG",
-   "lo": 45.0,
-   "hi": 70.0,
-   "avg": 57.5
+   "lo": 30.0,
+   "hi": 60.0,
+   "avg": 45.0
   },
   {
    "tur": "SEBZE",
@@ -106,8 +106,8 @@
    "v": "Domates (Kokteyl)",
    "u": "KG",
    "lo": 40.0,
-   "hi": 70.0,
-   "avg": 55.0
+   "hi": 65.0,
+   "avg": 52.5
   },
   {
    "tur": "SEBZE",
@@ -138,16 +138,16 @@
    "v": "Hıyar",
    "u": "KG",
    "lo": 40.0,
-   "hi": 80.0,
-   "avg": 60.0
+   "hi": 75.0,
+   "avg": 57.5
   },
   {
    "tur": "SEBZE",
    "v": "Hıyar (Silorpaket)",
    "u": "KG",
    "lo": 45.0,
-   "hi": 85.0,
-   "avg": 65.0
+   "hi": 80.0,
+   "avg": 62.5
   },
   {
    "tur": "SEBZE",
@@ -162,8 +162,8 @@
    "v": "Kabak(Bal)",
    "u": "KG",
    "lo": 10.0,
-   "hi": 25.0,
-   "avg": 17.5
+   "hi": 20.0,
+   "avg": 15.0
   },
   {
    "tur": "SEBZE",
@@ -185,9 +185,9 @@
    "tur": "SEBZE",
    "v": "Karnabahar",
    "u": "KG",
-   "lo": 25.0,
-   "hi": 40.0,
-   "avg": 32.5
+   "lo": 20.0,
+   "hi": 35.0,
+   "avg": 27.5
   },
   {
    "tur": "SEBZE",
@@ -241,9 +241,9 @@
    "tur": "SEBZE",
    "v": "Marul (Aysberk)",
    "u": "ADET",
-   "lo": 18.0,
-   "hi": 34.0,
-   "avg": 26.0
+   "lo": 25.0,
+   "hi": 50.0,
+   "avg": 37.5
   },
   {
    "tur": "SEBZE",
@@ -313,9 +313,9 @@
    "tur": "SEBZE",
    "v": "Patlıcan",
    "u": "KG",
-   "lo": 40.0,
-   "hi": 70.0,
-   "avg": 55.0
+   "lo": 25.0,
+   "hi": 55.0,
+   "avg": 40.0
   },
   {
    "tur": "SEBZE",
@@ -337,9 +337,9 @@
    "tur": "SEBZE",
    "v": "Pırasa",
    "u": "KG",
-   "lo": 30.0,
-   "hi": 50.0,
-   "avg": 40.0
+   "lo": 20.0,
+   "hi": 45.0,
+   "avg": 32.5
   },
   {
    "tur": "SEBZE",
@@ -442,8 +442,8 @@
    "v": "Armut (Santamariya)",
    "u": "KG",
    "lo": 30.0,
-   "hi": 70.0,
-   "avg": 50.0
+   "hi": 65.0,
+   "avg": 47.5
   },
   {
    "tur": "MEYVE",
@@ -474,8 +474,8 @@
    "v": "Çilek",
    "u": "KG",
    "lo": 350.0,
-   "hi": 700.0,
-   "avg": 525.0
+   "hi": 600.0,
+   "avg": 475.0
   },
   {
    "tur": "MEYVE",
